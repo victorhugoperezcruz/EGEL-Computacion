@@ -1,0 +1,470 @@
+[
+  {
+    "id": "net_001",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "pregunta": "Según el Capítulo 1 de Cisco Exploration, una organización diseña su red con enlaces redundantes y conmutación de paquetes para que, ante una falla física, el tráfico se redirija automáticamente; además prioriza paquetes VoIP frente a descargas. ¿Qué dos características de arquitectura de red se implementan?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Tolerancia a fallas y Calidad de Servicio (QoS)."
+      },
+      {
+        "id": "B",
+        "texto": "Conmutación de circuitos sin redundancia y direccionamiento MAC."
+      },
+      {
+        "id": "C",
+        "texto": "Escalabilidad exclusivamente física y desactivación de control de congestión."
+      },
+      {
+        "id": "D",
+        "texto": "Topología en bus lineal y transmisión half-duplex."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Tolerancia a fallas mediante redundancia en redes conmutadas por paquetes y Calidad de Servicio (QoS) para priorizar tráfico sensible al retardo."
+  },
+  {
+    "id": "net_002",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "pregunta": "Durante el proceso de encapsulación de datos (Capítulo 2), la Unidad de Datos de Protocolo (PDU) cambia de nombre al descender por las capas del modelo OSI. ¿Cuál es el orden correcto desde la Capa de Aplicación hasta la Capa Física?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Datos (Aplicación) -> Segmento (Transporte) -> Paquete (Red) -> Trama (Enlace de datos) -> Bits (Física)."
+      },
+      {
+        "id": "B",
+        "texto": "Trama -> Paquete -> Segmento -> Bits -> Datos."
+      },
+      {
+        "id": "C",
+        "texto": "Paquete -> Datos -> Trama -> Segmento -> Bits."
+      },
+      {
+        "id": "D",
+        "texto": "Bits -> Trama -> Paquete -> Segmento -> Datos."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Aplicación maneja Datos, Transporte genera Segmentos/Datagramas, Red crea Paquetes IP, Enlace de Datos encapsula en Tramas y Física transmite Bits."
+  },
+  {
+    "id": "net_003",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "pregunta": "En una red corporativa (Capítulo 3), una PC recién encendida necesita obtener automáticamente su dirección IPv4, máscara, gateway y DNS; luego requiere traducir 'www.ceneval.edu.mx' a su dirección IP. ¿Qué dos protocolos de capa de aplicación intervienen?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "DHCP para la configuración IP dinámica y DNS para la resolución de nombres de dominio a IP."
+      },
+      {
+        "id": "B",
+        "texto": "SMTP para asignar IP y FTP para traducir nombres de dominio."
+      },
+      {
+        "id": "C",
+        "texto": "ARP para asignar máscara y POP3 para resolver sitios web."
+      },
+      {
+        "id": "D",
+        "texto": "ICMP para otorgar concesiones IP y Telnet para traducir URLs."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "DHCP asigna dinámicamente los parámetros IP y DNS traduce nombres de dominio (FQDN) en direcciones IP."
+  },
+  {
+    "id": "net_004",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "pregunta": "En la Capa de Transporte (Capítulo 4), una transferencia bancaria requiere entrega garantizada, acuses de recibo y saludo de 3 vías; mientras que una llamada VoIP en vivo requiere mínima sobrecarga y baja latencia sin retransmisiones. ¿Qué protocolos utiliza cada una?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "TCP para la transferencia bancaria y UDP para la llamada VoIP."
+      },
+      {
+        "id": "B",
+        "texto": "UDP para la transferencia bancaria y TCP para VoIP."
+      },
+      {
+        "id": "C",
+        "texto": "IPv4 para el saludo de 3 vías e ICMP para control de ventana."
+      },
+      {
+        "id": "D",
+        "texto": "CSMA/CD en la capa de transporte para ambas."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "TCP es orientado a conexión y confiable; UDP no tiene conexión ni retransmisiones, ideal para tráfico de voz y video en tiempo real."
+  },
+  {
+    "id": "net_005",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "pregunta": "Una PC con IP 192.168.1.50/24 envía un paquete a un servidor en la red remota 10.20.30.40/24 (Capítulo 5). ¿Qué dirección MAC de destino colocará en la trama Ethernet?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "La dirección MAC de su Gateway Predeterminado (interfaz LAN del router local), manteniendo la IP de destino 10.20.30.40."
+      },
+      {
+        "id": "B",
+        "texto": "La dirección MAC física del servidor remoto obtenida por ARP directo a través de Internet."
+      },
+      {
+        "id": "C",
+        "texto": "La dirección IP 127.0.0.1 en el campo MAC."
+      },
+      {
+        "id": "D",
+        "texto": "Descartará el paquete por estar fuera de su subred."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Cuando el destino está en otra red IP, la trama de Capa 2 se dirige a la dirección MAC del Gateway Predeterminado."
+  },
+  {
+    "id": "net_006",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "pregunta": "Se recibe el bloque 192.168.10.0/24 y se requiere crear una subred para 50 hosts utilizables desperdiciando el mínimo de direcciones (Capítulo 6). ¿Qué prefijo CIDR y máscara corresponden?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Prefijo /26 (255.255.255.192), que ofrece 62 hosts utilizables."
+      },
+      {
+        "id": "B",
+        "texto": "Prefijo /27 (255.255.255.224), que ofrece 30 hosts utilizables."
+      },
+      {
+        "id": "C",
+        "texto": "Prefijo /25 (255.255.255.128), que ofrece 126 hosts utilizables."
+      },
+      {
+        "id": "D",
+        "texto": "Prefijo /28 (255.255.255.240), que ofrece 14 hosts utilizables."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Con 6 bits de host: 2^6 - 2 = 62 direcciones utilizables (>= 50), lo que corresponde al prefijo 32 - 6 = /26 (255.255.255.192)."
+  },
+  {
+    "id": "net_007",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "pregunta": "¿Qué métodos de Control de Acceso al Medio (MAC) por contienda utilizan respectivamente Ethernet 802.3 (half-duplex) y las redes inalámbricas WLAN IEEE 802.11 (Capítulos 7 y 9)?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "CSMA/CD (Detección de Colisiones) en Ethernet 802.3 y CSMA/CA (Prevención de Colisiones) en WLAN 802.11."
+      },
+      {
+        "id": "B",
+        "texto": "Token Ring determinista en ambas tecnologías."
+      },
+      {
+        "id": "C",
+        "texto": "CSMA/CA en cable coaxial y CSMA/CD en Wi-Fi."
+      },
+      {
+        "id": "D",
+        "texto": "OSPF en la subcapa MAC."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Ethernet half-duplex detecta colisiones (CSMA/CD), mientras que Wi-Fi 802.11 utiliza prevención de colisiones (CSMA/CA)."
+  },
+  {
+    "id": "net_008",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "pregunta": "En una planta industrial con alta interferencia electromagnética (EMI) y enlaces de 850 metros entre edificios (Capítulo 8), ¿qué medio de transmisión físico es el más adecuado?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Fibra óptica, por ser inmune a EMI/RFI y cubrir largas distancias con baja atenuación."
+      },
+      {
+        "id": "B",
+        "texto": "Cable UTP Categoría 5e de un solo tramo de 850 metros."
+      },
+      {
+        "id": "C",
+        "texto": "Cable telefónico plano sin blindaje."
+      },
+      {
+        "id": "D",
+        "texto": "Bluetooth Clase 2."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La fibra óptica transmite luz, siendo inmune a interferencia electromagnética y superando ampliamente el límite de 100 m del cable UTP."
+  },
+  {
+    "id": "net_009",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "pregunta": "Cuando un switch Ethernet de Capa 2 recibe una trama (Capítulo 9), ¿qué dirección MAC registra en su tabla CAM y qué hace si la MAC de destino no está en su tabla?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Aprende la MAC de origen asociándola al puerto de entrada; si no conoce la MAC de destino, inunda (flooding) la trama por todos los puertos excepto el de origen."
+      },
+      {
+        "id": "B",
+        "texto": "Aprende la MAC de destino y descarta cualquier trama desconocida."
+      },
+      {
+        "id": "C",
+        "texto": "Decrementa el TTL del paquete IP y consulta OSPF."
+      },
+      {
+        "id": "D",
+        "texto": "Devuelve la trama por el mismo puerto de entrada."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El switch construye su tabla MAC con las direcciones de origen entrantes e inunda las tramas con destino desconocido."
+  },
+  {
+    "id": "net_010",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "pregunta": "En equipos sin Auto-MDIX (Capítulo 10), ¿qué cables se requieren para conectar: (1) PC a Switch, (2) Switch a Switch, y (3) puerto serial de PC al puerto de administración inicial de un Router Cisco?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "(1) Cable UTP directo, (2) Cable UTP cruzado y (3) Cable de consola (Rollover)."
+      },
+      {
+        "id": "B",
+        "texto": "(1) Cable cruzado, (2) Cable directo y (3) Cable coaxial."
+      },
+      {
+        "id": "C",
+        "texto": "(1) Cable Rollover, (2) Cable directo y (3) Cable cruzado."
+      },
+      {
+        "id": "D",
+        "texto": "Cable cruzado para los tres casos."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Equipos distintos (PC-Switch) usan cable directo; equipos iguales (Switch-Switch) usan cruzado; la administración por puerto de consola usa cable Rollover."
+  },
+  {
+    "id": "net_011",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "pregunta": "En un router Cisco IOS (Capítulo 11), ¿cuál es la secuencia correcta de comandos para configurar la IP de FastEthernet 0/0, activarla y respaldar la configuración en NVRAM?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "enable -> configure terminal -> interface fastEthernet 0/0 -> ip address <IP> <MASCARA> -> no shutdown -> end -> copy running-config startup-config."
+      },
+      {
+        "id": "B",
+        "texto": "interface fa0/0 -> set ip -> shutdown -> copy startup-config running-config."
+      },
+      {
+        "id": "C",
+        "texto": "enable -> show ip route -> ipconfig /all -> reload."
+      },
+      {
+        "id": "D",
+        "texto": "configure terminal -> ping 127.0.0.1 -> erase startup-config."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Se ingresa a modo privilegiado (enable), configuración global (configure terminal), interfaz, se asigna IP, se enciende con 'no shutdown' y se guarda en NVRAM con 'copy running-config startup-config'."
+  },
+  {
+    "id": "net_012",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "pregunta": "Al configurar un router Cisco IOS para administración remota segura por red (Capítulo 11), se decide deshabilitar Telnet (puerto 23) en las líneas VTY y habilitar únicamente SSH (puerto 22). ¿Cuál es la razón técnica de seguridad para esta decisión?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Telnet transmite credenciales y comandos en texto plano (vulnerable a sniffing), mientras que SSH cifra toda la sesión y autentica los extremos."
+      },
+      {
+        "id": "B",
+        "texto": "Telnet utiliza transporte UDP sin acuses de recibo y SSH utiliza ICMP."
+      },
+      {
+        "id": "C",
+        "texto": "SSH no requiere direcciones IP en las interfaces del router."
+      },
+      {
+        "id": "D",
+        "texto": "Telnet solo funciona sobre cables de fibra óptica."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Telnet envía toda la información en texto claro; SSH proporciona cifrado criptográfico fuerte en la sesión de administración remota."
+  },
+  {
+    "id": "net_013",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "pregunta": "En un enlace punto a punto entre dos routers se utiliza una subred con máscara /30 (255.255.255.252) sobre la dirección base 172.16.10.4/30. ¿Cuáles son la dirección de red, el rango de IPs utilizables para las dos interfaces de los routers y la dirección de broadcast?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Red: 172.16.10.4 | IPs utilizables: 172.16.10.5 y 172.16.10.6 | Broadcast: 172.16.10.7"
+      },
+      {
+        "id": "B",
+        "texto": "Red: 172.16.10.0 | IPs utilizables: 172.16.10.1 a 172.16.10.6 | Broadcast: 172.16.10.8"
+      },
+      {
+        "id": "C",
+        "texto": "Red: 172.16.10.4 | IPs utilizables: 172.16.10.4 y 172.16.10.7 | Broadcast: 172.16.10.8"
+      },
+      {
+        "id": "D",
+        "texto": "Red: 172.16.10.5 | IPs utilizables: 172.16.10.6 y 172.16.10.7 | Broadcast: 172.16.10.9"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Un prefijo /30 tiene bloques de 2^2 = 4 direcciones. Comenzando en .4: .4 es la subred, .5 y .6 son los 2 hosts utilizables y .7 es el broadcast."
+  },
+  {
+    "id": "net_014",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "pregunta": "¿Qué protocolo opera entre la Capa 2 y la Capa 3 enviando un broadcast Ethernet (FF:FF:FF:FF:FF:FF) dentro de la LAN local para descubrir la dirección física MAC asociada a una dirección IPv4 conocida?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "ARP (Address Resolution Protocol)."
+      },
+      {
+        "id": "B",
+        "texto": "DNS (Domain Name System)."
+      },
+      {
+        "id": "C",
+        "texto": "NAT (Network Address Translation)."
+      },
+      {
+        "id": "D",
+        "texto": "BGP (Border Gateway Protocol)."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "ARP envía un ARP Request en difusión (broadcast L2) preguntando quién posee determinada dirección IPv4 en la subred local para obtener su MAC."
+  },
+  {
+    "id": "net_015",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "pregunta": "En un switch de acceso empresarial, un atacante conecta su laptop y envía miles de tramas con direcciones MAC de origen falsificadas para llenar la tabla CAM del switch y forzarlo a comportarse como un hub inundando el tráfico. ¿Qué característica de seguridad de Capa 2 previene este ataque limitando el número de direcciones MAC aprendidas por puerto?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Port Security (Seguridad de Puertos)."
+      },
+      {
+        "id": "B",
+        "texto": "NAT Overload (PAT)."
+      },
+      {
+        "id": "C",
+        "texto": "RIPv2 sin autenticación."
+      },
+      {
+        "id": "D",
+        "texto": "Deshabilitar el protocolo Spanning Tree (STP)."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Port Security restringe la cantidad y/o identidad de las direcciones MAC permitidas en un puerto de switch, bloqueando o restringiendo el puerto ante violaciones."
+  },
+  {
+    "id": "net_016",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "pregunta": "Un administrador desea permitir que todas las computadoras de la red privada corporativa (192.168.1.0/24) salgan a Internet compartiendo una única dirección IPv4 pública asignada por el ISP en la interfaz externa del router. ¿Qué mecanismo debe configurar?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "NAT con sobrecarga o PAT (Port Address Translation), diferenciando cada flujo mediante números de puerto de origen."
+      },
+      {
+        "id": "B",
+        "texto": "NAT estática uno a uno sin puertos."
+      },
+      {
+        "id": "C",
+        "texto": "VLAN Trunking 802.1Q hacia el proveedor de Internet."
+      },
+      {
+        "id": "D",
+        "texto": "Servidor DHCP público en la interfaz WAN."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "PAT (NAT Overload) traduce múltiples direcciones IPv4 privadas internas a una sola dirección IPv4 pública externa utilizando números de puerto TCP/UDP únicos para identificar cada sesión."
+  },
+  {
+    "id": "net_017",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "pregunta": "En una red con múltiples switches interconectados con enlaces redundantes, se corre el riesgo de que se formen tormentas de broadcast y bucles de Capa 2. ¿Qué protocolo estándar evita automáticamente los bucles bloqueando lógicamente los puertos redundantes y activándolos solo si falla el enlace principal?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Spanning Tree Protocol (STP - IEEE 802.1D / RSTP 802.1w)."
+      },
+      {
+        "id": "B",
+        "texto": "Simple Network Management Protocol (SNMP)."
+      },
+      {
+        "id": "C",
+        "texto": "File Transfer Protocol (FTP)."
+      },
+      {
+        "id": "D",
+        "texto": "Internet Control Message Protocol (ICMP)."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El protocolo Spanning Tree (STP/RSTP) construye una topología lógica libre de bucles en redes conmutadas de Capa 2."
+  },
+  {
+    "id": "net_018",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "pregunta": "En un router Cisco se requiere filtrar paquetes no solo por la dirección IP de origen, sino también por la dirección IP de destino, el protocolo (TCP/UDP/ICMP) y el puerto de aplicación (ej. bloquear tráfico hacia el puerto 80 HTTP pero permitir el 443 HTTPS). ¿Qué tipo de Lista de Control de Acceso debe configurarse y dónde se recomienda ubicarla?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Una ACL Extendida (numerada 100-199 o nombrada), ubicada lo más cerca posible del origen del tráfico."
+      },
+      {
+        "id": "B",
+        "texto": "Una ACL Estándar (numerada 1-99), ya que filtra por puerto TCP y protocolo."
+      },
+      {
+        "id": "C",
+        "texto": "Una tabla ARP estática en el servidor DNS."
+      },
+      {
+        "id": "D",
+        "texto": "Un banner MOTD en la consola serial."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Las ACLs Estándar solo filtran por IP de origen; las ACLs Extendidas filtran por IP de origen, IP de destino, protocolo y número de puerto TCP/UDP, y se colocan cerca del origen para no transportar tráfico innecesario."
+  }
+]

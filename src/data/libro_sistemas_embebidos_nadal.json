@@ -1,0 +1,392 @@
+[
+  {
+    "id": "emb_001",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "pregunta": "Una empresa automotriz requiere diseñar la unidad electrónica encargada de controlar la inyección de combustible y el sistema de frenos ABS. A diferencia de una PC, este sistema debe dedicarse a una función específica y basar su cerebro en un solo circuito integrado que incluya procesador, memoria e interfaces de Entrada/Salida en el mismo chip. ¿Qué arquitectura debe seleccionarse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Un sistema embebido basado en un microcontrolador."
+      },
+      {
+        "id": "B",
+        "texto": "Un sistema de propósito general basado en un microprocesador sin periféricos integrados."
+      },
+      {
+        "id": "C",
+        "texto": "Un servidor de cómputo distribuido con almacenamiento masivo en disco rígido."
+      },
+      {
+        "id": "D",
+        "texto": "Una estación de trabajo con sistema operativo de tiempo compartido."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Un sistema embebido realiza funciones dedicadas y su cerebro suele ser un microcontrolador, que integra CPU, memoria (RAM/Flash) y periféricos de E/S en el mismo chip."
+  },
+  {
+    "id": "emb_002",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "pregunta": "En el diseño del sistema de control de vuelo de una aeronave y el disparo de bolsas de aire (airbags), si el resultado se produce después de un límite de tiempo estricto (deadline), ocurre una falla catastrófica. ¿Cómo se clasifica este sistema?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Sistema en Tiempo Real Estricto o Duro (Hard Real-Time)."
+      },
+      {
+        "id": "B",
+        "texto": "Sistema en Tiempo Real Blando (Soft Real-Time)."
+      },
+      {
+        "id": "C",
+        "texto": "Sistema de procesamiento por lotes (Batch Processing)."
+      },
+      {
+        "id": "D",
+        "texto": "Sistema asíncrono de mejor esfuerzo (Best-Effort)."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "En un Sistema en Tiempo Real Duro (Hard Real-Time), incumplir el deadline invalida la respuesta y puede ocasionar consecuencias críticas o catastróficas."
+  },
+  {
+    "id": "emb_003",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "pregunta": "Se desea monitorear y controlar de forma remota los sensores y válvulas de una planta industrial utilizando un navegador web estándar a través de la red Ethernet. Según la arquitectura de Sistemas Embebidos en Ethernet, ¿qué elementos debe incorporar el nodo embebido?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Un microcontrolador con interfaz controladora Ethernet (MAC/PHY), una pila TCP/IP ligera (lwIP/uIP) y un servidor HTTP embebido."
+      },
+      {
+        "id": "B",
+        "texto": "Un enlace exclusivamente serial RS-232 directo hacia el navegador del cliente sin protocolos de red."
+      },
+      {
+        "id": "C",
+        "texto": "Un bus paralelo PCI conectado por cable coaxial sin direccionamiento IP."
+      },
+      {
+        "id": "D",
+        "texto": "Únicamente un convertidor ADC conectado directamente al puerto RJ-45."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Para integrar un sistema embebido en Ethernet con acceso web se requiere controlador MAC/PHY, pila TCP/IP reducida y servidor HTTP embebido."
+  },
+  {
+    "id": "emb_004",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "pregunta": "En un sistema embebido instalado en una ubicación remota, existe el riesgo de que el ruido electromagnético induzca un bloqueo en el firmware (bucle infinito). ¿Qué periférico interno del microcontrolador reinicia automáticamente el sistema si el software principal deja de responder?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Watchdog Timer (Temporizador Perro Guardián)."
+      },
+      {
+        "id": "B",
+        "texto": "Conversor Analógico-Digital (ADC)."
+      },
+      {
+        "id": "C",
+        "texto": "Modulador por Ancho de Pulso (PWM)."
+      },
+      {
+        "id": "D",
+        "texto": "Memoria EEPROM externa."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El Watchdog Timer (WDT) es un contador de hardware que genera un Reset si el programa principal no lo reinicia periódicamente antes de que expire."
+  },
+  {
+    "id": "emb_005",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "pregunta": "Al estructurar la memoria de un microcontrolador en un sistema embebido, se requiere almacenar el código ejecutable del firmware (persistente sin energía) y las variables dinámicas/pila de ejecución (alta velocidad). ¿Qué tipos de memoria cumplen cada función?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Memoria no volátil (Flash / ROM) para el firmware y memoria volátil (SRAM) para las variables dinámicas y la pila."
+      },
+      {
+        "id": "B",
+        "texto": "Memoria volátil (SRAM) para conservar el firmware sin energía y memoria ROM para las variables dinámicas."
+      },
+      {
+        "id": "C",
+        "texto": "Disco magnético para los registros de la ALU y caché volátil para el respaldo permanente."
+      },
+      {
+        "id": "D",
+        "texto": "Registros de desplazamiento temporales para el firmware y memoria óptica para el stack."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El firmware reside en memoria no volátil (Flash/ROM) para arrancar al energizarse, mientras que las variables y el stack usan memoria SRAM volátil."
+  },
+  {
+    "id": "emb_006",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "pregunta": "En un RTOS ejecutándose sobre un sistema embebido, una tarea de alta prioridad se activa mientras una tarea de baja prioridad usa la CPU. ¿Qué mecanismo del scheduler garantiza que la tarea crítica tome el control del procesador de inmediato?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Planificación apropiativa (Preemptive Scheduling) basada en prioridades."
+      },
+      {
+        "id": "B",
+        "texto": "Planificación FIFO no apropiativa."
+      },
+      {
+        "id": "C",
+        "texto": "Espera activa (Polling continuo) sin interrupciones."
+      },
+      {
+        "id": "D",
+        "texto": "Ejecución secuencial por lotes."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La planificación apropiativa (preemptive) guarda el contexto de la tarea de menor prioridad y cede inmediatamente la CPU a la tarea de mayor prioridad."
+  },
+  {
+    "id": "emb_007",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "pregunta": "Un microcontrolador debe atender un botón de paro de emergencia de forma inmediata sin desperdiciar ciclos de CPU preguntando constantemente por el estado del pin en el bucle principal. ¿Qué mecanismo es el más eficiente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Configurar una interrupción externa por flanco asociada a una Rutina de Servicio de Interrupción (ISR) breve y determinista."
+      },
+      {
+        "id": "B",
+        "texto": "Implementar un ciclo infinito de encuesta (polling) con retardos bloqueantes."
+      },
+      {
+        "id": "C",
+        "texto": "Reiniciar el microcontrolador cada milisegundo."
+      },
+      {
+        "id": "D",
+        "texto": "Deshabilitar el reloj del sistema."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Las interrupciones externas permiten responder en microsegundos al evento físico ejecutando la ISR sin ocupar la CPU en espera activa."
+  },
+  {
+    "id": "emb_008",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "pregunta": "Se requiere controlar la velocidad de un motor de corriente directa desde una salida digital de un microcontrolador variando el ciclo de trabajo (duty cycle) de una señal cuadrada a frecuencia constante. ¿Qué técnica y periférico debe utilizarse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Modulación por Ancho de Pulso (PWM) acoplada a una etapa de potencia (puente H o MOSFET)."
+      },
+      {
+        "id": "B",
+        "texto": "Comunicación serial I2C conectada directamente a las escobillas del motor."
+      },
+      {
+        "id": "C",
+        "texto": "Interrupción por desbordamiento del bus de direcciones."
+      },
+      {
+        "id": "D",
+        "texto": "Divisor resistivo conectado directamente al pin GPIO sin transistor."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El módulo PWM permite regular la tensión promedio entregada al motor ajustando el porcentaje de tiempo en alto (duty cycle) con alta eficiencia energética."
+  },
+  {
+    "id": "emb_009",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "pregunta": "En un lazo de control PID para regular la temperatura de un horno industrial, se observa que el sistema es estable pero mantiene un pequeño error en estado estacionario respecto al Setpoint. ¿Cuál de las tres acciones del controlador PID tiene como función principal eliminar el error en estado estacionario?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "La acción Integral (I), porque acumula el error en el tiempo hasta llevarlo a cero."
+      },
+      {
+        "id": "B",
+        "texto": "La acción Derivativa (D), porque solo responde a la velocidad de cambio del error."
+      },
+      {
+        "id": "C",
+        "texto": "El filtro pasa-altos de la entrada analógica."
+      },
+      {
+        "id": "D",
+        "texto": "La reducción de la resolución del ADC a 2 bits."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "En un controlador PID, el término Integral suma el error a lo largo del tiempo, generando acción correctiva mientras exista desviación estática y eliminando el error en estado estacionario."
+  },
+  {
+    "id": "emb_010",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "pregunta": "Un microcontrolador necesita comunicarse en la misma PCB con un sensor de temperatura digital, un reloj RTC y una memoria EEPROM utilizando únicamente 2 hilos compartidos (SDA y SCL) con direccionamiento por esclavo. ¿Qué protocolo de bus serial síncrono cumple con esta especificación?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "I2C (Inter-Integrated Circuit)."
+      },
+      {
+        "id": "B",
+        "texto": "UART RS-232 punto a punto asíncrono."
+      },
+      {
+        "id": "C",
+        "texto": "SPI de 4 hilos con línea Chip Select individual por esclavo."
+      },
+      {
+        "id": "D",
+        "texto": "Bus paralelo ISA de 16 bits."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El protocolo I2C utiliza solo dos líneas abiertas con resistencias pull-up: SDA (datos) y SCL (reloj), permitiendo conectar múltiples esclavos direccionados por software."
+  },
+  {
+    "id": "emb_011",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "pregunta": "Al conectar un botón mecánico a un pin de entrada digital de un microcontrolador, se producen múltiples transiciones falsas en cuestión de pocos milisegundos debido a la vibración física de los contactos metálicos. ¿Cómo se denomina este fenómeno y cómo se soluciona?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Rebote mecánico (Bouncing) y se soluciona mediante antirrebote (Debouncing) por hardware (filtro RC + Schmitt Trigger) o por software (muestreo con temporizador)."
+      },
+      {
+        "id": "B",
+        "texto": "Efecto Hall magnético y se soluciona aumentando la frecuencia de reloj del CPU al doble."
+      },
+      {
+        "id": "C",
+        "texto": "Inversión de prioridad del RTOS y se soluciona eliminando la resistencia pull-up."
+      },
+      {
+        "id": "D",
+        "texto": "Deriva térmica y se soluciona cambiando el protocolo a Ethernet."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Los interruptores mecánicos rebotan al cerrarse o abrirse; el debouncing por filtro RC o retardo de validación en software evita contar múltiples pulsaciones falsas."
+  },
+  {
+    "id": "emb_012",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "pregunta": "En un sistema multitarea en tiempo real (RTOS), una tarea de alta prioridad queda bloqueada esperando un mutex que posee una tarea de baja prioridad, mientras una tarea de prioridad media (que no usa el mutex) desaloja a la de baja prioridad impidiéndole liberar el recurso. ¿Cómo se conoce este problema y cuál es su solución clásica?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Inversión de Prioridad, y se soluciona mediante el protocolo de Herencia de Prioridad (Priority Inheritance) en el mutex."
+      },
+      {
+        "id": "B",
+        "texto": "Fragmentación externa de memoria Flash, solucionada con recolección de basura."
+      },
+      {
+        "id": "C",
+        "texto": "Aliasing de muestreo analógico, solucionado con un filtro antialiasing."
+      },
+      {
+        "id": "D",
+        "texto": "Desbordamiento de contador PWM, solucionado con DMA."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La Inversión de Prioridad ocurre cuando una tarea de prioridad media retrasa indirectamente a una de alta prioridad; la Herencia de Prioridad eleva temporalmente la prioridad de la tarea baja que retiene el mutex."
+  },
+  {
+    "id": "emb_013",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "pregunta": "En una planta de embotellado automatizada con un PLC (Controlador Lógico Programable), ¿cuál es el ciclo de operación determinista (Scan Cycle) que ejecuta continuamente el PLC?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1. Lectura de entradas físicas -> 2. Ejecución del programa de control (ej. Ladder) -> 3. Diagnóstico/comunicaciones -> 4. Actualización de salidas físicas."
+      },
+      {
+        "id": "B",
+        "texto": "1. Compilación del sistema operativo -> 2. Formateo de disco -> 3. Renderizado gráfico 3D."
+      },
+      {
+        "id": "C",
+        "texto": "1. Desconexión de sensores -> 2. Escritura aleatoria de salidas -> 3. Lectura de entradas al apagar."
+      },
+      {
+        "id": "D",
+        "texto": "Ejecución exclusivamente cuando un operador presiona el botón de programación."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El ciclo de barrido (Scan Cycle) de un PLC lee el estado de todas las entradas hacia la tabla de imagen de entradas, evalúa la lógica del programa y actualiza las salidas físicas al final del ciclo."
+  },
+  {
+    "id": "emb_014",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "pregunta": "Para transmitir la lectura de un transmisor de presión situado a 150 metros de distancia hacia el módulo de entrada analógica de un PLC en un ambiente industrial ruidoso, se prefiere el estándar de lazo de corriente de 4 a 20 mA en lugar de 0 a 10 V. ¿Cuáles son las dos ventajas principales del lazo de 4-20 mA?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Es inmune a la caída de tensión por resistencia del cable largo y el 'cero vivo' de 4 mA permite detectar inmediatamente si el cable se ha roto (0 mA = falla)."
+      },
+      {
+        "id": "B",
+        "texto": "Consume cero energía eléctrica y permite transmitir video de alta definición por el mismo par."
+      },
+      {
+        "id": "C",
+        "texto": "No requiere fuente de alimentación en ningún punto del circuito."
+      },
+      {
+        "id": "D",
+        "texto": "Convierte la corriente continua en corriente alterna trifásica automáticamente."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Por Ley de Kirchhoff, la corriente es la misma en todo el lazo serie sin importar la caída resistiva del cable, y un valor de 0 mA indica rotura de línea (a diferencia de 4 mA que representa el 0% de la variable medida)."
+  },
+  {
+    "id": "emb_015",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "pregunta": "Al programar en lenguaje C para sistemas embebidos (bare-metal o RTOS), una variable global es modificada dentro de una Rutina de Servicio de Interrupción (ISR) y leída en el bucle principal `main()`. ¿Qué calificador de tipo en C es obligatorio usar en la declaración de dicha variable para evitar que el compilador optimice y elimine las lecturas a memoria?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "`volatile`"
+      },
+      {
+        "id": "B",
+        "texto": "`register`"
+      },
+      {
+        "id": "C",
+        "texto": "`const`"
+      },
+      {
+        "id": "D",
+        "texto": "`auto`"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El calificador `volatile` indica al compilador que el valor de la variable puede cambiar asíncronamente fuera del flujo normal (como en una ISR o registro de hardware mapeado en memoria), forzando la lectura real desde RAM en cada acceso."
+  }
+]

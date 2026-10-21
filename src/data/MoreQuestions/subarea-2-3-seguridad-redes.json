@@ -1,0 +1,551 @@
+[
+  {
+    "numero": "a",
+    "pregunta": "¿Qué algoritmo se considera de cifrado simétrico?",
+    "opciones": {
+      "a": "RSA",
+      "b": "AES",
+      "c": "Diffie-Hellman"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "AES usa la misma clave para cifrar y descifrar; RSA y DH son asimétricos."
+  },
+  {
+    "numero": "b",
+    "pregunta": "¿Qué protocolo cifra credenciales en WiFi?",
+    "opciones": {
+      "a": "WEP",
+      "b": "WPA2",
+      "c": "Open"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "WPA2 utiliza AES-CCMP, considerado seguro; WEP está obsoleto."
+  },
+  {
+    "numero": "c",
+    "pregunta": "¿Qué ataque consiste en saturar un servicio con tráfico excesivo?",
+    "opciones": {
+      "a": "MITM",
+      "b": "DoS",
+      "c": "Phishing"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Un ataque DoS busca dejar un servicio inaccesible mediante sobrecarga."
+  },
+  {
+    "numero": "d",
+    "pregunta": "¿Qué mecanismo se usa para verificar integridad de un archivo?",
+    "opciones": {
+      "a": "Hash (SHA)",
+      "b": "AES",
+      "c": "DHCP"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Las funciones hash aseguran que los datos no hayan sido alterados."
+  },
+  {
+    "numero": "e",
+    "pregunta": "¿Qué hace un firewall?",
+    "opciones": {
+      "a": "Enruta paquetes",
+      "b": "Filtra tráfico según reglas",
+      "c": "Asigna IP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Los firewalls inspeccionan paquetes y permiten o bloquean tráfico."
+  },
+  {
+    "numero": "f",
+    "pregunta": "¿Qué puerto usa HTTPS?",
+    "opciones": {
+      "a": "80",
+      "b": "443",
+      "c": "21"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "HTTPS cifra la comunicación HTTP estándar en el puerto 443."
+  },
+  {
+    "numero": "g",
+    "pregunta": "¿Qué técnica evita loops de capa 2?",
+    "opciones": {
+      "a": "STP",
+      "b": "DNSSEC",
+      "c": "OSPF"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Spanning Tree bloquea puertos para evitar ciclos."
+  },
+  {
+    "numero": "h",
+    "pregunta": "¿Qué tipo de malware se replica automáticamente?",
+    "opciones": {
+      "a": "Troyano",
+      "b": "Worm",
+      "c": "Spyware"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Los gusanos se propagan sin intervención del usuario."
+  },
+  {
+    "numero": "i",
+    "pregunta": "¿Cuál es un ataque de ingeniería social?",
+    "opciones": {
+      "a": "Ransomware",
+      "b": "Shoulder surfing",
+      "c": "Smurf"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Consiste en observar directamente información sensible."
+  },
+  {
+    "numero": "j",
+    "pregunta": "¿Qué protocolo asegura integridad y autenticidad de paquetes IP?",
+    "opciones": {
+      "a": "IPsec",
+      "b": "SMTP",
+      "c": "SNMP"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "IPsec provee cifrado y autenticación para tráfico IP."
+  },
+  {
+    "numero": "k",
+    "pregunta": "¿Cuál es la función de un IDS?",
+    "opciones": {
+      "a": "Bloquear tráfico",
+      "b": "Detectar actividad maliciosa",
+      "c": "Asignar direcciones"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "IDS analiza patrones para detectar ataques."
+  },
+  {
+    "numero": "l",
+    "pregunta": "¿Qué técnica evita acceso no autorizado a una red inalámbrica?",
+    "opciones": {
+      "a": "SSID abierto",
+      "b": "WPA3",
+      "c": "WEP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "WPA3 mejora seguridad con SAE para autenticación robusta."
+  },
+  {
+    "numero": "m",
+    "pregunta": "¿Qué es un ataque MITM?",
+    "opciones": {
+      "a": "Interceptar comunicación entre dos partes",
+      "b": "Infectar archivos",
+      "c": "Desbordar memoria"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "El atacante se sitúa entre emisor y receptor para modificar tráfico."
+  },
+  {
+    "numero": "n",
+    "pregunta": "¿Qué puerto usa SSH?",
+    "opciones": {
+      "a": "22",
+      "b": "23",
+      "c": "110"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "SSH cifra administración remota en el puerto 22."
+  },
+  {
+    "numero": "o",
+    "pregunta": "¿Qué significa hardening?",
+    "opciones": {
+      "a": "Crear VLAN",
+      "b": "Endurecer la seguridad del sistema",
+      "c": "Aumentar CPU"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Consiste en deshabilitar servicios, cerrar puertos y reforzar configuraciones."
+  },
+  {
+    "numero": "p",
+    "pregunta": "¿Qué hace una VPN?",
+    "opciones": {
+      "a": "Asigna IP privada",
+      "b": "Cifra tráfico entre cliente y servidor",
+      "c": "Limita ancho de banda"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "VPN cifra tráfico entre cliente y servidor para acceso seguro."
+  },
+  {
+    "numero": "q",
+    "pregunta": "¿Qué herramienta analiza paquetes de red en tiempo real?",
+    "opciones": {
+      "a": "Wireshark",
+      "b": "DHCP",
+      "c": "Syslog"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Wireshark captura y examina paquetes."
+  },
+  {
+    "numero": "r",
+    "pregunta": "¿Qué ataque busca capturar contraseñas en WiFi?",
+    "opciones": {
+      "a": "Deauthentication",
+      "b": "ARP request",
+      "c": "ICMP replay"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Se desconecta al usuario para capturar el handshake."
+  },
+  {
+    "numero": "s",
+    "pregunta": "¿Qué protocolo permite autenticación en switches?",
+    "opciones": {
+      "a": "802.1X",
+      "b": "802.11ac",
+      "c": "OSPF"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Requiere validación antes de otorgar acceso."
+  },
+  {
+    "numero": "t",
+    "pregunta": "¿Qué herramienta evalúa puertos abiertos en un host?",
+    "opciones": {
+      "a": "ping",
+      "b": "nmap",
+      "c": "arp"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "nmap escanea puertos para determinar servicios activos."
+  },
+  {
+    "numero": "u",
+    "pregunta": "¿Qué es un honeypot?",
+    "opciones": {
+      "a": "Un servidor DNS alterno",
+      "b": "Un sistema señuelo para atraer atacantes",
+      "c": "Un firewall de hardware"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Emula vulnerabilidades para estudiar ataques."
+  },
+  {
+    "numero": "v",
+    "pregunta": "¿Qué algoritmo de cifrado ya no debe usarse?",
+    "opciones": {
+      "a": "AES",
+      "b": "DES",
+      "c": "RSA"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "DES es inseguro por su clave de 56 bits."
+  },
+  {
+    "numero": "w",
+    "pregunta": "¿Qué registro DNS se usa para correo?",
+    "opciones": {
+      "a": "A",
+      "b": "MX",
+      "c": "CNAME"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "MX indica los servidores de correo autorizados."
+  },
+  {
+    "numero": "x",
+    "pregunta": "Una vulnerabilidad 0-day es:",
+    "opciones": {
+      "a": "Fácil de detectar",
+      "b": "Desconocida y sin parche",
+      "c": "Falsa alarma"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Se explota antes de que el proveedor libere solución."
+  },
+  {
+    "numero": "y",
+    "pregunta": "¿Qué hace DHCP Snooping?",
+    "opciones": {
+      "a": "Crea túneles",
+      "b": "Protege la red de falsos servidores DHCP",
+      "c": "Incrementa velocidad"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Filtra puertos confiables para evitar ataques de DHCP rogue."
+  },
+  {
+    "numero": "z",
+    "pregunta": "¿Qué protocolo previene ataques de ARP spoofing?",
+    "opciones": {
+      "a": "DAI",
+      "b": "OSPF",
+      "c": "RIP"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Dynamic ARP Inspection valida IP–MAC en la red."
+  },
+  {
+    "numero": "aa",
+    "pregunta": "El cifrado de clave pública usa:",
+    "opciones": {
+      "a": "Una sola clave",
+      "b": "Par de claves pública/privada",
+      "c": "Ninguna clave"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "RSA y otros usan claves complementarias."
+  },
+  {
+    "numero": "bb",
+    "pregunta": "¿Cuál es un método de autenticación multifactor?",
+    "opciones": {
+      "a": "Contraseña",
+      "b": "Contraseña + token",
+      "c": "IP dinámica"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "MFA combina varios factores para mayor seguridad."
+  },
+  {
+    "numero": "cc",
+    "pregunta": "¿Qué es un ataque de fuerza bruta?",
+    "opciones": {
+      "a": "Infectar un servidor",
+      "b": "Probar muchas contraseñas posibles"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Busca adivinar credenciales mediante intentos masivos."
+  },
+  {
+    "numero": "dd",
+    "pregunta": "¿Qué hace un firewall de próxima generación (NGFW)?",
+    "opciones": {
+      "a": "Solo filtra IP",
+      "b": "Inspección profunda y control de aplicaciones",
+      "c": "Solo revisa puertos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Inspecciona capa 7, identifica aplicaciones y comportamientos."
+  },
+  {
+    "numero": "ee",
+    "pregunta": "¿Qué protocolo protege DNS?",
+    "opciones": {
+      "a": "DNSSEC",
+      "b": "RIP",
+      "c": "ICMP"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "DNSSEC firma digitalmente las respuestas DNS."
+  },
+  {
+    "numero": "ff",
+    "pregunta": "¿Qué es sniffing?",
+    "opciones": {
+      "a": "Borrar logs",
+      "b": "Capturar tráfico de red",
+      "c": "Cifrar datos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Es interceptar paquetes en tránsito."
+  },
+  {
+    "numero": "gg",
+    "pregunta": "¿Qué técnica mitiga ataques DoS?",
+    "opciones": {
+      "a": "Limitar ancho de banda",
+      "b": "ACLs y rate limit",
+      "c": "Deshabilitar VLAN"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Rate limit y ACLs controlan tráfico excesivo."
+  },
+  {
+    "numero": "hh",
+    "pregunta": "¿Qué tipo de malware cifra los archivos del usuario?",
+    "opciones": {
+      "a": "Worm",
+      "b": "Ransomware",
+      "c": "Spyware"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Ransomware bloquea acceso hasta recibir rescate."
+  },
+  {
+    "numero": "ii",
+    "pregunta": "¿Cuál es la función principal de un proxy?",
+    "opciones": {
+      "a": "Guardar contraseñas",
+      "b": "Intermediar solicitudes hacia Internet",
+      "c": "Crear VLAN"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El proxy filtra, controla y registra tráfico."
+  },
+  {
+    "numero": "jj",
+    "pregunta": "¿Qué significa IDS basado en firmas?",
+    "opciones": {
+      "a": "Solo revisa IP",
+      "b": "Detecta patrones conocidos de ataques",
+      "c": "Protege WiFi"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Usa una base de datos de firmas para identificar amenazas."
+  },
+  {
+    "numero": "kk",
+    "pregunta": "¿Qué significa CVE?",
+    "opciones": {
+      "a": "Catálogo de vulnerabilidades públicas",
+      "b": "Certificado de cifrado",
+      "c": "Estándar de WiFi"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "CVE identifica vulnerabilidades conocidas globalmente."
+  },
+  {
+    "numero": "ll",
+    "pregunta": "¿Qué ataque manipula la resolución DNS?",
+    "opciones": {
+      "a": "DNS poisoning",
+      "b": "MITM",
+      "c": "Deauth"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Modifica caché DNS para redirigir tráfico."
+  },
+  {
+    "numero": "mm",
+    "pregunta": "Un certificado digital garantiza:",
+    "opciones": {
+      "a": "Propiedad del servidor",
+      "b": "Identidad y autenticidad",
+      "c": "Mayor velocidad"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Verifica que el sitio sea legítimo mediante firmas digitales."
+  },
+  {
+    "numero": "nn",
+    "pregunta": "¿Qué puerto usa RDP?",
+    "opciones": {
+      "a": "80",
+      "b": "3389",
+      "c": "23"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "RDP usa 3389 para escritorio remoto."
+  },
+  {
+    "numero": "oo",
+    "pregunta": "¿Qué riesgo representa UPnP?",
+    "opciones": {
+      "a": "Alta latencia",
+      "b": "Exposición de puertos automáticos",
+      "c": "Pérdida de DNS"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "UPnP abre puertos sin autenticación."
+  },
+  {
+    "numero": "pp",
+    "pregunta": "¿Qué herramienta detecta vulnerabilidades en red?",
+    "opciones": {
+      "a": "Nmap",
+      "b": "Nessus",
+      "c": "ping"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Nessus analiza hosts para identificar fallas de seguridad."
+  },
+  {
+    "numero": "qq",
+    "pregunta": "¿Qué ataque suplanta la MAC?",
+    "opciones": {
+      "a": "SMB relay",
+      "b": "MAC spoofing",
+      "c": "SYN flood"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Cambia la MAC para evadir filtros de capa 2."
+  },
+  {
+    "numero": "rr",
+    "pregunta": "¿Qué función tiene una ACL?",
+    "opciones": {
+      "a": "Asignar DHCP",
+      "b": "Filtrar tráfico según reglas",
+      "c": "Crear VLAN"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Las ACL permiten o deniegan tráfico según IP, puertos o protocolos."
+  },
+  {
+    "numero": "ss",
+    "pregunta": "¿Qué es un ataque de replay?",
+    "opciones": {
+      "a": "Repetir un paquete capturado",
+      "b": "Analizar puertos",
+      "c": "Cambiar DNS"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Reutiliza mensajes válidos para engañar sistemas."
+  },
+  {
+    "numero": "tt",
+    "pregunta": "¿Qué rol cumple un SIEM?",
+    "opciones": {
+      "a": "Escanear puertos",
+      "b": "Correlacionar eventos de seguridad",
+      "c": "Proveer DHCP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Integra y analiza logs para detectar incidentes."
+  },
+  {
+    "numero": "uu",
+    "pregunta": "¿Cuál es un principio de la criptografía?",
+    "opciones": {
+      "a": "Ambigüedad",
+      "b": "Confidencialidad",
+      "c": "Duplicación"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La criptografía busca confidencialidad, integridad y autenticación."
+  },
+  {
+    "numero": "vv",
+    "pregunta": "¿Qué ataque intenta saturar tablas MAC?",
+    "opciones": {
+      "a": "DNS poisoning",
+      "b": "MAC flooding",
+      "c": "ICMP flood"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Llenar la tabla CAM obliga al switch a comportarse como hub."
+  },
+  {
+    "numero": "ww",
+    "pregunta": "¿Qué equipo genera registros de seguridad?",
+    "opciones": {
+      "a": "Switch",
+      "b": "Firewall",
+      "c": "Ambos"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Todos los dispositivos generan registros logs relevantes."
+  },
+  {
+    "numero": "xx",
+    "pregunta": "¿Qué es un pen test?",
+    "opciones": {
+      "a": "Prueba de estrés",
+      "b": "Simulación de ataque autorizado",
+      "c": "Prueba de latencia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Evalúa la seguridad intentando vulnerar el sistema."
+  }
+]

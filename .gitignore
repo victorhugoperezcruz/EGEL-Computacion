@@ -1,0 +1,52 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencias y compilación
+node_modules
+dist
+dist-ssr
+*.local
+
+# Archivo de contexto interno para futuras modificaciones
+CONTEXTO_PROYECTO.md
+
+# Libros pesados, PDFs, presentaciones y material fuente crudo
+scripts/raw_books/
+scripts/raw_books/**
+*.pdf
+*.ppt
+*.pptx
+
+# Variables de entorno y claves de API (ej. GEMINI_API_KEY)
+.env
+.env.*
+!.env.example
+
+# Entornos virtuales y caché de Python (scripts/)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.tmp
+*.bak

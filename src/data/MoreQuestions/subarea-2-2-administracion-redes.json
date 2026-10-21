@@ -1,0 +1,552 @@
+[
+  {
+    "numero": 1,
+    "pregunta": "¿Qué protocolo permite monitorear dispositivos de red de forma centralizada?",
+    "opciones": {
+      "a": "SNMP",
+      "b": "DHCP",
+      "c": "DNS"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "SNMP recopila estadísticas y estado de routers, switches y servidores mediante agentes y un NMS."
+  },
+  {
+    "numero": 2,
+    "pregunta": "¿Cuál es la principal función de DHCP?",
+    "opciones": {
+      "a": "Proveer nombres de dominio",
+      "b": "Asignar configuración IP automáticamente",
+      "c": "Resolver direcciones MAC"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "DHCP entrega IP, máscara, gateway y DNS sin intervención manual."
+  },
+  {
+    "numero": 3,
+    "pregunta": "¿Qué comando permite ver la tabla de rutas en un router o PC?",
+    "opciones": {
+      "a": "ipconfig",
+      "b": "route / route print",
+      "c": "ping"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "“route” muestra las rutas activas usadas para enviar paquetes."
+  },
+  {
+    "numero": 4,
+    "pregunta": "¿Qué servicio traduce nombres a IP?",
+    "opciones": {
+      "a": "SNMP",
+      "b": "DHCP",
+      "c": "DNS"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "DNS convierte nombres legibles en direcciones IP para comunicación."
+  },
+  {
+    "numero": 5,
+    "pregunta": "¿Cuál comando muestra puertos y conexiones TCP/UDP activas?",
+    "opciones": {
+      "a": "tracert",
+      "b": "netstat",
+      "c": "arp"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "netstat permite ver puertos abiertos, conexiones y sockets activos."
+  },
+  {
+    "numero": 6,
+    "pregunta": "¿Cuál es la utilidad de un servidor Syslog?",
+    "opciones": {
+      "a": "Guardar archivos",
+      "b": "Recopilar y centralizar registros de eventos de red",
+      "c": "Asignar IP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Syslog centraliza logs enviados por routers, switches y firewalls."
+  },
+  {
+    "numero": 7,
+    "pregunta": "¿Qué comando renueva una dirección IP en Windows?",
+    "opciones": {
+      "a": "ipconfig /renew",
+      "b": "route add",
+      "c": "arp -d"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Solicita una nueva concesión al servidor DHCP."
+  },
+  {
+    "numero": 8,
+    "pregunta": "¿Qué herramienta informa la latencia promedio hacia un destino?",
+    "opciones": {
+      "a": "ping",
+      "b": "tracert",
+      "c": "nslookup"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "ping mide RTT (tiempo ida y vuelta)."
+  },
+  {
+    "numero": 9,
+    "pregunta": "¿Qué tabla usa un router para decidir a dónde enviar paquetes?",
+    "opciones": {
+      "a": "Tabla ARP",
+      "b": "Tabla CAM",
+      "c": "Tabla de rutas"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "El routing se basa en la tabla de rutas."
+  },
+  {
+    "numero": 10,
+    "pregunta": "¿Qué comando muestra configuración IP completa en Windows?",
+    "opciones": {
+      "a": "ipconfig /all",
+      "b": "arp -a",
+      "c": "route print"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Incluye IP, máscara, MAC, DHCP y DNS."
+  },
+  {
+    "numero": 11,
+    "pregunta": "¿Qué hace el comando traceroute/tracert?",
+    "opciones": {
+      "a": "Borra caché de DNS",
+      "b": "Muestra los saltos de un paquete hasta el destino",
+      "c": "Escanea puertos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Identifica cada router intermedio hacia el destino."
+  },
+  {
+    "numero": 12,
+    "pregunta": "¿Cuál es el puerto estándar de DNS?",
+    "opciones": {
+      "a": "80",
+      "b": "53",
+      "c": "110"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El puerto 53 maneja consultas DNS en UDP/TCP."
+  },
+  {
+    "numero": 13,
+    "pregunta": "¿Qué protocolo usa SNMP para transportar información?",
+    "opciones": {
+      "a": "TCP",
+      "b": "UDP",
+      "c": "ICMP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "SNMP usa UDP por su bajo overhead."
+  },
+  {
+    "numero": 14,
+    "pregunta": "¿Qué herramienta permite verificar el registro DNS de un dominio?",
+    "opciones": {
+      "a": "ping",
+      "b": "nslookup",
+      "c": "ipconfig"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "nslookup permite consultar servidores DNS manualmente."
+  },
+  {
+    "numero": 15,
+    "pregunta": "¿Qué hace la tabla ARP en un host?",
+    "opciones": {
+      "a": "Guarda asociación IP-puerto",
+      "b": "Asocia direcciones IP con direcciones MAC",
+      "c": "Mide latencia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Mapea la IP a su correspondiente dirección MAC para la comunicación local."
+  },
+  {
+    "numero": 16,
+    "pregunta": "¿Cuál es la función del gateway predeterminado?",
+    "opciones": {
+      "a": "Administrar usuarios",
+      "b": "Dar acceso a otras redes (fuera de la LAN)",
+      "c": "Proveer DHCP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Es la salida hacia redes externas."
+  },
+  {
+    "numero": 17,
+    "pregunta": "¿Qué puerto utiliza SSH?",
+    "opciones": {
+      "a": "21",
+      "b": "22",
+      "c": "23"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "SSH usa el puerto 22 para administración segura."
+  },
+  {
+    "numero": 18,
+    "pregunta": "¿Qué comando limpia la tabla ARP?",
+    "opciones": {
+      "a": "arp -d",
+      "b": "netstat -n",
+      "c": "ping -t"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "arp -d elimina entradas MAC aprendidas."
+  },
+  {
+    "numero": 19,
+    "pregunta": "¿Qué formato usan las alertas proactivas que envía un agente SNMP?",
+    "opciones": {
+      "a": "Logs",
+      "b": "Traps",
+      "c": "Packages"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Los traps son notificaciones enviadas por el agente cuando ocurre un evento."
+  },
+  {
+    "numero": 20,
+    "pregunta": "¿Cuál es la función del campo TTL en un paquete IP?",
+    "opciones": {
+      "a": "Medir velocidad",
+      "b": "Evitar loops infinitos de paquetes",
+      "c": "Marcar prioridad"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "TTL limita el número de saltos para evitar bucles."
+  },
+  {
+    "numero": 21,
+    "pregunta": "¿Qué servicio almacena registros de eventos del sistema de forma centralizada?",
+    "opciones": {
+      "a": "Syslog",
+      "b": "DHCP",
+      "c": "SNMP"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Syslog consolida logs enviados por dispositivos."
+  },
+  {
+    "numero": 22,
+    "pregunta": "¿Qué red se utiliza para gestionar lógicamente equipos de red?",
+    "opciones": {
+      "a": "VLAN de datos",
+      "b": "VLAN de administración",
+      "c": "VLAN de voz"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Se usa una VLAN separada para proteger el acceso administrativo."
+  },
+  {
+    "numero": 23,
+    "pregunta": "¿Qué comando muestra las interfaces de red actuales en Linux?",
+    "opciones": {
+      "a": "ip addr",
+      "b": "tracert",
+      "c": "route add"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "ip addr reemplaza a ifconfig mostrando interfaces y direcciones."
+  },
+  {
+    "numero": 24,
+    "pregunta": "¿Qué función cumple un servidor NTP?",
+    "opciones": {
+      "a": "Sincronizar la hora de los equipos",
+      "b": "Resolver nombres",
+      "c": "Monitorear puertos"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Asegura que todos los equipos tengan la misma hora exacta."
+  },
+  {
+    "numero": 25,
+    "pregunta": "¿Qué protocolo usa DHCP para asignar direcciones?",
+    "opciones": {
+      "a": "ICMP",
+      "b": "UDP",
+      "c": "TCP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "DHCP usa UDP por su simplicidad y velocidad."
+  },
+  {
+    "numero": 26,
+    "pregunta": "En SNMP, ¿qué es la MIB?",
+    "opciones": {
+      "a": "Una base de datos de objetos gestionables",
+      "b": "Un tipo de cable",
+      "c": "El nombre del servidor"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Management Information Base define qué se puede monitorear."
+  },
+  {
+    "numero": 27,
+    "pregunta": "¿Cuál es la principal ventaja de SNMPv3?",
+    "opciones": {
+      "a": "Más velocidad",
+      "b": "Seguridad y autenticación",
+      "c": "Menos cables"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Introduce cifrado y seguridad robusta."
+  },
+  {
+    "numero": 28,
+    "pregunta": "Un servidor DHCP asigna IPs basado en:",
+    "opciones": {
+      "a": "Nombre de usuario",
+      "b": "Dirección física (MAC)",
+      "c": "Número de serie"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Asocia la concesión a la interfaz física única."
+  },
+  {
+    "numero": 29,
+    "pregunta": "¿Qué puerto usa HTTP?",
+    "opciones": {
+      "a": "443",
+      "b": "80",
+      "c": "25"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Para navegación web no cifrada."
+  },
+  {
+    "numero": 30,
+    "pregunta": "¿Qué puerto usa HTTPS?",
+    "opciones": {
+      "a": "80",
+      "b": "443",
+      "c": "21"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Para navegación web cifrada."
+  },
+  {
+    "numero": 31,
+    "pregunta": "En Syslog, el nivel de severidad '0' significa:",
+    "opciones": {
+      "a": "Debug",
+      "b": "Emergencia",
+      "c": "Información"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Es el nivel más crítico."
+  },
+  {
+    "numero": 32,
+    "pregunta": "¿Qué herramienta permite medir el consumo de ancho de banda?",
+    "opciones": {
+      "a": "NetFlow / PRTG",
+      "b": "ping",
+      "c": "arp"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Recopila estadísticas de tráfico detalladas."
+  },
+  {
+    "numero": 33,
+    "pregunta": "Para administrar un switch desde fuera de su red se requiere:",
+    "opciones": {
+      "a": "Definir un gateway predeterminado en el switch",
+      "b": "No usar VLAN",
+      "c": "Desactivar SSH"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Permite al switch responder a otras subredes."
+  },
+  {
+    "numero": 34,
+    "pregunta": "¿Qué protocolo se usa para transferencia de archivos?",
+    "opciones": {
+      "a": "FTP",
+      "b": "DNS",
+      "c": "SNMP"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "File Transfer Protocol."
+  },
+  {
+    "numero": 35,
+    "pregunta": "¿Qué significa el término QoS?",
+    "opciones": {
+      "a": "Quick Online Search",
+      "b": "Quality of Service",
+      "c": "Quantum Optical Sensor"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Prioriza tráfico crítico como voz o video."
+  },
+  {
+    "numero": 36,
+    "pregunta": "Un backup de configuración de un router sirve para:",
+    "opciones": {
+      "a": "Restaurar el servicio rápidamente ante fallas",
+      "b": "Hackear el equipo",
+      "c": "Aumentar la RAM"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Permite clonar el estado del equipo en uno nuevo."
+  },
+  {
+    "numero": 37,
+    "pregunta": "¿Qué comando muestra los saltos en Linux?",
+    "opciones": {
+      "a": "tracert",
+      "b": "traceroute",
+      "c": "route -n"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Equivalente a tracert en sistemas Unix/Linux."
+  },
+  {
+    "numero": 38,
+    "pregunta": "El comando 'ipconfig /release' sirve para:",
+    "opciones": {
+      "a": "Borrar el disco",
+      "b": "Liberar la dirección IP actual",
+      "c": "Apagar el PC"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Informa al servidor DHCP que ya no se usará la IP."
+  },
+  {
+    "numero": 39,
+    "pregunta": "¿Qué protocolo es más veloz para streaming pero no garantiza entrega?",
+    "opciones": {
+      "a": "TCP",
+      "b": "UDP",
+      "c": "FTP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "No tiene mecanismos de retransmisión."
+  },
+  {
+    "numero": 40,
+    "pregunta": "Un log con severidad 'Notice' es:",
+    "opciones": {
+      "a": "Crítico",
+      "b": "Evento normal pero significativo",
+      "c": "Error de hardware"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Informa de cambios importantes sin ser fallos."
+  },
+  {
+    "numero": 41,
+    "pregunta": "¿Qué puerto usa Telnet?",
+    "opciones": {
+      "a": "22",
+      "b": "23",
+      "c": "25"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Protocolo de administración no seguro."
+  },
+  {
+    "numero": 42,
+    "pregunta": "¿Qué puerto usa el protocolo SMTP (envío correo)?",
+    "opciones": {
+      "a": "80",
+      "b": "25",
+      "c": "53"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Simple Mail Transfer Protocol."
+  },
+  {
+    "numero": 43,
+    "pregunta": "¿Qué es un Agente SNMP?",
+    "opciones": {
+      "a": "El software que corre en el dispositivo monitoreado",
+      "b": "El técnico de soporte",
+      "c": "La antena WiFi"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Responde a las peticiones del gestor central."
+  },
+  {
+    "numero": 44,
+    "pregunta": "El comando 'ping -t' en Windows sirve para:",
+    "opciones": {
+      "a": "Hacer un solo ping",
+      "b": "Hacer ping de forma indefinida",
+      "c": "Ver la tabla ARP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Útil para pruebas de estabilidad prolongadas."
+  },
+  {
+    "numero": 45,
+    "pregunta": "¿Qué significa ICMP?",
+    "opciones": {
+      "a": "Internet Control Message Protocol",
+      "b": "Internal Computer Main Port",
+      "c": "International Cable Map Plan"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Maneja mensajes de error y diagnóstico (eco/ping)."
+  },
+  {
+    "numero": 46,
+    "pregunta": "En administración de red, el término 'Baseline' es:",
+    "opciones": {
+      "a": "La velocidad mínima",
+      "b": "El rendimiento normal documentado para comparar fallas",
+      "c": "El cable principal"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Línea base para saber qué es 'normal' en la red."
+  },
+  {
+    "numero": 47,
+    "pregunta": "¿Qué puerto usa RDP (Escritorio remoto)?",
+    "opciones": {
+      "a": "3389",
+      "b": "22",
+      "c": "443"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Puerto estándar de Microsoft para control remoto."
+  },
+  {
+    "numero": 48,
+    "pregunta": "Un analizador de protocolos (como Wireshark) permite:",
+    "opciones": {
+      "a": "Capturar y ver el tráfico real bit a bit",
+      "b": "Acelerar la red",
+      "c": "Crear VLANs"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Fundamental para troubleshooting profundo."
+  },
+  {
+    "numero": 49,
+    "pregunta": "¿Qué ventaja tiene usar SSH sobre Telnet?",
+    "opciones": {
+      "a": "Es más rápido",
+      "b": "Cifra la comunicación evitando robo de claves",
+      "c": "Usa menos RAM"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "SSH es el estándar para administración remota segura."
+  },
+  {
+    "numero": 50,
+    "pregunta": "El comando 'netstat -an' muestra:",
+    "opciones": {
+      "a": "Tu dirección IP",
+      "b": "Conexiones activas con direcciones y puertos numéricos",
+      "c": "La velocidad del WiFi"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Muestra el estado de red sin intentar resolver nombres."
+  }
+]

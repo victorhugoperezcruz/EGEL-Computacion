@@ -1,0 +1,551 @@
+[
+  {
+    "numero": 1,
+    "pregunta": "¿Qué estructura de datos funciona bajo el principio LIFO?",
+    "opciones": {
+      "a": "Cola",
+      "b": "Pila",
+      "c": "Árbol"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Una pila extrae el último elemento insertado."
+  },
+  {
+    "numero": 2,
+    "pregunta": "¿Cuál es el tipo de error que se detecta en tiempo de compilación?",
+    "opciones": {
+      "a": "Error de lógica",
+      "b": "Error sintáctico",
+      "c": "Error en ejecución"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La sintaxis incorrecta impide compilar el programa."
+  },
+  {
+    "numero": 3,
+    "pregunta": "¿Qué estructura permite búsqueda binaria eficiente?",
+    "opciones": {
+      "a": "Lista desordenada",
+      "b": "Lista ordenada",
+      "c": "Cola circular"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La búsqueda binaria requiere orden ascendente o descendente."
+  },
+  {
+    "numero": 4,
+    "pregunta": "¿Qué hace un compilador?",
+    "opciones": {
+      "a": "Ejecuta instrucciones línea por línea",
+      "b": "Traduce código fuente a lenguaje máquina",
+      "c": "Administra procesos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El compilador genera código ejecutable desde el código fuente."
+  },
+  {
+    "numero": 5,
+    "pregunta": "¿Qué operación es típica en programación orientada a objetos?",
+    "opciones": {
+      "a": "Herencia",
+      "b": "Swap",
+      "c": "Multiplexación"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "La herencia permite reutilizar y extender clases."
+  },
+  {
+    "numero": 6,
+    "pregunta": "¿Qué es un puntero?",
+    "opciones": {
+      "a": "Copia del objeto",
+      "b": "Variable que almacena una dirección de memoria",
+      "c": "Variable booleana"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Un puntero referencia la ubicación de un dato."
+  },
+  {
+    "numero": 7,
+    "pregunta": "¿Qué fase del compilador verifica tipos de datos?",
+    "opciones": {
+      "a": "Análisis léxico",
+      "b": "Análisis semántico",
+      "c": "Generación de código"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El análisis semántico valida tipos y consistencia lógica."
+  },
+  {
+    "numero": 8,
+    "pregunta": "¿Cuál es el objetivo principal de la memoria RAM?",
+    "opciones": {
+      "a": "Almacenar datos permanentes",
+      "b": "Guardar datos volátiles de ejecución",
+      "c": "Almacenar BIOS"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "RAM contiene instrucciones y datos en ejecución."
+  },
+  {
+    "numero": 9,
+    "pregunta": "¿Qué estructura de datos se utiliza en BFS (búsqueda en anchura)?",
+    "opciones": {
+      "a": "Pila",
+      "b": "Cola",
+      "c": "Árbol AVL"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "BFS visita nodos en orden mediante una cola."
+  },
+  {
+    "numero": 10,
+    "pregunta": "¿Qué hace un intérprete?",
+    "opciones": {
+      "a": "Genera ejecutable",
+      "b": "Ejecuta instrucciones una por una",
+      "c": "Optimiza ensamblador"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Interpreta línea por línea sin generar binario."
+  },
+  {
+    "numero": 11,
+    "pregunta": "¿Cuál es una característica de la POO?",
+    "opciones": {
+      "a": "Secuencia lineal",
+      "b": "Encapsulamiento",
+      "c": "Fragmentación"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Encapsular protege los datos internos de un objeto."
+  },
+  {
+    "numero": 12,
+    "pregunta": "¿Qué es un proceso?",
+    "opciones": {
+      "a": "Archivo de texto",
+      "b": "Programa en ejecución",
+      "c": "Puerto cerrado"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Un proceso es una instancia activa del programa."
+  },
+  {
+    "numero": 13,
+    "pregunta": "¿Qué algoritmo ordena con mejor caso O(n log n)?",
+    "opciones": {
+      "a": "Bubble sort",
+      "b": "Insertion sort",
+      "c": "Merge sort"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Merge sort mantiene eficiencia garantizada en todos los casos."
+  },
+  {
+    "numero": 14,
+    "pregunta": "¿Qué es un hilo (thread)?",
+    "opciones": {
+      "a": "Proceso independiente",
+      "b": "Flujo de ejecución dentro de un proceso",
+      "c": "Archivo temporal"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Los hilos comparten recursos del proceso padre."
+  },
+  {
+    "numero": 15,
+    "pregunta": "¿Qué sección del SO asigna CPU a procesos?",
+    "opciones": {
+      "a": "Gestor de memoria",
+      "b": "Planificador",
+      "c": "Sistema de archivos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El scheduler decide qué proceso ejecuta y cuándo."
+  },
+  {
+    "numero": 16,
+    "pregunta": "¿Qué recurso compartido requiere sincronización?",
+    "opciones": {
+      "a": "Variables críticas",
+      "b": "Variables enteras",
+      "c": "Comentarios"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Las secciones críticas pueden causar condiciones de carrera."
+  },
+  {
+    "numero": 17,
+    "pregunta": "¿Qué estructura es adecuada para almacenar jerarquías?",
+    "opciones": {
+      "a": "Pila",
+      "b": "Árbol",
+      "c": "Cola"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Árboles representan relaciones padre–hijo."
+  },
+  {
+    "numero": 18,
+    "pregunta": "¿Qué instrucción en ensamblador x86 mueve datos?",
+    "opciones": {
+      "a": "MOV",
+      "b": "JMP",
+      "c": "CMP"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "MOV copia datos entre registros o memoria."
+  },
+  {
+    "numero": 19,
+    "pregunta": "¿Qué técnica detecta errores en tiempo de ejecución?",
+    "opciones": {
+      "a": "Compilador",
+      "b": "Excepciones",
+      "c": "Preprocesador"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Las excepciones manejan errores dinámicos."
+  },
+  {
+    "numero": 20,
+    "pregunta": "¿Qué componente administra el acceso a disco?",
+    "opciones": {
+      "a": "Kernel",
+      "b": "BIOS",
+      "c": "Intérprete de comandos"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "El kernel regula I/O y dispositivos."
+  },
+  {
+    "numero": 21,
+    "pregunta": "El operador '+' en POO puede redefinirse usando:",
+    "opciones": {
+      "a": "Depuración",
+      "b": "Sobrecarga",
+      "c": "Herencia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La sobrecarga redefine comportamientos de operadores."
+  },
+  {
+    "numero": 22,
+    "pregunta": "¿Qué estructura FIFO se usa comúnmente en SO?",
+    "opciones": {
+      "a": "Stack",
+      "b": "Queue",
+      "c": "Graph"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Las colas administran procesos o trabajos."
+  },
+  {
+    "numero": 23,
+    "pregunta": "¿Qué tipo de lenguaje es C?",
+    "opciones": {
+      "a": "Declarativo",
+      "b": "Imperativo",
+      "c": "Lógico"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "C se basa en instrucciones secuenciales."
+  },
+  {
+    "numero": 24,
+    "pregunta": "¿Qué hace malloc()?",
+    "opciones": {
+      "a": "Libera memoria",
+      "b": "Solicita memoria dinámica",
+      "c": "Cierra procesos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "malloc reserva memoria en tiempo de ejecución."
+  },
+  {
+    "numero": 25,
+    "pregunta": "¿Qué es deadlock?",
+    "opciones": {
+      "a": "Error de sintaxis",
+      "b": "Bloqueo mutuo de procesos",
+      "c": "Exceso de memoria"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Ocurre cuando procesos esperan recursos eternamente."
+  },
+  {
+    "numero": 26,
+    "pregunta": "¿Qué lenguaje define reglas de gramáticas formales?",
+    "opciones": {
+      "a": "SQL",
+      "b": "BNF",
+      "c": "HTML"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "BNF define sintaxis formal usada en compiladores."
+  },
+  {
+    "numero": 27,
+    "pregunta": "¿Qué es paginación?",
+    "opciones": {
+      "a": "Duplicar RAM",
+      "b": "Dividir memoria en bloques fijos",
+      "c": "Eliminar archivos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La memoria se divide en páginas para administración eficiente."
+  },
+  {
+    "numero": 28,
+    "pregunta": "¿Qué algoritmo evita condiciones de carrera?",
+    "opciones": {
+      "a": "Peterson",
+      "b": "Bubble sort",
+      "c": "Merge"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "El algoritmo de Peterson garantiza exclusión mutua."
+  },
+  {
+    "numero": 29,
+    "pregunta": "¿Qué estructura usa DFS?",
+    "opciones": {
+      "a": "Cola",
+      "b": "Pila",
+      "c": "Tabla hash"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "DFS explora profundidad usando stack."
+  },
+  {
+    "numero": 30,
+    "pregunta": "¿Qué hace un sistema de archivos?",
+    "opciones": {
+      "a": "Gestiona puertos",
+      "b": "Organiza datos en disco",
+      "c": "Compila código"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Define cómo se almacenan y recuperan archivos."
+  },
+  {
+    "numero": 31,
+    "pregunta": "¿Qué es un semáforo?",
+    "opciones": {
+      "a": "Un tipo de excepción",
+      "b": "Mecanismo de sincronización",
+      "c": "Un puerto físico"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Controla acceso a recursos compartidos."
+  },
+  {
+    "numero": 32,
+    "pregunta": "¿Qué técnica mejora eficiencia del compilador?",
+    "opciones": {
+      "a": "Optimización de código",
+      "b": "Sobrecarga"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Reduce instrucciones y mejora rendimiento."
+  },
+  {
+    "numero": 33,
+    "pregunta": "¿Qué tipo de dato almacena pares clave–valor?",
+    "opciones": {
+      "a": "Hash map",
+      "b": "Arreglo simple",
+      "c": "Stack"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Las tablas hash permiten acceso O(1) promedio."
+  },
+  {
+    "numero": 34,
+    "pregunta": "¿Qué comando en Linux lista procesos activos?",
+    "opciones": {
+      "a": "ls",
+      "b": "ps",
+      "c": "cat"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "ps muestra procesos y su estado."
+  },
+  {
+    "numero": 35,
+    "pregunta": "¿Qué instrucción en ensamblador realiza saltos condicionales?",
+    "opciones": {
+      "a": "MOV",
+      "b": "JMPZ",
+      "c": "INC"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "JMPZ salta solo si el flag zero está activo."
+  },
+  {
+    "numero": 36,
+    "pregunta": "¿Qué es latencia?",
+    "opciones": {
+      "a": "Tamaño de archivo",
+      "b": "Tiempo de respuesta",
+      "c": "Consumo eléctrico"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Es el tiempo entre petición y respuesta."
+  },
+  {
+    "numero": 37,
+    "pregunta": "¿Qué hace free()?",
+    "opciones": {
+      "a": "Reservar memoria",
+      "b": "Liberar memoria dinámica",
+      "c": "Abrir archivo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "free libera bloques reservados con malloc."
+  },
+  {
+    "numero": 38,
+    "pregunta": "¿Qué componente traduce nombres de funciones en código objeto?",
+    "opciones": {
+      "a": "Enlazador",
+      "b": "Kernel",
+      "c": "BIOS"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "El linker combina módulos y resuelve referencias."
+  },
+  {
+    "numero": 39,
+    "pregunta": "¿Qué condición es necesaria para un deadlock?",
+    "opciones": {
+      "a": "Recursos infinitos",
+      "b": "Espera circular",
+      "c": "Solo un proceso"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La espera circular es una de las cuatro condiciones de Coffman."
+  },
+  {
+    "numero": 40,
+    "pregunta": "¿Qué estructura admite acceso O(1) a elementos?",
+    "opciones": {
+      "a": "Tabla hash",
+      "b": "Lista enlazada",
+      "c": "Árbol binario"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Hash map proporciona acceso directo promedio."
+  },
+  {
+    "numero": 41,
+    "pregunta": "¿Qué es segmentación?",
+    "opciones": {
+      "a": "División lógica de memoria",
+      "b": "Clonar procesos",
+      "c": "Un tipo de sorting"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "La memoria se divide según lógica del programa."
+  },
+  {
+    "numero": 42,
+    "pregunta": "¿Qué hace un scheduler?",
+    "opciones": {
+      "a": "Compila código",
+      "b": "Asigna CPU según políticas",
+      "c": "Mide ancho de banda"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Determina el orden de ejecución de procesos/hilos."
+  },
+  {
+    "numero": 43,
+    "pregunta": "¿Qué algoritmo de planificación favorece al proceso más corto?",
+    "opciones": {
+      "a": "FIFO",
+      "b": "SJF",
+      "c": "Round Robin"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "SJF ejecuta primero el proceso con menor duración."
+  },
+  {
+    "numero": 44,
+    "pregunta": "¿Qué es un archivo ejecutable?",
+    "opciones": {
+      "a": "Archivo de texto",
+      "b": "Programa compilado",
+      "c": "Archivo XML"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Contiene código máquina listo para ejecutarse."
+  },
+  {
+    "numero": 45,
+    "pregunta": "¿Qué herramienta detecta fugas de memoria?",
+    "opciones": {
+      "a": "Valgrind",
+      "b": "Notepad",
+      "c": "SSH"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Valgrind rastrea accesos inválidos y memoria perdida."
+  },
+  {
+    "numero": 46,
+    "pregunta": "¿Qué hace una variable estática?",
+    "opciones": {
+      "a": "Desaparece al salir de función",
+      "b": "Mantiene su valor entre llamadas",
+      "c": "Se crea dinámicamente"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Retiene estado a lo largo de todo el programa."
+  },
+  {
+    "numero": 47,
+    "pregunta": "¿Qué estructura usan compiladores para representar código?",
+    "opciones": {
+      "a": "AST",
+      "b": "Queue",
+      "c": "Bitmap"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "El Árbol Sintáctico Abstracto modela la estructura lógica."
+  },
+  {
+    "numero": 48,
+    "pregunta": "¿Qué es un archivo swap?",
+    "opciones": {
+      "a": "Almacenamiento temporal para memoria virtual",
+      "b": "Un backup",
+      "c": "Un registro"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Extiende la RAM usando disco."
+  },
+  {
+    "numero": 49,
+    "pregunta": "¿Qué instrucción compara valores en ensamblador?",
+    "opciones": {
+      "a": "CMP",
+      "b": "MOV",
+      "c": "JMP"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "CMP establece flags para condiciones posteriores."
+  },
+  {
+    "numero": 50,
+    "pregunta": "¿Qué es una interrupción?",
+    "opciones": {
+      "a": "Fin del programa",
+      "b": "Señal que detiene temporalmente CPU para atender un evento",
+      "c": "Proceso bloqueado"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Interrupciones permiten atender I/O, errores y eventos externos."
+  }
+]

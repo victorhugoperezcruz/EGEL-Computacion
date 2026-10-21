@@ -1,0 +1,552 @@
+[
+  {
+    "numero": 1,
+    "pregunta": "La realimentación en un sistema de control sirve para:",
+    "opciones": {
+      "a": "Aumentar error",
+      "b": "Reducir error entre salida y referencia",
+      "c": "Desconectar el sistema"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La retroalimentación permite ajustar la acción basándose en la diferencia entre el valor deseado y el real."
+  },
+  {
+    "numero": 2,
+    "pregunta": "Un sensor tipo RTD mide:",
+    "opciones": {
+      "a": "Presión",
+      "b": "Temperatura",
+      "c": "Vibración"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Resistance Temperature Detector."
+  },
+  {
+    "numero": 3,
+    "pregunta": "El actuador más usado en control industrial es:",
+    "opciones": {
+      "a": "Servo",
+      "b": "Solenoide",
+      "c": "Válvula neumática"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Son robustas y comunes en el manejo de fluidos industriales."
+  },
+  {
+    "numero": 4,
+    "pregunta": "Un PLC se usa para:",
+    "opciones": {
+      "a": "Procesamiento gráfico",
+      "b": "Control industrial secuencial",
+      "c": "Reducción de ruido"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Programmable Logic Controller."
+  },
+  {
+    "numero": 5,
+    "pregunta": "El control PID combina:",
+    "opciones": {
+      "a": "Acción proporcional-integral-derivativa",
+      "b": "Solo proporcional",
+      "c": "Acción digital"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Utiliza tres términos para optimizar la respuesta del sistema."
+  },
+  {
+    "numero": 6,
+    "pregunta": "La acción integral en un PID corrige:",
+    "opciones": {
+      "a": "Ruido",
+      "b": "Error sostenido (offset)",
+      "c": "Ganancia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Elimina el error de estado estable."
+  },
+  {
+    "numero": 7,
+    "pregunta": "La acción derivativa en un PID corrige:",
+    "opciones": {
+      "a": "Cambios rápidos",
+      "b": "Saturación",
+      "c": "Offset"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Anticipa el error basándose en su tasa de cambio."
+  },
+  {
+    "numero": 8,
+    "pregunta": "El diagrama P&ID representa:",
+    "opciones": {
+      "a": "Red eléctrica",
+      "b": "Instrumentación y proceso",
+      "c": "HVAC"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Piping and Instrumentation Diagram."
+  },
+  {
+    "numero": 9,
+    "pregunta": "Un lazo cerrado requiere:",
+    "opciones": {
+      "a": "Sensor",
+      "b": "Actuador",
+      "c": "Controlador",
+      "d": "Todas las anteriores"
+    },
+    "respuesta_correcta": "d",
+    "explicacion": "Necesita todos estos componentes para funcionar de forma autónoma con retroalimentación."
+  },
+  {
+    "numero": 10,
+    "pregunta": "SCADA se usa para:",
+    "opciones": {
+      "a": "Control y supervisión a gran escala",
+      "b": "Control analógico local",
+      "c": "Calibrar RTDs"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Supervisory Control and Data Acquisition."
+  },
+  {
+    "numero": 11,
+    "pregunta": "Un transmisor 4-20 mA ofrece ventaja sobre señales de voltaje porque:",
+    "opciones": {
+      "a": "Es más susceptible a ruido",
+      "b": "Permite largas distancias con menos pérdida e interferencia",
+      "c": "Requiere mucha corriente"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La corriente es constante a lo largo del lazo independientemente de la resistencia del cable."
+  },
+  {
+    "numero": 12,
+    "pregunta": "Un diagrama Ladder es un lenguaje de programación típico de:",
+    "opciones": {
+      "a": "PLCs",
+      "c": "Motores"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Basado en esquemas de circuitos eléctricos de relevadores."
+  },
+  {
+    "numero": 13,
+    "pregunta": "El tiempo de muestreo en control digital debe ser:",
+    "opciones": {
+      "a": "Mayor que la constante de tiempo",
+      "b": "Mucho menor que la dinámica del sistema",
+      "c": "Igual a un segundo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Debe ser lo suficientemente rápido para capturar los cambios del sistema."
+  },
+  {
+    "numero": 14,
+    "pregunta": "Un encoder incremental mide:",
+    "opciones": {
+      "a": "Distancia absoluta",
+      "b": "Cambios de posición (desplazamiento relativo)",
+      "c": "Solo velocidad"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Cuenta pulsos para determinar cuánto se ha movido el eje."
+  },
+  {
+    "numero": 15,
+    "pregunta": "Un acelerómetro mide:",
+    "opciones": {
+      "a": "Masa",
+      "b": "Aceleración",
+      "c": "Flujo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Mide las fuerzas de inercia que actúan sobre una masa."
+  },
+  {
+    "numero": 16,
+    "pregunta": "¿Qué técnica/mecanismo evita la saturación del actuador en un PID?",
+    "opciones": {
+      "a": "Anti-windup",
+      "b": "Derivada pura",
+      "c": "ADC"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Detiene la integración excesiva cuando el actuador alcanza su límite."
+  },
+  {
+    "numero": 17,
+    "pregunta": "Una válvula de control suele usar accionamiento:",
+    "opciones": {
+      "a": "Motor paso a paso",
+      "b": "Servomecanismo",
+      "c": "Neumático o hidráulico"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Común por su potencia y fiabilidad en plantas de proceso."
+  },
+  {
+    "numero": 18,
+    "pregunta": "Un lazo abierto NO utiliza:",
+    "opciones": {
+      "a": "Sensor",
+      "b": "Actuador",
+      "c": "Controlador"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "No mide la salida para corregir la acción."
+  },
+  {
+    "numero": 19,
+    "pregunta": "Un transductor convierte:",
+    "opciones": {
+      "a": "Datos",
+      "b": "Una magnitud física en señal eléctrica",
+      "c": "Señal digital a analógica"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Transforma energía de un tipo a otro (ej. presión a voltaje)."
+  },
+  {
+    "numero": 20,
+    "pregunta": "Un motor trifásico se controla típicamente con:",
+    "opciones": {
+      "a": "Fuente lineal",
+      "b": "Variador de frecuencia (VFD)",
+      "c": "Arduino"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Variable Frequency Drive ajusta velocidad y torque."
+  },
+  {
+    "numero": 21,
+    "pregunta": "La estabilidad en un sistema de control significa que tiene una:",
+    "opciones": {
+      "a": "Crecimiento ilimitado",
+      "b": "Respuesta acotada ante entradas acotadas",
+      "c": "Oscilación permanente"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Los estados del sistema no divergen al infinito."
+  },
+  {
+    "numero": 22,
+    "pregunta": "Un sensor de presión tipo strain gauge basa su funcionamiento en la:",
+    "opciones": {
+      "a": "Inductancia",
+      "b": "Deformación mecánica que cambia la resistencia",
+      "c": "Ultrasonido"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Galgas extensiométricas."
+  },
+  {
+    "numero": 23,
+    "pregunta": "El PLC opera ejecutando repetidamente ciclos llamados:",
+    "opciones": {
+      "a": "Tareas",
+      "b": "Scans (barridos)",
+      "c": "Pulsos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Lee entradas, ejecuta lógica y actualiza salidas."
+  },
+  {
+    "numero": 24,
+    "pregunta": "Un sistema LTI se define por tener:",
+    "opciones": {
+      "a": "Linealidad y tiempo invariante",
+      "b": "No linealidad",
+      "c": "Caos"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Linear Time-Invariant."
+  },
+  {
+    "numero": 25,
+    "pregunta": "El ruido en señales de sensores puede reducirse mediante:",
+    "opciones": {
+      "a": "Filtros (analógicos o digitales)",
+      "b": "Ganancia infinita",
+      "c": "PWM"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Eliminan componentes de frecuencia no deseadas."
+  },
+  {
+    "numero": 26,
+    "pregunta": "¿Qué es un actuador?",
+    "opciones": {
+      "a": "Mide una variable",
+      "b": "Ejecuta una acción física basada en una señal de mando",
+      "c": "Procesa datos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Convierte energía en movimiento o acción sobre el proceso."
+  },
+  {
+    "numero": 27,
+    "pregunta": "El control feedforward actúa:",
+    "opciones": {
+      "a": "Corrigiendo error",
+      "b": "Compensando perturbaciones antes de que afecten la salida",
+      "c": "Reemplazando el PID"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Control por anticipación."
+  },
+  {
+    "numero": 28,
+    "pregunta": "Un sensor óptico detecta la presencia o magnitud de:",
+    "opciones": {
+      "a": "Temperatura",
+      "b": "Luz",
+      "c": "Presión"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Usa fotodetectores."
+  },
+  {
+    "numero": 29,
+    "pregunta": "El control de nivel de un tanque usa comúnmente un:",
+    "opciones": {
+      "a": "Sensor ultrasónico",
+      "b": "RTD",
+      "c": "Encoder"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Mide el tiempo de eco en la superficie del líquido."
+  },
+  {
+    "numero": 30,
+    "pregunta": "Una señal analógica se caracteriza por ser:",
+    "opciones": {
+      "a": "Continua en tiempo y amplitud",
+      "b": "Discreta",
+      "c": "Solo binaria"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Puede tomar infinitos valores en un rango."
+  },
+  {
+    "numero": 31,
+    "pregunta": "¿Qué es la histéresis en un sistema de control on/off?",
+    "opciones": {
+      "a": "Diferencia entre los umbrales de encendido y apagado",
+      "b": "Una señal sinusoidal",
+      "c": "Ruido térmico"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Evita conmutaciones rápidas y ruidosas cerca del punto de consigna."
+  },
+  {
+    "numero": 32,
+    "pregunta": "Un sensor de proximidad inductivo detecta objetos de:",
+    "opciones": {
+      "a": "Plástico",
+      "b": "Madera",
+      "c": "Materiales ferrosos/metales"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Funciona mediante campos electromagnéticos."
+  },
+  {
+    "numero": 33,
+    "pregunta": "El método de Ziegler–Nichols sirve para:",
+    "opciones": {
+      "a": "Calibrar sensores",
+      "b": "Sintonizar/ajustar parámetros de controladores PID",
+      "c": "Sincronizar redes"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Proporciona reglas empíricas para Kp, Ti y Td."
+  },
+  {
+    "numero": 34,
+    "pregunta": "Un variador de frecuencia (VFD) controla principalmente la:",
+    "opciones": {
+      "a": "Presión",
+      "b": "Velocidad del motor mediante la frecuencia",
+      "c": "Vibración"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Ajusta la frecuencia de alimentación del motor AC."
+  },
+  {
+    "numero": 35,
+    "pregunta": "Un sensor piezoeléctrico genera una señal eléctrica al:",
+    "opciones": {
+      "a": "Ser enfriado",
+      "b": "Ser sometido a presión o deformación mecánica",
+      "c": "Ser expuesto a luz"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Efecto piezoeléctrico."
+  },
+  {
+    "numero": 36,
+    "pregunta": "El control en cascada utiliza:",
+    "opciones": {
+      "a": "Dos o más lazos de control anidados",
+      "b": "Un solo lazo",
+      "c": "Tres actuadores en paralelo"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "El controlador primario ajusta el setpoint del secundario."
+  },
+  {
+    "numero": 37,
+    "pregunta": "Un PLC típico cuenta con módulos de:",
+    "opciones": {
+      "a": "Entradas y salidas tanto analógicas como digitales",
+      "b": "Solo digitales",
+      "c": "Solo analógicas"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Permite interactuar con diversos tipos de señales industriales."
+  },
+  {
+    "numero": 38,
+    "pregunta": "Un motor paso a paso (stepper) se controla mediante:",
+    "opciones": {
+      "a": "Señal analógica",
+      "b": "Secuencias de pulsos digitales",
+      "c": "AC trifásica directa"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Cada pulso representa un ángulo de giro discreto."
+  },
+  {
+    "numero": 39,
+    "pregunta": "Un sensor de efecto Hall detecta la presencia de un:",
+    "opciones": {
+      "a": "Campo magnético",
+      "b": "Flujo de oxígeno",
+      "c": "Ruido acústico"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Basado en la tensión de Hall generada por un campo magnético."
+  },
+  {
+    "numero": 40,
+    "pregunta": "En un controlador proporcional, a mayor ganancia (Kp):",
+    "opciones": {
+      "a": "Mayor estabilidad",
+      "b": "Menor velocidad de respuesta",
+      "c": "Mayor tendencia a la oscilación e inestabilidad"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Reduce el error pero puede comprometer la estabilidad."
+  },
+  {
+    "numero": 41,
+    "pregunta": "Un controlador On-Off con histéresis se usa para evitar:",
+    "opciones": {
+      "a": "Control suave",
+      "b": "Conmutaciones excesivamente frecuentes (chattering)",
+      "c": "Control derivativo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Protege los actuadores de un desgaste innecesario."
+  },
+  {
+    "numero": 42,
+    "pregunta": "Un PLC utiliza generalmente módulos de:",
+    "opciones": {
+      "a": "CPU, memoria, entradas/salidas y comunicación",
+      "b": "GPU de alta velocidad",
+      "c": "PWM de potencia"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Componentes básicos para control industrial."
+  },
+  {
+    "numero": 43,
+    "pregunta": "Los sistemas SCADA permiten realizar:",
+    "opciones": {
+      "a": "Monitoreo y adquisición de datos de forma remota",
+      "b": "Medición manual de campo",
+      "c": "Solo control digital local"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Facilitan la supervisión centralizada de procesos distribuidos."
+  },
+  {
+    "numero": 44,
+    "pregunta": "El “tiempo muerto” en un proceso se define como el:",
+    "opciones": {
+      "a": "Retraso entre el cambio en la entrada y el inicio de la respuesta en la salida",
+      "b": "Ruido de la señal",
+      "c": "Período de oscilación"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Dificulta significativamente el control estable."
+  },
+  {
+    "numero": 45,
+    "pregunta": "Para linealizar la respuesta de sensores no lineales se suele usar:",
+    "opciones": {
+      "a": "Tablas de búsqueda (lookup tables) o algoritmos de compensación",
+      "b": "Fuentes de alimentación UPS",
+      "c": "PLCs redundantes"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Ajustan la lectura para que sea proporcional a la magnitud física."
+  },
+  {
+    "numero": 46,
+    "pregunta": "Un sensor ultrasónico calcula la distancia basándose en el:",
+    "opciones": {
+      "a": "Voltaje inducido",
+      "b": "Tiempo de vuelo del eco del sonido",
+      "c": "Consumo de corriente"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Multiplica velocidad del sonido por tiempo entre disparo y retorno."
+  },
+  {
+    "numero": 47,
+    "pregunta": "La acción derivativa en un controlador tiende a aumentar la:",
+    "opciones": {
+      "a": "Sensibilidad al ruido",
+      "b": "Estabilidad estática",
+      "c": "Velocidad de respuesta"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Al derivar, las fluctuaciones rápidas (ruido) se amplifican."
+  },
+  {
+    "numero": 48,
+    "pregunta": "Un encoder absoluto entrega:",
+    "opciones": {
+      "a": "Solo pulsos de tren de ondas",
+      "b": "El código único de la posición exacta del eje",
+      "c": "La temperatura del motor"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "No pierde la posición al apagar el equipo."
+  },
+  {
+    "numero": 49,
+    "pregunta": "Un sistema se considera subamortiguado cuando su respuesta:",
+    "opciones": {
+      "a": "Presenta oscilaciones decrecientes antes de estabilizarse",
+      "b": "No presenta sobretiro",
+      "c": "Es extremadamente lenta"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Típico en lazos con ganancia alta."
+  },
+  {
+    "numero": 50,
+    "pregunta": "¿Qué significa que un sistema de control sea “failsafe”?",
+    "opciones": {
+      "a": "Que nunca falla",
+      "b": "Que ante un fallo crítico, el sistema pasa a un estado seguro",
+      "c": "Que duplica automáticamente los procesadores"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Prioriza la seguridad de personas y equipo ante averías."
+  }
+]

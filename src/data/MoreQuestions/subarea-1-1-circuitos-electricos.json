@@ -1,0 +1,551 @@
+[
+  {
+    "numero": 1,
+    "pregunta": "Un resistor de 10 Ω y otro de 20 Ω están conectados en serie a una fuente de 30 V. ¿Cuál es la corriente que circula por el circuito?",
+    "opciones": {
+      "a": "1 A",
+      "b": "2 A",
+      "c": "3 A"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Resistencia total 10+20 = 30 Ω. I = V/R = 30/30 = 1 A. (Ley de Ohm)."
+  },
+  {
+    "numero": 2,
+    "pregunta": "Dos resistores de 10 Ω están en paralelo y se conectan a 20 V. ¿Cuál es la potencia disipada por el conjunto?",
+    "opciones": {
+      "a": "40 W",
+      "b": "20 W",
+      "c": "80 W"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Cada resistor recibe 2 A → P_each = I^2 R = 4 * 10 = 40 W, total 80 W."
+  },
+  {
+    "numero": 3,
+    "pregunta": "En un circuito RC serie, la constante de tiempo τ = R·C. Si R se duplica y C se reduce a la mitad, ¿qué sucede con τ?",
+    "opciones": {
+      "a": "Se mantiene igual",
+      "b": "Se duplica",
+      "c": "Se reduce a la mitad"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "τ' = (2R)·(C/2) = R·C = τ."
+  },
+  {
+    "numero": 4,
+    "pregunta": "Un diodo ideal en polarización directa tiene una caída de tensión:",
+    "opciones": {
+      "a": "0 V",
+      "b": "cercana a 0.7 V (silicio real)",
+      "c": "5 V"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Diodo ideal se considera 0 V pero en práctica silicio ≈0.7 V; pregunta pide electrónica práctica."
+  },
+  {
+    "numero": 5,
+    "pregunta": "¿Cuál es la función principal de un condensador en un filtro pasa-bajos RC (salida en el condensador)?",
+    "opciones": {
+      "a": "Bloquear componentes de alta frecuencia",
+      "b": "Bloquear componentes de baja frecuencia",
+      "c": "Generar oscilaciones"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "En salida en C, la impedancia del C baja con frecuencia; el conjunto atenúa altas frecuencias en la resistencia a la entrada dependiendo del punto de toma."
+  },
+  {
+    "numero": 6,
+    "pregunta": "En un amplificador operacional ideal en configuración seguidor (buffer), la ganancia de tensión es:",
+    "opciones": {
+      "a": "0",
+      "b": "1",
+      "c": "∞"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "En seguidor Vout = Vin, ganancia unitaria."
+  },
+  {
+    "numero": 7,
+    "pregunta": "¿Cuál es la impedancia de entrada de un amplificador operacional ideal?",
+    "opciones": {
+      "a": "Baja (cientos de ohm)",
+      "b": "Alta (tiende a infinito)",
+      "c": "Igual a la impedancia de salida"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Modelo ideal asume entrada de alta impedancia para no cargar la fuente."
+  },
+  {
+    "numero": 8,
+    "pregunta": "Un transformador ideal con relación de vueltas N1:N2 = 2:1 y tensión primaria de 240 V produce en secundario:",
+    "opciones": {
+      "a": "480 V",
+      "b": "120 V",
+      "c": "240 V"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "V2 = V1 · (N2/N1) = 240 · (1/2) = 120 V."
+  },
+  {
+    "numero": 9,
+    "pregunta": "En un circuito RLC serie resonante, la frecuencia de resonancia f0 es:",
+    "opciones": {
+      "a": "1/(2π·√(L·C))",
+      "b": "2π·√(L·C)",
+      "c": "√(L/C)"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Fórmula conocida para resonancia."
+  },
+  {
+    "numero": 10,
+    "pregunta": "Un transistor BJT NPN en saturación tiene Vce aproximadamente:",
+    "opciones": {
+      "a": "> Vcc",
+      "b": "≈ 0.2 V",
+      "c": "≈ 10 V"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "En saturación VCE sat típico ≈ 0.1–0.3 V."
+  },
+  {
+    "numero": 11,
+    "pregunta": "¿Qué componente se usa típicamente como sensor de temperatura en electrónica básica?",
+    "opciones": {
+      "a": "LDR",
+      "b": "NTC thermistor",
+      "c": "Zener diode"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "NTC cambia resistencia con temperatura; LDR responde a luz."
+  },
+  {
+    "numero": 12,
+    "pregunta": "Para reducir el rizado (ripple) de una fuente rectificada de media onda, la mejor opción es:",
+    "opciones": {
+      "a": "Aumentar la carga",
+      "b": "Añadir un condensador de mayor capacidad",
+      "c": "Retirar el condensador de filtro"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Mayor C almacena más carga entre pulsos y reduce rizado."
+  },
+  {
+    "numero": 13,
+    "pregunta": "Una señal de 1 kHz pasa por un filtro RC con fc = 100 Hz. ¿Qué sucederá con su amplitud?",
+    "opciones": {
+      "a": "Se atenuará fuertemente",
+      "b": "Se amplificará",
+      "c": "No cambiará"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "1 kHz >> 100 Hz, filtro pasa-bajos atenúa señales por encima de fc."
+  },
+  {
+    "numero": 14,
+    "pregunta": "La ley de Kirchhoff de corrientes (KCL) establece que:",
+    "opciones": {
+      "a": "La suma algebraica de tensiones en un lazo es cero",
+      "b": "La suma de corrientes que entran a un nodo es cero",
+      "c": "La potencia total es nula"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Definición de KCL."
+  },
+  {
+    "numero": 15,
+    "pregunta": "Un puente Wheatstone se usa para:",
+    "opciones": {
+      "a": "Medir resistencia desconocida con precisión",
+      "b": "Amplificar señales débiles",
+      "c": "Convertir AC en DC"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Es la aplicación clásica del puente."
+  },
+  {
+    "numero": 16,
+    "pregunta": "En un ADC de 8 bits con rango 0–5 V, el valor de LSB (resolución) es:",
+    "opciones": {
+      "a": "19.53 mV",
+      "b": "5 mV",
+      "c": "1.95 V"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "LSB = 5 V / 2^8 = 5 / 256 ≈ 0.01953125 V = 19.53 mV."
+  },
+  {
+    "numero": 17,
+    "pregunta": "Qué efecto tiene aumentar la temperatura en la movilidad de portadores en un semiconductor tipo silicio (a temperatura moderada)?",
+    "opciones": {
+      "a": "Aumenta la movilidad",
+      "b": "Disminuye la movilidad por mayor dispersión",
+      "c": "No cambia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Mayor temperatura ⇒ más fonones ⇒ mayor dispersión ⇒ movilidad baja (salvo efectos de ionización)."
+  },
+  {
+    "numero": 18,
+    "pregunta": "Un convertidor DC-DC buck reduce:",
+    "opciones": {
+      "a": "Corriente",
+      "b": "Frecuencia",
+      "c": "Tensión de salida respecto a entrada"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Buck es reductor de tensión."
+  },
+  {
+    "numero": 19,
+    "pregunta": "¿Cuál es la ganancia de voltaje en un amplificador inversor con Rf = Rin?",
+    "opciones": {
+      "a": "-1",
+      "b": "0",
+      "c": "+1"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Ganancia = -Rf/Rin = -1."
+  },
+  {
+    "numero": 20,
+    "pregunta": "En un circuito con fuentes dependientes, para hallar la tensión, ¿qué método es aplicable?",
+    "opciones": {
+      "a": "Teorema de Thévenin / Norton y análisis de nodos/mallas",
+      "b": "Solo Ley de Ohm",
+      "c": "Solo integración numérica"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Métodos clásicos de análisis permiten resolver con fuentes dependientes también."
+  },
+  {
+    "numero": 21,
+    "pregunta": "En un rectificador de onda completa en puente (full-wave bridge), la frecuencia de salida ripple es:",
+    "opciones": {
+      "a": "Igual a la frecuencia de la red",
+      "b": "El doble de la frecuencia de la red",
+      "c": "La mitad de la frecuencia de la red"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Cada semi-ciclo produce un pulso, por lo que ripple tiene 2·f_linea."
+  },
+  {
+    "numero": 22,
+    "pregunta": "Un LDR (fotorresistor) cambia su resistencia con:",
+    "opciones": {
+      "a": "Temperatura",
+      "b": "Iluminación",
+      "c": "Presión"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "LDR = Light Dependent Resistor."
+  },
+  {
+    "numero": 23,
+    "pregunta": "El factor de calidad Q de un circuito resonante es:",
+    "opciones": {
+      "a": "f0 / BW (ancho de banda)",
+      "b": "BW / f0",
+      "c": "f0 · BW"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Definición de Q."
+  },
+  {
+    "numero": 24,
+    "pregunta": "Para medir pequeña tensión diferencial en presencia de ruido común, se debe usar:",
+    "opciones": {
+      "a": "Amplificador simple",
+      "b": "Amplificador diferencial/instrumentación (instrumentation amplifier)",
+      "c": "Transistor BJT en configuración emisor común"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Rechazan modo común y amplifican la diferencia."
+  },
+  {
+    "numero": 25,
+    "pregunta": "Una señal muestreada a 8 kHz tiene un espectro replicado. Según Nyquist, la frecuencia máxima sin aliasing es:",
+    "opciones": {
+      "a": "8 kHz",
+      "b": "4 kHz",
+      "c": "16 kHz"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "f_s/2 = 8/2 = 4 kHz."
+  },
+  {
+    "numero": 26,
+    "pregunta": "¿Qué representa la impedancia compleja de un condensador C en dominio fasorial?",
+    "opciones": {
+      "a": "jωC",
+      "b": "1/(jωC)",
+      "c": "R + jωL"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Z_C = 1/(jωC)."
+  },
+  {
+    "numero": 27,
+    "pregunta": "En un oscilador LC ideal, la energía oscila entre:",
+    "opciones": {
+      "a": "Resistencia y capacitancia",
+      "b": "Inductancia y capacitancia",
+      "c": "Fuente y resistencia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "L almacena energía magnética, C almacena energía eléctrica."
+  },
+  {
+    "numero": 28,
+    "pregunta": "El método de análisis más adecuado para circuitos con muchos nodos independientes es:",
+    "opciones": {
+      "a": "Análisis de mallas",
+      "b": "Análisis de nodos (Nodal)",
+      "c": "Observación visual"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Nodal escala mejor con muchos nodos."
+  },
+  {
+    "numero": 29,
+    "pregunta": "Un amplificador con realimentación negativa tiende a:",
+    "opciones": {
+      "a": "Disminuir estabilidad",
+      "b": "Aumentar ganancia sin efectos colaterales",
+      "c": "Reducir distorsión y ampliar banda útil"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Realimentación negativa reduce ganancia, mejora linealidad y ancho de banda."
+  },
+  {
+    "numero": 30,
+    "pregunta": "La constante de tiempo de un circuito RL es τ = L/R; si L=10 mH y R=10 Ω, τ =",
+    "opciones": {
+      "a": "1 ms",
+      "b": "100 ms",
+      "c": "0.1 ms"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "τ = 0.01 H / 10 Ω = 0.001 s = 1 ms."
+  },
+  {
+    "numero": 31,
+    "pregunta": "En un diodo Zener de regulación, se aprovecha:",
+    "opciones": {
+      "a": "Polarización directa para regular tensión",
+      "b": "Polarización inversa en región de avalancha/regulación",
+      "c": "La conducción en ambos sentidos igual"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Zener funciona en inversa para mantener tensión estable."
+  },
+  {
+    "numero": 32,
+    "pregunta": "Un ADC de 12 bits mejora la resolución respecto a uno de 8 bits por factor aprox:",
+    "opciones": {
+      "a": "2^4 = 16 veces",
+      "b": "4 veces",
+      "c": "256 veces"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Resolución escala por 2^(12-8)=2^4=16."
+  },
+  {
+    "numero": 33,
+    "pregunta": "¿Cuál de los siguientes es un parámetro de un op-amp real y no ideal?",
+    "opciones": {
+      "a": "Ganancia de voltaje infinita",
+      "b": "Slew rate (tasa de cambio máxima)",
+      "c": "Impedancia de entrada infinita"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Slew rate es característica práctica que limita respuesta en frecuencia."
+  },
+  {
+    "numero": 34,
+    "pregunta": "¿Qué operación realiza una etapa rectificadora seguida de un filtro y un regulador?",
+    "opciones": {
+      "a": "Convierte DC en AC",
+      "b": "Convierte AC en DC regulado",
+      "c": "Incrementa la frecuencia de la señal"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Secuencia típica de fuente DC."
+  },
+  {
+    "numero": 35,
+    "pregunta": "En circuitos digitales TTL, el nivel lógico '1' (alto) se considera aproximadamente:",
+    "opciones": {
+      "a": "5 V",
+      "b": "0 V",
+      "c": "-5 V"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "TTL estándar usa Vcc ≈ 5 V; niveles lógicos se definen alrededor de 5 V para '1'."
+  },
+  {
+    "numero": 36,
+    "pregunta": "¿Qué es un puente rectificador?",
+    "opciones": {
+      "a": "Un arreglo de diodos que rectifica AC a DC de onda completa",
+      "b": "Un filtro pasivo LC",
+      "c": "Un tipo de transistor"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Puente puentea ambas mitades del ciclo."
+  },
+  {
+    "numero": 37,
+    "pregunta": "En un amplificador con carga activa, la impedancia de salida suele ser:",
+    "opciones": {
+      "a": "Alta",
+      "b": "Baja",
+      "c": "Infinita"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Deseable para mínima caída de tensión y mejor acoplamiento a carga."
+  },
+  {
+    "numero": 38,
+    "pregunta": "La conductancia G es el inverso de la resistencia R: G = 1/R. Su unidad es:",
+    "opciones": {
+      "a": "Siemens (S)",
+      "b": "Ohm (Ω)",
+      "c": "Farad (F)"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Definición de unidad."
+  },
+  {
+    "numero": 39,
+    "pregunta": "¿Qué parámetro define la respuesta en frecuencia de un filtro pasivo RC?",
+    "opciones": {
+      "a": "Resistencia únicamente",
+      "b": "Capacitancia únicamente",
+      "c": "La combinación R·C (constante de tiempo)"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "fc = 1/(2πRC)."
+  },
+  {
+    "numero": 40,
+    "pregunta": "¿Cuál es la principal desventaja de usar un amplificador con realimentación positiva?",
+    "opciones": {
+      "a": "Mejor estabilidad",
+      "b": "Puede producir saturación u oscilación (inestabilidad)",
+      "c": "Reduce la sensibilidad"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Feedback positivo refuerza señales y puede oscilar."
+  },
+  {
+    "numero": 41,
+    "pregunta": "Un transistor MOSFET canal N en corte presenta:",
+    "opciones": {
+      "a": "Alta conducción entre drain y source",
+      "b": "Baja conducción (prácticamente abierto)",
+      "c": "Conducción inversa solamente"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "En corte Vgs < Vth ⇒ dispositivo no conduce."
+  },
+  {
+    "numero": 42,
+    "pregunta": "¿Qué es el Duty Cycle en un modulador PWM?",
+    "opciones": {
+      "a": "Proporción de tiempo que la señal está en nivel alto respecto al período",
+      "b": "Valor RMS de la señal"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Definición clásica."
+  },
+  {
+    "numero": 43,
+    "pregunta": "¿Para qué sirve un amplificador seguidor de tensión (buffer)?",
+    "opciones": {
+      "a": "Invertir la fase de la señal",
+      "b": "Aislar la fuente de la carga sin cambiar amplitud",
+      "c": "Rectificar la señal"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Seguidor tiene ganancia 1 y alta Z_in, baja Z_out."
+  },
+  {
+    "numero": 44,
+    "pregunta": "En un circuito RC en serie alimentado por señal sinusoidal, la corriente está:",
+    "opciones": {
+      "a": "En fase con la tensión en el condensador",
+      "b": "En fase con la tensión de la fuente si la red es puramente resistiva; en general hay desfase",
+      "c": "Siempre 180° desfasada"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "En circuito R sólo, I y V están en fase; con reactancias hay desfase dependiente de X."
+  },
+  {
+    "numero": 45,
+    "pregunta": "El número de Reynolds se usa en fluidos; en electrónica, una medida equivalente para ruido es SNR que indica:",
+    "opciones": {
+      "a": "Relación señal-ruido (Signal-to-Noise Ratio)",
+      "b": "Resistencia de red",
+      "c": "Tensión RMS"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "SNR indica cuánto domina la señal sobre el ruido."
+  },
+  {
+    "numero": 46,
+    "pregunta": "Un filtro pasa-alto RC con salida en la resistencia presenta fc = 1/(2πRC). Si C aumenta, fc:",
+    "opciones": {
+      "a": "Aumenta",
+      "b": "Disminuye",
+      "c": "No cambia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "fc inversamente proporcional a C."
+  },
+  {
+    "numero": 47,
+    "pregunta": "Una fuente de corriente ideal proporciona:",
+    "opciones": {
+      "a": "Corriente constante independientemente de la carga",
+      "b": "Tensión constante independientemente de la carga",
+      "c": "Potencia constante"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Definición de fuente de corriente ideal."
+  },
+  {
+    "numero": 48,
+    "pregunta": "En el análisis de Fourier, una señal no periódica se representa por:",
+    "opciones": {
+      "a": "Serie de Fourier discreta",
+      "b": "Transformada de Fourier continua (espectro)",
+      "c": "Tabla de verdad"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Señales no periódicas → transformada continua; periódicas → series."
+  },
+  {
+    "numero": 49,
+    "pregunta": "¿Cuál es la finalidad de un disipador en un componente de potencia?",
+    "opciones": {
+      "a": "Aumentar corriente",
+      "b": "Disipar calor y mantener temperatura operativa segura",
+      "c": "Convertir AC a DC"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Evita sobretemperaturas que dañen dispositivo."
+  },
+  {
+    "numero": 50,
+    "pregunta": "En la práctica, la medición de resistencias muy pequeñas (mΩ) requiere técnicas especiales para evitar errores por contactos. ¿Cuál técnica es adecuada?",
+    "opciones": {
+      "a": "Medición en principio con multímetro común",
+      "b": "Método de cuatro hilos (método Kelvin)",
+      "c": "Usar una fuente AC en lugar de DC"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El método de cuatro hilos elimina la caída de tensión en cables/terminales y da lectura precisa de bajas resistencias."
+  }
+]

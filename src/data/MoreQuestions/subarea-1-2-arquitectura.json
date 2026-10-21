@@ -1,0 +1,552 @@
+[
+  {
+    "numero": 1,
+    "pregunta": "¿Cuál es la unidad funcional responsable de ejecutar instrucciones aritméticas y lógicas dentro del procesador?",
+    "opciones": {
+      "a": "Unidad de Control",
+      "b": "ALU",
+      "c": "Registro MAR"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La ALU realiza operaciones aritméticas (suma, resta) y lógicas (AND, OR)."
+  },
+  {
+    "numero": 3,
+    "pregunta": "La jerarquía de memoria se organiza principalmente para:",
+    "opciones": {
+      "a": "Aumentar la complejidad del hardware",
+      "b": "Reducir los tiempos de acceso al almacenamiento",
+      "c": "Eliminar el uso de caché"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La jerarquía busca equilibrar costo y velocidad para optimizar accesos."
+  },
+  {
+    "numero": 5,
+    "pregunta": "La memoria caché L1 se caracteriza por:",
+    "opciones": {
+      "a": "Ser la más lenta",
+      "b": "Ser la más rápida y cercana al procesador",
+      "c": "Ser mayor que la RAM"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "L1 es la más costosa y rápida, adjunta al núcleo."
+  },
+  {
+    "numero": 7,
+    "pregunta": "¿Qué registro contiene la dirección de la siguiente instrucción a ejecutar?",
+    "opciones": {
+      "a": "PC",
+      "b": "IR",
+      "c": "DR"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "El Program Counter almacena la próxima dirección."
+  },
+  {
+    "numero": 9,
+    "pregunta": "El ciclo “fetch–decode–execute” describe:",
+    "opciones": {
+      "a": "El ciclo térmico del procesador",
+      "b": "El ciclo básico de ejecución de instrucciones",
+      "c": "El ciclo de pipeline"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Es el flujo tradicional: buscar, decodificar, ejecutar."
+  },
+  {
+    "numero": 11,
+    "pregunta": "El modo de direccionamiento inmediato significa que:",
+    "opciones": {
+      "a": "La dirección está en un registro",
+      "b": "El operando está en la instrucción misma",
+      "c": "La dirección está en memoria secundaria"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El valor inmediato viene codificado directamente."
+  },
+  {
+    "numero": 13,
+    "pregunta": "Un procesador con pipeline logra:",
+    "opciones": {
+      "a": "Aumentar el CPI",
+      "b": "Ejecutar varias etapas de instrucciones en paralelo",
+      "c": "Reducir el tamaño del set de instrucciones"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Pipeline solapa etapas para mejorar throughput."
+  },
+  {
+    "numero": 15,
+    "pregunta": "¿Cuál es una característica típica de una arquitectura RISC?",
+    "opciones": {
+      "a": "Instrucciones complejas",
+      "b": "Muchas instrucciones con varios ciclos",
+      "c": "Conjunto reducido de instrucciones simples"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "RISC = instrucciones simples y de tamaño fijo."
+  },
+  {
+    "numero": 17,
+    "pregunta": "¿Qué tipo de memoria es volátil?",
+    "opciones": {
+      "a": "ROM",
+      "b": "Flash",
+      "c": "RAM"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "La RAM pierde contenido al apagar."
+  },
+  {
+    "numero": 19,
+    "pregunta": "Una ventaja de la memoria DDR4 respecto a DDR3 es:",
+    "opciones": {
+      "a": "Menor ancho de banda",
+      "b": "Mayor frecuencia y menor voltaje",
+      "c": "Mayor latencia absoluta"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "DDR4 reduce voltaje y aumenta velocidad."
+  },
+  {
+    "numero": 21,
+    "pregunta": "¿Qué técnica de caché reduce el problema de conflictos al permitir múltiples bloques por línea?",
+    "opciones": {
+      "a": "Mapeo directo",
+      "b": "Asociativo total",
+      "c": "Asociativo por conjuntos"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Set-associative combina velocidad y flexibilidad."
+  },
+  {
+    "numero": 23,
+    "pregunta": "En un sistema de interrupciones, la señal IRQ sirve para:",
+    "opciones": {
+      "a": "Indicar que la ALU debe resetearse",
+      "b": "Solicitar atención del CPU a un evento externo",
+      "c": "Controlar el reloj del sistema"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "IRQ = interrupción por hardware."
+  },
+  {
+    "numero": 25,
+    "pregunta": "La instrucción “MOV AX, BX” pertenece al tipo:",
+    "opciones": {
+      "a": "Transferencia de datos",
+      "b": "Control de flujo",
+      "c": "Operación lógica"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Mueve datos entre registros."
+  },
+  {
+    "numero": 27,
+    "pregunta": "El registro IR contiene:",
+    "opciones": {
+      "a": "El resultado de operaciones aritméticas",
+      "b": "La instrucción que está siendo decodificada",
+      "c": "La dirección del stack"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "IR = Instruction Register."
+  },
+  {
+    "numero": 29,
+    "pregunta": "Un procesador multicore mejora rendimiento porque:",
+    "opciones": {
+      "a": "Usa más voltaje",
+      "b": "Varios núcleos ejecutan hilos simultáneamente",
+      "c": "Duplica la frecuencia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Varios núcleos ejecutan hilos simultáneamente."
+  },
+  {
+    "numero": 31,
+    "pregunta": "La arquitectura Von Neumann se caracteriza por:",
+    "opciones": {
+      "a": "Memorias separadas para datos e instrucciones",
+      "b": "Memoria única para datos e instrucciones",
+      "c": "Ausencia de ALU"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Harvard las separa; Von Neumann usa una sola."
+  },
+  {
+    "numero": 33,
+    "pregunta": "¿Qué nivel de caché suele ser el mayor pero más lento?",
+    "opciones": {
+      "a": "L1",
+      "b": "L3",
+      "c": "L5"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La L3 es compartida, más grande y lenta."
+  },
+  {
+    "numero": 35,
+    "pregunta": "¿Qué ocurre si hay un cache miss?",
+    "opciones": {
+      "a": "Se destruye el contenido de la RAM",
+      "b": "Se debe traer el bloque desde memoria inferior",
+      "c": "La instrucción se cancela"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Miss → carga desde RAM o disco al caché."
+  },
+  {
+    "numero": 37,
+    "pregunta": "Un controlador DMA permite:",
+    "opciones": {
+      "a": "Que la CPU ejecute más instrucciones",
+      "b": "Que dispositivos accedan a memoria sin la CPU",
+      "c": "Aumentar el tamaño del caché"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "DMA = acceso directo a memoria."
+  },
+  {
+    "numero": 39,
+    "pregunta": "El tiempo que tarda la CPU en responder a una interrupción se llama:",
+    "opciones": {
+      "a": "Jitter",
+      "b": "Latencia",
+      "c": "Throughput"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Latencia es el retraso entre evento y atención."
+  },
+  {
+    "numero": 41,
+    "pregunta": "En un bucle de pipeline, un hazard estructural ocurre cuando:",
+    "opciones": {
+      "a": "No hay suficiente hardware para etapas paralelas",
+      "b": "Hay dependencia de datos",
+      "c": "Hay salto condicional"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Es limitación de hardware."
+  },
+  {
+    "numero": 43,
+    "pregunta": "¿Cuál de las siguientes NO es memoria secundaria?",
+    "opciones": {
+      "a": "SSD",
+      "b": "Disco duro",
+      "c": "Caché L2"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "L2 es memoria primaria y volátil."
+  },
+  {
+    "numero": 45,
+    "pregunta": "El benchmark SPEC CPU mide principalmente:",
+    "opciones": {
+      "a": "Tasa de transferencia de red",
+      "b": "Rendimiento del procesador y memoria",
+      "c": "Velocidad del GPU"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "SPEC evalúa carga de CPU."
+  },
+  {
+    "numero": 47,
+    "pregunta": "¿Qué instrucción cambia el flujo del programa?",
+    "opciones": {
+      "a": "ADD",
+      "b": "JMP",
+      "c": "MOV"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "JMP cambia la secuencia normal."
+  },
+  {
+    "numero": 49,
+    "pregunta": "Cuando un procesador soporta Hyper-Threading significa:",
+    "opciones": {
+      "a": "Núcleos reales duplicados",
+      "b": "Hilos lógicos por núcleo",
+      "c": "Latencia cero"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "HT crea hilos lógicos por núcleo."
+  },
+  {
+    "numero": 51,
+    "pregunta": "¿Qué unidad calcula direcciones efectivas en arquitecturas complejas?",
+    "opciones": {
+      "a": "ALU",
+      "b": "Unidad de direccionamiento",
+      "c": "PC"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Es la encargada de combinar base + desplazamiento + índice."
+  },
+  {
+    "numero": 53,
+    "pregunta": "Una instrucción CISC generalmente:",
+    "opciones": {
+      "a": "Tiene formato fijo",
+      "b": "Puede realizar tareas complejas en una sola instrucción",
+      "c": "Siempre tiene un solo ciclo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "CISC agrupa operaciones complejas."
+  },
+  {
+    "numero": 55,
+    "pregunta": "¿Qué técnica de pipeline minimiza los branch hazards?",
+    "opciones": {
+      "a": "Especulación",
+      "b": "Redundancia",
+      "c": "Segmentación"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "La predicción especulativa reduce penalizaciones."
+  },
+  {
+    "numero": 57,
+    "pregunta": "La unidad FPU del procesador ejecuta:",
+    "opciones": {
+      "a": "Operaciones enteras",
+      "b": "Operaciones en punto flotante",
+      "c": "Ejecución de interrupciones"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "FPU = Floating Point Unit."
+  },
+  {
+    "numero": 59,
+    "pregunta": "¿Qué ventaja tiene un procesador de 64 bits?",
+    "opciones": {
+      "a": "Más memoria que uno de 32 bits",
+      "b": "Menos memoria que uno de 32 bits",
+      "c": "La misma cantidad siempre"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "64 bits amplía el espacio de direcciones."
+  },
+  {
+    "numero": 61,
+    "pregunta": "En RAID 1, los datos se:",
+    "opciones": {
+      "a": "Distribuyen",
+      "b": "Espejan",
+      "c": "Codifican con paridad"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "RAID 1 = espejo."
+  },
+  {
+    "numero": 63,
+    "pregunta": "¿Cuál es una medida de desempeño de memoria?",
+    "opciones": {
+      "a": "ESR",
+      "b": "Tiempo de acceso",
+      "c": "TDP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Es la métrica clave de memoria."
+  },
+  {
+    "numero": 65,
+    "pregunta": "La microarquitectura define:",
+    "opciones": {
+      "a": "El conjunto de instrucciones que soporta la CPU",
+      "b": "El diseño interno que implementa la ISA",
+      "c": "El sistema operativo compatible"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "ISA es el \"qué\". Microarquitectura es el \"cómo\"."
+  },
+  {
+    "numero": 67,
+    "pregunta": "¿Qué es un registro de propósito general?",
+    "opciones": {
+      "a": "Almacena direcciones únicamente",
+      "b": "Almacena datos temporales",
+      "c": "Es memoria secundaria"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Son registros para cálculos."
+  },
+  {
+    "numero": 69,
+    "pregunta": "¿Qué organiza las interrupciones por prioridad?",
+    "opciones": {
+      "a": "PIC",
+      "b": "RTC",
+      "c": "DMA"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "PIC = Programmable Interrupt Controller."
+  },
+  {
+    "numero": 71,
+    "pregunta": "Un sistema Harvard se distingue por:",
+    "opciones": {
+      "a": "Memoria separada para instrucciones y datos",
+      "b": "CPU sin ALU",
+      "c": "Ausencia de pipeline"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Harvard divide buses y memorias."
+  },
+  {
+    "numero": 73,
+    "pregunta": "¿Qué componente mantiene el tiempo del sistema?",
+    "opciones": {
+      "a": "FPU",
+      "b": "RTC",
+      "c": "DMA"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Real Time Clock."
+  },
+  {
+    "numero": 75,
+    "pregunta": "¿Qué almacena el Stack Pointer?",
+    "opciones": {
+      "a": "Dirección base del kernel",
+      "b": "Dirección del tope de la pila",
+      "c": "Dirección de la última instrucción"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "SP apunta al tope del stack."
+  },
+  {
+    "numero": 77,
+    "pregunta": "¿Qué protocolo se usa típicamente entre CPU y dispositivos externos?",
+    "opciones": {
+      "a": "I2C",
+      "b": "AMBA / PCIe / buses de sistema",
+      "c": "HDMI"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "PCIe y AMBA son buses de comunicación de alto desempeño."
+  },
+  {
+    "numero": 79,
+    "pregunta": "¿Qué pasa cuando ocurre branch misprediction?",
+    "opciones": {
+      "a": "Se acelera el procesador",
+      "b": "Se vacía el pipeline",
+      "c": "El programa se reinicia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Debe descartarse trabajo especulativo."
+  },
+  {
+    "numero": 81,
+    "pregunta": "En SMP (multiprocesamiento simétrico):",
+    "opciones": {
+      "a": "Los procesadores no comparten memoria",
+      "b": "Todos los procesadores comparten la misma memoria",
+      "c": "Cada procesador tiene su propio SO"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "SMP es memoria compartida."
+  },
+  {
+    "numero": 83,
+    "pregunta": "¿Qué técnica de regulación dinámica reduce consumo energético?",
+    "opciones": {
+      "a": "DVFS",
+      "b": "Overclocking",
+      "c": "Deep pipeline"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Dynamic Voltage and Frequency Scaling."
+  },
+  {
+    "numero": 85,
+    "pregunta": "¿Qué parámetro limita la velocidad de reloj?",
+    "opciones": {
+      "a": "TDP",
+      "b": "Tiempo de propagación",
+      "c": "Tamaño del disco duro"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Deben respetarse tiempos críticos de señales."
+  },
+  {
+    "numero": 87,
+    "pregunta": "¿Qué son los register renaming?",
+    "opciones": {
+      "a": "Reemplazar RAM por registros",
+      "b": "Evitar dependencias falsas en pipeline",
+      "c": "Cambiar nombres de procesos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Renombrado elimina WAR/RAW falsos."
+  },
+  {
+    "numero": 89,
+    "pregunta": "El “bus de datos” transporta:",
+    "opciones": {
+      "a": "Direcciones",
+      "b": "Datos entre CPU y memoria",
+      "c": "Reloj"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Transporta la información propiamente dicha."
+  },
+  {
+    "numero": 91,
+    "pregunta": "El “bus de direcciones” transporta:",
+    "opciones": {
+      "a": "Datos",
+      "b": "Direcciones de memoria",
+      "c": "Potencia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Define posiciones a acceder."
+  },
+  {
+    "numero": 93,
+    "pregunta": "Un TLB miss implica que:",
+    "opciones": {
+      "a": "No hay energía",
+      "b": "No está la traducción virtual→física en el buffer",
+      "c": "Se borra la caché"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La TLB guarda traducciones; en miss hay que consultarlas en las tablas de páginas."
+  },
+  {
+    "numero": 95,
+    "pregunta": "El ISA especifica:",
+    "opciones": {
+      "a": "Frecuencia del CPU",
+      "b": "Formato de instrucciones y modos de direccionamiento",
+      "c": "El sistema operativo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "ISA define cómo se programa el CPU."
+  },
+  {
+    "numero": 97,
+    "pregunta": "Un bus síncrono depende de:",
+    "opciones": {
+      "a": "Señales de reloj compartidas",
+      "b": "Interrupciones",
+      "c": "Voltaje"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Requiere reloj común."
+  },
+  {
+    "numero": 99,
+    "pregunta": "¿Qué componente traduce direcciones virtuales a físicas?",
+    "opciones": {
+      "a": "FPU",
+      "b": "MMU",
+      "c": "ALU"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Memory Management Unit."
+  }
+]

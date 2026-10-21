@@ -1,0 +1,552 @@
+[
+  {
+    "numero": 1,
+    "pregunta": "Un sistema embebido se caracteriza por:",
+    "opciones": {
+      "a": "Ejecutar aplicaciones de propósito general",
+      "b": "Integrar hardware y software para una función específica",
+      "c": "No utilizar microcontroladores"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Los sistemas embebidos se diseñan para tareas puntuales."
+  },
+  {
+    "numero": 2,
+    "pregunta": "El microcontrolador ATmega328P pertenece a la familia:",
+    "opciones": {
+      "a": "PIC",
+      "b": "ARM Cortex-M",
+      "c": "AVR"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "El ATmega328P es un AVR usado en Arduino UNO."
+  },
+  {
+    "numero": 3,
+    "pregunta": "¿Cuál es la frecuencia típica del reloj del Arduino UNO?",
+    "opciones": {
+      "a": "1 MHz",
+      "b": "16 MHz",
+      "c": "100 MHz"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Arduino UNO opera a 16 MHz en la mayoría de versiones."
+  },
+  {
+    "numero": 4,
+    "pregunta": "En un sistema embebido, el “bootloader” permite:",
+    "opciones": {
+      "a": "Ampliar la memoria RAM",
+      "b": "Cargar programas sin programador externo",
+      "c": "Evitar interrupciones"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Facilita la carga vía USB/serial."
+  },
+  {
+    "numero": 5,
+    "pregunta": "Una interrupción externa ocurre cuando:",
+    "opciones": {
+      "a": "El temporizador desborda",
+      "b": "Un evento físico genera una señal en un pin",
+      "c": "El programa ejecuta un salto"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Las interrupciones externas dependen del hardware."
+  },
+  {
+    "numero": 6,
+    "pregunta": "¿Qué es “polling”?",
+    "opciones": {
+      "a": "Consultar continuamente un dispositivo",
+      "b": "Ejecutar interrupciones anidadas",
+      "c": "Apagar periféricos"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Polling = revisión constante en un bucle."
+  },
+  {
+    "numero": 7,
+    "pregunta": "Un PWM permite:",
+    "opciones": {
+      "a": "Medir resistencia",
+      "b": "Controlar potencia mediante ciclo de trabajo",
+      "c": "Convertir AC a DC"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "PWM modula el duty cycle para ajustar potencia."
+  },
+  {
+    "numero": 8,
+    "pregunta": "¿Qué arquitectura usa típicamente un Cortex-M?",
+    "opciones": {
+      "a": "RISC",
+      "b": "CISC",
+      "c": "Híbrida"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "ARM es arquitectura RISC."
+  },
+  {
+    "numero": 9,
+    "pregunta": "El propósito del “watchdog timer” es:",
+    "opciones": {
+      "a": "Reiniciar el sistema si se cuelga",
+      "b": "Aumentar velocidad del CPU",
+      "c": "Proteger contra sobrecalentamiento"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Detecta bloqueos y resetea."
+  },
+  {
+    "numero": 10,
+    "pregunta": "¿Cuál es la unidad mínima de información en un microcontrolador?",
+    "opciones": {
+      "a": "Palabra",
+      "b": "Byte",
+      "c": "Bit"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "El bit es la unidad básica."
+  },
+  {
+    "numero": 11,
+    "pregunta": "Un bus I2C utiliza:",
+    "opciones": {
+      "a": "1 línea",
+      "b": "2 líneas (SDA, SCL)",
+      "c": "8 líneas"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Es un bus serial de dos hilos."
+  },
+  {
+    "numero": 12,
+    "pregunta": "SPI se caracteriza por:",
+    "opciones": {
+      "a": "Comunicación lenta",
+      "b": "Comunicación rápida con varias líneas",
+      "c": "Comunicación por fibra"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "SPI usa líneas separadas: MOSI, MISO, SCK, SS."
+  },
+  {
+    "numero": 13,
+    "pregunta": "La EEPROM en microcontroladores sirve para:",
+    "opciones": {
+      "a": "Almacenar datos volátiles",
+      "b": "Almacenar datos permanentes",
+      "c": "Ejecutar código"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "EEPROM conserva la información."
+  },
+  {
+    "numero": 14,
+    "pregunta": "En un ADC, ¿qué representan los niveles discretos de cuantificación?",
+    "opciones": {
+      "a": "Voltaje máximo",
+      "b": "Número de escalones posibles",
+      "c": "Frecuencia de muestreo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Se refiere al número de valores distintos que puede representar el ADC."
+  },
+  {
+    "numero": 15,
+    "pregunta": "¿Qué timer se usa para medir periodos?",
+    "opciones": {
+      "a": "Timer en modo CTC",
+      "b": "Timer en modo capture",
+      "c": "Timer en modo PWM"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Input Capture mide tiempos precisos de señales."
+  },
+  {
+    "numero": 16,
+    "pregunta": "Una FPGA permite:",
+    "opciones": {
+      "a": "Programar hardware reconfigurable",
+      "b": "Ejecutar solo instrucciones fijas",
+      "c": "Reemplazar RAM"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Las FPGAs permiten hardware configurable."
+  },
+  {
+    "numero": 17,
+    "pregunta": "¿Cuál es la ventaja de una FPGA sobre un microcontrolador?",
+    "opciones": {
+      "a": "Menor consumo siempre",
+      "b": "Paralelismo masivo en hardware",
+      "c": "Mayor facilidad de programación"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Permiten paralelismo real."
+  },
+  {
+    "numero": 18,
+    "pregunta": "UART sirve para:",
+    "opciones": {
+      "a": "Transmisión serial asíncrona",
+      "b": "Transmisión USB",
+      "c": "Transmisión paralela"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "UART = serial asíncrono."
+  },
+  {
+    "numero": 19,
+    "pregunta": "¿Qué hace un debouncer en entradas digitales?",
+    "opciones": {
+      "a": "Amplifica señales",
+      "b": "Elimina rebotes mecánicos",
+      "c": "Genera PWM"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Los botones generan ruidos al pulsarse."
+  },
+  {
+    "numero": 20,
+    "pregunta": "La memoria Flash del microcontrolador se usa para:",
+    "opciones": {
+      "a": "Código del programa",
+      "b": "Variables temporales",
+      "c": "Configuración del puerto serie"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Almacena el código ejecutable de forma permanente."
+  },
+  {
+    "numero": 21,
+    "pregunta": "El tiempo de ejecución de una instrucción depende principalmente de:",
+    "opciones": {
+      "a": "Reloj del sistema",
+      "b": "Color del PCB",
+      "c": "Tipo de conectores"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "La frecuencia del oscilador determina la velocidad de ejecución."
+  },
+  {
+    "numero": 22,
+    "pregunta": "¿Qué es el “stack” en un MCU?",
+    "opciones": {
+      "a": "Memoria para sensores",
+      "b": "Espacio para variables locales y direcciones de retorno",
+      "c": "Memoria ROM externa"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El stack gestiona llamadas a funciones e interrupciones."
+  },
+  {
+    "numero": 23,
+    "pregunta": "Un sistema embebido de tiempo real requiere:",
+    "opciones": {
+      "a": "Precisión absoluta",
+      "b": "Cumplir tiempos máximos garantizados",
+      "c": "Priorizar gráficos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Tiempo real = deadlines garantizados."
+  },
+  {
+    "numero": 24,
+    "pregunta": "¿Qué periférico mide distancia en Arduino?",
+    "opciones": {
+      "a": "MPU6050",
+      "b": "HC-SR04",
+      "c": "NRF24L01"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El HC-SR04 es un sensor de ultrasonido para medir distancia."
+  },
+  {
+    "numero": 25,
+    "pregunta": "El oscilador del microcontrolador puede ser:",
+    "opciones": {
+      "a": "Solo externo",
+      "b": "Interno o externo",
+      "c": "No necesario"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La mayoría de MCUs modernos tienen osciladores internos opcionales."
+  },
+  {
+    "numero": 26,
+    "pregunta": "Un “bootloader protegido” sirve para:",
+    "opciones": {
+      "a": "Evitar escritura accidental",
+      "b": "Ejecutar funciones matemáticas",
+      "c": "Deshabilitar interrupciones"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Evita que el programa principal sobrescriba el cargador de arranque."
+  },
+  {
+    "numero": 27,
+    "pregunta": "¿Qué es un RTOS?",
+    "opciones": {
+      "a": "Sistema operativo de propósito general",
+      "b": "Sistema operativo de tiempo real",
+      "c": "Firmware del bootloader"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Real-Time Operating System."
+  },
+  {
+    "numero": 28,
+    "pregunta": "Una ventaja de RTOS es:",
+    "opciones": {
+      "a": "Menor consumo siempre",
+      "b": "Manejo de multitarea determinístico",
+      "c": "Elimina ISR"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Permite garantizar tiempos de respuesta para múltiples tareas."
+  },
+  {
+    "numero": 29,
+    "pregunta": "¿Qué unidad mide la velocidad del CPU en MCUs?",
+    "opciones": {
+      "a": "MHz",
+      "b": "GB",
+      "c": "Lux"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Megahercios (millones de ciclos por segundo)."
+  },
+  {
+    "numero": 30,
+    "pregunta": "¿Qué es un ISR?",
+    "opciones": {
+      "a": "Código de interrupción",
+      "b": "Código del main loop",
+      "c": "Código del bootloader"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Interrupt Service Routine: función que se ejecuta al ocurrir una interrupción."
+  },
+  {
+    "numero": 31,
+    "pregunta": "En un sistema embebido, el “main loop” ejecuta:",
+    "opciones": {
+      "a": "Código periódico principal",
+      "b": "ISR",
+      "c": "Bootloader"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Es el bucle infinito donde corre la lógica principal."
+  },
+  {
+    "numero": 32,
+    "pregunta": "Para controlar motores se usa típicamente:",
+    "opciones": {
+      "a": "DAC",
+      "b": "PWM",
+      "c": "UART"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La modulación por ancho de pulso controla la velocidad/potencia de motores."
+  },
+  {
+    "numero": 33,
+    "pregunta": "Un DAC convierte:",
+    "opciones": {
+      "a": "Analógico → Digital",
+      "b": "Digital → Analógico",
+      "c": "PWM → Serial"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Digital-to-Analog Converter."
+  },
+  {
+    "numero": 34,
+    "pregunta": "El bus I2C permite teóricamente hasta:",
+    "opciones": {
+      "a": "1 dispositivo",
+      "b": "127 dispositivos",
+      "c": "65535 dispositivos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Usando direcciones de 7 bits se pueden direccionar hasta 127 esclavos."
+  },
+  {
+    "numero": 35,
+    "pregunta": "El registro PC en microcontroladores contiene:",
+    "opciones": {
+      "a": "Datos",
+      "b": "Dirección siguiente instrucción",
+      "c": "Bit de interrupción"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Program Counter."
+  },
+  {
+    "numero": 36,
+    "pregunta": "¿Qué es un sistema “bare-metal”?",
+    "opciones": {
+      "a": "Con RTOS",
+      "b": "Sin sistema operativo (código directo al hardware)",
+      "c": "Con GPU"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Programación sin capas intermedias de SO."
+  },
+  {
+    "numero": 37,
+    "pregunta": "¿Qué periférico mide aceleración?",
+    "opciones": {
+      "a": "LM35",
+      "b": "MPU6050",
+      "c": "HX711"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El MPU6050 incluye acelerómetro y giroscopio."
+  },
+  {
+    "numero": 38,
+    "pregunta": "El consumo energético en un MCU depende en gran medida de:",
+    "opciones": {
+      "a": "Frecuencia del reloj",
+      "b": "Color de los LEDs",
+      "c": "Conector USB"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "A mayor frecuencia, mayor consumo de corriente."
+  },
+  {
+    "numero": 39,
+    "pregunta": "En un MCU, la pila (stack) suele crecer:",
+    "opciones": {
+      "a": "Según arquitectura (comúnmente hacia abajo)",
+      "b": "Solo hacia arriba",
+      "c": "Hacia direcciones fijas"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "La dirección de crecimiento depende de la arquitectura del procesador."
+  },
+  {
+    "numero": 40,
+    "pregunta": "¿Qué protocolo usa “direcciones de 7 o 10 bits”?",
+    "opciones": {
+      "a": "SPI",
+      "b": "I2C",
+      "c": "UART"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "I2C usa direccionamiento para identificar esclavos en el bus."
+  },
+  {
+    "numero": 41,
+    "pregunta": "Usar watchdog timer evita:",
+    "opciones": {
+      "a": "Fallos por software colgado",
+      "b": "Consumo de memoria",
+      "c": "Oscilación de sensores"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Reinicia el MCU si el programa se queda en un bucle infinito inesperado."
+  },
+  {
+    "numero": 42,
+    "pregunta": "Un timer en modo PWM genera:",
+    "opciones": {
+      "a": "Señal analógica",
+      "b": "Señal digital modulada",
+      "c": "Señal AC pura"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Genera una onda cuadrada con ciclo de trabajo variable."
+  },
+  {
+    "numero": 43,
+    "pregunta": "Una ISR debe ser:",
+    "opciones": {
+      "a": "Larga",
+      "b": "Lenta",
+      "c": "Corta y eficiente"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Debe tardar lo mínimo para no bloquear otras tareas críticas."
+  },
+  {
+    "numero": 44,
+    "pregunta": "¿Qué componente/técnica se usa frecuentemente para debouncing digital?",
+    "opciones": {
+      "a": "OR",
+      "b": "NAND",
+      "c": "Flip-Flop o retardos por software"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Sirve para filtrar el ruido de contactos mecánicos."
+  },
+  {
+    "numero": 45,
+    "pregunta": "Los registros especiales (SFR) controlan:",
+    "opciones": {
+      "a": "GPIO, timers, ADC",
+      "b": "Sistema operativo",
+      "c": "BIOS"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Configuran y operan los periféricos del microcontrolador."
+  },
+  {
+    "numero": 46,
+    "pregunta": "El encapsulado DIP se caracteriza por:",
+    "opciones": {
+      "a": "Surface mount",
+      "b": "Doble fila de pines para inserción en placa",
+      "c": "Encapsulado térmico"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Dual In-line Package."
+  },
+  {
+    "numero": 47,
+    "pregunta": "¿Qué mide un encoder rotativo?",
+    "opciones": {
+      "a": "Peso",
+      "b": "Ángulo y pasos de giro",
+      "c": "Corriente AC"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Detecta posición angular y velocidad."
+  },
+  {
+    "numero": 48,
+    "pregunta": "Un “firmware” se define como:",
+    "opciones": {
+      "a": "Programa almacenado en memoria no volátil (Flash)",
+      "b": "Archivo del SO",
+      "c": "Archivo de configuración"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Software de bajo nivel que controla el hardware."
+  },
+  {
+    "numero": 49,
+    "pregunta": "Un pin configurado como “input pull-up”:",
+    "opciones": {
+      "a": "Se conecta a GND",
+      "b": "Usa una resistencia interna conectada a Vcc",
+      "c": "Se desconecta"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Mantiene un nivel alto por defecto si no se conecta nada."
+  },
+  {
+    "numero": 50,
+    "pregunta": "La arquitectura Harvard se usa mucho en MCUs porque:",
+    "opciones": {
+      "a": "Es más compleja",
+      "b": "Permite acceso simultáneo a instrucciones y datos",
+      "c": "No usa buses"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Mejora el rendimiento al poder leer una instrucción y un dato al mismo tiempo."
+  }
+]

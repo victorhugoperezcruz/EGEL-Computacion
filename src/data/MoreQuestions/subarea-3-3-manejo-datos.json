@@ -1,0 +1,551 @@
+[
+  {
+    "numero": "a",
+    "pregunta": "¿Qué característica define a las transacciones ACID?",
+    "opciones": {
+      "a": "Interfaz intuitiva",
+      "b": "Confiabilidad en operaciones críticas",
+      "c": "Consumo alto de CPU"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "ACID garantiza consistencia, aislamiento y durabilidad."
+  },
+  {
+    "numero": "b",
+    "pregunta": "¿Qué normal forma elimina dependencias parciales?",
+    "opciones": {
+      "a": "1FN",
+      "b": "2FN",
+      "c": "3FN"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "2FN elimina dependencias parciales en claves compuestas."
+  },
+  {
+    "numero": "c",
+    "pregunta": "¿Qué algoritmo tiene mejor complejidad promedio?",
+    "opciones": {
+      "a": "Bubble sort",
+      "b": "Quick sort",
+      "c": "Insertion sort"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Quick sort promedio opera en O(n log n)."
+  },
+  {
+    "numero": "d",
+    "pregunta": "¿Qué comando obtiene registros sin duplicados?",
+    "opciones": {
+      "a": "SELECT *",
+      "b": "SELECT DISTINCT",
+      "c": "SELECT UNIQUE"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "DISTINCT elimina filas repetidas en el resultado."
+  },
+  {
+    "numero": "e",
+    "pregunta": "¿Qué estructura ofrece tiempos O(1) promedio?",
+    "opciones": {
+      "a": "Árbol binario",
+      "b": "Tabla hash",
+      "c": "Cola"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Hash map accede por clave casi instantáneamente."
+  },
+  {
+    "numero": "f",
+    "pregunta": "¿Qué cláusula filtra resultados en SQL?",
+    "opciones": {
+      "a": "FROM",
+      "b": "WHERE",
+      "c": "ORDER BY"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "WHERE aplica condiciones lógicas en la consulta."
+  },
+  {
+    "numero": "g",
+    "pregunta": "¿Qué propiedad ACID asegura que no haya efectos intermedios visibles?",
+    "opciones": {
+      "a": "Atomicidad",
+      "b": "Aislamiento",
+      "c": "Durabilidad"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El aislamiento es clave para evitar interferencias."
+  },
+  {
+    "numero": "h",
+    "pregunta": "¿Qué técnica previene redundancia?",
+    "opciones": {
+      "a": "Desnormalización",
+      "b": "Normalización",
+      "c": "Indexación"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Normalizar reduce duplicación y anomalías."
+  },
+  {
+    "numero": "i",
+    "pregunta": "¿Qué es una llave primaria?",
+    "opciones": {
+      "a": "Campo opcional",
+      "b": "Identificador único no nulo",
+      "c": "Dirección física"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Garantiza unicidad y referencia."
+  },
+  {
+    "numero": "j",
+    "pregunta": "¿Qué índice mejora búsquedas por rango?",
+    "opciones": {
+      "a": "Hash",
+      "b": "B-Tree",
+      "c": "Bitmap"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "B-Tree mantiene orden y permite recorridos por rango."
+  },
+  {
+    "numero": "k",
+    "pregunta": "¿Qué algoritmo encuentra rutas más cortas desde un nodo fuente?",
+    "opciones": {
+      "a": "BFS",
+      "b": "Kruskal",
+      "c": "Dijkstra"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Dijkstra calcula distancias mínimas en grafos ponderados."
+  },
+  {
+    "numero": "l",
+    "pregunta": "¿Qué función agrega valores numéricos?",
+    "opciones": {
+      "a": "SUM",
+      "b": "AVG",
+      "c": "COUNT"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "SUM retorna la suma total de la columna."
+  },
+  {
+    "numero": "m",
+    "pregunta": "¿Qué operación une tablas según coincidencia?",
+    "opciones": {
+      "a": "JOIN",
+      "b": "GROUP BY",
+      "c": "LIMIT"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "JOIN combina filas basadas en una condición."
+  },
+  {
+    "numero": "n",
+    "pregunta": "¿Qué estructura se usa en un BFS?",
+    "opciones": {
+      "a": "Pila",
+      "b": "Cola",
+      "c": "Hash"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "BFS explora niveles usando queue."
+  },
+  {
+    "numero": "o",
+    "pregunta": "¿Qué es un grafo dirigido?",
+    "opciones": {
+      "a": "Conexiones sin sentido de dirección",
+      "b": "Aristas con dirección",
+      "c": "Aristas ponderadas únicamente"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Define relaciones con dirección origen–destino."
+  },
+  {
+    "numero": "p",
+    "pregunta": "¿Qué operación calcula el máximo?",
+    "opciones": {
+      "a": "MIN",
+      "b": "AVG",
+      "c": "MAX"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "MAX devuelve el valor más alto de la columna."
+  },
+  {
+    "numero": "q",
+    "pregunta": "¿Qué propiedad ACID garantiza que transacciones completadas persistan?",
+    "opciones": {
+      "a": "Atomicidad",
+      "b": "Durabilidad",
+      "c": "Consistencia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Durabilidad mantiene datos incluso ante fallos."
+  },
+  {
+    "numero": "r",
+    "pregunta": "¿Qué algoritmo construye un árbol de expansión mínima?",
+    "opciones": {
+      "a": "Dijkstra",
+      "b": "Kruskal",
+      "c": "BFS"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Kruskal une los nodos con menor peso sin ciclos."
+  },
+  {
+    "numero": "s",
+    "pregunta": "¿Qué estructura es eficiente para prioridades?",
+    "opciones": {
+      "a": "Heap",
+      "b": "Cola simple",
+      "c": "Set"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Los heaps implementan colas de prioridad."
+  },
+  {
+    "numero": "t",
+    "pregunta": "¿Qué comando ordena resultados?",
+    "opciones": {
+      "a": "FILTER",
+      "b": "ORDER BY",
+      "c": "GROUP BY"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "ORDER BY ordena ascendente o descendente."
+  },
+  {
+    "numero": "u",
+    "pregunta": "¿Qué es una llave foránea?",
+    "opciones": {
+      "a": "Identificador de tabla",
+      "b": "Atributo que referencia otra tabla",
+      "c": "Índice automático"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Relaciona tablas mediante clave primaria referenciada."
+  },
+  {
+    "numero": "v",
+    "pregunta": "¿Qué es una transacción?",
+    "opciones": {
+      "a": "Archivo de respaldo",
+      "b": "Secuencia atómica de operaciones"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Debe completarse íntegramente o revertirse."
+  },
+  {
+    "numero": "w",
+    "pregunta": "¿Qué comando elimina una tabla?",
+    "opciones": {
+      "a": "DROP TABLE",
+      "b": "DELETE FROM",
+      "c": "CLEAR"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "DROP elimina la estructura completa."
+  },
+  {
+    "numero": "x",
+    "pregunta": "¿Qué algoritmo determina si un grafo tiene ciclo?",
+    "opciones": {
+      "a": "Bubble sort",
+      "b": "DFS",
+      "c": "Merge sort"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "DFS detecta ciclos mediante nodos visitados."
+  },
+  {
+    "numero": "y",
+    "pregunta": "¿Qué comando agrupa filas para agregación?",
+    "opciones": {
+      "a": "ORDER BY",
+      "b": "GROUP BY",
+      "c": "HAVING"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "GROUP BY permite operaciones por grupo."
+  },
+  {
+    "numero": "z",
+    "pregunta": "¿Qué tipo de join devuelve solo coincidencias?",
+    "opciones": {
+      "a": "RIGHT JOIN",
+      "b": "FULL OUTER JOIN",
+      "c": "INNER JOIN"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "INNER retorna solo registros relacionados."
+  },
+  {
+    "numero": "aa",
+    "pregunta": "¿Qué estructura representa relaciones muchos a muchos?",
+    "opciones": {
+      "a": "Tabla puente",
+      "b": "Tabla simple",
+      "c": "Atributo único"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Se usa tabla intermedia con claves foráneas."
+  },
+  {
+    "numero": "bb",
+    "pregunta": "¿Qué algoritmo recorre todos los nodos una sola vez de manera óptima?",
+    "opciones": {
+      "a": "BFS",
+      "b": "DFS",
+      "c": "Ambos"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Ambos visitan todos los nodos sin repeticiones."
+  },
+  {
+    "numero": "cc",
+    "pregunta": "¿Qué comando agrega condiciones a grupos?",
+    "opciones": {
+      "a": "HAVING",
+      "b": "WHERE",
+      "c": "LIMIT"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "HAVING filtra grupos formados con GROUP BY."
+  },
+  {
+    "numero": "dd",
+    "pregunta": "¿Qué estructura almacena datos jerárquicos JSON?",
+    "opciones": {
+      "a": "Arreglo simple",
+      "b": "Árbol",
+      "c": "Tabla hash"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Los árboles representan datos anidados."
+  },
+  {
+    "numero": "ee",
+    "pregunta": "¿Qué algoritmo encuentra un MST con enfoque en nodos?",
+    "opciones": {
+      "a": "Prim",
+      "b": "Kruskal",
+      "c": "BFS"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Prim empieza en un nodo y expande el MST."
+  },
+  {
+    "numero": "ff",
+    "pregunta": "¿Qué comando cuenta filas?",
+    "opciones": {
+      "a": "LENGTH",
+      "b": "COUNT",
+      "c": "SUM"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "COUNT devuelve número de registros."
+  },
+  {
+    "numero": "gg",
+    "pregunta": "¿Qué técnica reduce tiempos de consulta?",
+    "opciones": {
+      "a": "Índices",
+      "b": "Normalización extrema",
+      "c": "Auto-joins"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Los índices aceleran búsqueda y filtrado."
+  },
+  {
+    "numero": "hh",
+    "pregunta": "¿Cuál es la complejidad de búsqueda en lista desordenada?",
+    "opciones": {
+      "a": "O(1)",
+      "b": "O(n)",
+      "c": "O(log n)"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Requiere recorrer toda la lista."
+  },
+  {
+    "numero": "ii",
+    "pregunta": "¿Qué garantiza consistencia en una transacción?",
+    "opciones": {
+      "a": "Aislamiento",
+      "b": "Consistencia",
+      "c": "Durabilidad"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Asegura que datos pasen de un estado válido a otro."
+  },
+  {
+    "numero": "jj",
+    "pregunta": "¿Qué es una vista?",
+    "opciones": {
+      "a": "Copia física",
+      "b": "Consulta almacenada",
+      "c": "Archivo externo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Una vista ofrece datos derivados de tablas."
+  },
+  {
+    "numero": "kk",
+    "pregunta": "¿Qué algoritmo determina conectividad en un grafo?",
+    "opciones": {
+      "a": "Floyd-Warshall",
+      "b": "DFS",
+      "c": "Merge"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "DFS detecta componentes conectados."
+  },
+  {
+    "numero": "ll",
+    "pregunta": "¿Qué comando actualiza registros?",
+    "opciones": {
+      "a": "UPDATE",
+      "b": "MODIFY",
+      "c": "CHANGE"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "UPDATE modifica columnas específicas."
+  },
+  {
+    "numero": "mm",
+    "pregunta": "¿Qué operación SQL combina resultados de varias consultas?",
+    "opciones": {
+      "a": "UNION",
+      "b": "GROUP",
+      "c": "ALL"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "UNION une resultados eliminando duplicados."
+  },
+  {
+    "numero": "nn",
+    "pregunta": "¿Qué estructura mantiene orden y permite búsquedas logarítmicas?",
+    "opciones": {
+      "a": "Heap",
+      "b": "Árbol AVL",
+      "c": "Hash table"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "AVL mantiene balance y búsquedas O(log n)."
+  },
+  {
+    "numero": "oo",
+    "pregunta": "¿Qué comando crea una tabla?",
+    "opciones": {
+      "a": "MAKE TABLE",
+      "b": "CREATE TABLE",
+      "c": "NEW TABLE"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "CREATE TABLE define estructura y columnas."
+  },
+  {
+    "numero": "pp",
+    "pregunta": "¿Qué es cardinalidad?",
+    "opciones": {
+      "a": "Valor del bit",
+      "b": "Cantidad de registros",
+      "c": "Longitud en bytes"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Mide el número de filas en una tabla."
+  },
+  {
+    "numero": "qq",
+    "pregunta": "¿Qué algoritmo calcula caminos mínimos entre todos los nodos?",
+    "opciones": {
+      "a": "Dijkstra",
+      "b": "Floyd-Warshall",
+      "c": "Kruskal"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Floyd-Warshall usa programación dinámica."
+  },
+  {
+    "numero": "rr",
+    "pregunta": "¿Qué comando elimina filas específicas?",
+    "opciones": {
+      "a": "REMOVE",
+      "b": "DELETE",
+      "c": "DESTROY"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "DELETE borra registros con condiciones."
+  },
+  {
+    "numero": "ss",
+    "pregunta": "¿Qué tipo de índice funciona bien con columnas booleanas?",
+    "opciones": {
+      "a": "Bitmap",
+      "b": "B-Tree",
+      "c": "Hash"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Bitmap es eficiente para baja cardinalidad."
+  },
+  {
+    "numero": "tt",
+    "pregunta": "¿Qué mide el análisis Big-O?",
+    "opciones": {
+      "a": "Datos nulos",
+      "b": "Complejidad temporal o espacial",
+      "c": "Ancho de banda"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Big-O evalúa eficiencia de algoritmos."
+  },
+  {
+    "numero": "uu",
+    "pregunta": "¿Qué operación SQL devuelve registros comunes?",
+    "opciones": {
+      "a": "INTERSECT",
+      "b": "UNION",
+      "c": "DIFFERENCE"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "INTERSECT deja solo coincidencias."
+  },
+  {
+    "numero": "vv",
+    "pregunta": "¿Qué técnica evita bloqueos de lectura?",
+    "opciones": {
+      "a": "Lectura sucia",
+      "b": "Control de concurrencia",
+      "c": "Ignorar locks"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Gestiona accesos concurrentes seguros."
+  },
+  {
+    "numero": "ww",
+    "pregunta": "¿Qué algoritmo detecta ciclos en grafo dirigido?",
+    "opciones": {
+      "a": "BFS",
+      "b": "DFS con stack de recursion",
+      "c": "Dijkstra"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El stack permite detectar retrocesos a nodos activos."
+  },
+  {
+    "numero": "xx",
+    "pregunta": "¿Qué comando inserta registros?",
+    "opciones": {
+      "a": "ADD ROW",
+      "b": "INSERT INTO",
+      "c": "PUT"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "INSERT INTO agrega filas nuevas a la tabla."
+  }
+]

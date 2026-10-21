@@ -1,0 +1,652 @@
+[
+  {
+    "id": "sd_001",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "pregunta": "Durante el diseño de una tarjeta de adquisición de datos para un laboratorio, se requiere procesar una variable física que varía de forma continua en amplitud y periodo a lo largo del tiempo, para luego ingresarla a un sistema digital que solo opera con dos estados lógicos discretos (0 y 1). ¿Qué tipo de señales están involucradas en la entrada del sensor y en la etapa de procesamiento lógico respectivamente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Señal analógica continua en la entrada del sensor y señal digital discontinua en la etapa de procesamiento."
+      },
+      {
+        "id": "B",
+        "texto": "Señal digital discreta en la entrada del sensor y señal analógica senoidal en la etapa de procesamiento."
+      },
+      {
+        "id": "C",
+        "texto": "Señal de corriente directa pulsante en el sensor y señal de corriente alterna en la CPU."
+      },
+      {
+        "id": "D",
+        "texto": "Señal binaria codificada en la entrada y señal continua de infinitos valores en los registros internos."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Una señal analógica es continua y puede tomar infinitos valores (variando en amplitud y periodo), mientras que una señal digital es discontinua y solo toma dos valores discretos: 0 y 1."
+  },
+  {
+    "id": "sd_002",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "pregunta": "En una fuente de alimentación lineal para un sistema digital, se necesita convertir la tensión de red (CA) en un flujo de carga eléctrica unidireccional constante (CC). Se requiere un semiconductor de dos terminales que permita el paso de la corriente en un solo sentido y un elemento pasivo que almacene energía en un campo eléctrico. ¿Qué combinación cumple estos requerimientos?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Diodos para la rectificación unidireccional y capacitores (condensadores) para almacenar energía en un campo eléctrico."
+      },
+      {
+        "id": "B",
+        "texto": "Transistores como elementos pasivos y resistencias para almacenar energía en un campo magnético."
+      },
+      {
+        "id": "C",
+        "texto": "Resistencias unidireccionales y diodos para almacenar carga eléctrica."
+      },
+      {
+        "id": "D",
+        "texto": "Inductores para bloquear CD y termistores para rectificar CA."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El diodo permite la circulación de corriente en un solo sentido (rectificación) y el capacitor almacena energía sustentando un campo eléctrico (filtrado)."
+  },
+  {
+    "id": "sd_003",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "pregunta": "Un ingeniero de hardware necesita activar un relevador de potencia a partir de la señal de salida de baja corriente de una compuerta lógica. Para ello selecciona un dispositivo electrónico semiconductor de tres terminales capaz de producir una señal de salida amplificada o actuar como conmutador en respuesta a una señal de entrada. ¿Qué componente debe emplear?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Un capacitor electrolítico."
+      },
+      {
+        "id": "B",
+        "texto": "Un transistor."
+      },
+      {
+        "id": "C",
+        "texto": "Una resistencia óhmica."
+      },
+      {
+        "id": "D",
+        "texto": "Un diodo rectificador simple."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "El transistor es un dispositivo semiconductor utilizado para producir una señal de salida en respuesta a otra de entrada, cumpliendo funciones de amplificador, oscilador o conmutador."
+  },
+  {
+    "id": "sd_004",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "En el diseño de la arquitectura de una computadora básica, se distinguen tres bloques funcionales principales para recibir datos, procesarlos mediante secuencias de instrucciones y entregar información útil al exterior. ¿Cuáles son estas tres partes fundamentales y cuál interpreta las instrucciones?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Memoria, CPU y Dispositivos de Entrada/Salida; siendo la CPU la encargada de interpretar las instrucciones y procesar los datos."
+      },
+      {
+        "id": "B",
+        "texto": "Compilador, Bus de Datos y Fuente de Poder; siendo la Memoria RAM la que interpreta las instrucciones."
+      },
+      {
+        "id": "C",
+        "texto": "ALU, Teclado y Monitor; siendo el Dispositivo de Entrada/Salida el que decodifica el código máquina."
+      },
+      {
+        "id": "D",
+        "texto": "Registros, Caché y Disco Duro; siendo el Disco Duro el responsable de decodificar las instrucciones."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Una computadora está conformada por Memoria, CPU y Dispositivos de Entrada/Salida. La CPU interpreta las instrucciones del programa y procesa los datos."
+  },
+  {
+    "id": "sd_005",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "Al analizar el circuito lógico de un sistema de seguridad industrial, se observa que la salida de alarma depende única y exclusivamente de la combinación de los niveles lógicos presentes en sus entradas en ese instante, sin poseer elementos de memoria. ¿A qué clasificación de circuito digital corresponde?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Circuito lógico secuencial síncrono."
+      },
+      {
+        "id": "B",
+        "texto": "Circuito lógico combinacional."
+      },
+      {
+        "id": "C",
+        "texto": "Autómata de estados finitos tipo Moore."
+      },
+      {
+        "id": "D",
+        "texto": "Registro de desplazamiento con flip-flops JK."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "En los circuitos lógicos combinacionales las salidas dependen exclusivamente de la combinación actual de las entradas, sin almacenar estados previos."
+  },
+  {
+    "id": "sd_006",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "Se requiere simplificar la función booleana F(A,B) = A·B + A·B' para minimizar el número de compuertas lógicas en una implementación física. Aplicando los teoremas del Álgebra de Boole, ¿cuál es la expresión mínima equivalente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "F = A"
+      },
+      {
+        "id": "B",
+        "texto": "F = B"
+      },
+      {
+        "id": "C",
+        "texto": "F = A + B"
+      },
+      {
+        "id": "D",
+        "texto": "F = 1"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Factorizando: F = A·(B + B'). Como B + B' = 1, queda F = A·1 = A."
+  },
+  {
+    "id": "sd_007",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "Dentro de la CPU, se requiere ejecutar una instrucción que realiza una suma en complemento a dos y una comparación lógica bit a bit (AND), actualizando el registro de banderas (Zero, Carry, Overflow). ¿Qué subcomponente interno realiza directamente estas operaciones?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "La Unidad Aritmético-Lógica (ALU)."
+      },
+      {
+        "id": "B",
+        "texto": "El Contador de Programa (PC)."
+      },
+      {
+        "id": "C",
+        "texto": "El Bus de Direcciones."
+      },
+      {
+        "id": "D",
+        "texto": "El Controlador DMA."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La ALU es el circuito digital dentro de la CPU encargado de realizar operaciones aritméticas y lógicas entre los operandos."
+  },
+  {
+    "id": "sd_008",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "Un procesador posee un bus de direcciones de 16 bits y un bus de datos de 8 bits. ¿Cuál es la capacidad máxima de posiciones de memoria que puede direccionar de manera directa?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "65,536 posiciones de memoria (64 KB)."
+      },
+      {
+        "id": "B",
+        "texto": "256 posiciones de memoria (256 Bytes)."
+      },
+      {
+        "id": "C",
+        "texto": "1,048,576 posiciones de memoria (1 MB)."
+      },
+      {
+        "id": "D",
+        "texto": "16,384 posiciones de memoria (16 KB)."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Con un bus de direcciones de N = 16 bits, el espacio direccionable es 2^16 = 65,536 posiciones."
+  },
+  {
+    "id": "sd_009",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "pregunta": "En un circuito limitador de corriente para un diodo LED alimentado por 5 V, circula una corriente continua de 10 mA y la caída de tensión en la resistencia es de 3 V. ¿Cuál es el valor de la resistencia y su unidad en el Sistema Internacional?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "300 Ohmios (Ω)."
+      },
+      {
+        "id": "B",
+        "texto": "0.03 Amperios (A)."
+      },
+      {
+        "id": "C",
+        "texto": "30 Voltios (V)."
+      },
+      {
+        "id": "D",
+        "texto": "3,000 Culombios por segundo (C/s)."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Por Ley de Ohm: R = V / I = 3 V / 0.010 A = 300 Ω."
+  },
+  {
+    "id": "sd_010",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "Se está diseñando un contador binario síncrono de 4 bits. Para almacenar cada bit de estado y cambiar su valor únicamente en el flanco de subida del reloj (CLK), ¿qué elemento básico de memoria secuencial debe emplearse por cada bit?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Un Flip-Flop (biestable) disparado por flanco."
+      },
+      {
+        "id": "B",
+        "texto": "Un multiplexor de 4 a 1 entradas."
+      },
+      {
+        "id": "C",
+        "texto": "Un codificador de prioridad."
+      },
+      {
+        "id": "D",
+        "texto": "Una compuerta XOR de dos entradas."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Los Flip-Flops son elementos secuenciales biestables capaces de almacenar 1 bit y sincronizar sus cambios con el flanco de reloj."
+  },
+  {
+    "id": "sd_011",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "Según los Teoremas de De Morgan en el diseño lógico digital, ¿a qué equivale la negación de un producto lógico (A · B)'?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "A' + B' (la suma lógica de las variables negadas individualmente)."
+      },
+      {
+        "id": "B",
+        "texto": "A' · B' (el producto de las variables negadas)."
+      },
+      {
+        "id": "C",
+        "texto": "A + B (la suma directa sin negación)."
+      },
+      {
+        "id": "D",
+        "texto": "A ⊕ B (la operación OR exclusiva)."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Por la Primera Ley de De Morgan, el complemento de un producto de variables es igual a la suma de los complementos individuales: (A·B)' = A' + B'."
+  },
+  {
+    "id": "sd_012",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "En un mapa de Karnaugh de 4 variables (A, B, C, D), se logra agrupar un bloque adyacente de 8 celdas con valor '1'. ¿Cuántas variables se eliminan en el término producto resultante y cuántas literales tendrá dicho término?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Se eliminan 3 variables y el término resultante tendrá solo 1 literal."
+      },
+      {
+        "id": "B",
+        "texto": "Se elimina 1 variable y el término resultante tendrá 3 literales."
+      },
+      {
+        "id": "C",
+        "texto": "Se eliminan 2 variables y el término resultante tendrá 2 literales."
+      },
+      {
+        "id": "D",
+        "texto": "No se elimina ninguna variable; quedan las 4 literales."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "En un mapa de Karnaugh, un grupo de 2^k celdas adyacentes elimina k variables. Como 8 = 2^3, se eliminan 3 variables y de las 4 originales queda únicamente 1 literal."
+  },
+  {
+    "id": "sd_013",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "¿Cuál es la representación en complemento a 2 de 8 bits del número decimal negativo -45?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "11010011"
+      },
+      {
+        "id": "B",
+        "texto": "10101101"
+      },
+      {
+        "id": "C",
+        "texto": "11010010"
+      },
+      {
+        "id": "D",
+        "texto": "00101101"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "+45 en binario de 8 bits es 00101101. Invirtiendo los bits (complemento a 1) se obtiene 11010010, y sumando 1 se obtiene 11010011."
+  },
+  {
+    "id": "sd_014",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "Un circuito digital requiere seleccionar una de 8 líneas de datos de entrada y dirigirla hacia una única línea de salida utilizando 3 líneas de selección (S2, S1, S0). ¿Qué dispositivo combinacional cumple esta función?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Multiplexor 8 a 1."
+      },
+      {
+        "id": "B",
+        "texto": "Decodificador 3 a 8."
+      },
+      {
+        "id": "C",
+        "texto": "Sumador completo (Full Adder)."
+      },
+      {
+        "id": "D",
+        "texto": "Contador en anillo de 8 bits."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Un multiplexor (MUX) 2^n a 1 selecciona una entre 2^n entradas mediante n líneas de selección y la encamina a una sola salida."
+  },
+  {
+    "id": "sd_015",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "pregunta": "En un amplificador con transistor bipolar (BJT) usado como conmutador digital para encender una carga, ¿en qué dos regiones de operación debe trabajar el transistor para representar los estados de corte (apagado) y conducción máxima (encendido)?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Región de Corte y Región de Saturación."
+      },
+      {
+        "id": "B",
+        "texto": "Región Activa Directa y Región de Ruptura Avalancha."
+      },
+      {
+        "id": "C",
+        "texto": "Región Activa Inversa y Región Óhmica."
+      },
+      {
+        "id": "D",
+        "texto": "Región Zener y Región de Estrangulamiento."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Para operar como interruptor digital, un BJT conmuta entre Corte (corriente de colector nula) y Saturación (VCE mínima cercana a 0.2 V)."
+  },
+  {
+    "id": "sd_016",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "¿Qué compuerta lógica se considera 'universal' debido a que cualquier función booleana (NOT, AND, OR, XOR) puede construirse utilizando únicamente compuertas de este tipo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "NAND (o NOR)."
+      },
+      {
+        "id": "B",
+        "texto": "AND exclusivamente."
+      },
+      {
+        "id": "C",
+        "texto": "XOR exclusivamente."
+      },
+      {
+        "id": "D",
+        "texto": "Buffer tri-estado."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Las compuertas NAND y NOR poseen completitud funcional (son universales), por lo que cualquier circuito combinacional o secuencial puede implementarse solo con ellas."
+  },
+  {
+    "id": "sd_017",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "En el diseño de un sumador binario de 4 bits en cascada (Ripple Carry Adder), cada etapa requiere sumar dos bits de entrada (Ai, Bi) junto con el acarreo de entrada de la etapa previa (Cin), produciendo una suma (Si) y un acarreo de salida (Cout). ¿Qué circuito combinacional debe usarse en cada etapa?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Un Sumador Completo (Full Adder)."
+      },
+      {
+        "id": "B",
+        "texto": "Un Semisumador (Half Adder) de 2 entradas."
+      },
+      {
+        "id": "C",
+        "texto": "Un Flip-Flop tipo T."
+      },
+      {
+        "id": "D",
+        "texto": "Un comparador de magnitud de 1 bit."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El Sumador Completo (Full Adder) suma 3 bits de entrada (A, B y Cin) y genera Suma (S = A ⊕ B ⊕ Cin) y Acarreo de salida (Cout)."
+  },
+  {
+    "id": "sd_018",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "En un Flip-Flop JK sincronizado por flanco de subida, si ambas entradas se colocan en nivel alto (J = 1 y K = 1), ¿qué ocurre con la salida Q en el siguiente pulso de reloj?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "La salida Q se complementa o bascula (Toggle: Q(t+1) = Q'(t))."
+      },
+      {
+        "id": "B",
+        "texto": "La salida Q permanece sin cambio (Estado de memoria)."
+      },
+      {
+        "id": "C",
+        "texto": "La salida Q se fuerza a 0 lógico (Reset)."
+      },
+      {
+        "id": "D",
+        "texto": "El Flip-Flop entra en un estado prohibido o indeterminado."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "A diferencia del latch SR (donde S=1, R=1 es inválido), en el Flip-Flop JK la condición J=1 y K=1 produce el estado de basculación o complemento (Toggle)."
+  },
+  {
+    "id": "sd_019",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "¿Cuál es la diferencia fundamental entre la Arquitectura Von Neumann y la Arquitectura Harvard en el diseño de procesadores?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Von Neumann utiliza una única memoria y un mismo bus para instrucciones y datos, mientras que Harvard dispone de memorias y buses físicamente separados para instrucciones y para datos."
+      },
+      {
+        "id": "B",
+        "texto": "Von Neumann no posee Unidad de Control y Harvard carece de ALU."
+      },
+      {
+        "id": "C",
+        "texto": "Harvard solo permite programación en lenguaje ensamblador y Von Neumann solo en alto nivel."
+      },
+      {
+        "id": "D",
+        "texto": "Von Neumann ejecuta instrucciones en paralelo sin reloj y Harvard es puramente analógica."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La arquitectura Harvard separa las memorias y buses de programa y datos, permitiendo el acceso simultáneo a la instrucción y al operando en un solo ciclo."
+  },
+  {
+    "id": "sd_020",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "Para transferir grandes bloques de datos entre un controlador de disco de alta velocidad y la memoria RAM principal sin que la CPU tenga que intervenir en la copia de cada byte, ¿qué técnica de Entrada/Salida se emplea?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Acceso Directo a Memoria (DMA - Direct Memory Access)."
+      },
+      {
+        "id": "B",
+        "texto": "Entrada/Salida programada por encuesta (Polling)."
+      },
+      {
+        "id": "C",
+        "texto": "Interrupción por software (Trap) byte por byte."
+      },
+      {
+        "id": "D",
+        "texto": "Direccionamiento inmediato en registros de segmento."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El controlador DMA toma el control temporal de los buses del sistema para transferir bloques completos entre el periférico y la RAM, avisando a la CPU mediante una sola interrupción al finalizar."
+  },
+  {
+    "id": "sd_021",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "pregunta": "En un circuito divisor de tensión formado por dos resistencias en serie R1 = 2 kΩ y R2 = 3 kΩ conectadas a una fuente de 10 V de corriente directa, ¿cuál es el voltaje medido en las terminales de la resistencia R2?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "6 V"
+      },
+      {
+        "id": "B",
+        "texto": "4 V"
+      },
+      {
+        "id": "C",
+        "texto": "5 V"
+      },
+      {
+        "id": "D",
+        "texto": "3.33 V"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Por la regla del divisor de tensión: V_R2 = Vin · [R2 / (R1 + R2)] = 10 V · [3 kΩ / (2 kΩ + 3 kΩ)] = 10 · (3/5) = 6 V."
+  },
+  {
+    "id": "sd_022",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "pregunta": "Se requiere regular el voltaje de referencia de un circuito analógico a 5.1 V constantes a pesar de pequeñas variaciones en la corriente de carga. ¿Qué dispositivo semiconductor operado en su región de ruptura inversa controlada está diseñado específicamente para esta función?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Diodo Zener."
+      },
+      {
+        "id": "B",
+        "texto": "Diodo emisor de luz (LED)."
+      },
+      {
+        "id": "C",
+        "texto": "Diodo Varactor."
+      },
+      {
+        "id": "D",
+        "texto": "Fotodiodo PIN."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El diodo Zener está diseñado para trabajar polarizado inversamente en su tensión de ruptura Zener (Vz), manteniendo un voltaje prácticamente constante entre sus terminales."
+  },
+  {
+    "id": "sd_023",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "En un procesador con segmentación de cauce (Pipelining) de 5 etapas (IF, ID, EX, MEM, WB), una instrucción intenta utilizar como operando el resultado de la instrucción inmediatamente anterior que aún no ha llegado a la etapa de escritura (WB). ¿Cómo se denomina este conflicto y qué técnica de hardware lo mitiga sin detener siempre el pipeline?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Riesgo de datos (Data Hazard / RAW) y se mitiga mediante adelantamiento o cortocircuito de datos (Forwarding / Bypassing)."
+      },
+      {
+        "id": "B",
+        "texto": "Riesgo estructural de memoria virtual y se mitiga formateando la caché L3."
+      },
+      {
+        "id": "C",
+        "texto": "Interbloqueo de procesos (Deadlock) y se resuelve reiniciando el contador de programa."
+      },
+      {
+        "id": "D",
+        "texto": "Desbordamiento de pila (Stack Overflow) y se corrige desactivando la ALU."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Un riesgo de datos Read-After-Write (RAW) ocurre cuando una instrucción depende del resultado de una previa en el pipeline; la unidad de Forwarding encamina el resultado directamente desde la salida de la ALU hacia la entrada de la siguiente instrucción."
+  },
+  {
+    "id": "sd_024",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "pregunta": "¿Qué principio explica el éxito de la memoria Caché al aprovechar que un programa tiende a reutilizar las mismas direcciones de memoria recientemente accedidas y las direcciones contiguas en el corto plazo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Principio de Localidad (Localidad Temporal y Localidad Espacial)."
+      },
+      {
+        "id": "B",
+        "texto": "Teorema de muestreo de Nyquist-Shannon."
+      },
+      {
+        "id": "C",
+        "texto": "Ley de Amdahl del paralelismo infinito."
+      },
+      {
+        "id": "D",
+        "texto": "Principio de exclusión mutua de Peterson."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La localidad temporal indica que un dato referenciado volverá a ser usado pronto; la localidad espacial indica que las posiciones cercanas en memoria serán accedidas en breve (como arreglos o código secuencial)."
+  },
+  {
+    "id": "sd_025",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "pregunta": "En un convertidor Analógico-Digital (ADC) de 10 bits con voltaje de referencia Vref = 5.0 V, ¿cuál es aproximadamente la resolución (valor del bit menos significativo, 1 LSB) del convertidor?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "4.88 mV (5 V / 1024 niveles)."
+      },
+      {
+        "id": "B",
+        "texto": "0.50 V (5 V / 10 niveles)."
+      },
+      {
+        "id": "C",
+        "texto": "19.53 mV (5 V / 256 niveles)."
+      },
+      {
+        "id": "D",
+        "texto": "1.22 mV (5 V / 4096 niveles)."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Un ADC de N = 10 bits tiene 2^10 = 1024 niveles de cuantización. La resolución por escalón es Vref / 2^10 = 5.0 V / 1024 ≈ 4.88 mV."
+  }
+]

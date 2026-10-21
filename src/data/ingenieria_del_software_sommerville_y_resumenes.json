@@ -1,0 +1,392 @@
+[
+  {
+    "id": "sw_001",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "pregunta": "Durante el desarrollo de un sistema bancario, el equipo revisa estáticamente los documentos de arquitectura para comprobar que el software se construye conforme a la especificación técnica; luego ejecuta el sistema con usuarios reales para confirmar que resuelve las necesidades del cliente. Según Sommerville, ¿a qué procesos corresponden estas actividades?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Verificación ('¿estamos construyendo el producto correctamente?') y Validación ('¿estamos construyendo el producto correcto?')."
+      },
+      {
+        "id": "B",
+        "texto": "Validación estática de código y Verificación de aceptación del usuario."
+      },
+      {
+        "id": "C",
+        "texto": "Depuración correctiva y Refactorización preventiva."
+      },
+      {
+        "id": "D",
+        "texto": "Pruebas de regresión y Métricas orientadas al tamaño LDC."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La Verificación comprueba la conformidad con la especificación técnica y la Validación asegura que el software satisfaga las expectativas reales del usuario."
+  },
+  {
+    "id": "sw_002",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "pregunta": "Se evalúa la calidad de un sistema hospitalario midiendo: (1) la capacidad de mantener su nivel de desempeño bajo condiciones establecidas durante un periodo determinado, y (2) la facilidad con la que puede ser transferido de un servidor Linux a Windows Server. ¿Qué atributos de calidad se evalúan?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Fiabilidad y Portabilidad."
+      },
+      {
+        "id": "B",
+        "texto": "Usabilidad y Mantenibilidad."
+      },
+      {
+        "id": "C",
+        "texto": "Eficiencia e Integridad."
+      },
+      {
+        "id": "D",
+        "texto": "Funcionalidad y Flexibilidad."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La Fiabilidad mide la capacidad de mantener el nivel de prestación durante un periodo establecido; la Portabilidad mide la facilidad de transferir el sistema a otra plataforma."
+  },
+  {
+    "id": "sw_003",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "pregunta": "Durante el modelado UML de una plataforma de comercio electrónico se requieren tres artefactos: (1) capturar los requerimientos funcionales mostrando interacciones con actores externos, (2) representar la estructura estática de clases y métodos, y (3) detallar el orden temporal de mensajes entre objetos durante el pago. ¿Qué diagramas UML deben elaborarse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "(1) Diagrama de Casos de Uso, (2) Diagrama de Clases y (3) Diagrama de Secuencia."
+      },
+      {
+        "id": "B",
+        "texto": "(1) Diagrama de Clases, (2) Diagrama de Despliegue y (3) Diagrama de Casos de Uso."
+      },
+      {
+        "id": "C",
+        "texto": "(1) Diagrama de Secuencia, (2) Diagrama de Estados y (3) Diagrama de Componentes."
+      },
+      {
+        "id": "D",
+        "texto": "(1) Diagrama de Colaboración, (2) Diagrama de Actividades y (3) Diagrama de Paquetes."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Casos de Uso captura requerimientos externos, Clases modela la estructura estática y Secuencia representa el orden temporal de interacción entre objetos."
+  },
+  {
+    "id": "sw_004",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "pregunta": "Un programador detecta una inconformidad en el cálculo de impuestos durante las revisiones internas antes de liberar la versión; posteriormente, tras poner el sistema en producción, un usuario final reporta un fallo al exportar reportes. Según las métricas del software, ¿cómo se denominan ambos eventos?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "El primero es un Error (descubierto antes de entregar al usuario final) y el segundo es un Defecto (descubierto tras entregar el producto al usuario final)."
+      },
+      {
+        "id": "B",
+        "texto": "El primero es un Indicador cuantitativo y el segundo es una Medida orientada a la función."
+      },
+      {
+        "id": "C",
+        "texto": "El primero es un Defecto de producción y el segundo es una Métrica de Halstead."
+      },
+      {
+        "id": "D",
+        "texto": "Ambos son Medidas Directas de Líneas de Código (LDC)."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "En aseguramiento de calidad, un Error se detecta antes de la entrega al cliente y un Defecto se manifiesta una vez entregado el producto al usuario final."
+  },
+  {
+    "id": "sw_005",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "pregunta": "Un equipo prueba los componentes de más bajo nivel de forma aislada y luego los combina progresivamente hacia arriba siguiendo las ramas de dependencia hasta llegar a la interfaz principal. ¿Qué estrategia de pruebas están aplicando?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Pruebas unitarias seguidas de pruebas de integración incremental ascendente (Bottom-Up)."
+      },
+      {
+        "id": "B",
+        "texto": "Pruebas de integración incremental descendente (Top-Down) con stubs."
+      },
+      {
+        "id": "C",
+        "texto": "Revisión estática informal sin ejecución de código."
+      },
+      {
+        "id": "D",
+        "texto": "Pruebas de aceptación alfa exclusivamente."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Las pruebas unitarias validan cada módulo aislado y la integración incremental ascendente avanza desde los módulos base hacia la raíz de dependencias."
+  },
+  {
+    "id": "sw_006",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "pregunta": "Durante la construcción de software, el líder técnico establece: escribir código sencillo, diseñar pensando en futuras actualizaciones, preparar el código para pruebas posteriores y apegarse a reglas de codificación e ISO/IEEE. ¿Qué principios de construcción se aplican?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Minimizar la complejidad, anticipar cambios, pensar en la verificación posterior y aplicar estándares."
+      },
+      {
+        "id": "B",
+        "texto": "Maximizar el acoplamiento, reducir la cohesión y omitir el manejo de excepciones."
+      },
+      {
+        "id": "C",
+        "texto": "Congelar requerimientos permanentemente y evitar bibliotecas reutilizables."
+      },
+      {
+        "id": "D",
+        "texto": "Priorizar velocidad de escritura sobre legibilidad y eliminar aserciones."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Son los 4 principios de construcción de software del Resumen 3: minimizar complejidad, anticipar cambios, pensar en la verificación posterior y aplicar estándares."
+  },
+  {
+    "id": "sw_007",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "pregunta": "En la especificación de un expediente clínico electrónico se incluyen: (1) 'El sistema permitirá al médico consultar alergias por CURP' y (2) 'El tiempo de respuesta no excederá 1.5 segundos con 500 usuarios concurrentes'. Según Sommerville, ¿cómo se clasifican?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "El primero es un requerimiento funcional y el segundo es un requerimiento no funcional (rendimiento)."
+      },
+      {
+        "id": "B",
+        "texto": "Ambos son requerimientos funcionales de dominio."
+      },
+      {
+        "id": "C",
+        "texto": "El primero es no funcional de usabilidad y el segundo es funcional."
+      },
+      {
+        "id": "D",
+        "texto": "Ambos son métricas indirectas de Halstead."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Los requerimientos funcionales describen qué hace el sistema; los no funcionales imponen restricciones de rendimiento, seguridad, fiabilidad o disponibilidad."
+  },
+  {
+    "id": "sw_008",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "pregunta": "El gobierno actualiza las leyes fiscales y el equipo modifica los módulos de facturación de un ERP para cumplir la nueva normativa sin que hubiera fallas previas. ¿Qué tipo de mantenimiento de software se realiza?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Mantenimiento adaptativo."
+      },
+      {
+        "id": "B",
+        "texto": "Mantenimiento correctivo de emergencia."
+      },
+      {
+        "id": "C",
+        "texto": "Pruebas unitarias de caja blanca."
+      },
+      {
+        "id": "D",
+        "texto": "Retiro de sistema legado."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El mantenimiento adaptativo adecua el software a cambios en su entorno externo (legislación, sistema operativo o hardware)."
+  },
+  {
+    "id": "sw_009",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "pregunta": "En las métricas de ciencia del software de Halstead (Medidas LDC del Resumen 2), se definen cuatro conteos base en el código fuente: n1 (operadores distintos), n2 (operandos distintos), N1 (total de operadores) y N2 (total de operandos). ¿Cómo se calculan el Vocabulario del programa (n) y la Longitud del programa (N)?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Vocabulario n = n1 + n2, y Longitud N = N1 + N2."
+      },
+      {
+        "id": "B",
+        "texto": "Vocabulario n = N1 · N2, y Longitud N = n1 - n2."
+      },
+      {
+        "id": "C",
+        "texto": "Vocabulario n = N1 / n1, y Longitud N = N2 / n2."
+      },
+      {
+        "id": "D",
+        "texto": "Vocabulario n = n1^2, y Longitud N = n2^2."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "En las métricas de Halstead, el vocabulario del programa es la suma de operadores y operandos únicos (n = n1 + n2) y la longitud total es N = N1 + N2."
+  },
+  {
+    "id": "sw_010",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "pregunta": "Se diseña un sistema empresarial donde múltiples subsistemas independientes necesitan acceder y actualizar un conjunto grande de datos compartidos centralizados. Según los estilos arquitectónicos descritos por Sommerville, ¿qué modelo arquitectónico es el más adecuado?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Arquitectura centrada en datos (Modelo de Repositorio)."
+      },
+      {
+        "id": "B",
+        "texto": "Arquitectura de Tuberías y Filtros (Pipe and Filter) sin estado compartido."
+      },
+      {
+        "id": "C",
+        "texto": "Sistema embebido de lazo abierto sin almacenamiento."
+      },
+      {
+        "id": "D",
+        "texto": "Arquitectura punto a punto desconectada."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "En el modelo de Repositorio todos los datos compartidos residen en una base de datos central accesible por todos los subsistemas."
+  },
+  {
+    "id": "sw_011",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "pregunta": "Para calcular el número mínimo de caminos linealmente independientes que deben probarse en una prueba de caja blanca (camino básico) de una función que contiene 4 decisiones condicionales (`if` / `while`) simples, se utiliza la Complejidad Ciclomática de McCabe V(G) = P + 1 (donde P es el número de nodos predicado). ¿Cuál es el valor de V(G)?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "5 caminos independientes."
+      },
+      {
+        "id": "B",
+        "texto": "2 caminos independientes."
+      },
+      {
+        "id": "C",
+        "texto": "16 caminos independientes."
+      },
+      {
+        "id": "D",
+        "texto": "1 camino independiente."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La complejidad ciclomática V(G) = P + 1 = 4 + 1 = 5 indica la cota superior de casos de prueba necesarios para garantizar cobertura de todas las aristas de decisión."
+  },
+  {
+    "id": "sw_012",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "pregunta": "En el diseño orientado a objetos aplicando patrones de diseño GoF, se necesita garantizar que una clase encargada de administrar el pool de conexiones a la base de datos tenga una única instancia global en toda la aplicación y proporcione un punto de acceso global a ella. ¿Qué patrón creacional debe implementarse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Singleton."
+      },
+      {
+        "id": "B",
+        "texto": "Observer."
+      },
+      {
+        "id": "C",
+        "texto": "Strategy."
+      },
+      {
+        "id": "D",
+        "texto": "Decorator."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El patrón Singleton restringe la instanciación de una clase a un único objeto mediante un constructor privado y un método estático de acceso."
+  },
+  {
+    "id": "sw_013",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "pregunta": "Se requiere buscar un elemento dentro de un arreglo ordenado de 1,000,000 de registros dividiendo repetidamente a la mitad el intervalo de búsqueda (Búsqueda Binaria). ¿Cuál es la complejidad temporal asintótica en el peor caso y cuántas comparaciones como máximo realizará aproximadamente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Complejidad O(log2 n), realizando como máximo alrededor de 20 comparaciones."
+      },
+      {
+        "id": "B",
+        "texto": "Complejidad O(n^2), realizando 1,000,000,000,000 de comparaciones."
+      },
+      {
+        "id": "C",
+        "texto": "Complejidad O(n), realizando 1,000,000 de comparaciones."
+      },
+      {
+        "id": "D",
+        "texto": "Complejidad O(n!), imposible de ejecutar en tiempo polinomial."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La búsqueda binaria en un arreglo ordenado tiene complejidad O(log2 n). Como 2^20 = 1,048,576, para 1 millón de elementos requiere a lo sumo 20 comparaciones."
+  },
+  {
+    "id": "sw_014",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "pregunta": "En el diseño de una base de datos relacional para una universidad, una tabla `Inscripciones(id_alumno, id_materia, nombre_materia, calificacion)` tiene llave primaria compuesta `(id_alumno, id_materia)`. Sin embargo, el atributo `nombre_materia` depende únicamente de `id_materia` y no de la llave primaria completa. ¿Qué Forma Normal se está violando y cómo se corrige?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Viola la Segunda Forma Normal (2FN) por existir dependencia funcional parcial; se corrige separando `Materias(id_materia, nombre_materia)` en otra tabla."
+      },
+      {
+        "id": "B",
+        "texto": "Viola la Primera Forma Normal (1FN) por no tener llave foránea."
+      },
+      {
+        "id": "C",
+        "texto": "Cumple con la Forma Normal de Boyce-Codd (BCNF) sin anomalías."
+      },
+      {
+        "id": "D",
+        "texto": "Se corrige eliminando todas las llaves primarias de la base de datos."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La 2FN exige estar en 1FN y que todo atributo no primo dependa de forma total (completa) de toda la clave primaria compuesta, eliminando dependencias parciales."
+  },
+  {
+    "id": "sw_015",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "pregunta": "Al ejecutar una transferencia bancaria entre dos cuentas mediante SQL (`UPDATE Cuentas SET saldo = saldo - 500 WHERE id = 1; UPDATE Cuentas SET saldo = saldo + 500 WHERE id = 2;`), ocurre un corte de energía justo después del primer `UPDATE`. ¿Qué propiedad de las transacciones ACID garantiza que ninguna de las dos operaciones surta efecto parcial y la base de datos revierta el cambio (`ROLLBACK`)?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Atomicidad (Atomicity: 'todo o nada')."
+      },
+      {
+        "id": "B",
+        "texto": "Aislamiento de lecturas sucias exclusivamente."
+      },
+      {
+        "id": "C",
+        "texto": "Desnormalización de vistas."
+      },
+      {
+        "id": "D",
+        "texto": "Fragmentación horizontal."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La Atomicidad dentro de ACID garantiza que todas las operaciones de una transacción se completen exitosamente como una sola unidad indivisible o ninguna tenga efecto."
+  }
+]

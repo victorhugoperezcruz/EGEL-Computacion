@@ -1,0 +1,552 @@
+[
+  {
+    "numero": 1,
+    "pregunta": "¿Qué capa del modelo OSI gestiona el direccionamiento lógico?",
+    "opciones": {
+      "a": "Capa 2",
+      "b": "Capa 3",
+      "c": "Capa 7"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La capa 3 maneja direcciones IP y rutas entre redes; capa 2 gestiona MAC."
+  },
+  {
+    "numero": 2,
+    "pregunta": "¿Cuál es la ventaja principal de una topología en estrella?",
+    "opciones": {
+      "a": "Usa menos cable",
+      "b": "El nodo central controla toda la comunicación",
+      "c": "Evita fallas totales"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El switch central administra conexiones individuales, facilitando control y diagnóstico."
+  },
+  {
+    "numero": 3,
+    "pregunta": "¿Qué dispositivo trabaja nativamente en capa 2?",
+    "opciones": {
+      "a": "Router",
+      "b": "Switch",
+      "c": "Firewall"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El switch toma decisiones por direcciones MAC, propias de la capa 2."
+  },
+  {
+    "numero": 4,
+    "pregunta": "¿Cuál es el principal beneficio de la fibra óptica?",
+    "opciones": {
+      "a": "Bajo costo",
+      "b": "Resistencia a interferencias y mayor distancia",
+      "c": "Conectores simples"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La fibra usa luz, lo que evita interferencias y permite enlaces largos."
+  },
+  {
+    "numero": 5,
+    "pregunta": "¿Cuántas IP útiles hay en una red /29?",
+    "opciones": {
+      "a": "6",
+      "b": "8",
+      "c": "14"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Un /29 contiene 8 direcciones, restando red y broadcast quedan 6 útiles."
+  },
+  {
+    "numero": 6,
+    "pregunta": "¿Qué protocolo asigna IP automáticamente?",
+    "opciones": {
+      "a": "ARP",
+      "b": "DHCP",
+      "c": "DNS"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "DHCP distribuye IP, máscara, gateway y DNS dinámicamente."
+  },
+  {
+    "numero": 7,
+    "pregunta": "¿Cuál es el estándar WiFi?",
+    "opciones": {
+      "a": "802.3",
+      "b": "802.11",
+      "c": "802.1Q"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "802.11 define las redes inalámbricas de área local."
+  },
+  {
+    "numero": 8,
+    "pregunta": "¿Para qué sirven las VLAN?",
+    "opciones": {
+      "a": "Aumentar velocidad",
+      "b": "Segmentar lógicamente la red",
+      "c": "Evitar routing"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Separan dominios lógicos dentro del mismo switch."
+  },
+  {
+    "numero": 9,
+    "pregunta": "¿Qué comando muestra la tabla ARP?",
+    "opciones": {
+      "a": "ipconfig",
+      "b": "arp -a",
+      "c": "tracert"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "arp -a despliega la asociación IP ↔ MAC aprendida."
+  },
+  {
+    "numero": 10,
+    "pregunta": "¿Qué función tiene DNS?",
+    "opciones": {
+      "a": "Asignar IP",
+      "b": "Resolver nombres a direcciones IP",
+      "c": "Medir latencia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "DNS convierte nombres legibles en direcciones IP."
+  },
+  {
+    "numero": 11,
+    "pregunta": "¿Qué significa MTU?",
+    "opciones": {
+      "a": "Máxima velocidad",
+      "b": "Máximo tamaño de trama",
+      "c": "Máxima distancia"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "MTU es el tamaño máximo permitido por trama."
+  },
+  {
+    "numero": 12,
+    "pregunta": "¿Para qué sirve tracert?",
+    "opciones": {
+      "a": "Diagnóstico de saltos intermedios",
+      "b": "Ver sockets abiertos",
+      "c": "Ver direcciones MAC"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Muestra cada router que atraviesa un paquete."
+  },
+  {
+    "numero": 13,
+    "pregunta": "¿Cuál de las siguientes es una dirección IP privada?",
+    "opciones": {
+      "a": "8.8.8.8",
+      "b": "172.16.0.1",
+      "c": "200.1.1.1"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El bloque 172.16.0.0/12 es privado según RFC1918."
+  },
+  {
+    "numero": 14,
+    "pregunta": "El cable Cat6 puede alcanzar velocidades de:",
+    "opciones": {
+      "a": "10 Mbps",
+      "b": "1–10 Gbps",
+      "c": "Solo 100 Mbps"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Cat6 soporta 1 Gbps y 10 Gbps a distancias reducidas."
+  },
+  {
+    "numero": 15,
+    "pregunta": "¿Cuál es la principal desventaja de la topología en bus?",
+    "opciones": {
+      "a": "Es costosa",
+      "b": "Una falla en el troncal afecta toda la red",
+      "c": "Necesita switch"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "En bus, cualquier falla en el troncal detiene la comunicación."
+  },
+  {
+    "numero": 16,
+    "pregunta": "La capa de distribución en un diseño jerárquico se encarga de:",
+    "opciones": {
+      "a": "Usuarios",
+      "b": "Enrutamiento entre VLAN y agregación",
+      "c": "Conexión a Internet"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Filtra, agrupa y enruta el tráfico entre segmentos."
+  },
+  {
+    "numero": 17,
+    "pregunta": "¿Qué tipo de cable conecta dos switches sin auto-MDI/X?",
+    "opciones": {
+      "a": "Directo",
+      "b": "Cruzado",
+      "c": "Fibra"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El cable cruzado invierte TX/RX para dispositivos iguales."
+  },
+  {
+    "numero": 18,
+    "pregunta": "¿Cuál es el tamaño de una dirección IPv6?",
+    "opciones": {
+      "a": "32 bits",
+      "b": "64 bits",
+      "c": "128 bits"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "IPv6 usa 128 bits para ampliar espacio y eficiencia."
+  },
+  {
+    "numero": 19,
+    "pregunta": "¿Qué comando se utiliza para verificar la conectividad de red?",
+    "opciones": {
+      "a": "route",
+      "b": "ping",
+      "c": "netstat"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Envía eco ICMP para probar comunicación."
+  },
+  {
+    "numero": 20,
+    "pregunta": "¿Cuál es la representación de la ruta por defecto?",
+    "opciones": {
+      "a": "0.0.0.0/0",
+      "b": "127.0.0.1",
+      "c": "192.168.1.0/24"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "0.0.0.0/0 envía tráfico a destinos desconocidos."
+  },
+  {
+    "numero": 21,
+    "pregunta": "El protocolo ARP sirve para:",
+    "opciones": {
+      "a": "Mapear IP a dirección MAC",
+      "b": "Resolver dominio",
+      "c": "Asignar IP"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "ARP permite identificar el MAC correspondiente a una IP."
+  },
+  {
+    "numero": 22,
+    "pregunta": "Un enlace trunk transporta:",
+    "opciones": {
+      "a": "Una sola VLAN",
+      "b": "Varias VLAN simultáneamente",
+      "c": "Ninguna VLAN"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Los enlaces trunk etiquetan tráfico de múltiples VLAN."
+  },
+  {
+    "numero": 23,
+    "pregunta": "La técnica de Subnetting consiste en:",
+    "opciones": {
+      "a": "Dividir una red grande en segmentos más pequeños",
+      "b": "Unir redes distintas",
+      "c": "Cambiar el gateway predeterminado"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Fragmenta redes grandes en segmentos más pequeños para mejor gestión y seguridad."
+  },
+  {
+    "numero": 24,
+    "pregunta": "La redundancia en el diseño de red proporciona:",
+    "opciones": {
+      "a": "Simplicidad",
+      "b": "Alta disponibilidad",
+      "c": "Menor costo operativo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Provee rutas alternas para evitar caídas del servicio."
+  },
+  {
+    "numero": 25,
+    "pregunta": "SLAAC en IPv6 permite:",
+    "opciones": {
+      "a": "Asignación automática de IP sin servidor DHCP",
+      "b": "Enrutamiento dinámico",
+      "c": "Traducción de direcciones NAT"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "SLAAC permite autoconfiguración usando Router Advertisements."
+  },
+  {
+    "numero": 26,
+    "pregunta": "¿Por qué se utiliza el diseño jerárquico de tres capas?",
+    "opciones": {
+      "a": "Facilita escalabilidad y administración",
+      "b": "Reduce el número de dispositivos",
+      "c": "Elimina la necesidad de switches"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Divide la red en bloques manejables (Core, Distribución, Acceso)."
+  },
+  {
+    "numero": 27,
+    "pregunta": "Un firewall de estado (stateful) se diferencia por:",
+    "opciones": {
+      "a": "Bloquear todas las IP",
+      "b": "Rastrear el estado de las conexiones activas",
+      "c": "Solo filtrar por puerto"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Analiza las sesiones para permitir o denegar el tráfico de retorno."
+  },
+  {
+    "numero": 28,
+    "pregunta": "¿Cuál es la función del protocolo STP?",
+    "opciones": {
+      "a": "Aumentar la velocidad",
+      "b": "Evitar bucles en capa 2",
+      "c": "Asignar IP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Spanning Tree Protocol bloquea puertos redundantes para prevenir tormentas de broadcast."
+  },
+  {
+    "numero": 29,
+    "pregunta": "La técnica EtherChannel permite:",
+    "opciones": {
+      "a": "Dividir un switch",
+      "b": "Agrupar varios enlaces físicos en uno lógico para mayor ancho de banda",
+      "c": "Conectarse a la nube"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Suma la capacidad de múltiples puertos y provee redundancia."
+  },
+  {
+    "numero": 30,
+    "pregunta": "¿Qué protocolo de enrutamiento es de estado de enlace (link-state)?",
+    "opciones": {
+      "a": "RIP",
+      "b": "OSPF",
+      "c": "BGP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "OSPF construye un mapa completo de la topología para calcular rutas."
+  },
+  {
+    "numero": 31,
+    "pregunta": "NAT se usa principalmente para:",
+    "opciones": {
+      "a": "Cifrar datos",
+      "b": "Traducir IP privadas a una IP pública",
+      "c": "Medir ancho de banda"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Network Address Translation conserva direcciones IPv4."
+  },
+  {
+    "numero": 32,
+    "pregunta": "¿Cuál es la distancia máxima estándar para un cable UTP Cat6?",
+    "opciones": {
+      "a": "10 metros",
+      "b": "100 metros",
+      "c": "1000 metros"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Límite estándar para transmisión de datos sin repetidor."
+  },
+  {
+    "numero": 33,
+    "pregunta": "¿Qué es PoE?",
+    "opciones": {
+      "a": "Protocolo de correo",
+      "b": "Alimentación eléctrica a través del cable de red",
+      "c": "Optimización de energía"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Power over Ethernet alimenta dispositivos como cámaras o APs."
+  },
+  {
+    "numero": 34,
+    "pregunta": "Un router Wireless de casa suele integrar:",
+    "opciones": {
+      "a": "Router, switch y punto de acceso",
+      "b": "Solo antena",
+      "c": "Solo modem"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Es un dispositivo multifunción."
+  },
+  {
+    "numero": 35,
+    "pregunta": "¿Qué significa el término LAN?",
+    "opciones": {
+      "a": "Local Area Network",
+      "b": "Long Access Node",
+      "c": "Large Area Network"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Red de área local."
+  },
+  {
+    "numero": 36,
+    "pregunta": "La capa 4 del modelo OSI (Transporte) usa:",
+    "opciones": {
+      "a": "IP",
+      "b": "TCP y UDP",
+      "c": "MAC"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Gestiona la entrega de datos de extremo a extremo."
+  },
+  {
+    "numero": 37,
+    "pregunta": "¿Cuál es la función del bit de paridad en transmisiones?",
+    "opciones": {
+      "a": "Comprimir datos",
+      "b": "Detección simple de errores",
+      "c": "Cifrar la señal"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Verifica la integridad básica del dato recibido."
+  },
+  {
+    "numero": 38,
+    "pregunta": "Un rack de comunicaciones se mide en:",
+    "opciones": {
+      "a": "Pulgadas",
+      "b": "Unidades de Rack (U)",
+      "c": "Kilovatios"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Cada 'U' equivale a 1.75 pulgadas de altura."
+  },
+  {
+    "numero": 39,
+    "pregunta": "¿Qué es un Patch-core?",
+    "opciones": {
+      "a": "Software de red",
+      "b": "Cable de red de corta distancia para interconexiones",
+      "c": "Tipo de servidor"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Cable flexible usado en racks o puestos de trabajo."
+  },
+  {
+    "numero": 40,
+    "pregunta": "El estándar IEEE 802.3 se refiere a:",
+    "opciones": {
+      "a": "WiFi",
+      "b": "Ethernet",
+      "c": "Bluetooth"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Define las redes cableadas Ethernet."
+  },
+  {
+    "numero": 41,
+    "pregunta": "Un puente (bridge) tradicional:",
+    "opciones": {
+      "a": "Divide dominios de colisión",
+      "b": "Une dos edificios",
+      "c": "Es una antena"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Precursor del switch; filtra tráfico por MAC."
+  },
+  {
+    "numero": 42,
+    "pregunta": "¿Qué protocolo se usa para gestionar dominios en la web?",
+    "opciones": {
+      "a": "HTTP",
+      "b": "DNS",
+      "c": "FTP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Resuelve nombres como google.com a direcciones IP."
+  },
+  {
+    "numero": 43,
+    "pregunta": "En un cableado estructurado, el cuarto de telecomunicaciones:",
+    "opciones": {
+      "a": "Es donde se sientan los usuarios",
+      "b": "Aloja el equipo activo y paneles de parcheo",
+      "c": "Es solo para servidores"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Punto de concentración intermedio de la red."
+  },
+  {
+    "numero": 44,
+    "pregunta": "¿Para qué sirve el comando nslookup?",
+    "opciones": {
+      "a": "Ver configuración IP",
+      "b": "Consultar registros DNS",
+      "c": "Ver tablas ARP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Herramienta de diagnóstico para servidores de nombres."
+  },
+  {
+    "numero": 45,
+    "pregunta": "Una red de malla total (Full Mesh) destaca por:",
+    "opciones": {
+      "a": "Bajo costo",
+      "b": "Máxima redundancia",
+      "c": "Simplicidad de cableado"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Todos los nodos están conectados entre sí."
+  },
+  {
+    "numero": 46,
+    "pregunta": "La máscara por defecto de una red Clase C es:",
+    "opciones": {
+      "a": "255.0.0.0",
+      "b": "255.255.0.0",
+      "c": "255.255.255.0"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Corresponde a un prefijo /24."
+  },
+  {
+    "numero": 47,
+    "pregunta": "¿Qué dispositivo expande una señal WiFi?",
+    "opciones": {
+      "a": "Modem",
+      "b": "Repetidor / Extensor",
+      "c": "Switch"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Recibe la señal y la retransmite para ampliar cobertura."
+  },
+  {
+    "numero": 48,
+    "pregunta": "¿Qué ventaja tiene IPv6 sobre IPv4?",
+    "opciones": {
+      "a": "Menor tamaño de cabecera",
+      "b": "Espacio de direcciones casi infinito",
+      "c": "No necesita routers"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Soluciona el agotamiento de direcciones IP."
+  },
+  {
+    "numero": 49,
+    "pregunta": "Un SFP es:",
+    "opciones": {
+      "a": "Programa de seguridad",
+      "b": "Módulo transceptor óptico conectable",
+      "c": "Protocolo de ruteo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Small Form-factor Pluggable usado en switches."
+  },
+  {
+    "numero": 50,
+    "pregunta": "La latencia se define como:",
+    "opciones": {
+      "a": "Cantidad de datos por segundo",
+      "b": "Retraso en la comunicación entre dos puntos",
+      "c": "Calidad del cable"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Es el tiempo que tarda un paquete en viajar de origen a destino."
+  }
+]

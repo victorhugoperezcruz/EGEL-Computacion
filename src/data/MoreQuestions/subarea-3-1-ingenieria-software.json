@@ -1,0 +1,552 @@
+[
+  {
+    "numero": 1,
+    "pregunta": "¿Qué es un requisito funcional?",
+    "opciones": {
+      "a": "Característica no relacionada con el comportamiento",
+      "b": "Comportamiento que debe realizar el sistema",
+      "c": "Restricción legal"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Los requisitos funcionales describen lo que el sistema debe hacer según Pressman."
+  },
+  {
+    "numero": 2,
+    "pregunta": "¿Qué modelo de proceso usa iteraciones cortas y entregas continuas?",
+    "opciones": {
+      "a": "Cascada",
+      "b": "Espiral",
+      "c": "Ágil"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Ágil enfatiza iteraciones rápidas y retroalimentación frecuente."
+  },
+  {
+    "numero": 3,
+    "pregunta": "¿Cuál es un artefacto típico en la fase de análisis?",
+    "opciones": {
+      "a": "Diagrama de despliegue",
+      "b": "Lista de requisitos",
+      "c": "Diagrama de red"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El análisis documenta requisitos y reglas del negocio."
+  },
+  {
+    "numero": 4,
+    "pregunta": "¿Qué representa un caso de uso?",
+    "opciones": {
+      "a": "La estructura de clases",
+      "b": "Cómo interactúa un actor con el sistema",
+      "c": "El hardware utilizado"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Un caso de uso modela interacciones externas con el sistema."
+  },
+  {
+    "numero": 5,
+    "pregunta": "¿Qué enfoque recomienda PMBOK para gestionar riesgos?",
+    "opciones": {
+      "a": "Ignorarlos",
+      "b": "Identificación, análisis y respuesta",
+      "c": "Solo análisis cuantitativo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "PMBOK define un proceso formal para gestionar riesgos."
+  },
+  {
+    "numero": 6,
+    "pregunta": "¿Qué es la trazabilidad de requisitos?",
+    "opciones": {
+      "a": "Verificar sintaxis",
+      "b": "Seguir el requisito desde origen hasta implementación",
+      "c": "Documentar errores"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Trazabilidad permite rastrear un requisito a través del ciclo de vida."
+  },
+  {
+    "numero": 7,
+    "pregunta": "¿Qué tipo de prueba valida módulos individuales?",
+    "opciones": {
+      "a": "Prueba de sistema",
+      "b": "Prueba unitaria",
+      "c": "Prueba de aceptación"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Las pruebas unitarias prueban componentes aislados."
+  },
+  {
+    "numero": 8,
+    "pregunta": "¿Qué es un backlog en Scrum?",
+    "opciones": {
+      "a": "Documentación incompleta",
+      "b": "Lista priorizada de requisitos",
+      "c": "Registro de errores"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El Product Backlog contiene funcionalidades pendientes."
+  },
+  {
+    "numero": 9,
+    "pregunta": "En UML, un diagrama de clases describe:",
+    "opciones": {
+      "a": "Flujo de actividades",
+      "b": "Estructura estática del sistema",
+      "c": "Patrones de comunicación"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El diagrama de clases muestra atributos, métodos y relaciones."
+  },
+  {
+    "numero": 10,
+    "pregunta": "El modelo en cascada se caracteriza por:",
+    "opciones": {
+      "a": "Iteraciones constantes",
+      "b": "Fases secuenciales",
+      "c": "Entregas diarias"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Cascada avanza de una fase a la siguiente sin retrocesos."
+  },
+  {
+    "numero": 11,
+    "pregunta": "¿Qué fase define cómo se construirá el sistema?",
+    "opciones": {
+      "a": "Análisis",
+      "b": "Diseño",
+      "c": "Mantenimiento"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El diseño especifica arquitectura, componentes y tecnologías."
+  },
+  {
+    "numero": 12,
+    "pregunta": "Una prueba de aceptación la realiza:",
+    "opciones": {
+      "a": "El programador",
+      "b": "El usuario final",
+      "c": "El DBA"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Validan que el sistema cumpla necesidades del usuario."
+  },
+  {
+    "numero": 13,
+    "pregunta": "¿Qué es un requerimiento no funcional?",
+    "opciones": {
+      "a": "Comportamiento del sistema",
+      "b": "Restricción de calidad",
+      "c": "Acción principal del usuario"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Incluye rendimiento, seguridad, usabilidad, disponibilidad."
+  },
+  {
+    "numero": 14,
+    "pregunta": "¿Qué significa refactorizar?",
+    "opciones": {
+      "a": "Cambiar requisitos",
+      "b": "Mejorar código sin alterar funcionalidad",
+      "c": "Reescribir todo el sistema"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Se mejora calidad interna del código."
+  },
+  {
+    "numero": 15,
+    "pregunta": "¿Qué produce un analista en la fase de levantamiento de requisitos?",
+    "opciones": {
+      "a": "Informe de métricas",
+      "b": "Documento de visión",
+      "c": "Diagrama de red"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El documento de visión define alcance inicial y objetivos."
+  },
+  {
+    "numero": 16,
+    "pregunta": "¿Qué documento detalla criterios que debe cumplir el sistema?",
+    "opciones": {
+      "a": "Manual de usuario",
+      "b": "Especificación de requisitos",
+      "c": "Informe de pruebas"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La SRS establece requisitos funcionales y no funcionales."
+  },
+  {
+    "numero": 17,
+    "pregunta": "¿Qué caracteriza a un sprint en Scrum?",
+    "opciones": {
+      "a": "Duración indefinida",
+      "b": "Iteración fija con entrega funcional",
+      "c": "Solo documentación"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Sprints duran entre 1 y 4 semanas generando un incremento."
+  },
+  {
+    "numero": 18,
+    "pregunta": "¿Qué es un prototipo?",
+    "opciones": {
+      "a": "Versión inicial del sistema para validar ideas",
+      "b": "Informe del negocio",
+      "c": "Manual técnico"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Permite visualizar y ajustar requisitos temprano."
+  },
+  {
+    "numero": 19,
+    "pregunta": "¿Qué es arquitectura de software según Sommerville?",
+    "opciones": {
+      "a": "Estructura de hardware",
+      "b": "Organización de componentes y relaciones",
+      "c": "Manual de instalación"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Define componentes, interacción y estructura del sistema."
+  },
+  {
+    "numero": 20,
+    "pregunta": "¿Qué prueba se realiza sin conocer el código interno?",
+    "opciones": {
+      "a": "Caja blanca",
+      "b": "Caja negra",
+      "c": "Prueba estática"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Caja negra se basa en entradas y salidas."
+  },
+  {
+    "numero": 21,
+    "pregunta": "¿Qué ventaja tiene el modelo incremental?",
+    "opciones": {
+      "a": "No requiere análisis",
+      "b": "Entrega funcionalidad por partes",
+      "c": "Evita documentación"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Permite entregar módulos funcionales gradualmente."
+  },
+  {
+    "numero": 22,
+    "pregunta": "Un riesgo es:",
+    "opciones": {
+      "a": "Certeza de éxito",
+      "b": "Evento incierto con impacto",
+      "c": "Error de sintaxis"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Puede afectar costo, alcance o tiempo."
+  },
+  {
+    "numero": 23,
+    "pregunta": "¿Qué hace la técnica MoSCoW?",
+    "opciones": {
+      "a": "Diseña diagramas",
+      "b": "Prioriza requisitos",
+      "c": "Define hardware"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Clasifica requisitos en Must, Should, Could, Won’t."
+  },
+  {
+    "numero": 24,
+    "pregunta": "Una métrica de calidad del software es:",
+    "opciones": {
+      "a": "Altura del edificio",
+      "b": "Densidad de defectos",
+      "c": "Velocidad del CPU"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Mide defectos por mil líneas de código."
+  },
+  {
+    "numero": 25,
+    "pregunta": "¿Qué es integración continua?",
+    "opciones": {
+      "a": "Entrega manual",
+      "b": "Compilar y probar código automáticamente",
+      "c": "Actualizar hardware"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Automatiza pruebas y compilación en cada cambio."
+  },
+  {
+    "numero": 26,
+    "pregunta": "¿Qué artefacto se usa para modelar flujo de actividades?",
+    "opciones": {
+      "a": "Diagrama de clases",
+      "b": "Diagrama de actividades",
+      "c": "Diagrama de paquetes"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Representa flujos, decisiones y concurrencia en procesos."
+  },
+  {
+    "numero": 27,
+    "pregunta": "¿Qué es una épica en ágil?",
+    "opciones": {
+      "a": "Error crítico",
+      "b": "Funcionalidad grande que se divide",
+      "c": "Prueba automatizada"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Una épica se desglosa en historias de usuario."
+  },
+  {
+    "numero": 28,
+    "pregunta": "¿Qué documento define cómo organizar el proyecto?",
+    "opciones": {
+      "a": "Acta de constitución",
+      "b": "Manual de usuario",
+      "c": "Informe de pruebas"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "El acta formaliza objetivos, responsables y alcance general."
+  },
+  {
+    "numero": 29,
+    "pregunta": "¿Qué técnica identifica procesos del negocio?",
+    "opciones": {
+      "a": "BPMN",
+      "b": "UML de despliegue",
+      "c": "ERD"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "BPMN modela procesos empresariales."
+  },
+  {
+    "numero": 30,
+    "pregunta": "¿Qué es un entregable?",
+    "opciones": {
+      "a": "Prueba fallida",
+      "b": "Resultado tangible de una fase",
+      "c": "Dirección IP"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Elemento que se entrega al cliente, como módulos o documentos."
+  },
+  {
+    "numero": 31,
+    "pregunta": "¿Qué es mantenimiento correctivo?",
+    "opciones": {
+      "a": "Mejorar funciones",
+      "b": "Adaptar a nueva plataforma",
+      "c": "Arreglar errores"
+    },
+    "respuesta_correcta": "c",
+    "explicacion": "Corrige fallas encontradas tras la entrega."
+  },
+  {
+    "numero": 32,
+    "pregunta": "¿Qué es un stakeholder?",
+    "opciones": {
+      "a": "Módulo del sistema",
+      "b": "Interesado o afectado por el proyecto",
+      "c": "Hardware externo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Incluye usuarios, clientes, desarrolladores, patrocinadores."
+  },
+  {
+    "numero": 33,
+    "pregunta": "¿Qué es verificación?",
+    "opciones": {
+      "a": "Validar con el usuario",
+      "b": "Evaluar si el producto cumple requisitos técnicos",
+      "c": "Revisar finanzas"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Comprueba que se construye el producto correctamente según especificaciones."
+  },
+  {
+    "numero": 34,
+    "pregunta": "¿Qué es validación?",
+    "opciones": {
+      "a": "Revisar código",
+      "b": "Confirmar que satisface necesidades del usuario",
+      "c": "Monitorear logs"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "“Estar construyendo lo que el usuario necesita.”"
+  },
+  {
+    "numero": 35,
+    "pregunta": "¿Qué es deuda técnica?",
+    "opciones": {
+      "a": "Falta de dinero",
+      "b": "Decisiones rápidas de diseño que requieren re trabajo",
+      "c": "Errores de usuario"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Soluciones rápidas que generan costo futuro."
+  },
+  {
+    "numero": 36,
+    "pregunta": "¿Qué es una historia de usuario?",
+    "opciones": {
+      "a": "Documento legal",
+      "b": "Descripción breve del valor para el usuario",
+      "c": "Reporte técnico"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "“Como usuario… quiero… para…”"
+  },
+  {
+    "numero": 37,
+    "pregunta": "¿Qué modelo enfatiza manejo de riesgos?",
+    "opciones": {
+      "a": "Cascada",
+      "b": "Espiral",
+      "c": "RAD"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "El modelo espiral evalúa y mitiga riesgos en cada ciclo."
+  },
+  {
+    "numero": 38,
+    "pregunta": "¿Qué hace un Product Owner?",
+    "opciones": {
+      "a": "Diseña base de datos",
+      "b": "Prioriza backlog",
+      "c": "Configura servidores"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Gestiona prioridades y asegura valor del producto."
+  },
+  {
+    "numero": 39,
+    "pregunta": "¿Qué prueba se hace tras un cambio para evitar nuevos errores?",
+    "opciones": {
+      "a": "Revisión estática",
+      "b": "Prueba de regresión",
+      "c": "Prueba de humo"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Asegura que modificaciones no generen fallas adicionales."
+  },
+  {
+    "numero": 40,
+    "pregunta": "¿Qué es un mock?",
+    "opciones": {
+      "a": "Un equipo físico",
+      "b": "Un simulador de dependencias",
+      "c": "Un firewall"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Simula objetos externos en pruebas unitarias."
+  },
+  {
+    "numero": 41,
+    "pregunta": "¿Qué es una arquitectura en capas?",
+    "opciones": {
+      "a": "Un único módulo",
+      "b": "Organización en niveles independientes",
+      "c": "Un sistema embebido"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Divide responsabilidades en capas lógicas."
+  },
+  {
+    "numero": 42,
+    "pregunta": "¿Qué representa un diagrama de secuencia?",
+    "opciones": {
+      "a": "Estructura estática",
+      "b": "Intercambio de mensajes en el tiempo",
+      "c": "Modelo de datos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Modela cómo interactúan objetos a lo largo del tiempo."
+  },
+  {
+    "numero": 43,
+    "pregunta": "¿Qué es CASE?",
+    "opciones": {
+      "a": "Lenguaje de programación",
+      "b": "Herramientas de apoyo al desarrollo",
+      "c": "Base de datos"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Automatizan diseño, modelado y documentación."
+  },
+  {
+    "numero": 44,
+    "pregunta": "¿Qué define el diseño arquitectónico?",
+    "opciones": {
+      "a": "Estilo, componentes y relaciones",
+      "b": "Pruebas unitarias",
+      "c": "Historias de usuario"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Especifica estructura global del sistema."
+  },
+  {
+    "numero": 45,
+    "pregunta": "¿Qué técnica recoge requisitos del usuario?",
+    "opciones": {
+      "a": "Auditoría",
+      "b": "Entrevistas",
+      "c": "Compilación"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Es un método clásico para obtener requisitos."
+  },
+  {
+    "numero": 46,
+    "pregunta": "¿Qué diagrama muestra nodos y artefactos?",
+    "opciones": {
+      "a": "Componentes",
+      "b": "Despliegue",
+      "c": "Estados"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Describe hardware y dónde se ejecutan componentes."
+  },
+  {
+    "numero": 47,
+    "pregunta": "¿Qué mide la usabilidad?",
+    "opciones": {
+      "a": "Velocidad del CPU",
+      "b": "Facilidad de uso del sistema",
+      "c": "Consumo eléctrico"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "Evalúa facilidad, aprendizaje y satisfacción del usuario."
+  },
+  {
+    "numero": 48,
+    "pregunta": "¿Qué se usa para estimar esfuerzo?",
+    "opciones": {
+      "a": "Puntos de función",
+      "b": "Líneas de código",
+      "c": "Potencia eléctrica"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Miden funcionalidad entregada, útil para estimaciones."
+  },
+  {
+    "numero": 49,
+    "pregunta": "¿Qué técnica distribuye tareas en Scrum?",
+    "opciones": {
+      "a": "Daily meeting",
+      "b": "Sprint planning",
+      "c": "Retrospective"
+    },
+    "respuesta_correcta": "b",
+    "explicacion": "La planeación asigna tareas y metas del sprint."
+  },
+  {
+    "numero": 50,
+    "pregunta": "¿Qué es integración?",
+    "opciones": {
+      "a": "Unir módulos para formar el sistema completo",
+      "b": "Generar logs",
+      "c": "Crear pruebas"
+    },
+    "respuesta_correcta": "a",
+    "explicacion": "Ensambla módulos para verificar funcionamiento conjunto."
+  }
+]
