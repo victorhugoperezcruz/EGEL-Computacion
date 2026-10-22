@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://egel-computacion.vercel.app/sitemap.xml
