@@ -30,6 +30,13 @@ import {
   BookmarkCheck,
   Calculator,
   X,
+  Eye,
+  EyeOff,
+  Copy,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  HelpCircle,
 } from 'lucide-react';
 import { THEORY_GUIDE } from './theoryData';
 
@@ -411,6 +418,13 @@ export default function App() {
       '1.1 Circuitos eléctricos y electrónica'
   );
   const [theorySearchQuery, setTheorySearchQuery] = useState('');
+  const [theoryViewMode, setTheoryViewMode] = useState('interactive');
+  const [activeTheorySectionIdx, setActiveTheorySectionIdx] = useState(0);
+  const [theoryRecallMode, setTheoryRecallMode] = useState(false);
+  const [revealedPointsMap, setRevealedPointsMap] = useState({});
+  const [copiedFormulaIdx, setCopiedFormulaIdx] = useState(null);
+  const [revealedCatalogQuestions, setRevealedCatalogQuestions] = useState({});
+  const [showTheorySources, setShowTheorySources] = useState(false);
   const [showTheoryDrawerInQuiz, setShowTheoryDrawerInQuiz] = useState(false);
   const [preReadingSubareaTab, setPreReadingSubareaTab] = useState(
     () => savedActiveState?.preReadingSubareaTab || ''
@@ -669,8 +683,40 @@ export default function App() {
   function openTheoryForSubarea(subareaName) {
     setSelectedTheorySubarea(subareaName);
     setTheorySearchQuery('');
+    setActiveTheorySectionIdx(0);
+    setRevealedPointsMap({});
     setActiveTab('theory');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function handleSelectTheorySubarea(subareaName) {
+    setSelectedTheorySubarea(subareaName);
+    setActiveTheorySectionIdx(0);
+    setRevealedPointsMap({});
+  }
+
+  function togglePointReveal(pointKey) {
+    setRevealedPointsMap((prev) => ({
+      ...prev,
+      [pointKey]: !prev[pointKey],
+    }));
+  }
+
+  function toggleCatalogQuestionReveal(questionId) {
+    setRevealedCatalogQuestions((prev) => ({
+      ...prev,
+      [questionId]: !prev[questionId],
+    }));
+  }
+
+  function handleCopyFormula(codeText, idx) {
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(codeText);
+    }
+    setCopiedFormulaIdx(idx);
+    setTimeout(() => {
+      setCopiedFormulaIdx((prev) => (prev === idx ? null : prev));
+    }, 1800);
   }
 
   function scorePoolForUser(pool) {
@@ -1101,7 +1147,7 @@ export default function App() {
                 setActiveTab('session');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-4 py-2.5 rounded-xl bg-[#D95D39] hover:bg-[#C04D2B] text-white font-extrabold text-xs sm:text-sm flex items-center gap-2 transition shadow-md shadow-[#D95D39]/20"
+              className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-[#D95D39] hover:bg-[#C04D2B] text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-md shadow-[#D95D39]/20"
             >
               <Play className="w-4 h-4 fill-white" />
               <span>Ir al Cuestionario ({sessionQueue.length} preg.)</span>
@@ -1161,6 +1207,26 @@ export default function App() {
                 <div className="text-lg font-black text-teal-700">
                   {completedSectionsCount} / {totalSectionsCount} bloques
                 </div>
+                <button
+                  onClick={() => {
+                    setTheoryRecallMode((v) => !v);
+                    setRevealedPointsMap({});
+                  }}
+                  className={`mt-2 px-3 py-1 rounded-lg text-[11px] font-extrabold flex items-center gap-1.5 transition cursor-pointer ${
+                    theoryRecallMode
+                      ? 'bg-amber-500 text-stone-950 shadow-sm'
+                      : 'bg-white text-stone-700 border border-[#D8D0C0] hover:bg-[#EFEAE0]'
+                  }`}
+                >
+                  {theoryRecallMode ? (
+                    <Eye className="w-3.5 h-3.5" />
+                  ) : (
+                    <EyeOff className="w-3.5 h-3.5" />
+                  )}
+                  <span>
+                    {theoryRecallMode ? 'Autoevaluación ON' : 'Modo Flashcards'}
+                  </span>
+                </button>
               </div>
             </div>
 
@@ -2225,16 +2291,16 @@ export default function App() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
               <button
                 onClick={() => {
                   if (sessionQueue.length > 0) discardActiveSession();
                   else setExamQuestions([]);
                 }}
-                className="px-3 py-2 rounded-xl bg-white hover:bg-stone-100 text-stone-700 border border-amber-300 text-xs font-bold flex items-center gap-1.5 transition"
+                className="flex-1 sm:flex-initial px-3 py-2 rounded-xl bg-white hover:bg-stone-100 text-stone-700 border border-amber-300 text-xs font-bold flex items-center justify-center gap-1.5 transition"
               >
                 <Trash2 className="w-3.5 h-3.5" />
-                Descartar
+                <span>Descartar</span>
               </button>
               <button
                 onClick={() =>
@@ -2242,10 +2308,10 @@ export default function App() {
                     sessionQueue.length > 0 ? 'pre_session_reading' : 'simulacro_active'
                   )
                 }
-                className="px-3.5 py-2 rounded-xl bg-amber-200/80 hover:bg-amber-300 text-amber-950 text-xs font-extrabold flex items-center gap-1.5 transition"
+                className="flex-1 sm:flex-initial px-3.5 py-2 rounded-xl bg-amber-200/80 hover:bg-amber-300 text-amber-950 text-xs font-extrabold flex items-center justify-center gap-1.5 transition"
               >
                 <BookOpen className="w-3.5 h-3.5" />
-                Lectura Previa
+                <span>Lectura Previa</span>
               </button>
               <button
                 onClick={() =>
@@ -2253,10 +2319,10 @@ export default function App() {
                     sessionQueue.length > 0 ? 'session' : 'simulacro_active'
                   )
                 }
-                className="px-4 py-2 rounded-xl bg-[#D95D39] hover:bg-[#C04D2B] text-white text-xs font-extrabold flex items-center gap-1.5 transition shadow-sm"
+                className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-[#D95D39] hover:bg-[#C04D2B] text-white text-xs font-extrabold flex items-center justify-center gap-1.5 transition shadow-sm"
               >
                 <Play className="w-3.5 h-3.5 fill-white" />
-                Continuar Preguntas
+                <span>Continuar Preguntas</span>
               </button>
             </div>
           </div>
@@ -2675,11 +2741,78 @@ export default function App() {
                         skipPreReading: true,
                       })
                     }
-                    className={`shrink-0 px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm flex items-center gap-2 transition ${activeTheoryAreaStyle.btnPrimary}`}
+                    className={`w-full sm:w-auto shrink-0 px-5 py-3 rounded-xl font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 transition ${activeTheoryAreaStyle.btnPrimary}`}
                   >
                     <Play className="w-4 h-4 fill-white" />
-                    Comprobar con {progress.lessonSize} Preguntas
+                    <span>Comprobar con {progress.lessonSize} Preguntas</span>
                   </button>
+                </div>
+
+                {/* Barra de Herramientas Interactivas de Teoría */}
+                <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl p-3 flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-stone-500">
+                      Modo de Estudio:
+                    </span>
+                    <button
+                      onClick={() => setTheoryViewMode('interactive')}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
+                        theoryViewMode === 'interactive'
+                          ? 'bg-stone-900 text-white shadow-sm'
+                          : 'bg-white text-stone-700 hover:bg-[#EFEAE0] border border-[#D8D0C0]'
+                      }`}
+                    >
+                      <Layers className="w-3.5 h-3.5" />
+                      <span>Por Bloques Interactivos</span>
+                    </button>
+                    <button
+                      onClick={() => setTheoryViewMode('all')}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
+                        theoryViewMode === 'all'
+                          ? 'bg-stone-900 text-white shadow-sm'
+                          : 'bg-white text-stone-700 hover:bg-[#EFEAE0] border border-[#D8D0C0]'
+                      }`}
+                    >
+                      <BookOpen className="w-3.5 h-3.5" />
+                      <span>Vista Completa</span>
+                    </button>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => {
+                        setTheoryRecallMode((v) => !v);
+                        setRevealedPointsMap({});
+                      }}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-extrabold flex items-center gap-1.5 transition ${
+                        theoryRecallMode
+                          ? 'bg-amber-500 text-stone-950 shadow-sm'
+                          : 'bg-white text-stone-700 hover:bg-[#EFEAE0] border border-[#D8D0C0]'
+                      }`}
+                      title="Oculta explicaciones para que intentes recordarlas antes de verlas"
+                    >
+                      {theoryRecallMode ? (
+                        <Eye className="w-3.5 h-3.5 text-stone-950" />
+                      ) : (
+                        <EyeOff className="w-3.5 h-3.5 text-stone-500" />
+                      )}
+                      <span>
+                        {theoryRecallMode ? 'Autoevaluación Activada' : 'Modo Flashcards / Recall'}
+                      </span>
+                    </button>
+
+                    <button
+                      onClick={() => setShowTheorySources((v) => !v)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition ${
+                        showTheorySources
+                          ? 'bg-amber-100 text-amber-900 border border-amber-300'
+                          : 'bg-white text-stone-700 hover:bg-[#EFEAE0] border border-[#D8D0C0]'
+                      }`}
+                    >
+                      <BookmarkCheck className="w-3.5 h-3.5 text-amber-700" />
+                      <span>Fuentes</span>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Mapa de Cobertura Total de Tópicos de la Subárea */}
@@ -2703,68 +2836,195 @@ export default function App() {
                   </div>
                 )}
 
-                {/* Fuentes Bibliográficas Verídicas */}
-                <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl p-4">
-                  <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-amber-800 mb-2">
-                    <BookmarkCheck className="w-4 h-4 text-amber-700" />
-                    Fuentes Bibliográficas y Documentos Base del Proyecto
+                {/* Fuentes Bibliográficas Verídicas (Desplegable o fija) */}
+                {showTheorySources && (
+                  <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl p-4">
+                    <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-amber-800 mb-2">
+                      <BookmarkCheck className="w-4 h-4 text-amber-700" />
+                      Fuentes Bibliográficas y Documentos Base del Proyecto
+                    </div>
+                    <ul className="space-y-1.5 text-xs text-stone-700">
+                      {activeTheoryObj.sources.map((src, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span className="text-teal-700 font-bold">•</span>
+                          <span>{src}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="space-y-1.5 text-xs text-stone-700">
-                    {activeTheoryObj.sources.map((src, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-teal-700 font-bold">•</span>
-                        <span>{src}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                )}
               </div>
+
+              {/* Selector de Bloques si está en modo Interactivo */}
+              {theoryViewMode === 'interactive' && filteredTheorySections.length > 1 && (
+                <div className="bg-white border border-[#E5DEC9] rounded-2xl p-4 shadow-sm space-y-2">
+                  <div className="flex items-center justify-between text-xs font-extrabold uppercase tracking-wider text-stone-500">
+                    <span>Navega por Tema ({filteredTheorySections.length} módulos)</span>
+                    <span className="text-stone-400 font-mono">
+                      {activeTheorySectionIdx + 1} de {filteredTheorySections.length}
+                    </span>
+                  </div>
+                  <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-thin">
+                    {filteredTheorySections.map((sec, sIdx) => {
+                      const isActive = sIdx === activeTheorySectionIdx;
+                      return (
+                        <button
+                          key={sIdx}
+                          onClick={() => setActiveTheorySectionIdx(sIdx)}
+                          className={`px-3 py-2 rounded-xl text-xs font-bold text-left shrink-0 max-w-[240px] truncate transition ${
+                            isActive
+                              ? 'bg-stone-900 text-white shadow-sm'
+                              : 'bg-[#FAF7F2] text-stone-700 hover:bg-[#EFEAE0] border border-[#E5DEC9]'
+                          }`}
+                        >
+                          <span className="font-mono mr-1.5">{sIdx + 1}.</span>
+                          <span>{sec.title.replace(/^\d+\.\s*/, '')}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
 
               {/* Bloques de Fundamentos Teóricos Exhaustivos */}
               <div className="space-y-4">
-                {filteredTheorySections.map((sec, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-white border border-[#E5DEC9] rounded-2xl p-6 shadow-sm"
-                  >
-                    <h3 className="text-base sm:text-lg font-extrabold text-stone-900 mb-2 flex items-center gap-2">
-                      <span
-                        className={`w-2 h-5 rounded-full shrink-0 ${activeTheoryAreaStyle.progressBar}`}
-                      />
-                      {sec.title}
-                    </h3>
+                {(theoryViewMode === 'interactive' && filteredTheorySections.length > 0
+                  ? [filteredTheorySections[Math.min(activeTheorySectionIdx, filteredTheorySections.length - 1)]]
+                  : filteredTheorySections
+                ).map((sec, idx) => {
+                  const actualSectionIndex =
+                    theoryViewMode === 'interactive'
+                      ? Math.min(activeTheorySectionIdx, filteredTheorySections.length - 1)
+                      : idx;
 
-                    {sec.description && (
-                      <p className="text-xs sm:text-sm text-stone-700 mb-4 leading-relaxed bg-[#FAF7F2] border-l-4 border-amber-500 pl-3.5 py-2.5 rounded-r-lg">
-                        {sec.description}
-                      </p>
-                    )}
+                  return (
+                    <div
+                      key={actualSectionIndex}
+                      className="bg-white border border-[#E5DEC9] rounded-2xl p-5 sm:p-6 shadow-sm"
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                        <h3 className="text-base sm:text-lg font-extrabold text-stone-900 flex items-center gap-2">
+                          <span
+                            className={`w-2.5 h-6 rounded-full shrink-0 ${activeTheoryAreaStyle.progressBar}`}
+                          />
+                          <span>{sec.title}</span>
+                        </h3>
 
-                    <ul className="space-y-3">
-                      {sec.points.map((pt, pIdx) => {
-                        const [boldPart, ...restParts] = pt.split(':');
-                        const hasColon = restParts.length > 0;
-                        return (
-                          <li
-                            key={pIdx}
-                            className="bg-[#FAF7F2] border border-[#E8E2D5] rounded-xl p-4 text-xs sm:text-sm text-stone-700 leading-relaxed"
-                          >
-                            {hasColon ? (
-                              <>
-                                <strong className="text-stone-950 font-extrabold">
-                                  {boldPart}:
-                                </strong>
-                                {restParts.join(':')}
-                              </>
-                            ) : (
-                              pt
-                            )}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                ))}
+                        {theoryViewMode === 'interactive' && filteredTheorySections.length > 1 && (
+                          <div className="flex items-center gap-1.5">
+                            <button
+                              disabled={actualSectionIndex === 0}
+                              onClick={() =>
+                                setActiveTheorySectionIdx((i) => Math.max(0, i - 1))
+                              }
+                              className="p-1.5 rounded-lg bg-[#FAF7F2] hover:bg-[#EFEAE0] disabled:opacity-40 border border-[#D8D0C0] text-stone-700"
+                              title="Tema anterior"
+                            >
+                              <ChevronLeft className="w-4 h-4" />
+                            </button>
+                            <span className="text-xs font-mono font-bold px-2 text-stone-600">
+                              {actualSectionIndex + 1}/{filteredTheorySections.length}
+                            </span>
+                            <button
+                              disabled={actualSectionIndex === filteredTheorySections.length - 1}
+                              onClick={() =>
+                                setActiveTheorySectionIdx((i) =>
+                                  Math.min(filteredTheorySections.length - 1, i + 1)
+                                )
+                              }
+                              className="p-1.5 rounded-lg bg-[#FAF7F2] hover:bg-[#EFEAE0] disabled:opacity-40 border border-[#D8D0C0] text-stone-700"
+                              title="Siguiente tema"
+                            >
+                              <ChevronRight className="w-4 h-4" />
+                            </button>
+                          </div>
+                        )}
+                      </div>
+
+                      {sec.description && (
+                        <p className="text-xs sm:text-sm text-stone-700 mb-4 leading-relaxed bg-[#FAF7F2] border-l-4 border-amber-500 pl-3.5 py-2.5 rounded-r-lg">
+                          {sec.description}
+                        </p>
+                      )}
+
+                      {theoryRecallMode && (
+                        <div className="mb-3 text-[11px] font-bold text-amber-900 bg-amber-100/70 border border-amber-300 rounded-lg px-3 py-1.5 flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+                          <span>
+                            Modo Autoevaluación activo: Lee el concepto en negrita e intenta recordarlo antes de pulsar Revelar.
+                          </span>
+                        </div>
+                      )}
+
+                      <div className="grid grid-cols-1 gap-3">
+                        {sec.points.map((pt, pIdx) => {
+                          const [boldPart, ...restParts] = pt.split(':');
+                          const hasColon = restParts.length > 0;
+                          const pointKey = `${actualSectionIndex}_${pIdx}`;
+                          const isRevealed =
+                            !theoryRecallMode || Boolean(revealedPointsMap[pointKey]);
+
+                          return (
+                            <div
+                              key={pIdx}
+                              className={`rounded-xl border p-4 transition-all ${
+                                isRevealed
+                                  ? 'bg-[#FAF7F2] border-[#E8E2D5]'
+                                  : 'bg-white border-amber-300 shadow-sm'
+                              }`}
+                            >
+                              {hasColon ? (
+                                <div className="space-y-2">
+                                  <div className="flex flex-wrap items-center justify-between gap-2">
+                                    <span className="font-extrabold text-stone-950 text-xs sm:text-sm flex items-center gap-1.5">
+                                      <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+                                      {boldPart}
+                                    </span>
+
+                                    {theoryRecallMode && (
+                                      <button
+                                        onClick={() => togglePointReveal(pointKey)}
+                                        className={`px-2.5 py-1 rounded-md text-[11px] font-bold flex items-center gap-1 transition ${
+                                          isRevealed
+                                            ? 'bg-[#EFEAE0] text-stone-700'
+                                            : 'bg-amber-500 text-stone-950 shadow-sm'
+                                        }`}
+                                      >
+                                        {isRevealed ? (
+                                          <>
+                                            <EyeOff className="w-3 h-3" /> Ocultar
+                                          </>
+                                        ) : (
+                                          <>
+                                            <Eye className="w-3 h-3" /> Revelar explicación
+                                          </>
+                                        )}
+                                      </button>
+                                    )}
+                                  </div>
+
+                                  {isRevealed ? (
+                                    <p className="text-xs sm:text-sm text-stone-700 leading-relaxed pl-3.5 border-l-2 border-[#D8D0C0]">
+                                      {restParts.join(':')}
+                                    </p>
+                                  ) : (
+                                    <div className="text-xs text-stone-400 italic pl-3.5">
+                                      Contenido oculto para autoevaluación. ¿Recuerdas los detalles clave? Haz clic en Revelar.
+                                    </div>
+                                  )}
+                                </div>
+                              ) : (
+                                <div className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                                  {pt}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Tablas Comparativas de Referencia Rápida */}
@@ -2821,27 +3081,45 @@ export default function App() {
                 </div>
               )}
 
-              {/* Fórmulas, Estándares y Comandos Clave */}
+              {/* Fórmulas, Estándares y Comandos Clave con Copiado Rápido */}
               {activeTheoryObj.formulas?.length > 0 && (
-                <div className="bg-white border border-[#E5DEC9] rounded-2xl p-6 shadow-sm">
-                  <h3 className="text-base font-extrabold text-stone-900 mb-4 flex items-center gap-2">
-                    <Calculator className="w-5 h-5 text-teal-700" />
-                    Fórmulas, Comandos y Reglas Exactas para el Examen
-                  </h3>
+                <div className="bg-white border border-[#E5DEC9] rounded-2xl p-5 sm:p-6 shadow-sm">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <h3 className="text-base font-extrabold text-stone-900 flex items-center gap-2">
+                      <Calculator className="w-5 h-5 text-teal-700" />
+                      <span>Fórmulas, Comandos y Reglas Exactas para el Examen</span>
+                    </h3>
+                    <span className="text-[11px] font-bold text-stone-500">
+                      Haz clic en cualquier fórmula para copiarla
+                    </span>
+                  </div>
+
                   <div className="grid grid-cols-1 gap-3">
-                    {activeTheoryObj.formulas.map((f, i) => (
-                      <div
-                        key={i}
-                        className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
-                      >
-                        <span className="text-xs sm:text-sm font-bold text-stone-800">
-                          {f.label}
-                        </span>
-                        <code className="text-xs sm:text-sm font-mono font-bold text-teal-900 bg-teal-100/80 border border-teal-300 px-3 py-1.5 rounded-lg">
-                          {f.code}
-                        </code>
-                      </div>
-                    ))}
+                    {activeTheoryObj.formulas.map((f, i) => {
+                      const isCopied = copiedFormulaIdx === i;
+                      return (
+                        <div
+                          key={i}
+                          className="bg-[#FAF7F2] border border-[#E5DEC9] hover:border-teal-400 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition"
+                        >
+                          <span className="text-xs sm:text-sm font-bold text-stone-800">
+                            {f.label}
+                          </span>
+                          <button
+                            onClick={() => handleCopyFormula(f.code, i)}
+                            className="flex items-center justify-between sm:justify-start gap-2 bg-teal-100/80 hover:bg-teal-200/90 border border-teal-300 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono font-bold text-teal-950 transition text-left cursor-pointer"
+                            title="Copiar fórmula"
+                          >
+                            <code className="truncate max-w-[280px] sm:max-w-md">{f.code}</code>
+                            {isCopied ? (
+                              <Check className="w-4 h-4 text-teal-700 shrink-0" />
+                            ) : (
+                              <Copy className="w-3.5 h-3.5 text-teal-700/80 shrink-0" />
+                            )}
+                          </button>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -2865,15 +3143,14 @@ export default function App() {
               )}
 
               {/* Glosario / Catálogo de Reactivos Resueltos y Explicados de esta Subárea */}
-              <div className="bg-white border border-[#E5DEC9] rounded-2xl p-6 shadow-sm">
+              <div className="bg-white border border-[#E5DEC9] rounded-2xl p-5 sm:p-6 shadow-sm">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
                   <div>
                     <h3 className="text-base sm:text-lg font-extrabold text-stone-900">
-                      Catálogo de Reactivos Explicados ({filteredStudyQuestions.length})
+                      Catálogo de Reactivos con Autoevaluación ({filteredStudyQuestions.length})
                     </h3>
                     <p className="text-xs text-stone-500 mt-0.5">
-                      Estudia directamente cada caso práctico con su respuesta correcta y
-                      su justificación teórica.
+                      Ponte a prueba intentando responder mentalmente antes de pulsar "Ver Respuesta y Fundamento".
                     </p>
                   </div>
 
@@ -2890,8 +3167,9 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="space-y-3 max-h-[540px] overflow-y-auto pr-1">
+                <div className="space-y-3 max-h-[560px] overflow-y-auto pr-1">
                   {filteredStudyQuestions.map((q, idx) => {
+                    const isQuestionRevealed = Boolean(revealedCatalogQuestions[q.id]);
                     const correctObj = q.opciones.find(
                       (o) =>
                         String(o.id).toUpperCase() ===
@@ -2900,26 +3178,72 @@ export default function App() {
                     return (
                       <div
                         key={q.id}
-                        className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl p-4"
+                        className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl p-4 transition"
                       >
-                        <div className="text-xs sm:text-sm font-bold text-stone-900 mb-2">
+                        <div className="text-xs sm:text-sm font-bold text-stone-900 mb-2.5">
                           <span className="text-[#D95D39] font-mono mr-2">
                             #{idx + 1}
                           </span>
                           {q.pregunta}
                         </div>
 
-                        {correctObj && (
-                          <div className="text-xs bg-teal-50 border border-teal-300 text-teal-950 rounded-lg px-3 py-2 mb-2">
-                            <strong>Respuesta Correcta: </strong>
-                            {correctObj.texto}
+                        {/* Opciones en minitarjetas */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+                          {q.opciones.map((op) => {
+                            const isCorrect = String(op.id).toUpperCase() === String(q.respuesta_correcta).toUpperCase();
+                            return (
+                              <div
+                                key={op.id}
+                                className={`text-xs p-2 rounded-lg border transition ${
+                                  isQuestionRevealed && isCorrect
+                                    ? 'bg-teal-100/70 border-teal-400 text-teal-950 font-semibold'
+                                    : 'bg-white border-[#E8E2D5] text-stone-700'
+                                }`}
+                              >
+                                <span className="font-mono font-bold mr-1.5 text-stone-900">
+                                  {op.id})
+                                </span>
+                                <span>{op.texto}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        <div className="pt-2 border-t border-[#E8E2D5] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                          <button
+                            onClick={() => toggleCatalogQuestionReveal(q.id)}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition cursor-pointer ${
+                              isQuestionRevealed
+                                ? 'bg-[#E5DEC9] text-stone-800'
+                                : 'bg-[#D95D39] hover:bg-[#C04D2B] text-white shadow-sm'
+                            }`}
+                          >
+                            {isQuestionRevealed ? (
+                              <>
+                                <EyeOff className="w-3.5 h-3.5" />
+                                <span>Ocultar Solución</span>
+                              </>
+                            ) : (
+                              <>
+                                <Eye className="w-3.5 h-3.5" />
+                                <span>Ver Respuesta y Fundamento</span>
+                              </>
+                            )}
+                          </button>
+
+                          {isQuestionRevealed && correctObj && (
+                            <span className="text-xs font-bold text-teal-800 bg-teal-50 border border-teal-200 px-2.5 py-1 rounded-md">
+                              Correcta: {correctObj.id} ({correctObj.texto})
+                            </span>
+                          )}
+                        </div>
+
+                        {isQuestionRevealed && (
+                          <div className="mt-3 text-xs text-stone-700 leading-relaxed bg-white border border-amber-200 rounded-lg p-3">
+                            <strong className="text-amber-800">Fundamento Técnico: </strong>
+                            {q.explicacion}
                           </div>
                         )}
-
-                        <div className="text-xs text-stone-700 leading-relaxed">
-                          <strong className="text-amber-800">Fundamento: </strong>
-                          {q.explicacion}
-                        </div>
                       </div>
                     );
                   })}
