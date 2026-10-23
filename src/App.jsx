@@ -37,8 +37,17 @@ import {
   ChevronLeft,
   ChevronRight,
   HelpCircle,
+  Smartphone,
+  RefreshCw,
 } from 'lucide-react';
 import { THEORY_GUIDE } from './theoryData';
+import SyncModal from './SyncModal';
+import {
+  getActiveSyncKey,
+  pushToCloudDebounced,
+  subscribeToCloudVault,
+} from './syncService';
+import { isFirebaseConfigured } from './firebaseConfig';
 
 // Cargar todos los bancos de preguntas en src/data/ y subdirectorios
 const rawDataModules = import.meta.glob('./data/**/*.json', { eager: true });
@@ -433,13 +442,59 @@ export default function App() {
     () => savedActiveState?.checkedReadingBlocks || {}
   );
 
+  // Sincronización entre dispositivos sin cuentas (Firebase Firestore anónimo)
+  const [syncKey, setSyncKey] = useState(() => getActiveSyncKey());
+  const [showSyncModal, setShowSyncModal] = useState(false);
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  const handleApplyRemoteData = useCallback((remoteData) => {
+    if (!remoteData) return;
+    setIsSyncing(true);
+    if (remoteData.progress) {
+      setProgress((prev) => ({
+        ...prev,
+        ...remoteData.progress,
+      }));
+    }
+    if (remoteData.activeSession) {
+      const s = remoteData.activeSession;
+      if (s.activeTab) setActiveTab(s.activeTab);
+      if (s.sessionConfig) setSessionConfig(s.sessionConfig);
+      if (s.sessionQueue) setSessionQueue(s.sessionQueue);
+      if (typeof s.currentIndex === 'number') setCurrentIndex(s.currentIndex);
+      if (s.selectedOption !== undefined) setSelectedOption(s.selectedOption);
+      if (s.isAnswerChecked !== undefined) setIsAnswerChecked(s.isAnswerChecked);
+      if (s.isCorrectAnswer !== undefined) setIsCorrectAnswer(s.isCorrectAnswer);
+      if (s.sessionResults) setSessionResults(s.sessionResults);
+      if (s.examQuestions) setExamQuestions(s.examQuestions);
+      if (s.examAnswers) setExamAnswers(s.examAnswers);
+      if (typeof s.examCurrentIdx === 'number') setExamCurrentIdx(s.examCurrentIdx);
+      if (typeof s.examSecondsLeft === 'number') setExamSecondsLeft(s.examSecondsLeft);
+      if (s.examSummary) setExamSummary(s.examSummary);
+      if (s.selectedTheorySubarea) setSelectedTheorySubarea(s.selectedTheorySubarea);
+      if (s.preReadingSubareaTab) setPreReadingSubareaTab(s.preReadingSubareaTab);
+      if (s.checkedReadingBlocks) setCheckedReadingBlocks(s.checkedReadingBlocks);
+    }
+    setTimeout(() => setIsSyncing(false), 800);
+  }, []);
+
+  // Escuchar cambios de la nube en tiempo real
+  useEffect(() => {
+    if (!syncKey) return;
+    const unsubscribe = subscribeToCloudVault(syncKey, (remoteData) => {
+      handleApplyRemoteData(remoteData);
+    });
+    return () => unsubscribe();
+  }, [syncKey, handleApplyRemoteData]);
+
   useEffect(() => {
     try {
       localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(progress));
+      pushToCloudDebounced(syncKey, progress, null);
     } catch (e) {
       console.error('Error guardando progreso:', e);
     }
-  }, [progress]);
+  }, [progress, syncKey]);
 
   useEffect(() => {
     try {
@@ -462,6 +517,7 @@ export default function App() {
         examSummary,
       };
       localStorage.setItem(ACTIVE_SESSION_STORAGE_KEY, JSON.stringify(payload));
+      pushToCloudDebounced(syncKey, progress, payload);
     } catch (e) {
       console.error('Error guardando sesión activa:', e);
     }
@@ -482,6 +538,8 @@ export default function App() {
     examCurrentIdx,
     examSecondsLeft,
     examSummary,
+    syncKey,
+    progress,
   ]);
 
   const orderedAreas = useMemo(() => {
@@ -2206,6 +2264,29 @@ export default function App() {
               <Zap className="w-3.5 h-3.5 fill-indigo-500 text-indigo-600" />
               <span>{progress.xp} XP</span>
             </div>
+
+            <button
+              onClick={() => setShowSyncModal(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-[#F3EFE6] border border-[#E5DEC9] text-stone-700 hover:text-indigo-600 text-xs font-bold shadow-sm transition"
+              title="Sincronizar entre computadora y teléfono sin cuentas"
+            >
+              <Smartphone className="w-3.5 h-3.5 text-indigo-600" />
+              <span className="hidden sm:inline">Dispositivos</span>
+              {isSyncing ? (
+                <RefreshCw className="w-2.5 h-2.5 text-indigo-500 animate-spin" />
+              ) : (
+                <span
+                  className={`w-2 h-2 rounded-full ${
+                    isFirebaseConfigured() ? 'bg-emerald-500' : 'bg-amber-400'
+                  }`}
+                  title={
+                    isFirebaseConfigured()
+                      ? 'Nube lista para sincronizar'
+                      : 'Firebase pendiente de credenciales'
+                  }
+                />
+              )}
+            </button>
           </div>
         </div>
 
@@ -3470,6 +3551,16 @@ export default function App() {
           </div>
         )}
       </main>
+
+      {/* Modal de Sincronización entre Dispositivos */}
+      <SyncModal
+        isOpen={showSyncModal}
+        onClose={() => setShowSyncModal(false)}
+        syncKey={syncKey}
+        onApplyRemoteData={handleApplyRemoteData}
+        onSyncKeyChange={(newKey) => setSyncKey(newKey)}
+        isSyncing={isSyncing}
+      />
     </div>
   );
 }
