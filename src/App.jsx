@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import confetti from 'canvas-confetti';
 import {
-  Flame,
-  Zap,
   Trophy,
   Brain,
   CheckCircle2,
@@ -36,7 +34,6 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  HelpCircle,
   Smartphone,
   RefreshCw,
 } from 'lucide-react';
@@ -304,9 +301,12 @@ const PROGRESS_STORAGE_KEY = 'egel_pro_progress_v3';
 const ACTIVE_SESSION_STORAGE_KEY = 'egel_pro_active_session_v3';
 const MIN_QUESTIONS_PER_LESSON = 35;
 
+function formatReadableText(text) {
+  if (!text || typeof text !== 'string') return text || '';
+  return text.replace(/_{3,}/g, ' _____ ');
+}
+
 const defaultProgress = {
-  xp: 0,
-  streakDays: 1,
   lastStudyDate: new Date().toISOString().slice(0, 10),
   lessonSize: 35,
   questionStats: {},
@@ -377,7 +377,6 @@ export default function App() {
       savedActiveState?.sessionResults || {
         correctFirstTry: 0,
         totalAnswered: 0,
-        xpEarned: 0,
         mistakesMade: [],
         repairedMistakes: [],
       }
@@ -747,12 +746,6 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function handleSelectTheorySubarea(subareaName) {
-    setSelectedTheorySubarea(subareaName);
-    setActiveTheorySectionIdx(0);
-    setRevealedPointsMap({});
-  }
-
   function togglePointReveal(pointKey) {
     setRevealedPointsMap((prev) => ({
       ...prev,
@@ -850,7 +843,6 @@ export default function App() {
     setSessionResults({
       correctFirstTry: 0,
       totalAnswered: selected.length,
-      xpEarned: 0,
       mistakesMade: [],
       repairedMistakes: [],
     });
@@ -892,7 +884,6 @@ export default function App() {
 
       return {
         ...prev,
-        xp: prev.xp + (correct ? (currentQ.isRetryInSession ? 5 : 15) : 0),
         questionStats: {
           ...prev.questionStats,
           [currentQ.id]: {
@@ -924,8 +915,6 @@ export default function App() {
           correct && !currentQ.isRetryInSession
             ? prev.correctFirstTry + 1
             : prev.correctFirstTry,
-        xpEarned:
-          prev.xpEarned + (correct ? (currentQ.isRetryInSession ? 5 : 15) : 0),
         mistakesMade:
           !correct && !prev.mistakesMade.some((m) => m.id === currentQ.id)
             ? [...prev.mistakesMade, currentQ]
@@ -954,6 +943,7 @@ export default function App() {
       setSelectedOption(null);
       setIsAnswerChecked(false);
       setIsCorrectAnswer(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       try {
         confetti({
@@ -1108,7 +1098,6 @@ export default function App() {
 
     setProgress((prev) => ({
       ...prev,
-      xp: prev.xp + totalCorrect * 10,
       questionStats: newQuestionStats,
       subareaStats: newSubareaStats,
       mistakeIds: Array.from(newMistakeIds),
@@ -1523,11 +1512,11 @@ export default function App() {
       <div className="min-h-screen bg-[#F8F5EE] text-stone-900 flex flex-col">
         {/* Barra Superior */}
         <header className="border-b border-[#E5DEC9] bg-white/95 backdrop-blur sticky top-0 z-20 shadow-sm">
-          <div className="max-w-3xl w-full mx-auto px-4 py-3.5 flex items-center gap-2 sm:gap-3">
+          <div className="max-w-3xl w-full mx-auto px-3 sm:px-4 py-2.5 sm:py-3.5 flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => setActiveTab('home')}
               title="Pausar y volver al menú (tu progreso queda guardado)"
-              className="flex items-center gap-1.5 text-stone-700 hover:text-stone-950 px-3 py-1.5 rounded-xl bg-[#F3EFE6] hover:bg-[#E7E0D2] text-xs font-bold transition"
+              className="flex items-center gap-1.5 text-stone-700 hover:text-stone-950 px-2.5 sm:px-3 py-1.5 rounded-xl bg-[#F3EFE6] hover:bg-[#E7E0D2] text-xs font-bold transition shrink-0"
             >
               <Pause className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Pausar</span>
@@ -1539,22 +1528,22 @@ export default function App() {
                 setActiveTab('pre_session_reading');
               }}
               title="Volver a la pantalla completa de Lectura Previa"
-              className="flex items-center gap-1.5 text-teal-900 px-3 py-1.5 rounded-xl bg-teal-100 hover:bg-teal-200/80 border border-teal-300 text-xs font-bold transition shrink-0"
+              className="flex items-center gap-1.5 text-teal-900 px-2.5 sm:px-3 py-1.5 rounded-xl bg-teal-100 hover:bg-teal-200/80 border border-teal-300 text-xs font-bold transition shrink-0"
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>Lectura Previa</span>
+              <span className="hidden sm:inline">Lectura</span>
             </button>
 
-            <div className="flex-1">
-              <div className="flex items-center justify-between text-xs mb-1.5">
-                <span className="font-bold text-stone-700 truncate max-w-[140px] sm:max-w-xs">
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between text-xs mb-1 gap-2">
+                <span className="font-bold text-stone-700 truncate min-w-0 text-[11px] sm:text-xs">
                   {sessionConfig?.title || currentQ.subarea}
                 </span>
-                <span className="font-mono font-extrabold text-[#D95D39]">
-                  Pregunta {currentIndex + 1} de {sessionQueue.length}
+                <span className="font-mono font-extrabold text-[#D95D39] shrink-0 text-[11px] sm:text-xs">
+                  <span className="hidden xs:inline sm:inline">Pregunta </span>{currentIndex + 1}/{sessionQueue.length}
                 </span>
               </div>
-              <div className="bg-[#E8E2D5] h-2.5 rounded-full overflow-hidden">
+              <div className="bg-[#E8E2D5] h-2 rounded-full overflow-hidden">
                 <div
                   className="bg-gradient-to-r from-[#D95D39] to-amber-500 h-full rounded-full transition-all duration-300"
                   style={{ width: `${Math.max(3, progressPct)}%` }}
@@ -1564,20 +1553,20 @@ export default function App() {
 
             <button
               onClick={() => setShowTheoryDrawerInQuiz((v) => !v)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200/80 border border-amber-300 text-amber-900 text-xs font-bold transition shrink-0"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200/80 border border-amber-300 text-amber-900 text-xs font-bold transition shrink-0"
             >
               <Lightbulb className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Apunte Rápido</span>
+              <span className="hidden sm:inline">Apunte</span>
             </button>
           </div>
         </header>
 
         {/* Contenedor Principal */}
-        <main className="flex-1 max-w-3xl w-full mx-auto px-4 py-6 flex flex-col justify-between">
+        <main className="flex-1 max-w-3xl w-full mx-auto px-4 py-4 sm:py-6 flex flex-col pb-6 sm:pb-8">
           <div>
             {/* Panel Desplegable de Teoría y Fórmulas durante el Quiz */}
             {showTheoryDrawerInQuiz && currentTheoryGuide && (
-              <div className="mb-6 bg-white border-2 border-amber-400 rounded-2xl p-5 shadow-xl max-h-[65vh] overflow-y-auto space-y-4">
+              <div className="mb-6 bg-white border-2 border-amber-400 rounded-2xl p-4 sm:p-5 shadow-xl max-h-[65vh] overflow-y-auto space-y-4">
                 <div className="flex items-start justify-between gap-3 pb-3 border-b border-[#E5DEC9]">
                   <div>
                     <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-800">
@@ -1606,7 +1595,7 @@ export default function App() {
                         className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-lg px-3 py-2 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-1"
                       >
                         <span className="text-stone-800 font-bold">{f.label}:</span>
-                        <code className="text-teal-900 font-mono font-semibold">{f.code}</code>
+                        <code className="text-teal-900 font-mono font-semibold break-all text-[11px] sm:text-xs">{f.code}</code>
                       </div>
                     ))}
                   </div>
@@ -1654,7 +1643,7 @@ export default function App() {
                   </div>
                 )}
 
-                <div className="text-[11px] text-stone-500 pt-1 border-t border-[#E5DEC9]">
+                <div className="text-[11px] text-stone-500 pt-1 border-t border-[#E5DEC9] break-words">
                   <strong className="text-stone-700">Fuentes: </strong>
                   {currentTheoryGuide.sources.join(' • ')}
                 </div>
@@ -1695,13 +1684,13 @@ export default function App() {
                     onClick={() => setShowReadingText((v) => !v)}
                     className="w-full px-4 py-3 bg-rose-50 flex items-center justify-between text-left"
                   >
-                    <div className="flex items-center gap-2">
-                      <FileText className="w-4 h-4 text-rose-700" />
-                      <span className="text-xs sm:text-sm font-extrabold text-rose-950">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <FileText className="w-4 h-4 text-rose-700 shrink-0" />
+                      <span className="text-xs sm:text-sm font-extrabold text-rose-950 truncate">
                         Lectura: {currentQ.lecturaTitulo}
                       </span>
                     </div>
-                    <span className="text-xs font-bold text-rose-800 flex items-center gap-1">
+                    <span className="text-xs font-bold text-rose-800 flex items-center gap-1 shrink-0">
                       {showReadingText ? (
                         <>
                           Ocultar <ChevronUp className="w-4 h-4" />
@@ -1716,7 +1705,7 @@ export default function App() {
                   {showReadingText && (
                     <div className="p-4 max-h-60 overflow-y-auto space-y-2.5 text-xs sm:text-sm text-stone-700 leading-relaxed border-t border-rose-200">
                       {currentQ.lecturaParrafos.map((parrafo, idxP) => (
-                        <p key={idxP}>
+                        <p key={idxP} className="break-words">
                           <strong className="text-rose-700 mr-1">
                             [{idxP + 1}]
                           </strong>
@@ -1729,9 +1718,9 @@ export default function App() {
               )}
 
             {/* Enunciado */}
-            <div className="bg-white border border-[#E5DEC9] rounded-2xl p-5 sm:p-6 mb-5 shadow-sm">
-              <h2 className="text-base sm:text-lg font-extrabold text-stone-900 leading-relaxed">
-                {currentQ.pregunta}
+            <div className="bg-white border border-[#E5DEC9] rounded-2xl p-4 sm:p-6 mb-4 sm:mb-5 shadow-sm">
+              <h2 className="text-base sm:text-lg font-extrabold text-stone-900 leading-relaxed break-words">
+                {formatReadableText(currentQ.pregunta)}
               </h2>
             </div>
 
@@ -1769,76 +1758,75 @@ export default function App() {
                     key={opcion.id}
                     disabled={isAnswerChecked}
                     onClick={() => setSelectedOption(opcion.id)}
-                    className={`w-full text-left p-4 rounded-xl border-2 transition-all flex items-center gap-3.5 ${cardStyle}`}
+                    className={`w-full text-left p-3.5 sm:p-4 rounded-xl border-2 transition-all flex items-center gap-3 sm:gap-3.5 ${cardStyle}`}
                   >
                     <span
-                      className={`w-8 h-8 rounded-lg border flex items-center justify-center text-sm font-mono font-bold shrink-0 transition ${badgeStyle}`}
+                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg border flex items-center justify-center text-xs sm:text-sm font-mono font-bold shrink-0 transition ${badgeStyle}`}
                     >
                       {opcion.id}
                     </span>
-                    <span className="text-sm sm:text-base font-medium leading-snug flex-1">
-                      {opcion.texto}
+                    <span className="text-xs sm:text-base font-medium leading-snug flex-1 min-w-0 break-words">
+                      {formatReadableText(opcion.texto)}
                     </span>
                   </button>
                 );
               })}
             </div>
           </div>
+        </main>
 
-          {/* Barra Inferior de Comprobación y Justificación */}
-          <div className="mt-6 pb-4">
+        {/* Barra Inferior Fija de Comprobación y Siguiente Pregunta */}
+        <div className="sticky bottom-0 z-30 bg-white/95 backdrop-blur-md border-t border-[#E5DEC9] px-4 py-3 sm:py-4 shadow-[0_-4px_16px_rgba(0,0,0,0.06)]">
+          <div className="max-w-3xl mx-auto w-full">
             {!isAnswerChecked ? (
               <button
+                type="button"
                 disabled={!selectedOption}
                 onClick={handleCheckAnswer}
-                className={`w-full py-4 rounded-xl font-extrabold text-sm sm:text-base tracking-wide transition ${
+                className={`w-full py-3.5 sm:py-4 rounded-xl font-extrabold text-sm sm:text-base tracking-wide transition shadow-md active:scale-[0.99] ${
                   selectedOption
-                    ? 'bg-[#D95D39] hover:bg-[#C04D2B] text-white cursor-pointer shadow-lg shadow-[#D95D39]/25'
-                    : 'bg-[#E5DEC9] text-stone-500 cursor-not-allowed'
+                    ? 'bg-[#D95D39] hover:bg-[#C04D2B] text-white cursor-pointer shadow-[#D95D39]/25'
+                    : 'bg-[#E5DEC9] text-stone-500 cursor-not-allowed shadow-none'
                 }`}
               >
-                COMPROBAR RESPUESTA
+                {selectedOption ? 'COMPROBAR RESPUESTA' : 'SELECCIONA UNA RESPUESTA'}
               </button>
             ) : (
-              <div
-                className={`rounded-2xl p-5 border-2 transition-all shadow-md ${
-                  isCorrectAnswer
-                    ? 'bg-teal-50 border-teal-600 text-teal-950'
-                    : 'bg-rose-50 border-rose-500 text-rose-950'
-                }`}
-              >
-                <div className="flex items-center justify-between gap-2.5 mb-2.5">
-                  <div className="flex items-center gap-2.5">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 min-w-0">
                     {isCorrectAnswer ? (
-                      <CheckCircle2 className="w-6 h-6 text-teal-700 shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-teal-700 shrink-0" />
                     ) : (
-                      <XCircle className="w-6 h-6 text-rose-600 shrink-0" />
+                      <XCircle className="w-5 h-5 text-rose-600 shrink-0" />
                     )}
-                    <h3 className="font-extrabold text-base sm:text-lg">
+                    <h3 className="font-extrabold text-xs sm:text-base truncate">
                       {isCorrectAnswer
                         ? '¡Respuesta Correcta!'
-                        : `Incorrecto • La respuesta correcta es el inciso ${currentQ.respuesta_correcta}`}
+                        : `Incorrecto • La opción correcta es la ${currentQ.respuesta_correcta}`}
                     </h3>
                   </div>
 
                   <button
+                    type="button"
                     onClick={() => setShowTheoryDrawerInQuiz(true)}
                     className="text-xs font-extrabold underline text-stone-800 hover:text-stone-950 shrink-0"
                   >
-                    Ver teoría y fuente
+                    Ver apunte
                   </button>
                 </div>
 
-                <div className="bg-white rounded-xl p-3.5 text-xs sm:text-sm text-stone-800 leading-relaxed mb-4 border border-[#E5DEC9]">
+                <div className="bg-[#FAF7F2] rounded-xl p-2.5 sm:p-3.5 text-xs sm:text-sm text-stone-800 leading-relaxed border border-[#E5DEC9] max-h-24 sm:max-h-36 overflow-y-auto">
                   <span className="font-extrabold text-[#D95D39] mr-1.5">
                     Justificación Técnica:
                   </span>
-                  {currentQ.explicacion}
+                  {formatReadableText(currentQ.explicacion)}
                 </div>
 
                 <button
+                  type="button"
                   onClick={handleNextQuestion}
-                  className={`w-full py-3.5 rounded-xl font-extrabold text-sm text-white flex items-center justify-center gap-2 transition ${
+                  className={`w-full py-3 sm:py-3.5 rounded-xl font-extrabold text-sm text-white flex items-center justify-center gap-2 transition shadow-md active:scale-[0.99] ${
                     isCorrectAnswer
                       ? 'bg-teal-700 hover:bg-teal-800'
                       : 'bg-rose-600 hover:bg-rose-700'
@@ -1850,7 +1838,7 @@ export default function App() {
               </div>
             )}
           </div>
-        </main>
+        </div>
       </div>
     );
   }
@@ -1879,29 +1867,29 @@ export default function App() {
             reforzaste tus errores.
           </p>
 
-          <div className="grid grid-cols-3 gap-3 mb-6">
-            <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-2xl p-3.5">
-              <div className="text-[11px] text-stone-500 font-bold mb-1">
-                PRECISIÓN
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-6">
+            <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-2xl p-2.5 sm:p-3.5">
+              <div className="text-[10px] sm:text-[11px] text-stone-500 font-bold mb-1">
+                EVALUADOS
               </div>
-              <div className="text-2xl font-black text-teal-700">
-                {accuracyFirstTry}%
+              <div className="text-xl sm:text-2xl font-black text-stone-900">
+                {sessionResults.totalAnswered}
               </div>
             </div>
-            <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-2xl p-3.5">
-              <div className="text-[11px] text-stone-500 font-bold mb-1">
+            <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-2xl p-2.5 sm:p-3.5">
+              <div className="text-[10px] sm:text-[11px] text-stone-500 font-bold mb-1">
                 ACIERTOS
               </div>
-              <div className="text-2xl font-black text-stone-900">
+              <div className="text-xl sm:text-2xl font-black text-stone-900">
                 {sessionResults.correctFirstTry}/{sessionResults.totalAnswered}
               </div>
             </div>
-            <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-2xl p-3.5">
-              <div className="text-[11px] text-stone-500 font-bold mb-1">
-                XP GANADOS
+            <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-2xl p-2.5 sm:p-3.5">
+              <div className="text-[10px] sm:text-[11px] text-stone-500 font-bold mb-1">
+                PRECISIÓN
               </div>
-              <div className="text-2xl font-black text-[#D95D39]">
-                +{sessionResults.xpEarned}
+              <div className="text-xl sm:text-2xl font-black text-teal-700">
+                {accuracyFirstTry}%
               </div>
             </div>
           </div>
@@ -1940,48 +1928,49 @@ export default function App() {
 
     return (
       <div className="min-h-screen bg-[#F8F5EE] text-stone-900 flex flex-col">
-        <header className="bg-white border-b border-[#E5DEC9] px-4 py-3.5 sticky top-0 z-20 shadow-sm">
-          <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
+        <header className="bg-white border-b border-[#E5DEC9] px-3 sm:px-4 py-2.5 sm:py-3.5 sticky top-0 z-20 shadow-sm">
+          <div className="max-w-5xl mx-auto flex items-center justify-between gap-2 sm:gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
               <button
                 onClick={() => setActiveTab('home')}
-                className="px-3 py-1.5 rounded-lg bg-[#F3EFE6] hover:bg-[#E5DEC9] text-xs font-bold text-stone-700"
+                className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#F3EFE6] hover:bg-[#E5DEC9] text-xs font-bold text-stone-700 shrink-0"
               >
                 Pausar
               </button>
-              <span className="px-3 py-1 rounded-lg bg-indigo-100 border border-indigo-300 text-indigo-900 font-bold text-xs">
-                SIMULACRO EGEL
+              <span className="px-2 sm:px-3 py-1 rounded-lg bg-indigo-100 border border-indigo-300 text-indigo-900 font-bold text-[11px] sm:text-xs shrink-0">
+                SIMULACRO
               </span>
-              <span className="text-xs text-stone-600">
-                Respondidas: <strong className="text-stone-900">{answeredCount}</strong> /{' '}
-                {examQuestions.length}
+              <span className="text-xs text-stone-600 truncate">
+                <span className="hidden sm:inline">Respondidas: </span>
+                <strong className="text-stone-900">{answeredCount}</strong>/{examQuestions.length}
               </span>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
               <div
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-mono text-sm font-bold border ${
+                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl font-mono text-xs sm:text-sm font-bold border ${
                   examSecondsLeft < 120
                     ? 'bg-rose-100 border-rose-400 text-rose-800 animate-pulse'
                     : 'bg-amber-50 border-amber-300 text-amber-900'
                 }`}
               >
-                <Clock className="w-4 h-4" />
+                <Clock className="w-3.5 h-3.5" />
                 {formatTime(examSecondsLeft)}
               </div>
 
               <button
                 onClick={handleFinishSimulacro}
-                className="px-4 py-1.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs transition"
+                className="px-3 sm:px-4 py-1.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs transition shrink-0"
               >
-                Entregar Examen
+                <span className="hidden sm:inline">Entregar Examen</span>
+                <span className="sm:hidden">Entregar</span>
               </button>
             </div>
           </div>
         </header>
 
-        <div className="max-w-5xl w-full mx-auto flex-1 grid grid-cols-1 lg:grid-cols-4 gap-6 p-4 sm:p-6">
-          <div className="lg:col-span-3 flex flex-col justify-between bg-white border border-[#E5DEC9] rounded-2xl p-6 shadow-sm">
+        <div className="max-w-5xl w-full mx-auto flex-1 grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6 p-3 sm:p-6">
+          <div className="lg:col-span-3 flex flex-col bg-white border border-[#E5DEC9] rounded-2xl p-4 sm:p-6 shadow-sm">
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 <span className="text-xs font-bold px-2.5 py-1 rounded-md bg-indigo-100 text-indigo-900">
@@ -2000,7 +1989,7 @@ export default function App() {
                       Lectura: {q.lecturaTitulo}
                     </div>
                     {q.lecturaParrafos.map((p, i) => (
-                      <p key={i}>
+                      <p key={i} className="break-words">
                         <strong className="text-rose-700">[{i + 1}] </strong>
                         {p}
                       </p>
@@ -2008,8 +1997,8 @@ export default function App() {
                   </div>
                 )}
 
-              <p className="text-base sm:text-lg font-extrabold text-stone-900 leading-relaxed mb-6">
-                {q.pregunta}
+              <p className="text-base sm:text-lg font-extrabold text-stone-900 leading-relaxed mb-5 sm:mb-6 break-words">
+                {formatReadableText(q.pregunta)}
               </p>
 
               <div className="space-y-3">
@@ -2021,14 +2010,14 @@ export default function App() {
                       onClick={() =>
                         setExamAnswers((prev) => ({ ...prev, [q.id]: op.id }))
                       }
-                      className={`w-full text-left p-4 rounded-xl border-2 transition flex items-center gap-3.5 ${
+                      className={`w-full text-left p-3.5 sm:p-4 rounded-xl border-2 transition flex items-center gap-3 sm:gap-3.5 ${
                         selected
-                          ? 'bg-indigo-50 border-indigo-600 text-stone-950 font-medium'
+                          ? 'bg-indigo-50 border-indigo-600 text-stone-950 font-medium shadow-sm'
                           : 'bg-[#FAF7F2] border-[#E5DEC9] hover:border-stone-400 text-stone-800'
                       }`}
                     >
                       <span
-                        className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-mono font-bold shrink-0 ${
+                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-xs font-mono font-bold shrink-0 ${
                           selected
                             ? 'bg-indigo-600 text-white'
                             : 'bg-white text-stone-700 border border-[#D8D0C0]'
@@ -2036,17 +2025,20 @@ export default function App() {
                       >
                         {op.id}
                       </span>
-                      <span className="text-sm sm:text-base">{op.texto}</span>
+                      <span className="text-xs sm:text-base min-w-0 break-words flex-1">{formatReadableText(op.texto)}</span>
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-6 mt-6 border-t border-[#E5DEC9]">
+            <div className="flex items-center justify-between pt-5 mt-6 border-t border-[#E5DEC9]">
               <button
                 disabled={examCurrentIdx === 0}
-                onClick={() => setExamCurrentIdx((i) => Math.max(0, i - 1))}
+                onClick={() => {
+                  setExamCurrentIdx((i) => Math.max(0, i - 1));
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
                 className="px-4 py-2.5 rounded-xl bg-[#F3EFE6] hover:bg-[#E5DEC9] disabled:opacity-40 text-sm font-bold text-stone-800"
               >
                 Anterior
@@ -2054,15 +2046,18 @@ export default function App() {
 
               {examCurrentIdx + 1 < examQuestions.length ? (
                 <button
-                  onClick={() => setExamCurrentIdx((i) => i + 1)}
-                  className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm"
+                  onClick={() => {
+                    setExamCurrentIdx((i) => i + 1);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-sm"
                 >
                   Siguiente
                 </button>
               ) : (
                 <button
                   onClick={handleFinishSimulacro}
-                  className="px-5 py-2.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-sm"
+                  className="px-5 py-2.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-sm shadow-sm"
                 >
                   Finalizar y Calificar
                 </button>
@@ -2070,19 +2065,22 @@ export default function App() {
             </div>
           </div>
 
-          <div className="bg-white border border-[#E5DEC9] rounded-2xl p-4 h-fit max-h-[75vh] overflow-y-auto shadow-sm">
+          <div className="bg-white border border-[#E5DEC9] rounded-2xl p-4 h-fit max-h-[60vh] sm:max-h-[75vh] overflow-y-auto shadow-sm">
             <h3 className="text-xs font-extrabold uppercase tracking-wider text-stone-500 mb-3">
               Navegación ({examQuestions.length})
             </h3>
-            <div className="grid grid-cols-5 gap-2">
+            <div className="grid grid-cols-6 sm:grid-cols-8 lg:grid-cols-5 gap-1.5 sm:gap-2">
               {examQuestions.map((item, idx) => {
                 const isDone = Boolean(examAnswers[item.id]);
                 const isCurr = idx === examCurrentIdx;
                 return (
                   <button
                     key={item.id}
-                    onClick={() => setExamCurrentIdx(idx)}
-                    className={`h-9 rounded-lg text-xs font-bold border transition ${
+                    onClick={() => {
+                      setExamCurrentIdx(idx);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className={`h-8 sm:h-9 rounded-lg text-xs font-bold border transition ${
                       isCurr
                         ? 'border-indigo-700 bg-indigo-600 text-white'
                         : isDone
@@ -2250,28 +2248,23 @@ export default function App() {
               ))}
             </div>
 
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#E5DEC9] text-teal-800 text-xs font-bold shadow-sm">
+            <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-white border border-[#E5DEC9] text-teal-800 text-xs font-bold shadow-sm">
               <Target className="w-3.5 h-3.5 text-teal-700" />
-              <span>{globalStats.globalAccuracy}% precisión</span>
+              <span>{globalStats.globalAccuracy}%<span className="hidden sm:inline"> precisión</span></span>
             </div>
 
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#E5DEC9] text-amber-800 text-xs font-bold shadow-sm">
-              <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-600" />
-              <span>{progress.streakDays}d</span>
-            </div>
-
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-[#E5DEC9] text-indigo-800 text-xs font-bold shadow-sm">
-              <Zap className="w-3.5 h-3.5 fill-indigo-500 text-indigo-600" />
-              <span>{progress.xp} XP</span>
+            <div className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-white border border-[#E5DEC9] text-stone-700 text-xs font-bold shadow-sm">
+              <CheckCircle2 className="w-3.5 h-3.5 text-teal-700" />
+              <span>{globalStats.masteredQuestions}/{allQuestions.length} dominadas</span>
             </div>
 
             <button
               onClick={() => setShowSyncModal(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-[#F3EFE6] border border-[#E5DEC9] text-stone-700 hover:text-indigo-600 text-xs font-bold shadow-sm transition"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-white hover:bg-[#F3EFE6] border border-[#E5DEC9] text-stone-700 hover:text-indigo-600 text-xs font-bold shadow-sm transition"
               title="Sincronizar entre computadora y teléfono sin cuentas"
             >
               <Smartphone className="w-3.5 h-3.5 text-indigo-600" />
-              <span className="hidden sm:inline">Dispositivos</span>
+              <span className="hidden md:inline">Dispositivos</span>
               {isSyncing ? (
                 <RefreshCw className="w-2.5 h-2.5 text-indigo-500 animate-spin" />
               ) : (
@@ -2685,7 +2678,7 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {/* Índice Lateral de Subáreas (1.1 a 4.1) + Buscador Global */}
             <aside className="lg:col-span-1 space-y-4">
-              <div className="bg-white border border-[#E5DEC9] rounded-2xl p-4 sticky top-32 space-y-4 shadow-sm">
+              <div className="bg-white border border-[#E5DEC9] rounded-2xl p-4 lg:sticky lg:top-32 space-y-4 shadow-sm">
                 <div>
                   <h3 className="text-xs font-extrabold uppercase tracking-wider text-stone-500 mb-2">
                     Buscador del Temario
