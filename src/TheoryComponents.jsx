@@ -12,7 +12,361 @@ import {
   Shuffle,
   LayoutGrid,
   RectangleHorizontal,
+  Maximize2,
+  X,
 } from 'lucide-react';
+import {
+  SignalsNyquistAdcDiagram,
+  KirchhoffWheatstoneKelvinDiagram,
+  RcFiltersResonanceDiagram,
+  PowerSupplyBuckBoostDiagram,
+  BjtMosfetOpAmpDiagram,
+  DigitalLogicFsmMooreMealyDiagram,
+  CpuVonNeumannHarvardDiagram,
+  MemoryHierarchyPipelineRaidDiagram,
+} from './HardwareDiagrams11_12';
+import {
+  RtosPriorityInversionDiagram,
+  McuMemoryMapFpgaDiagram,
+  GpioIsrPwmWdtDiagram,
+  UartI2cSpiBusesDiagram,
+  ClosedLoopPidControlDiagram,
+  IndustrialSensorsPlcScanDiagram,
+} from './HardwareDiagrams13_14';
+import {
+  TopologiesDiagram,
+  CiscoThreeTierDiagram,
+  OsiTcpIpPduDiagram,
+  StructuredCablingFiberDiagram,
+  LanSwitchingVlanStpDiagram,
+  IpSubnettingRoutingDiagram,
+} from './NetworkDiagrams21';
+import {
+  DhcpDnsArpDiagram,
+  SnmpSyslogNtpDiagram,
+  CliDiagnosticsQosDiagram,
+  ProtocolsPortsMasterDiagram,
+  SwitchSviQosNetflowDiagram,
+  CryptoCiaPkiDiagram,
+  NetworkAttacksTaxonomyDiagram,
+  PerimeterDefenseIdsIpsDiagram,
+  Layer2SecurityWpa3VpnDiagram,
+} from './NetworkDiagrams22_23';
+import {
+  SdlcScrumTddDiagram,
+  UmlAndArchitectureStylesDiagram,
+  SoftwareTestingMcCabeMaintenanceDiagram,
+  CompilerMemoryStackHeapDiagram,
+  OsSchedulingDeadlockDataStructuresDiagram,
+  RelationalNormalizationSqlDiagram,
+  GraphAlgorithmsDijkstraMstDiagram,
+} from './SoftwareDiagrams31_33';
+
+const ALL_NETWORK_DIAGRAMS = [
+  // ================= ÁREA 1: IMPLEMENTACIÓN DE HARDWARE =================
+  {
+    id: 'nyquist-adc-1-1',
+    matchTitles: ['Teorema de Muestreo de Nyquist-Shannon'],
+    title: 'Teorema de Muestreo de Nyquist-Shannon (fs ≥ 2·fmax) y Resolución ADC (2^N)',
+    badge: 'Subárea 1.1 • Muestreo y ADC',
+    caption: 'Para evitar Aliasing se exige fs ≥ 2·fmax más un filtro pasa-bajas anti-aliasing. En un ADC, subir ΔN bits multiplica la resolución por 2^(ΔN) (ej. de 10 a 12 bits mejora 2² = 4 veces).',
+    Component: SignalsNyquistAdcDiagram,
+  },
+  {
+    id: 'wheatstone-kelvin-1-1',
+    matchTitles: ['Puente de Wheatstone y Medición Kelvin a 4 Hilos'],
+    title: 'Puente de Wheatstone Equilibrado y Medición Kelvin a 4 Hilos (Miliohmios)',
+    badge: 'Subárea 1.1 • Instrumentación',
+    caption: 'En equilibrio (Vg = 0 V), Rx = R3·(R2/R1). Para medir resistencias ultrabajas (mΩ) sin que afecte la resistencia de los cables se usa Medición Kelvin a 4 hilos (2 inyectan corriente y 2 miden tensión con Zin → ∞).',
+    Component: KirchhoffWheatstoneKelvinDiagram,
+  },
+  {
+    id: 'rc-filters-rlc-1-1',
+    matchTitles: ['Filtros Pasivos RC Pasa-Bajas y Pasa-Altas'],
+    title: 'Filtros Pasivos RC Pasa-Bajas vs. Pasa-Altas (fc = 1/2πRC) y Resonancia RLC',
+    badge: 'Subárea 1.1 • Filtros y Resonancia',
+    caption: 'En un circuito RC: salida en el Capacitor = Pasa-Bajas; salida en el Resistor = Pasa-Altas. En resonancia RLC (f0 = 1/[2π√(LC)]), XL = XC y en un RLC serie la impedancia es mínima (Z = R) y la corriente máxima.',
+    Component: RcFiltersResonanceDiagram,
+  },
+  {
+    id: 'power-buck-boost-1-1',
+    matchTitles: ['Etapas de una Fuente de Alimentación Lineal Regulada'],
+    title: 'Las 4 Etapas de una Fuente Lineal (Rizado 120 Hz) y Convertidores DC-DC Buck / Boost',
+    badge: 'Subárea 1.1 • Fuentes de Potencia',
+    caption: 'En un puente rectificador de onda completa conectado a 60 Hz, la frecuencia de rizado se duplica a 120 Hz. En fuentes conmutadas: Buck reduce voltaje (Vout = D·Vin) y Boost lo eleva (Vout = Vin / [1 - D]).',
+    Component: PowerSupplyBuckBoostDiagram,
+  },
+  {
+    id: 'bjt-opamp-1-1',
+    matchTitles: ['Configuraciones Clásicas (Seguidor, Inversor y No Inversor)'],
+    title: 'Regiones del Transistor BJT (Corte, Activa, Saturación) y Topologías con Op-Amp',
+    badge: 'Subárea 1.1 • Transistores y Op-Amps',
+    caption: 'Como interruptor digital el BJT conmuta entre Corte (abierto) y Saturación (cerrado). En Op-Amps: Buffer Av = 1; Inversor Av = -Rf/Rin (desfasa 180°); No Inversor Av = 1 + Rf/Rin; Instrumentación ofrece máximo CMRR.',
+    Component: BjtMosfetOpAmpDiagram,
+  },
+  {
+    id: 'fsm-moore-mealy-1-2',
+    matchTitles: ['Máquinas de Estados Finitos (FSM)'],
+    title: 'Mapas de Karnaugh (2^k), Flip-Flops Síncronos (D, JK, T) y FSM Moore vs. Mealy',
+    badge: 'Subárea 1.2 • Lógica Secuencial',
+    caption: 'En un K-Map agrupar 2^k celdas elimina k variables. El Flip-Flop JK con J=1, K=1 bascula (toggle) y el T divide la frecuencia entre 2. En Moore la salida depende SOLO del estado actual; en Mealy depende del estado y de la entrada actual.',
+    Component: DigitalLogicFsmMooreMealyDiagram,
+  },
+  {
+    id: 'cpu-vonneumann-harvard-1-2',
+    matchTitles: ['Arquitectura Von Neumann vs. Arquitectura Harvard'],
+    title: 'Organización Interna de CPU (ALU, FPU, PC, IR, SP), RISC vs. CISC y Von Neumann vs. Harvard',
+    badge: 'Subárea 1.2 • Arquitectura de CPU',
+    caption: 'La ISA es el contrato software/hardware (instrucciones/registros) y la Microarquitectura su implementación física. Von Neumann comparte 1 solo bus para código y datos; Harvard separa físicamente memorias y buses de instrucciones y datos.',
+    Component: CpuVonNeumannHarvardDiagram,
+  },
+  {
+    id: 'memory-pipeline-raid-1-2',
+    matchTitles: ['Niveles de la Jerarquía de Memoria'],
+    title: 'Jerarquía de Memoria (L1–L3, MMU/TLB), Pipeline de 5 Etapas (Riesgo RAW) y Niveles RAID',
+    badge: 'Subárea 1.2 • Memoria, Pipeline y RAID',
+    caption: 'Ante un TLB Miss, la MMU consulta la Tabla de Páginas en RAM. El riesgo verdadero del pipeline es RAW (resuelto con Forwarding) y WAR/WAW se eliminan con Register Renaming. RAID 0 no tolera fallos; RAID 1 espeja al 50%; RAID 5 usa paridad distribuida (N-1).',
+    Component: MemoryHierarchyPipelineRaidDiagram,
+  },
+  {
+    id: 'rtos-priority-1-3',
+    matchTitles: ['Planificación Apropiativa (Preemptive) e Inversión de Prioridad'],
+    title: 'Bare-Metal vs. RTOS, Tiempo Real Duro (Hard Deadline) e Inversión de Prioridad',
+    badge: 'Subárea 1.3 • RTOS y Tiempo Real',
+    caption: 'En Tiempo Real Duro incumplir un deadline es catastrófico (importa el determinismo). La Inversión de Prioridad en RTOS se resuelve mediante el protocolo de Herencia de Prioridad (Priority Inheritance).',
+    Component: RtosPriorityInversionDiagram,
+  },
+  {
+    id: 'mcu-fpga-memory-1-3',
+    matchTitles: ['Mapa de Memoria en Microcontroladores'],
+    title: 'Mapa de Memoria en Microcontrolador (Flash, Bootloader, SRAM, EEPROM, SFR) y MCU vs. FPGA',
+    badge: 'Subárea 1.3 • Arquitectura MCU y FPGA',
+    caption: 'Flash guarda el firmware, SRAM la pila y variables volátiles, y EEPROM parámetros no volátiles. A diferencia de la ejecución secuencial del MCU, una FPGA ofrece paralelismo físico real en hardware.',
+    Component: McuMemoryMapFpgaDiagram,
+  },
+  {
+    id: 'gpio-isr-pwm-wdt-1-3',
+    matchTitles: ['Temporizadores (Timers), Modo Input Capture y Modulación PWM'],
+    title: 'GPIO Pull-Up con Antirrebote, Reglas de ISR (volatile), Modulación PWM y Watchdog Timer (WDT)',
+    badge: 'Subárea 1.3 • Periféricos e Interrupciones',
+    caption: 'Toda variable modificada en una ISR debe declararse volatile y la ISR jamás debe usar delay(). El PWM regula potencia variando el Duty Cycle (Ton/T) y el Watchdog Timer reinicia el MCU si el software se cuelga.',
+    Component: GpioIsrPwmWdtDiagram,
+  },
+  {
+    id: 'uart-i2c-spi-1-3',
+    matchTitles: ['Bus I2C (Inter-Integrated Circuit)'],
+    title: 'Comparativa de Buses Seriales Embebidos: UART (Asíncrono), I2C (2 Hilos + Pull-Up) y SPI (4 Hilos)',
+    badge: 'Subárea 1.3 • Buses UART / I2C / SPI',
+    caption: 'UART es asíncrono (TX/RX cruzados al mismo Baud Rate). I2C usa 2 hilos (SDA/SCL con Pull-Up) y direcciones de 7 bits (hasta 127 esclavos, Half-Duplex). SPI usa 4 hilos (MOSI, MISO, SCK, SS) y es el más rápido (Full-Duplex).',
+    Component: UartI2cSpiBusesDiagram,
+  },
+  {
+    id: 'closed-loop-pid-1-4',
+    matchTitles: ['Acciones del Controlador PID'],
+    title: 'Lazo Cerrado de Control, Acciones del PID (Kp, Ki, Kd + Anti-Windup) y Amortiguamiento (ζ)',
+    badge: 'Subárea 1.4 • Control PID y Estabilidad',
+    caption: 'En un PID: Kp acelera la respuesta; Ki elimina por completo el error en estado estacionario (e_ss = 0); Kd amortigua el sobreimpulso pero amplifica el ruido de alta frecuencia. Anti-Windup evita saturar el integrador y la Histéresis evita chattering en On-Off.',
+    Component: ClosedLoopPidControlDiagram,
+  },
+  {
+    id: 'sensors-plc-scan-1-4',
+    matchTitles: ['Autómata Programable Industrial (PLC)'],
+    title: 'Lazo Industrial 4–20 mA (Cero Vivo), Encoders, Ciclo Scan del PLC (Ladder) y Variador VFD',
+    badge: 'Subárea 1.4 • Instrumentación y PLC',
+    caption: 'El lazo 4–20 mA no se atenúa en cables largos y distingue 0% (4 mA) de cable roto (0 mA). El Encoder Absoluto (Código Gray) no pierde su posición al apagarse. El VFD regula motores trifásicos CA y el PLC ejecuta su Ciclo Scan determinista.',
+    Component: IndustrialSensorsPlcScanDiagram,
+  },
+
+  // ================= ÁREA 2: IMPLEMENTACIÓN DE REDES =================
+  {
+    id: 'topologies-2-1',
+    matchTitles: ['Topologías Físicas y Lógicas'],
+    title: 'Esquema Comparativo: Topologías Estrella, Malla Completa, Bus y Anillo',
+    badge: 'Subárea 2.1 • Topologías',
+    caption: 'En Estrella el fallo de un cable queda aislado (pero el switch central es punto único de fallo). En Malla Completa existen N(N-1)/2 enlaces con máxima redundancia WAN.',
+    Component: TopologiesDiagram,
+  },
+  {
+    id: 'cisco-3-tier-2-1',
+    matchTitles: ['Diseño Jerárquico de Tres Capas de Cisco'],
+    title: 'Arquitectura Jerárquica de Campus Cisco (Acceso, Distribución y Núcleo)',
+    badge: 'Subárea 2.1 • Diseño Cisco 3 Capas',
+    caption: 'Acceso conecta dispositivos finales (VLANs, Port Security, PoE); Distribución aplica políticas (ACLs, QoS, enrutamiento L3 Inter-VLAN, HSRP); Núcleo conmuta a máxima velocidad sin filtros pesados.',
+    Component: CiscoThreeTierDiagram,
+  },
+  {
+    id: 'osi-tcpip-pdu-2-1',
+    matchTitles: ['Las 7 Capas del Modelo OSI'],
+    title: 'Modelo OSI (7 Capas) vs. TCP/IP (4 Capas), PDUs Exactas y Encapsulación Ethernet',
+    badge: 'Subárea 2.1 • Modelos OSI y PDUs',
+    caption: 'Orden descendente de PDUs en examen: Datos (Capas 7-5) → Segmento TCP / Datagrama UDP (Capa 4) → Paquete (Capa 3) → Trama con FCS/CRC-32 (Capa 2) → Bits (Capa 1). MTU Ethernet = 1500 Bytes.',
+    Component: OsiTcpIpPduDiagram,
+  },
+  {
+    id: 'cabling-fiber-2-1',
+    matchTitles: ['Par Trenzado UTP'],
+    title: 'Cableado Estructurado TIA/EIA-568 (Regla 100 m), Tipos de Cable UTP y Fibra Óptica',
+    badge: 'Subárea 2.1 • Capa Física',
+    caption: 'El enlace horizontal UTP no debe exceder 100 m (90 m rígido + 10 m patch cords). La fibra Multimodo (50/62.5 μm) usa LED/VCSEL para campus y la Monomodo (9 μm) usa láser para largas distancias WAN.',
+    Component: StructuredCablingFiberDiagram,
+  },
+  {
+    id: 'lan-vlan-stp-2-1',
+    matchTitles: ['Dominios de Colisión y Dominios de Broadcast'],
+    title: 'Dominios de Colisión/Broadcast, Trunk IEEE 802.1Q, STP y EtherChannel',
+    badge: 'Subárea 2.1 • Conmutación Capa 2',
+    caption: 'Cada puerto de un Switch es un dominio de colisión separado; un Router o una VLAN separan dominios de broadcast. El enlace Trunk 802.1Q etiqueta tramas con 4 bytes y STP bloquea bucles físicos.',
+    Component: LanSwitchingVlanStpDiagram,
+  },
+  {
+    id: 'ip-subnet-routing-2-1',
+    matchTitles: ['Cálculo de Subredes'],
+    title: 'Subnetting IPv4 (2^h - 2), Autoconfiguración IPv6 SLAAC y Enrutamiento (RIP / OSPF / BGP)',
+    badge: 'Subárea 2.1 • Capa 3 Red',
+    caption: 'En IPv4 los hosts útiles son 2^h - 2 (/30 = 2 hosts para enlace WAN). En IPv6 SLAAC autoconfigura la IP mediante Router Advertisement sin DHCP. OSPF usa Dijkstra (estado de enlace) y RIP conteo de saltos.',
+    Component: IpSubnettingRoutingDiagram,
+  },
+  {
+    id: 'dhcp-dns-arp-2-2',
+    matchTitles: ['DHCP (Dynamic Host Configuration Protocol'],
+    title: 'Flujo DHCP (Proceso DORA), Registros DNS (A, AAAA, MX, PTR, CNAME) y Resolución ARP',
+    badge: 'Subárea 2.2 • Servicios DHCP / DNS / ARP',
+    caption: 'DHCP asigna IP en 4 pasos (Discover → Offer → Request → ACK, UDP 67/68). DNS traduce nombres a IP en el puerto 53. ARP descubre la dirección MAC mediante un ARP Request en broadcast.',
+    Component: DhcpDnsArpDiagram,
+  },
+  {
+    id: 'snmp-syslog-ntp-2-2',
+    matchTitles: ['SNMP (Simple Network Management Protocol'],
+    title: 'Arquitectura SNMP (NMS, Agente, MIB, Traps UDP 161/162), Niveles Syslog (0–7) y Estratos NTP',
+    badge: 'Subárea 2.2 • Monitoreo SNMP y Syslog',
+    caption: 'SNMPv3 incorpora autenticación y cifrado AES. En Syslog (UDP 514), el nivel 0 (Emergency) es el más crítico y el 7 (Debug) el menos crítico. NTP (UDP 123) sincroniza relojes por estratos.',
+    Component: SnmpSyslogNtpDiagram,
+  },
+  {
+    id: 'cli-diag-qos-2-2',
+    matchTitles: ['`tracert`'],
+    title: 'Mecanismo de Traceroute (TTL + ICMP 11) y Diagnóstico con Ping',
+    badge: 'Subárea 2.2 • Diagnóstico CLI',
+    caption: 'Tracert incrementa el TTL (1, 2, 3...) recibiendo ICMP Tipo 11 (Time Exceeded) de cada router intermedio para descubrir la ruta salto a salto.',
+    Component: CliDiagnosticsQosDiagram,
+  },
+  {
+    id: 'protocols-ports-master-2-2',
+    matchTitles: ['Administración Remota Segura'],
+    title: 'Mapa Maestro de Protocolos y Números de Puertos TCP / UDP (Texto Plano vs. Cifrado)',
+    badge: 'Subárea 2.2 • Mapa de Puertos TCP/UDP',
+    caption: 'Puertos clave CENEVAL: FTP (TCP 20/21), SSH/SFTP (TCP 22 cifrado), Telnet (TCP 23 texto plano), SMTP (TCP 25/587), DNS (UDP/TCP 53), DHCP (UDP 67/68), TFTP (UDP 69), HTTP (80) vs HTTPS (443), POP3 (110/995), NTP (UDP 123), IMAP (143/993), SNMP (UDP 161/162), BGP (TCP 179), LDAP (389/636), SMB (TCP 445), Syslog (UDP 514), RADIUS (UDP 1812) y RDP (TCP 3389).',
+    Component: ProtocolsPortsMasterDiagram,
+  },
+  {
+    id: 'switch-svi-qos-2-2',
+    matchTitles: ['Configuración de Switch Administrable'],
+    title: 'Administración Remota de Switch (SVI + Default Gateway), Wireshark vs. NetFlow y Colas QoS',
+    badge: 'Subárea 2.2 • Gestión de Switch y QoS',
+    caption: 'Para administrar un switch L2 desde otra subred es obligatorio configurar la IP en la SVI (interface vlan) y el ip default-gateway, accediendo por SSH (TCP 22). QoS prioriza VoIP mediante LLQ (CoS/DSCP).',
+    Component: SwitchSviQosNetflowDiagram,
+  },
+  {
+    id: 'crypto-cia-pki-2-3',
+    matchTitles: ['La Tríada CIA'],
+    title: 'Tríada CIA, Criptografía Simétrica (AES vs. DES obsoleto) y Regla de Oro Asimétrica (RSA/ECC)',
+    badge: 'Subárea 2.3 • Criptografía y PKI',
+    caption: 'AES es el estándar simétrico seguro (DES de 56 bits es obsoleto). En criptografía asimétrica: se cifra con la Clave Pública del receptor (confidencialidad) y se firma con la Clave Privada del emisor (no repudio).',
+    Component: CryptoCiaPkiDiagram,
+  },
+  {
+    id: 'attacks-taxonomy-2-3',
+    matchTitles: ['Ataques a la Disponibilidad'],
+    title: 'Taxonomía de Ataques de Red (DDoS, MITM, Replay), Malware (Gusano vs. Ransomware) y Zero-Day',
+    badge: 'Subárea 2.3 • Amenazas y Malware',
+    caption: 'Un Gusano (Worm) se replica y propaga solo por la red sin intervención humana; el Ransomware cifra archivos pidiendo rescate. El ataque Replay se mitiga con Timestamps y Nonces.',
+    Component: NetworkAttacksTaxonomyDiagram,
+  },
+  {
+    id: 'defense-ids-ips-l2-2-3',
+    matchTitles: ['Diferencia Crítica entre IDS'],
+    title: 'Arquitectura Perimetral: Firewall / NGFW, DMZ y Diferencia entre IDS (Pasivo) e IPS (En Línea)',
+    badge: 'Subárea 2.3 • Defensa Perimetral',
+    caption: 'El IPS se instala En Línea (In-Line) y bloquea paquetes maliciosos en tiempo real; el IDS es pasivo (copia SPAN) y solo alerta al SIEM.',
+    Component: PerimeterDefenseIdsIpsDiagram,
+  },
+  {
+    id: 'l2-wpa3-vpn-audit-2-3',
+    matchTitles: ['Controles de Seguridad en Switches de Capa 2'],
+    title: 'Seguridad en Capa 2 (Port Security, DHCP Snooping, DAI), WPA3-SAE (802.11w), VPN IPsec y Auditoría',
+    badge: 'Subárea 2.3 • Seguridad LAN, Wi-Fi y VPN',
+    caption: 'Port Security mitiga MAC Flooding; DHCP Snooping mitiga Rogue DHCP; DAI mitiga ARP Spoofing. WPA3 usa SAE + 802.11w (PMF). En IPsec, ESP cifra el tráfico (AH no cifra).',
+    Component: Layer2SecurityWpa3VpnDiagram,
+  },
+
+  // ================= ÁREA 3: IMPLEMENTACIÓN DE SOFTWARE =================
+  {
+    id: 'sdlc-scrum-tdd-3-1',
+    matchTitles: ['Modelos Tradicionales o Predictivos'],
+    title: 'Modelos de Ciclo de Vida (Cascada, Espiral por Riesgos, Scrum), Ciclo TDD y SRS IEEE 830',
+    badge: 'Subárea 3.1 • SDLC, Ágil y SRS',
+    caption: 'El Modelo en Espiral (Boehm) se elige para proyectos complejos con alto riesgo. En Scrum el Product Owner prioriza el Backlog con Historias de Usuario. TDD sigue el ciclo corto Red → Green → Refactor.',
+    Component: SdlcScrumTddDiagram,
+  },
+  {
+    id: 'uml-arch-styles-3-1',
+    matchTitles: ['Catálogo Completo de Diagramas UML'],
+    title: 'Relaciones UML (Composición vs. Agregación, Include vs. Extend, Despliegue) y Estilos Arquitectónicos',
+    badge: 'Subárea 3.1 • UML y Arquitectura',
+    caption: 'En UML: Composición (rombo negro) implica dependencia fuerte de vida; Agregación (rombo blanco) dependencia débil; <<include>> es obligatorio y <<extend>> opcional; el Diagrama de Despliegue muestra Nodos físicos de hardware.',
+    Component: UmlAndArchitectureStylesDiagram,
+  },
+  {
+    id: 'testing-mccabe-maint-3-1',
+    matchTitles: ['Pruebas de Caja Negra vs. Caja Blanca y Complejidad Ciclomática de McCabe'],
+    title: 'Niveles de Prueba (Mocks), Complejidad Ciclomática de McCabe V(G) y los 4 Tipos de Mantenimiento',
+    badge: 'Subárea 3.1 • Pruebas y Mantenimiento',
+    caption: 'Las pruebas unitarias aíslan dependencias con Mocks/Stubs. La Complejidad Ciclomática de McCabe es V(G) = E - N + 2 = P + 1. Mantenimiento: Correctivo (bugs), Adaptativo (nuevo SO/ley), Perfectivo (nuevas funciones) y Preventivo (refactorizar).',
+    Component: SoftwareTestingMcCabeMaintenanceDiagram,
+  },
+  {
+    id: 'compiler-memory-asm-3-2',
+    matchTitles: ['Fases de un Compilador, Gramáticas BNF, AST, Linker e Intérprete'],
+    title: 'Las 6 Fases del Compilador + Linker, Memoria Stack vs. Heap (Valgrind) y Ensamblador x86',
+    badge: 'Subárea 3.2 • Compiladores y Memoria',
+    caption: 'El análisis sintáctico usa gramáticas BNF para construir el árbol AST y el Linker une bibliotecas. Olvidar free() tras malloc() en el Heap causa Memory Leaks (detectados con Valgrind). En ensamblador, CMP activa ZF=1 si son iguales para saltar con JZ/JMPZ.',
+    Component: CompilerMemoryStackHeapDiagram,
+  },
+  {
+    id: 'os-deadlock-big-o-3-2',
+    matchTitles: ['Interbloqueos (Deadlocks) y las 4 Condiciones Necesarias de Coffman'],
+    title: 'Planificación de CPU (SJF vs. Round Robin), 4 Condiciones de Coffman (Deadlock) y Complejidad Big-O',
+    badge: 'Subárea 3.2 • SO, Concurrencia y Big-O',
+    caption: 'SJF minimiza el tiempo de espera promedio; Round Robin usa Quantum fijo. Un Deadlock exige las 4 condiciones de Coffman. BFS usa Cola (FIFO), DFS usa Pila (LIFO), Búsqueda Binaria O(log n) exige arreglo ordenado, y MergeSort/HeapSort garantizan O(n log n).',
+    Component: OsSchedulingDeadlockDataStructuresDiagram,
+  },
+  {
+    id: 'sql-norm-acid-3-3',
+    matchTitles: ['Formas Normales (1FN, 2FN, 3FN y BCNF)'],
+    title: 'Normalización (1FN a BCNF), WHERE vs. HAVING, JOINs, Transacciones ACID e Índices B-Tree vs. Bitmap',
+    badge: 'Subárea 3.3 • Bases de Datos y SQL',
+    caption: '1FN exige atomicidad, 2FN elimina dependencias parciales y 3FN elimina dependencias transitivas. En SQL, HAVING filtra grupos después de GROUP BY con funciones de agregación (COUNT/AVG). B-Tree indexa alta cardinalidad/rangos y Bitmap baja cardinalidad.',
+    Component: RelationalNormalizationSqlDiagram,
+  },
+  {
+    id: 'graphs-dijkstra-mst-3-3',
+    matchTitles: ['Algoritmos de Camino Más Corto (Shortest Path)'],
+    title: 'Algoritmos en Grafos: Dijkstra (Un Origen), Floyd-Warshall (Todos los Pares) y MST (Kruskal y Prim)',
+    badge: 'Subárea 3.3 • Optimización en Grafos',
+    caption: 'Dijkstra calcula la ruta más corta desde 1 origen (pesos ≥ 0); Floyd-Warshall entre todos los pares en O(V³); Kruskal (ordenando aristas) y Prim (desde un nodo) construyen el Árbol de Expansión Mínima (MST) con V - 1 aristas sin ciclos.',
+    Component: GraphAlgorithmsDijkstraMstDiagram,
+  },
+];
+
+function findDiagramForTitle(title) {
+  if (!title || typeof title !== 'string') return null;
+  const clean = title.trim().toLowerCase();
+  return (
+    ALL_NETWORK_DIAGRAMS.find((d) =>
+      d.matchTitles.some((prefix) => clean.startsWith(prefix.toLowerCase()))
+    ) || null
+  );
+}
 
 function capitalizeFirst(str) {
   if (!str) return '';
@@ -343,11 +697,15 @@ export function FormattedRichText({ text }) {
 
 /**
  * Cuerpo estructurado de un punto teórico (con listas numeradas indentadas,
- * badges y bullet points claros). Se usa tanto en las tarjetas de lectura como
- * en el reverso de las Flashcards.
+ * badges, bullet points claros y diagramas SVG técnicos verificados con zoom).
+ * Se usa tanto en las tarjetas de lectura como en el reverso de las Flashcards.
  */
 export function StructuredPointBody({ parsed, areaStyle }) {
-  const { introBullets, numberedItems, bullets } = parsed;
+  const { introBullets, numberedItems, bullets, title } = parsed;
+  const matchedDiagram = useMemo(() => findDiagramForTitle(title), [title]);
+  const [isZoomOpen, setIsZoomOpen] = useState(false);
+
+  const DiagramComp = matchedDiagram?.Component;
 
   return (
     <div className="space-y-3">
@@ -450,6 +808,101 @@ export function StructuredPointBody({ parsed, areaStyle }) {
           ))}
         </ul>
       )}
+
+      {/* Diagrama SVG técnico verificado asociado al concepto */}
+      {matchedDiagram && DiagramComp && (
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="mt-3 bg-white border-2 border-teal-600/30 rounded-2xl p-3 sm:p-4 shadow-sm space-y-2.5"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#E5DEC9]">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-2 py-0.5 rounded-md bg-teal-800 text-white text-[10px] font-extrabold uppercase tracking-wider">
+                {matchedDiagram.badge}
+              </span>
+              <h5 className="text-xs sm:text-sm font-extrabold text-stone-900">
+                {matchedDiagram.title}
+              </h5>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setIsZoomOpen(true)}
+              className="px-2.5 py-1 rounded-lg bg-[#FAF7F2] hover:bg-teal-50 text-teal-900 border border-[#D8D0C0] hover:border-teal-400 text-[11px] font-extrabold flex items-center gap-1 transition cursor-pointer shrink-0"
+              title="Ampliar diagrama en pantalla completa"
+            >
+              <Maximize2 className="w-3.5 h-3.5 text-teal-700" />
+              <span>Ampliar SVG</span>
+            </button>
+          </div>
+
+          <div
+            onClick={() => setIsZoomOpen(true)}
+            className="overflow-x-auto rounded-xl border border-[#E5DEC9] bg-[#FAF7F2] p-1.5 cursor-zoom-in"
+            title="Haz clic para ampliar el esquema"
+          >
+            <div className="min-w-[540px] sm:min-w-0">
+              <DiagramComp />
+            </div>
+          </div>
+
+          {matchedDiagram.caption && (
+            <p className="text-[11px] sm:text-xs text-stone-600 leading-relaxed bg-[#FAF7F2] px-3 py-2 rounded-lg border border-[#E5DEC9]">
+              <strong className="font-extrabold text-teal-900 mr-1">
+                Clave visual EGEL:
+              </strong>
+              {matchedDiagram.caption}
+            </p>
+          )}
+
+          {/* Modal Lightbox para ver el Diagrama SVG en Grande */}
+          {isZoomOpen && (
+            <div
+              onClick={() => setIsZoomOpen(false)}
+              className="fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6"
+            >
+              <div
+                onClick={(e) => e.stopPropagation()}
+                className="bg-white border-2 border-[#D8D0C0] rounded-2xl max-w-5xl w-full max-h-[92vh] overflow-y-auto p-4 sm:p-6 shadow-2xl space-y-4"
+              >
+                <div className="flex items-start justify-between gap-3 pb-3 border-b border-[#E5DEC9]">
+                  <div>
+                    <span className="inline-block px-2.5 py-0.5 rounded-md bg-teal-800 text-white text-[11px] font-extrabold uppercase tracking-wider mb-1">
+                      {matchedDiagram.badge}
+                    </span>
+                    <h4 className="text-base sm:text-lg font-black text-stone-950">
+                      {matchedDiagram.title}
+                    </h4>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setIsZoomOpen(false)}
+                    className="p-2 rounded-xl bg-[#F3EFE6] hover:bg-stone-900 text-stone-800 hover:text-white transition cursor-pointer shrink-0"
+                    aria-label="Cerrar vista ampliada"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <div className="overflow-x-auto rounded-xl border border-[#E5DEC9] bg-[#FAF7F2] p-2 sm:p-4">
+                  <div className="min-w-[640px] sm:min-w-0">
+                    <DiagramComp />
+                  </div>
+                </div>
+
+                {matchedDiagram.caption && (
+                  <div className="text-xs sm:text-sm text-stone-700 leading-relaxed bg-teal-50/70 border border-teal-300 rounded-xl p-3.5">
+                    <strong className="font-extrabold text-teal-950 mr-1.5">
+                      Resumen técnico verificado:
+                    </strong>
+                    {matchedDiagram.caption}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -467,6 +920,10 @@ export function StructuredPointCard({
   onToggleReveal,
 }) {
   const parsed = useMemo(() => parseStructuredPoint(pt), [pt]);
+  const hasDiagram = useMemo(
+    () => Boolean(findDiagramForTitle(parsed.title)),
+    [parsed.title]
+  );
   const showBody = !isRecallMode || isRevealed;
 
   const itemCountBadge =
@@ -502,6 +959,11 @@ export function StructuredPointCard({
                 }`}
               >
                 {parsed.subtitleBadge}
+              </span>
+            )}
+            {hasDiagram && (
+              <span className="text-[11px] font-extrabold px-2 py-0.5 rounded-md bg-teal-100 text-teal-900 border border-teal-300">
+                Incluye Diagrama SVG
               </span>
             )}
             {itemCountBadge && !showBody && (
