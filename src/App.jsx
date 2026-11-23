@@ -26,12 +26,9 @@ import {
   Search,
   Lightbulb,
   BookmarkCheck,
-  Calculator,
   X,
   Eye,
   EyeOff,
-  Copy,
-  Check,
   ChevronLeft,
   ChevronRight,
   Smartphone,
@@ -42,6 +39,8 @@ import {
   StructuredPointCard,
   InteractiveFlashcardsDeck,
 } from './TheoryComponents';
+import { getEnrichedFormulasForSubarea } from './formulaDefinitions';
+import { FormulaSectionList, MathExpression } from './FormulaComponents';
 import SyncModal from './SyncModal';
 import {
   getActiveSyncKey,
@@ -434,7 +433,6 @@ export default function App() {
   const [activeTheorySectionIdx, setActiveTheorySectionIdx] = useState(0);
   const [theoryRecallMode, setTheoryRecallMode] = useState(false);
   const [revealedPointsMap, setRevealedPointsMap] = useState({});
-  const [copiedFormulaIdx, setCopiedFormulaIdx] = useState(null);
   const [revealedCatalogQuestions, setRevealedCatalogQuestions] = useState({});
   const [showTheorySources, setShowTheorySources] = useState(false);
   const [showTheoryDrawerInQuiz, setShowTheoryDrawerInQuiz] = useState(false);
@@ -714,6 +712,32 @@ export default function App() {
       .filter(Boolean);
   }, [activeTheoryObj, normalizedTheoryQuery]);
 
+  const activeEnrichedFormulas = useMemo(() => {
+    return getEnrichedFormulasForSubarea(
+      activeTheoryObj.subareaCode,
+      activeTheoryObj.formulas || []
+    );
+  }, [activeTheoryObj]);
+
+  const filteredTheoryFormulas = useMemo(() => {
+    if (!normalizedTheoryQuery) return activeEnrichedFormulas;
+    return activeEnrichedFormulas.filter((f) => {
+      const inLabelOrCode =
+        (f.label || '').toLowerCase().includes(normalizedTheoryQuery) ||
+        (f.code || '').toLowerCase().includes(normalizedTheoryQuery) ||
+        (f.category || '').toLowerCase().includes(normalizedTheoryQuery) ||
+        (f.examMatch || '').toLowerCase().includes(normalizedTheoryQuery);
+      const inVars = (f.variables || []).some(
+        (v) =>
+          (v.symbol || '').toLowerCase().includes(normalizedTheoryQuery) ||
+          (v.name || '').toLowerCase().includes(normalizedTheoryQuery) ||
+          (v.meaning || '').toLowerCase().includes(normalizedTheoryQuery) ||
+          (v.unit || '').toLowerCase().includes(normalizedTheoryQuery)
+      );
+      return inLabelOrCode || inVars;
+    });
+  }, [activeEnrichedFormulas, normalizedTheoryQuery]);
+
   const matchingOtherSubareas = useMemo(() => {
     if (!normalizedTheoryQuery) return [];
     return THEORY_GUIDE.filter((g) => {
@@ -728,10 +752,21 @@ export default function App() {
           (s.description || '').toLowerCase().includes(normalizedTheoryQuery) ||
           s.points.some((p) => p.toLowerCase().includes(normalizedTheoryQuery))
       );
-      const inFormulas = (g.formulas || []).some(
+      const enrichedList = getEnrichedFormulasForSubarea(
+        g.subareaCode,
+        g.formulas || []
+      );
+      const inFormulas = enrichedList.some(
         (f) =>
-          f.label.toLowerCase().includes(normalizedTheoryQuery) ||
-          f.code.toLowerCase().includes(normalizedTheoryQuery)
+          (f.label || '').toLowerCase().includes(normalizedTheoryQuery) ||
+          (f.code || '').toLowerCase().includes(normalizedTheoryQuery) ||
+          (f.examMatch || '').toLowerCase().includes(normalizedTheoryQuery) ||
+          (f.variables || []).some(
+            (v) =>
+              (v.symbol || '').toLowerCase().includes(normalizedTheoryQuery) ||
+              (v.name || '').toLowerCase().includes(normalizedTheoryQuery) ||
+              (v.meaning || '').toLowerCase().includes(normalizedTheoryQuery)
+          )
       );
       return inSummary || inTopics || inSections || inFormulas;
     });
@@ -764,16 +799,6 @@ export default function App() {
       ...prev,
       [questionId]: !prev[questionId],
     }));
-  }
-
-  function handleCopyFormula(codeText, idx) {
-    if (navigator?.clipboard?.writeText) {
-      navigator.clipboard.writeText(codeText);
-    }
-    setCopiedFormulaIdx(idx);
-    setTimeout(() => {
-      setCopiedFormulaIdx((prev) => (prev === idx ? null : prev));
-    }, 1800);
   }
 
   function scorePoolForUser(pool) {
@@ -1583,7 +1608,7 @@ export default function App() {
                                     : 'text-stone-700'
                                 }`}
                               >
-                                {cell}
+                                <MathExpression text={cell} />
                               </td>
                             ))}
                           </tr>
@@ -1596,30 +1621,14 @@ export default function App() {
             </div>
           )}
 
-          {/* Fórmulas y Comandos */}
-          {readingGuide.formulas?.length > 0 && (
-            <div className="bg-white border border-[#E5DEC9] rounded-2xl p-6 shadow-sm">
-              <h3 className="text-base font-extrabold text-stone-900 mb-4 flex items-center gap-2">
-                <Calculator className="w-5 h-5 text-teal-700" />
-                Fórmulas, Comandos y Reglas Exactas para el Cuestionario
-              </h3>
-              <div className="grid grid-cols-1 gap-3">
-                {readingGuide.formulas.map((f, i) => (
-                  <div
-                    key={i}
-                    className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
-                  >
-                    <span className="text-xs sm:text-sm font-bold text-stone-800">
-                      {f.label}
-                    </span>
-                    <code className="text-xs sm:text-sm font-mono font-bold text-teal-900 bg-teal-100/80 border border-teal-300 px-3 py-1.5 rounded-lg">
-                      {f.code}
-                    </code>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          {/* Fórmulas Formateadas, Significado de Variables y Reglas de Match */}
+          <FormulaSectionList
+            formulas={getEnrichedFormulasForSubarea(
+              readingGuide.subareaCode,
+              readingGuide.formulas || []
+            )}
+            title="Fórmulas Formateadas, Significado de Variables y Reglas Exactas para el Cuestionario"
+          />
 
           {/* Tips de Examen */}
           {readingGuide.examTips?.length > 0 && (
@@ -1632,7 +1641,9 @@ export default function App() {
                 {readingGuide.examTips.map((tip, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span className="font-bold text-amber-700">→</span>
-                    <span>{tip}</span>
+                    <span>
+                      <MathExpression text={tip} />
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -1755,22 +1766,14 @@ export default function App() {
                   </button>
                 </div>
 
-                {currentTheoryGuide.formulas?.length > 0 && (
-                  <div className="space-y-1.5">
-                    <div className="text-xs font-extrabold uppercase tracking-wider text-teal-800">
-                      Fórmulas, Comandos y Reglas Exactas:
-                    </div>
-                    {currentTheoryGuide.formulas.map((f, i) => (
-                      <div
-                        key={i}
-                        className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-lg px-3 py-2 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-1"
-                      >
-                        <span className="text-stone-800 font-bold">{f.label}:</span>
-                        <code className="text-teal-900 font-mono font-semibold break-all text-[11px] sm:text-xs">{f.code}</code>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                <FormulaSectionList
+                  formulas={getEnrichedFormulasForSubarea(
+                    currentTheoryGuide.subareaCode,
+                    currentTheoryGuide.formulas || []
+                  )}
+                  title="Fórmulas Formateadas y Significado de Variables en Vivo"
+                  compact={true}
+                />
 
                 {currentTheoryGuide.sections?.length > 0 && (
                   <div className="space-y-2.5">
@@ -1899,7 +1902,7 @@ export default function App() {
             {/* Enunciado */}
             <div className="bg-white border border-[#E5DEC9] rounded-2xl p-4 sm:p-6 mb-4 sm:mb-5 shadow-sm">
               <h2 className="text-base sm:text-lg font-extrabold text-stone-900 leading-relaxed break-words">
-                {formatReadableText(currentQ.pregunta)}
+                <MathExpression text={formatReadableText(currentQ.pregunta)} />
               </h2>
             </div>
 
@@ -1945,7 +1948,7 @@ export default function App() {
                       {opcion.id}
                     </span>
                     <span className="text-xs sm:text-base font-medium leading-snug flex-1 min-w-0 break-words">
-                      {formatReadableText(opcion.texto)}
+                      <MathExpression text={formatReadableText(opcion.texto)} />
                     </span>
                   </button>
                 );
@@ -1999,7 +2002,7 @@ export default function App() {
                   <span className="font-extrabold text-[#D95D39] mr-1.5">
                     Justificación Técnica:
                   </span>
-                  {formatReadableText(currentQ.explicacion)}
+                  <MathExpression text={formatReadableText(currentQ.explicacion)} />
                 </div>
 
                 <button
@@ -2177,7 +2180,7 @@ export default function App() {
                 )}
 
               <p className="text-base sm:text-lg font-extrabold text-stone-900 leading-relaxed mb-5 sm:mb-6 break-words">
-                {formatReadableText(q.pregunta)}
+                <MathExpression text={formatReadableText(q.pregunta)} />
               </p>
 
               <div className="space-y-3">
@@ -2204,7 +2207,9 @@ export default function App() {
                       >
                         {op.id}
                       </span>
-                      <span className="text-xs sm:text-base min-w-0 break-words flex-1">{formatReadableText(op.texto)}</span>
+                      <span className="text-xs sm:text-base min-w-0 break-words flex-1">
+                        <MathExpression text={formatReadableText(op.texto)} />
+                      </span>
                     </button>
                   );
                 })}
@@ -3316,48 +3321,11 @@ export default function App() {
                 </div>
               )}
 
-              {/* Fórmulas, Estándares y Comandos Clave con Copiado Rápido */}
-              {activeTheoryObj.formulas?.length > 0 && (
-                <div className="bg-white border border-[#E5DEC9] rounded-2xl p-5 sm:p-6 shadow-sm">
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-                    <h3 className="text-base font-extrabold text-stone-900 flex items-center gap-2">
-                      <Calculator className="w-5 h-5 text-teal-700" />
-                      <span>Fórmulas, Comandos y Reglas Exactas para el Examen</span>
-                    </h3>
-                    <span className="text-[11px] font-bold text-stone-500">
-                      Haz clic en cualquier fórmula para copiarla
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 gap-3">
-                    {activeTheoryObj.formulas.map((f, i) => {
-                      const isCopied = copiedFormulaIdx === i;
-                      return (
-                        <div
-                          key={i}
-                          className="bg-[#FAF7F2] border border-[#E5DEC9] hover:border-teal-400 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition"
-                        >
-                          <span className="text-xs sm:text-sm font-bold text-stone-800">
-                            {f.label}
-                          </span>
-                          <button
-                            onClick={() => handleCopyFormula(f.code, i)}
-                            className="flex items-center justify-between sm:justify-start gap-2 bg-teal-100/80 hover:bg-teal-200/90 border border-teal-300 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-mono font-bold text-teal-950 transition text-left cursor-pointer"
-                            title="Copiar fórmula"
-                          >
-                            <code className="truncate max-w-[280px] sm:max-w-md">{f.code}</code>
-                            {isCopied ? (
-                              <Check className="w-4 h-4 text-teal-700 shrink-0" />
-                            ) : (
-                              <Copy className="w-3.5 h-3.5 text-teal-700/80 shrink-0" />
-                            )}
-                          </button>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
+              {/* Fórmulas Formateadas, Significado de Variables y Reglas de Match */}
+              <FormulaSectionList
+                formulas={filteredTheoryFormulas}
+                title="Fórmulas Formateadas, Significado de Variables y Reglas Exactas para el Examen"
+              />
 
               {/* Consejos Clave y Trampas Frecuentes del CENEVAL */}
               {activeTheoryObj.examTips?.length > 0 && (
@@ -3370,7 +3338,9 @@ export default function App() {
                     {activeTheoryObj.examTips.map((tip, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span className="font-bold text-amber-700">→</span>
-                        <span>{tip}</span>
+                        <span>
+                          <MathExpression text={tip} />
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -3419,7 +3389,7 @@ export default function App() {
                           <span className="text-[#D95D39] font-mono mr-2">
                             #{idx + 1}
                           </span>
-                          {q.pregunta}
+                          <MathExpression text={formatReadableText(q.pregunta)} />
                         </div>
 
                         {/* Opciones en minitarjetas */}
@@ -3438,7 +3408,9 @@ export default function App() {
                                 <span className="font-mono font-bold mr-1.5 text-stone-900">
                                   {op.id})
                                 </span>
-                                <span>{op.texto}</span>
+                                <span>
+                                  <MathExpression text={formatReadableText(op.texto)} />
+                                </span>
                               </div>
                             );
                           })}
@@ -3476,7 +3448,7 @@ export default function App() {
                         {isQuestionRevealed && (
                           <div className="mt-3 text-xs text-stone-700 leading-relaxed bg-white border border-amber-200 rounded-lg p-3">
                             <strong className="text-amber-800">Fundamento Técnico: </strong>
-                            {q.explicacion}
+                            <MathExpression text={formatReadableText(q.explicacion)} />
                           </div>
                         )}
                       </div>

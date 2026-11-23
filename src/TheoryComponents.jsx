@@ -61,6 +61,11 @@ import {
   RelationalNormalizationSqlDiagram,
   GraphAlgorithmsDijkstraMstDiagram,
 } from './SoftwareDiagrams31_33';
+import {
+  findFormulasForTitle,
+  getEnrichedFormulasForSubarea,
+} from './formulaDefinitions';
+import { FormulaCard, MathExpression } from './FormulaComponents';
 
 const ALL_NETWORK_DIAGRAMS = [
   // ================= ÁREA 1: IMPLEMENTACIÓN DE HARDWARE =================
@@ -675,11 +680,11 @@ export function FormattedRichText({ text }) {
             key={idx}
             className="px-1.5 py-0.5 mx-0.5 rounded-md bg-teal-100/90 text-teal-950 font-mono text-[11px] sm:text-xs font-bold border border-teal-300/80"
           >
-            {part.slice(1, -1)}
+            <MathExpression text={part.slice(1, -1)} />
           </code>
         );
       }
-      return <React.Fragment key={idx}>{part}</React.Fragment>;
+      return <MathExpression key={idx} text={part} />;
     });
   };
 
@@ -703,6 +708,7 @@ export function FormattedRichText({ text }) {
 export function StructuredPointBody({ parsed, areaStyle }) {
   const { introBullets, numberedItems, bullets, title } = parsed;
   const matchedDiagram = useMemo(() => findDiagramForTitle(title), [title]);
+  const matchedFormulas = useMemo(() => findFormulasForTitle(title), [title]);
   const [isZoomOpen, setIsZoomOpen] = useState(false);
 
   const DiagramComp = matchedDiagram?.Component;
@@ -903,6 +909,23 @@ export function StructuredPointBody({ parsed, areaStyle }) {
           )}
         </div>
       )}
+
+      {/* Tarjetas de Fórmulas Formateadas y Significado de Variables asociadas al concepto */}
+      {matchedFormulas.length > 0 && (
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="mt-3 space-y-3"
+        >
+          {matchedFormulas.map((fm) => (
+            <FormulaCard
+              key={fm.id}
+              formula={fm}
+              defaultExpanded={true}
+              compact={false}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -922,6 +945,10 @@ export function StructuredPointCard({
   const parsed = useMemo(() => parseStructuredPoint(pt), [pt]);
   const hasDiagram = useMemo(
     () => Boolean(findDiagramForTitle(parsed.title)),
+    [parsed.title]
+  );
+  const hasFormulas = useMemo(
+    () => findFormulasForTitle(parsed.title).length > 0,
     [parsed.title]
   );
   const showBody = !isRecallMode || isRevealed;
@@ -964,6 +991,11 @@ export function StructuredPointCard({
             {hasDiagram && (
               <span className="text-[11px] font-extrabold px-2 py-0.5 rounded-md bg-teal-100 text-teal-900 border border-teal-300">
                 Incluye Diagrama SVG
+              </span>
+            )}
+            {hasFormulas && (
+              <span className="text-[11px] font-extrabold px-2 py-0.5 rounded-md bg-amber-100 text-amber-950 border border-amber-400">
+                Fórmula + Variables
               </span>
             )}
             {itemCountBadge && !showBody && (
@@ -1067,17 +1099,23 @@ export function InteractiveFlashcardsDeck({
       });
     });
 
-    (guide.formulas || []).forEach((f, fIdx) => {
+    const enrichedFormulas = getEnrichedFormulasForSubarea(
+      guide.subareaCode,
+      guide.formulas || []
+    );
+
+    enrichedFormulas.forEach((f, fIdx) => {
       deck.push({
         id: `formula_${guide.subareaCode}_${fIdx}`,
         type: 'formula',
-        typeLabel: 'Fórmula / Comando',
-        blockTitle: 'Fórmulas y Reglas Exactas',
+        typeLabel: 'Fórmula / Variables',
+        blockTitle: 'Fórmulas Formateadas y Significado de Variables',
         blockNumber: null,
         frontTitle: f.label,
-        frontBadge: 'Regla Exacta',
-        hintText: 'Recuerda la ecuación, comando o valores exactos',
+        frontBadge: f.category || 'Regla Exacta',
+        hintText: `Recuerda sus ${f.equations?.length || 1} ecuaciones y el significado de sus ${f.variables?.length || 0} variables`,
         formulaCode: f.code,
+        formulaObj: f,
       });
     });
 
@@ -1154,6 +1192,15 @@ export function InteractiveFlashcardsDeck({
 
   const renderCardBack = (card) => {
     if (card.type === 'formula') {
+      if (card.formulaObj) {
+        return (
+          <FormulaCard
+            formula={card.formulaObj}
+            defaultExpanded={true}
+            compact={true}
+          />
+        );
+      }
       return (
         <div className="bg-teal-50/90 border-2 border-teal-300 rounded-xl p-4 text-center space-y-2">
           <div className="text-[11px] font-extrabold uppercase tracking-wider text-teal-800">
