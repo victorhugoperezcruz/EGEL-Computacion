@@ -77,8 +77,8 @@ export default function SyncModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/30 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-3xl shadow-2xl max-w-md w-full overflow-hidden text-stone-900 transition-all">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-stone-900/30 backdrop-blur-sm animate-fadeIn">
+      <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-3xl shadow-2xl max-w-md w-full max-h-[92vh] overflow-y-auto text-stone-900 transition-all">
         {/* Cabecera */}
         <div className="px-6 py-5 border-b border-[#E5DEC9] flex items-center justify-between bg-white">
           <div className="flex items-center gap-3">
@@ -159,7 +159,7 @@ export default function SyncModal({
               </p>
 
               {/* Código PIN corto */}
-              <div className="mt-3 w-full bg-white border border-[#E5DEC9] rounded-2xl p-3 flex items-center justify-between">
+              <div className="mt-3 w-full bg-white border border-[#E5DEC9] rounded-2xl p-3 flex flex-wrap items-center justify-between gap-2">
                 <div className="text-left">
                   <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400">Tu Código PIN</span>
                   <p className="font-mono font-black text-xl text-[#D95D39] tracking-wider">

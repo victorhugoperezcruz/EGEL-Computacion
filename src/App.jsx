@@ -38,6 +38,8 @@ import { THEORY_GUIDE } from './theoryData';
 import {
   StructuredPointCard,
   InteractiveFlashcardsDeck,
+  StructuredSummaryDigest,
+  FormattedRichText,
 } from './TheoryComponents';
 import { getEnrichedFormulasForSubarea } from './formulaDefinitions';
 import { FormulaSectionList, MathExpression } from './FormulaComponents';
@@ -1267,7 +1269,7 @@ export default function App() {
           {/* Resumen Ejecutivo, Selector de Modo (Guía Visual vs. Flashcards) y Mapa de Conceptos */}
           <div className="bg-white border border-[#E5DEC9] rounded-2xl p-5 sm:p-6 space-y-4 shadow-sm">
             <div className="flex flex-wrap items-start justify-between gap-4">
-              <div className="flex-1 min-w-[260px]">
+              <div className="flex-1 min-w-0 sm:min-w-[260px]">
                 <div className="flex flex-wrap items-center gap-2 mb-2">
                   <span
                     className={`inline-block text-xs font-bold px-2.5 py-1 rounded-md border ${readingAreaStyle.badge}`}
@@ -1280,15 +1282,13 @@ export default function App() {
                     {readingGuide.formulas?.length || 0} fórmulas
                   </span>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-extrabold text-stone-900">
+                <h2 className="text-xl sm:text-2xl font-extrabold text-stone-900 break-words">
                   {readingGuide.subareaName}
                 </h2>
-                <p className="text-sm text-stone-600 mt-2 leading-relaxed">
-                  {readingGuide.summary}
-                </p>
+                <StructuredSummaryDigest text={readingGuide.summary} />
               </div>
 
-              <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl px-4 py-3 text-right shrink-0">
+              <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl px-4 py-3 text-left sm:text-right shrink-0 w-full sm:w-auto">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-stone-500">
                   Progreso de Lectura
                 </div>
@@ -1528,7 +1528,7 @@ export default function App() {
                       </div>
 
                       {preReadingBlockIdx !== 'ALL' && totalSectionsCount > 1 && (
-                        <div className="flex items-center justify-between pt-4 mt-5 border-t border-[#E5DEC9]">
+                        <div className="flex flex-wrap items-center justify-between gap-2 pt-4 mt-5 border-t border-[#E5DEC9]">
                           <button
                             type="button"
                             disabled={idx === 0}
@@ -1573,20 +1573,20 @@ export default function App() {
               {readingGuide.tables.map((tbl, tIdx) => (
                 <div
                   key={tIdx}
-                  className="bg-white border border-[#E5DEC9] rounded-2xl p-6 overflow-hidden shadow-sm"
+                  className="bg-white border border-[#E5DEC9] rounded-2xl p-4 sm:p-6 overflow-hidden shadow-sm"
                 >
-                  <h3 className="text-base font-extrabold text-stone-900 mb-4 flex items-center gap-2">
+                  <h3 className="text-sm sm:text-base font-extrabold text-stone-900 mb-4 flex items-center gap-2">
                     <Layers className="w-5 h-5 text-indigo-600 shrink-0" />
                     <span>{tbl.title}</span>
                   </h3>
                   <div className="overflow-x-auto rounded-xl border border-[#E5DEC9]">
-                    <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                    <table className="w-full min-w-[540px] text-left border-collapse text-xs sm:text-sm">
                       <thead>
                         <tr className="bg-[#F3EFE6] border-b border-[#E5DEC9] text-stone-900">
                           {tbl.headers.map((h, hIdx) => (
                             <th
                               key={hIdx}
-                              className="py-3 px-4 font-extrabold uppercase tracking-wider text-[11px] text-stone-700"
+                              className="py-3 px-3.5 sm:px-4 font-extrabold uppercase tracking-wider text-[11px] text-stone-700"
                             >
                               {h}
                             </th>
@@ -1602,10 +1602,10 @@ export default function App() {
                             {row.map((cell, cIdx) => (
                               <td
                                 key={cIdx}
-                                className={`py-3 px-4 leading-relaxed ${
+                                className={`py-3 px-3.5 sm:px-4 leading-relaxed align-top ${
                                   cIdx === 0
-                                    ? 'font-bold text-stone-900 whitespace-nowrap'
-                                    : 'text-stone-700'
+                                    ? 'font-bold text-stone-900 min-w-[130px] max-w-[240px]'
+                                    : 'text-stone-700 min-w-[120px]'
                                 }`}
                               >
                                 <MathExpression text={cell} />
@@ -1750,13 +1750,14 @@ export default function App() {
             {showTheoryDrawerInQuiz && currentTheoryGuide && (
               <div className="mb-6 bg-white border-2 border-amber-400 rounded-2xl p-4 sm:p-5 shadow-xl max-h-[65vh] overflow-y-auto space-y-4">
                 <div className="flex items-start justify-between gap-3 pb-3 border-b border-[#E5DEC9]">
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-800">
                       Enciclopedia Teórica en Vivo • {currentTheoryGuide.subareaName}
                     </span>
-                    <p className="text-xs text-stone-600 mt-1 leading-relaxed">
-                      {currentTheoryGuide.summary}
-                    </p>
+                    <StructuredSummaryDigest
+                      text={currentTheoryGuide.summary}
+                      compact={true}
+                    />
                   </div>
                   <button
                     onClick={() => setShowTheoryDrawerInQuiz(false)}
@@ -1998,11 +1999,11 @@ export default function App() {
                   </button>
                 </div>
 
-                <div className="bg-[#FAF7F2] rounded-xl p-2.5 sm:p-3.5 text-xs sm:text-sm text-stone-800 leading-relaxed border border-[#E5DEC9] max-h-24 sm:max-h-36 overflow-y-auto">
+                <div className="bg-[#FAF7F2] rounded-xl p-2.5 sm:p-3.5 text-xs sm:text-sm text-stone-800 leading-relaxed border border-[#E5DEC9] max-h-28 sm:max-h-40 overflow-y-auto">
                   <span className="font-extrabold text-[#D95D39] mr-1.5">
                     Justificación Técnica:
                   </span>
-                  <MathExpression text={formatReadableText(currentQ.explicacion)} />
+                  <FormattedRichText text={formatReadableText(currentQ.explicacion)} />
                 </div>
 
                 <button
@@ -2152,7 +2153,7 @@ export default function App() {
         </header>
 
         <div className="max-w-5xl w-full mx-auto flex-1 grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6 p-3 sm:p-6">
-          <div className="lg:col-span-3 flex flex-col bg-white border border-[#E5DEC9] rounded-2xl p-4 sm:p-6 shadow-sm">
+          <div className="lg:col-span-3 min-w-0 flex flex-col bg-white border border-[#E5DEC9] rounded-2xl p-4 sm:p-6 shadow-sm">
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 <span className="text-xs font-bold px-2.5 py-1 rounded-md bg-indigo-100 text-indigo-900">
@@ -2592,7 +2593,7 @@ export default function App() {
         {activeTab === 'home' && (
           <>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-              <div className="lg:col-span-2 rounded-2xl bg-gradient-to-br from-amber-100/90 via-orange-50/70 to-white border border-amber-300 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-5 shadow-sm">
+              <div className="lg:col-span-2 min-w-0 rounded-2xl bg-gradient-to-br from-amber-100/90 via-orange-50/70 to-white border border-amber-300 p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-5 shadow-sm">
                 <div>
                   <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#D95D39] bg-white border border-amber-300 px-2.5 py-1 rounded-lg mb-2.5">
                     <Sparkles className="w-3.5 h-3.5" />
@@ -2861,7 +2862,7 @@ export default function App() {
         {activeTab === 'theory' && (
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {/* Índice Lateral de Subáreas (1.1 a 4.1) + Buscador Global */}
-            <aside className="lg:col-span-1 space-y-4">
+            <aside className="lg:col-span-1 min-w-0 space-y-4">
               <div className="bg-white border border-[#E5DEC9] rounded-2xl p-4 lg:sticky lg:top-32 space-y-4 shadow-sm">
                 <div>
                   <h3 className="text-xs font-extrabold uppercase tracking-wider text-stone-500 mb-2">
@@ -2963,11 +2964,11 @@ export default function App() {
             </aside>
 
             {/* Contenido Teórico Detallado de la Subárea Seleccionada */}
-            <div className="lg:col-span-3 space-y-6">
+            <div className="lg:col-span-3 min-w-0 space-y-6">
               {/* Cabecera del Apunte Teórico, Temas Cubiertos y Fuentes */}
-              <div className="bg-white border border-[#E5DEC9] rounded-2xl p-6 space-y-5 shadow-sm">
+              <div className="bg-white border border-[#E5DEC9] rounded-2xl p-4 sm:p-6 space-y-5 shadow-sm">
                 <div className="flex flex-wrap items-start justify-between gap-4 pb-5 border-b border-[#EFEAE0]">
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2 mb-2">
                       <span
                         className={`inline-block text-xs font-bold px-2.5 py-1 rounded-md border ${activeTheoryAreaStyle.badge}`}
@@ -2980,12 +2981,10 @@ export default function App() {
                         {activeTheoryObj.formulas?.length || 0} fórmulas
                       </span>
                     </div>
-                    <h2 className="text-xl sm:text-2xl font-extrabold text-stone-900">
+                    <h2 className="text-xl sm:text-2xl font-extrabold text-stone-900 break-words">
                       {activeTheoryObj.subareaName}
                     </h2>
-                    <p className="text-sm text-stone-600 mt-2 leading-relaxed">
-                      {activeTheoryObj.summary}
-                    </p>
+                    <StructuredSummaryDigest text={activeTheoryObj.summary} />
                   </div>
 
                   <button
@@ -3047,7 +3046,7 @@ export default function App() {
                     </button>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     {theoryViewMode !== 'flashcards' && (
                       <button
                         onClick={() => {
@@ -3273,20 +3272,20 @@ export default function App() {
                   {activeTheoryObj.tables.map((tbl, tIdx) => (
                     <div
                       key={tIdx}
-                      className="bg-white border border-[#E5DEC9] rounded-2xl p-6 overflow-hidden shadow-sm"
+                      className="bg-white border border-[#E5DEC9] rounded-2xl p-4 sm:p-6 overflow-hidden shadow-sm"
                     >
-                      <h3 className="text-base font-extrabold text-stone-900 mb-4 flex items-center gap-2">
+                      <h3 className="text-sm sm:text-base font-extrabold text-stone-900 mb-4 flex items-center gap-2">
                         <Layers className="w-5 h-5 text-indigo-600 shrink-0" />
                         <span>{tbl.title}</span>
                       </h3>
                       <div className="overflow-x-auto rounded-xl border border-[#E5DEC9]">
-                        <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                        <table className="w-full min-w-[540px] text-left border-collapse text-xs sm:text-sm">
                           <thead>
                             <tr className="bg-[#F3EFE6] border-b border-[#E5DEC9] text-stone-900">
                               {tbl.headers.map((h, hIdx) => (
                                 <th
                                   key={hIdx}
-                                  className="py-3 px-4 font-extrabold uppercase tracking-wider text-[11px] text-stone-700"
+                                  className="py-3 px-3.5 sm:px-4 font-extrabold uppercase tracking-wider text-[11px] text-stone-700"
                                 >
                                   {h}
                                 </th>
@@ -3302,13 +3301,13 @@ export default function App() {
                                 {row.map((cell, cIdx) => (
                                   <td
                                     key={cIdx}
-                                    className={`py-3 px-4 leading-relaxed ${
+                                    className={`py-3 px-3.5 sm:px-4 leading-relaxed align-top ${
                                       cIdx === 0
-                                        ? 'font-bold text-stone-900 whitespace-nowrap'
-                                        : 'text-stone-700'
+                                        ? 'font-bold text-stone-900 min-w-[130px] max-w-[240px]'
+                                        : 'text-stone-700 min-w-[120px]'
                                     }`}
                                   >
-                                    {cell}
+                                    <MathExpression text={cell} />
                                   </td>
                                 ))}
                               </tr>
@@ -3439,8 +3438,8 @@ export default function App() {
                           </button>
 
                           {isQuestionRevealed && correctObj && (
-                            <span className="text-xs font-bold text-teal-800 bg-teal-50 border border-teal-200 px-2.5 py-1 rounded-md">
-                              Correcta: {correctObj.id} ({correctObj.texto})
+                            <span className="text-xs font-bold text-teal-800 bg-teal-50 border border-teal-200 px-2.5 py-1 rounded-md break-words min-w-0">
+                              Correcta: {correctObj.id} (<MathExpression text={formatReadableText(correctObj.texto)} />)
                             </span>
                           )}
                         </div>
@@ -3448,7 +3447,7 @@ export default function App() {
                         {isQuestionRevealed && (
                           <div className="mt-3 text-xs text-stone-700 leading-relaxed bg-white border border-amber-200 rounded-lg p-3">
                             <strong className="text-amber-800">Fundamento Técnico: </strong>
-                            <MathExpression text={formatReadableText(q.explicacion)} />
+                            <FormattedRichText text={formatReadableText(q.explicacion)} />
                           </div>
                         )}
                       </div>

@@ -381,6 +381,8 @@ function capitalizeFirst(str) {
 /**
  * Divide un párrafo en oraciones o cláusulas independientes respetando paréntesis
  * y abreviaturas comunes para presentarlas como viñetas (bullet points) legibles.
+ * También separa enumeraciones largas de algoritmos/conceptos con paréntesis:
+ * ej. "`MergeSort` (...), `HeapSort` (...) y `QuickSort` (...)" en viñetas individuales.
  */
 function splitIntoBullets(text) {
   if (!text || typeof text !== 'string') return [];
@@ -405,6 +407,20 @@ function splitIntoBullets(text) {
         res.push(capitalizeFirst(clean));
         cur = '';
         i++;
+        continue;
+      }
+    }
+
+    // Separar listas densas donde un paréntesis explicativo cierra y sigue ", `Concepto`" o " y `Concepto`"
+    if (depth === 0 && ch === ')' && cur.trim().length > 35) {
+      const after = text.slice(i + 1);
+      const listNextMatch = after.match(
+        /^(?:,\s+|\s+y\s+|,\s+mientras\s+que\s+)(?=`[A-Za-z0-9_+-]+`|[A-ZÁÉÍÓÚ][A-Za-zÁÉÍÓÚáéíóú0-9-]+\s*\()/
+      );
+      if (listNextMatch) {
+        res.push(capitalizeFirst(cur.trim() + '.'));
+        cur = '';
+        i += listNextMatch[0].length;
       }
     }
   }
@@ -661,11 +677,26 @@ export function FormattedRichText({ text }) {
     leadLabel = text.slice(0, colonIdx + 1);
     restText = text.slice(colonIdx + 1);
   } else {
-    // Resaltar sujeto inicial antes de verbo clave o coma introductoria corta
-    const introComma = text.match(
-      /^((?:En una conexión en \w+|En cambio|Por el contrario|Por su parte|En el modelo \w+|Bajo el estándar [\w/-]+|En Windows|En sistemas Linux[\w\s]*|Categoría \w+|Clase [A-D]|Lectura \d+|Nivel \w+),?)\s+(.*)$/i
+    // 1) Resaltar sujeto inicial con paréntesis explicativo corto: ej. "La Refactorización (Refactoring) consiste..."
+    const subjectWithParen = text.match(
+      /^([^.]{3,48}\([^()]{2,38}\))(\s+(?:es|son|consiste|permite|define|mide|calcula|representa|utiliza|emplea|requiere|garantiza|opera|actúa|almacena|combina|divide|recorre|evalúa|aplica|,)\b.*)$/i
     );
-    if (introComma) {
+    // 2) Resaltar sujeto inicial antes de verbo definitorio: ej. "Un Gusano es un programa..."
+    const subjectBeforeVerb = text.match(
+      /^((?:El|La|Los|Las|Un|Una|En\s+[\w\s]+|Por\s+su\s+parte,?\s+[\w\s]+|A\s+diferencia\s+de\s+[\w\s]+)?`?[\wÁÉÍÓÚáéíóúñÑ/-]+`?(?:\s+[\wÁÉÍÓÚáéíóúñÑ/-]+){0,4})(\s+(?:es\s+el|es\s+la|es\s+un|es\s+una|son\s+los|son\s+las|consiste\s+en|se\s+define\s+como|se\s+basa\s+en|permite|garantiza|requiere)\b.*)$/i
+    );
+    // 3) Frases introductorias con coma
+    const introComma = text.match(
+      /^((?:En una conexión en \w+|En cambio|Por el contrario|Por su parte|En el modelo \w+|Bajo el estándar [\w/-]+|En Windows|En sistemas Linux[\w\s]*|Categoría \w+|Clase [A-D]|Lectura \d+|Nivel \w+|Finalmente|Adicionalmente),?)\s+(.*)$/i
+    );
+
+    if (subjectWithParen) {
+      leadLabel = subjectWithParen[1];
+      restText = subjectWithParen[2];
+    } else if (subjectBeforeVerb && subjectBeforeVerb[1].length <= 48) {
+      leadLabel = subjectBeforeVerb[1];
+      restText = subjectBeforeVerb[2];
+    } else if (introComma) {
       leadLabel = introComma[1];
       restText = ' ' + introComma[2];
     }
@@ -675,12 +706,15 @@ export function FormattedRichText({ text }) {
     const parts = str.split(/(`[^`]+`)/g);
     return parts.map((part, idx) => {
       if (part.startsWith('`') && part.endsWith('`') && part.length > 2) {
+        const inner = part.slice(1, -1);
         return (
           <code
             key={idx}
-            className="px-1.5 py-0.5 mx-0.5 rounded-md bg-teal-100/90 text-teal-950 font-mono text-[11px] sm:text-xs font-bold border border-teal-300/80"
+            className={`px-1.5 py-0.5 mx-0.5 rounded-md bg-teal-100/90 text-teal-950 font-mono text-[11px] sm:text-xs font-bold border border-teal-300/80 ${
+              inner.length <= 18 ? 'whitespace-nowrap' : 'break-words'
+            }`}
           >
-            <MathExpression text={part.slice(1, -1)} />
+            <MathExpression text={inner} noBadge />
           </code>
         );
       }
@@ -701,6 +735,83 @@ export function FormattedRichText({ text }) {
 }
 
 /**
+ * Desglosa un párrafo largo de resumen (`guide.summary`) o justificación (`explicacion`)
+ * en puntos clave visuales y escaneables para evitar bloques de texto plano abrumadores.
+ */
+export function StructuredSummaryDigest({ text, compact = false }) {
+  const items = useMemo(() => {
+    if (!text || typeof text !== 'string') return [];
+    const chunks = [];
+    let cur = '';
+    let depth = 0;
+
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      if (ch === '(') depth++;
+      else if (ch === ')' && depth > 0) depth--;
+      cur += ch;
+
+      if (depth === 0) {
+        // Cortar después de paréntesis explicativo seguido de ", " o " y "
+        if (ch === ')' && cur.trim().length > 28) {
+          const after = text.slice(i + 1);
+          const sepMatch = after.match(/^(?:,\s+así\s+como\s+|,\s+además\s+de\s+|,\s+|\s+y\s+)/i);
+          if (sepMatch) {
+            chunks.push(capitalizeFirst(cur.trim()));
+            cur = '';
+            i += sepMatch[0].length;
+            continue;
+          }
+        }
+        // O cortar en punto y coma / punto seguido
+        if ((ch === '.' || ch === ';') && text[i + 1] === ' ' && cur.trim().length > 25) {
+          const isAbbrev = /(?:ej|vs|etc|ed|cap|\b\d)\.$/.test(cur.trim());
+          if (!isAbbrev) {
+            chunks.push(capitalizeFirst(cur.trim().replace(/[;.]$/, '')));
+            cur = '';
+            i++;
+          }
+        }
+      }
+    }
+    if (cur.trim()) {
+      chunks.push(capitalizeFirst(cur.trim().replace(/\.$/, '')));
+    }
+    return chunks;
+  }, [text]);
+
+  if (items.length <= 1) {
+    return (
+      <div className="text-xs sm:text-sm text-stone-700 leading-relaxed mt-2">
+        <FormattedRichText text={text} />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={`mt-2.5 grid grid-cols-1 ${
+        compact ? 'grid-cols-1 gap-1.5' : 'sm:grid-cols-2 gap-2'
+      }`}
+    >
+      {items.map((item, idx) => (
+        <div
+          key={idx}
+          className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl px-3 py-2 flex items-start gap-2 text-xs text-stone-700 leading-relaxed"
+        >
+          <span className="w-5 h-5 rounded-md bg-teal-100/90 border border-teal-300 text-teal-900 font-mono text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">
+            {idx + 1}
+          </span>
+          <div className="flex-1 min-w-0 break-words">
+            <FormattedRichText text={item} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/**
  * Cuerpo estructurado de un punto teórico (con listas numeradas indentadas,
  * badges, bullet points claros y diagramas SVG técnicos verificados con zoom).
  * Se usa tanto en las tarjetas de lectura como en el reverso de las Flashcards.
@@ -717,16 +828,16 @@ export function StructuredPointBody({ parsed, areaStyle }) {
     <div className="space-y-3">
       {/* Viñetas introductorias (si existen antes de 1), 2), 3)) */}
       {introBullets.length > 0 && (
-        <ul className="space-y-1.5 pl-1">
+        <ul className="space-y-2 pl-1">
           {introBullets.map((b, bIdx) => (
             <li
               key={bIdx}
-              className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 leading-relaxed"
+              className="bg-white border border-[#E8E2D5] rounded-xl px-3.5 py-2.5 flex items-start gap-2.5 text-xs sm:text-sm text-stone-700 leading-relaxed shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
             >
-              <span className="text-amber-600 font-black mt-0.5 shrink-0">
+              <span className="w-5 h-5 rounded-md bg-amber-100/80 border border-amber-300/80 text-amber-900 flex items-center justify-center text-[11px] font-black shrink-0 mt-0.5">
                 ▸
               </span>
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-0 break-words">
                 <FormattedRichText text={b} />
               </div>
             </li>
@@ -822,11 +933,11 @@ export function StructuredPointBody({ parsed, areaStyle }) {
           className="mt-3 bg-white border-2 border-teal-600/30 rounded-2xl p-3 sm:p-4 shadow-sm space-y-2.5"
         >
           <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#E5DEC9]">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="px-2 py-0.5 rounded-md bg-teal-800 text-white text-[10px] font-extrabold uppercase tracking-wider">
+            <div className="flex flex-wrap items-center gap-2 min-w-0 flex-1">
+              <span className="px-2 py-0.5 rounded-md bg-teal-800 text-white text-[10px] font-extrabold uppercase tracking-wider shrink-0">
                 {matchedDiagram.badge}
               </span>
-              <h5 className="text-xs sm:text-sm font-extrabold text-stone-900">
+              <h5 className="text-xs sm:text-sm font-extrabold text-stone-900 break-words">
                 {matchedDiagram.title}
               </h5>
             </div>
@@ -970,12 +1081,12 @@ export function StructuredPointCard({
     >
       {/* Cabecera del Concepto */}
       <div className="flex flex-wrap items-start justify-between gap-2.5 mb-3">
-        <div className="flex items-start gap-2.5 flex-1 min-w-0">
+        <div className="flex items-start gap-2.5 flex-1 min-w-[200px]">
           <span className="px-2 py-0.5 rounded-lg bg-stone-900 text-white font-mono text-[11px] font-extrabold shrink-0 mt-0.5">
             #{index + 1}
           </span>
-          <div className="flex flex-wrap items-center gap-2 min-w-0">
-            <h4 className="font-extrabold text-stone-950 text-sm sm:text-base leading-snug">
+          <div className="flex flex-wrap items-center gap-2 min-w-0 flex-1">
+            <h4 className="font-extrabold text-stone-950 text-sm sm:text-base leading-snug break-words">
               <FormattedRichText text={parsed.title || `Concepto ${index + 1}`} />
             </h4>
             {parsed.subtitleBadge && (
@@ -1041,7 +1152,7 @@ export function StructuredPointCard({
         <button
           type="button"
           onClick={() => onToggleReveal && onToggleReveal(pointKey)}
-          className="w-full text-left rounded-xl border border-dashed border-amber-400 bg-amber-50/60 hover:bg-amber-100/60 p-4 transition flex items-center justify-between gap-3 cursor-pointer"
+          className="w-full text-left rounded-xl border border-dashed border-amber-400 bg-amber-50/60 hover:bg-amber-100/60 p-3.5 sm:p-4 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3 cursor-pointer"
         >
           <div className="text-xs sm:text-sm text-amber-950 font-medium">
             <strong className="font-extrabold">Reto de memoria activa:</strong>{' '}
@@ -1234,8 +1345,8 @@ export function InteractiveFlashcardsDeck({
             <div className="w-10 h-10 rounded-xl bg-amber-500 text-stone-950 flex items-center justify-center shadow-sm shrink-0">
               <Sparkles className="w-5 h-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-2">
                 <h3 className="text-base sm:text-lg font-extrabold text-stone-900">
                   Tablero de Flashcards Interactivas
                 </h3>
@@ -1340,7 +1451,7 @@ export function InteractiveFlashcardsDeck({
             ))}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={() => setIsShuffled((v) => !v)}
@@ -1390,7 +1501,7 @@ export function InteractiveFlashcardsDeck({
       ) : layoutMode === 'single' && activeSingleCard ? (
         /* MODO MAZO 1 POR 1 (ENFOQUE GRANDE) */
         <div className="max-w-3xl mx-auto space-y-4">
-          <div className="flex items-center justify-between text-xs font-bold text-stone-600 px-1">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bold text-stone-600 px-1">
             <span>
               Tarjeta {safeSingleIdx + 1} de {filteredCards.length} •{' '}
               <strong className="text-stone-900">
@@ -1460,7 +1571,7 @@ export function InteractiveFlashcardsDeck({
               onClick={(e) => e.stopPropagation()}
               className="flex flex-wrap items-center justify-between gap-3 pt-5 mt-6 border-t border-[#E5DEC9]"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <button
                   type="button"
                   onClick={(e) =>
@@ -1491,7 +1602,7 @@ export function InteractiveFlashcardsDeck({
                 </button>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <button
                   type="button"
                   disabled={safeSingleIdx === 0}
@@ -1527,7 +1638,7 @@ export function InteractiveFlashcardsDeck({
               <div
                 key={card.id}
                 onClick={() => toggleFlip(card.id)}
-                className={`rounded-2xl border-2 p-5 transition-all cursor-pointer flex flex-col justify-between shadow-sm ${
+                className={`rounded-2xl border-2 p-4 sm:p-5 transition-all cursor-pointer flex flex-col justify-between shadow-sm min-w-0 ${
                   isFlipped
                     ? 'bg-[#FAF7F2] border-teal-500 md:col-span-2'
                     : cardStatus === 'mastered'
