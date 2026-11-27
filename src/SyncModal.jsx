@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { QRCodeSVG } from 'qrcode.react';
 import {
   X,
@@ -27,6 +28,36 @@ export default function SyncModal({
   const [loadingLink, setLoadingLink] = useState(false);
   const [linkError, setLinkError] = useState('');
   const [activeTab, setActiveTab] = useState('qr'); // 'qr' | 'link'
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    const scrollY = window.scrollY;
+    const prevOverflow = document.body.style.overflow;
+    const prevPosition = document.body.style.position;
+    const prevTop = document.body.style.top;
+    const prevWidth = document.body.style.width;
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      document.body.style.overflow = prevOverflow;
+      document.body.style.position = prevPosition;
+      document.body.style.top = prevTop;
+      document.body.style.width = prevWidth;
+      window.scrollTo(0, scrollY);
+    };
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -76,9 +107,17 @@ export default function SyncModal({
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-stone-900/30 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-3xl shadow-2xl max-w-md w-full max-h-[92vh] overflow-y-auto text-stone-900 transition-all">
+  return createPortal(
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 bg-stone-900/40 backdrop-blur-sm animate-fadeIn overscroll-none"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-3xl shadow-2xl max-w-md w-full max-h-[92dvh] overflow-y-auto overscroll-contain text-stone-900 transition-all"
+      >
         {/* Cabecera */}
         <div className="px-6 py-5 border-b border-[#E5DEC9] flex items-center justify-between bg-white">
           <div className="flex items-center gap-3">
@@ -233,6 +272,7 @@ export default function SyncModal({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

@@ -3,7 +3,7 @@
     "id": "net_001",
     "area": "Implementación de Redes",
     "subarea": "2.1 Diseño y direccionamiento de redes",
-    "pregunta": "Según el Capítulo 1 de Cisco Exploration, una organización diseña su red con enlaces redundantes y conmutación de paquetes para que, ante una falla física, el tráfico se redirija automáticamente; además prioriza paquetes VoIP frente a descargas. ¿Qué dos características de arquitectura de red se implementan?",
+    "pregunta": "Una organización diseña su red con enlaces redundantes y conmutación de paquetes para que, ante una falla física, el tráfico se redirija automáticamente; además prioriza paquetes VoIP frente a descargas. ¿Qué dos características de arquitectura de red se implementan?",
     "opciones": [
       {
         "id": "A",
@@ -29,7 +29,7 @@
     "id": "net_002",
     "area": "Implementación de Redes",
     "subarea": "2.1 Diseño y direccionamiento de redes",
-    "pregunta": "Durante el proceso de encapsulación de datos (Capítulo 2), la Unidad de Datos de Protocolo (PDU) cambia de nombre al descender por las capas del modelo OSI. ¿Cuál es el orden correcto desde la Capa de Aplicación hasta la Capa Física?",
+    "pregunta": "Durante el proceso de encapsulación de datos, la Unidad de Datos de Protocolo (PDU) cambia de nombre al descender por las capas del modelo OSI. ¿Cuál es el orden correcto desde la Capa de Aplicación hasta la Capa Física?",
     "opciones": [
       {
         "id": "A",
@@ -55,7 +55,7 @@
     "id": "net_003",
     "area": "Implementación de Redes",
     "subarea": "2.2 Administración y configuración de redes",
-    "pregunta": "En una red corporativa (Capítulo 3), una PC recién encendida necesita obtener automáticamente su dirección IPv4, máscara, gateway y DNS; luego requiere traducir 'www.ceneval.edu.mx' a su dirección IP. ¿Qué dos protocolos de capa de aplicación intervienen?",
+    "pregunta": "En una red corporativa, una PC recién encendida necesita obtener automáticamente su dirección IPv4, máscara, gateway y DNS; luego requiere traducir 'www.ceneval.edu.mx' a su dirección IP. ¿Qué dos protocolos de capa de aplicación intervienen?",
     "opciones": [
       {
         "id": "A",
@@ -81,7 +81,7 @@
     "id": "net_004",
     "area": "Implementación de Redes",
     "subarea": "2.1 Diseño y direccionamiento de redes",
-    "pregunta": "En la Capa de Transporte (Capítulo 4), una transferencia bancaria requiere entrega garantizada, acuses de recibo y saludo de 3 vías; mientras que una llamada VoIP en vivo requiere mínima sobrecarga y baja latencia sin retransmisiones. ¿Qué protocolos utiliza cada una?",
+    "pregunta": "En la Capa de Transporte, una transferencia bancaria requiere entrega garantizada, acuses de recibo y saludo de 3 vías; mientras que una llamada VoIP en vivo requiere mínima sobrecarga y baja latencia sin retransmisiones. ¿Qué protocolos utiliza cada una?",
     "opciones": [
       {
         "id": "A",
@@ -107,7 +107,7 @@
     "id": "net_005",
     "area": "Implementación de Redes",
     "subarea": "2.1 Diseño y direccionamiento de redes",
-    "pregunta": "Una PC con IP 192.168.1.50/24 envía un paquete a un servidor en la red remota 10.20.30.40/24 (Capítulo 5). ¿Qué dirección MAC de destino colocará en la trama Ethernet?",
+    "pregunta": "Una PC con IP 192.168.1.50/24 envía un paquete a un servidor en la red remota 10.20.30.40/24. ¿Qué dirección MAC de destino colocará en la trama Ethernet?",
     "opciones": [
       {
         "id": "A",
@@ -133,7 +133,7 @@
     "id": "net_006",
     "area": "Implementación de Redes",
     "subarea": "2.1 Diseño y direccionamiento de redes",
-    "pregunta": "Se recibe el bloque 192.168.10.0/24 y se requiere crear una subred para 50 hosts utilizables desperdiciando el mínimo de direcciones (Capítulo 6). ¿Qué prefijo CIDR y máscara corresponden?",
+    "pregunta": "Se recibe el bloque 192.168.10.0/24 y se requiere crear una subred para 50 hosts utilizables desperdiciando el mínimo de direcciones. ¿Qué prefijo CIDR y máscara corresponden?",
     "opciones": [
       {
         "id": "A",
@@ -159,7 +159,7 @@
     "id": "net_007",
     "area": "Implementación de Redes",
     "subarea": "2.1 Diseño y direccionamiento de redes",
-    "pregunta": "¿Qué métodos de Control de Acceso al Medio (MAC) por contienda utilizan respectivamente Ethernet 802.3 (half-duplex) y las redes inalámbricas WLAN IEEE 802.11 (Capítulos 7 y 9)?",
+    "pregunta": "¿Qué métodos de Control de Acceso al Medio (MAC) por contienda utilizan respectivamente Ethernet 802.3 (half-duplex) y las redes inalámbricas WLAN IEEE 802.11?",
     "opciones": [
       {
         "id": "A",
@@ -185,7 +185,7 @@
     "id": "net_008",
     "area": "Implementación de Redes",
     "subarea": "2.1 Diseño y direccionamiento de redes",
-    "pregunta": "En una planta industrial con alta interferencia electromagnética (EMI) y enlaces de 850 metros entre edificios (Capítulo 8), ¿qué medio de transmisión físico es el más adecuado?",
+    "pregunta": "En una planta industrial con alta interferencia electromagnética (EMI) y enlaces de 850 metros entre edificios, ¿qué medio de transmisión físico es el más adecuado?",
     "opciones": [
       {
         "id": "A",
@@ -211,7 +211,7 @@
     "id": "net_009",
     "area": "Implementación de Redes",
     "subarea": "2.2 Administración y configuración de redes",
-    "pregunta": "Cuando un switch Ethernet de Capa 2 recibe una trama (Capítulo 9), ¿qué dirección MAC registra en su tabla CAM y qué hace si la MAC de destino no está en su tabla?",
+    "pregunta": "Cuando un switch Ethernet de Capa 2 recibe una trama, ¿qué dirección MAC registra en su tabla CAM y qué hace si la MAC de destino no está en su tabla?",
     "opciones": [
       {
         "id": "A",
@@ -237,7 +237,7 @@
     "id": "net_010",
     "area": "Implementación de Redes",
     "subarea": "2.2 Administración y configuración de redes",
-    "pregunta": "En equipos sin Auto-MDIX (Capítulo 10), ¿qué cables se requieren para conectar: (1) PC a Switch, (2) Switch a Switch, y (3) puerto serial de PC al puerto de administración inicial de un Router Cisco?",
+    "pregunta": "En equipos sin Auto-MDIX, ¿qué cables se requieren para conectar: (1) PC a Switch, (2) Switch a Switch, y (3) puerto serial de PC al puerto de administración inicial de un Router Cisco?",
     "opciones": [
       {
         "id": "A",
@@ -263,7 +263,7 @@
     "id": "net_011",
     "area": "Implementación de Redes",
     "subarea": "2.2 Administración y configuración de redes",
-    "pregunta": "En un router Cisco IOS (Capítulo 11), ¿cuál es la secuencia correcta de comandos para configurar la IP de FastEthernet 0/0, activarla y respaldar la configuración en NVRAM?",
+    "pregunta": "En un router Cisco IOS, ¿cuál es la secuencia correcta de comandos para configurar la IP de FastEthernet 0/0, activarla y respaldar la configuración en NVRAM?",
     "opciones": [
       {
         "id": "A",
@@ -289,7 +289,7 @@
     "id": "net_012",
     "area": "Implementación de Redes",
     "subarea": "2.3 Seguridad en redes",
-    "pregunta": "Al configurar un router Cisco IOS para administración remota segura por red (Capítulo 11), se decide deshabilitar Telnet (puerto 23) en las líneas VTY y habilitar únicamente SSH (puerto 22). ¿Cuál es la razón técnica de seguridad para esta decisión?",
+    "pregunta": "Al configurar un router Cisco IOS para administración remota segura por red, se decide deshabilitar Telnet (puerto 23) en las líneas VTY y habilitar únicamente SSH (puerto 22). ¿Cuál es la razón técnica de seguridad para esta decisión?",
     "opciones": [
       {
         "id": "A",

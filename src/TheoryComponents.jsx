@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import {
   Eye,
   EyeOff,
@@ -14,6 +15,9 @@ import {
   RectangleHorizontal,
   Maximize2,
   X,
+  Brain,
+  ZoomIn,
+  ZoomOut,
 } from 'lucide-react';
 import {
   SignalsNyquistAdcDiagram,
@@ -58,7 +62,11 @@ import {
   SoftwareTestingMcCabeMaintenanceDiagram,
   CompilerMemoryStackHeapDiagram,
   OsSchedulingDeadlockDataStructuresDiagram,
+  DataStructuresVisualDiagram,
+  TreesHashBigODiagram,
   RelationalNormalizationSqlDiagram,
+  SqlJoinsWhereHavingDiagram,
+  AcidIndexesJsonTreeDiagram,
   GraphAlgorithmsDijkstraMstDiagram,
 } from './SoftwareDiagrams31_33';
 import {
@@ -340,25 +348,57 @@ const ALL_NETWORK_DIAGRAMS = [
   {
     id: 'os-deadlock-big-o-3-2',
     matchTitles: ['Interbloqueos (Deadlocks) y las 4 Condiciones Necesarias de Coffman'],
-    title: 'Planificación de CPU (SJF vs. Round Robin), 4 Condiciones de Coffman (Deadlock) y Complejidad Big-O',
-    badge: 'Subárea 3.2 • SO, Concurrencia y Big-O',
-    caption: 'SJF minimiza el tiempo de espera promedio; Round Robin usa Quantum fijo. Un Deadlock exige las 4 condiciones de Coffman. BFS usa Cola (FIFO), DFS usa Pila (LIFO), Búsqueda Binaria O(log n) exige arreglo ordenado, y MergeSort/HeapSort garantizan O(n log n).',
+    title: 'Diagramas Gantt de Planificación CPU (FCFS, SJF, Round Robin) y Ciclo Deadlock (4 Coffman)',
+    badge: 'Subárea 3.2 • SO y Deadlocks',
+    caption: 'SJF minimiza el tiempo de espera promedio; Round Robin usa Quantum fijo. Un Deadlock exige las 4 condiciones de Coffman (Exclusión, Retención y Espera, No Apropiación y Espera Circular).',
     Component: OsSchedulingDeadlockDataStructuresDiagram,
+  },
+  {
+    id: 'data-structures-linear-3-2',
+    matchTitles: ['Estructuras Lineales (Pilas, Colas y Listas Enlazadas)'],
+    title: 'Esquema Visual de Estructuras: Pila (LIFO), Cola (FIFO), Lista Enlazada y Min-Heap',
+    badge: 'Subárea 3.2 • Estructuras de Datos',
+    caption: 'Pila (LIFO) se usa en DFS, recursión y Undo; Cola (FIFO) se usa en BFS y buffers; Lista Enlazada inserta en O(1) con puntero; Min-Heap extrae el mínimo en O(log n).',
+    Component: DataStructuresVisualDiagram,
+  },
+  {
+    id: 'trees-hash-bigo-3-2',
+    matchTitles: ['Tablas Hash, Árboles Binarios de Búsqueda (BST)'],
+    title: 'Tabla Hash O(1), BST Degenerado vs. AVL Balanceado y Gráfica de Curvas Big-O',
+    badge: 'Subárea 3.2 • Árboles, Hash y Big-O',
+    caption: 'Tabla Hash busca en O(1) promedio; Búsqueda Binaria O(log n) exige arreglo ordenado; AVL garantiza O(log n) mediante rotaciones; MergeSort y HeapSort garantizan O(n log n) siempre.',
+    Component: TreesHashBigODiagram,
   },
   {
     id: 'sql-norm-acid-3-3',
     matchTitles: ['Formas Normales (1FN, 2FN, 3FN y BCNF)'],
-    title: 'Normalización (1FN a BCNF), WHERE vs. HAVING, JOINs, Transacciones ACID e Índices B-Tree vs. Bitmap',
-    badge: 'Subárea 3.3 • Bases de Datos y SQL',
-    caption: '1FN exige atomicidad, 2FN elimina dependencias parciales y 3FN elimina dependencias transitivas. En SQL, HAVING filtra grupos después de GROUP BY con funciones de agregación (COUNT/AVG). B-Tree indexa alta cardinalidad/rangos y Bitmap baja cardinalidad.',
+    title: 'Transformación Visual de Normalización (1FN → 2FN → 3FN → BCNF) y Tabla Puente N:M',
+    badge: 'Subárea 3.3 • Normalización y Relacional',
+    caption: '1FN exige 1 valor atómico por celda; 2FN elimina dependencias parciales en PK compuesta; 3FN elimina dependencias transitivas (No-PK → No-PK); N:M se rompe con tabla intermedia.',
     Component: RelationalNormalizationSqlDiagram,
+  },
+  {
+    id: 'sql-joins-where-having-3-3',
+    matchTitles: ['Consultas `SELECT`, `DISTINCT`'],
+    title: 'Flujo de Ejecución SQL (WHERE vs. HAVING) y Diagramas de Venn de SQL JOINs',
+    badge: 'Subárea 3.3 • SQL y JOINs',
+    caption: 'WHERE filtra filas ANTES de agrupar (prohibido usar COUNT/AVG); HAVING filtra grupos DESPUÉS de GROUP BY. INNER devuelve A ∩ B; LEFT devuelve todo A con NULL si falta B.',
+    Component: SqlJoinsWhereHavingDiagram,
+  },
+  {
+    id: 'acid-indexes-json-3-3',
+    matchTitles: ['Propiedades ACID de las Transacciones'],
+    title: 'Transacción ACID (COMMIT/ROLLBACK), Índices B-Tree vs. Bitmap y Árbol JSON/XML',
+    badge: 'Subárea 3.3 • ACID, Índices y JSON',
+    caption: 'ACID garantiza Todo o Nada (COMMIT/ROLLBACK) y durabilidad (Redo Log). B-Tree indexa alta cardinalidad y rangos en O(log n); Bitmap indexa baja cardinalidad (booleanos). JSON/XML = Árbol.',
+    Component: AcidIndexesJsonTreeDiagram,
   },
   {
     id: 'graphs-dijkstra-mst-3-3',
     matchTitles: ['Algoritmos de Camino Más Corto (Shortest Path)'],
-    title: 'Algoritmos en Grafos: Dijkstra (Un Origen), Floyd-Warshall (Todos los Pares) y MST (Kruskal y Prim)',
+    title: 'Grafos Visuales: Dijkstra (1 Origen), Matriz Floyd-Warshall y MST (Kruskal y Prim)',
     badge: 'Subárea 3.3 • Optimización en Grafos',
-    caption: 'Dijkstra calcula la ruta más corta desde 1 origen (pesos ≥ 0); Floyd-Warshall entre todos los pares en O(V³); Kruskal (ordenando aristas) y Prim (desde un nodo) construyen el Árbol de Expansión Mínima (MST) con V - 1 aristas sin ciclos.',
+    caption: 'Dijkstra calcula la ruta más corta desde 1 origen (pesos ≥ 0); Floyd-Warshall entre todos los pares en O(V³); Kruskal (aristas) y Prim (nodos) construyen el MST con V - 1 aristas sin ciclos.',
     Component: GraphAlgorithmsDijkstraMstDiagram,
   },
 ];
@@ -955,12 +995,15 @@ export function StructuredPointBody({ parsed, areaStyle }) {
 
           <div
             onClick={() => setIsZoomOpen(true)}
-            className="overflow-x-auto rounded-xl border border-[#E5DEC9] bg-[#FAF7F2] p-1.5 cursor-zoom-in"
+            className="overflow-x-auto overscroll-x-contain rounded-xl border border-[#E5DEC9] bg-[#FAF7F2] p-1.5 cursor-zoom-in"
             title="Haz clic para ampliar el esquema"
           >
             <div className="min-w-[540px] sm:min-w-0">
               <DiagramComp />
             </div>
+          </div>
+          <div className="sm:hidden text-[10px] text-stone-500 text-center font-semibold">
+            Desliza ↔ o toca el diagrama para abrir con zoom
           </div>
 
           {matchedDiagram.caption && (
@@ -972,51 +1015,13 @@ export function StructuredPointBody({ parsed, areaStyle }) {
             </p>
           )}
 
-          {/* Modal Lightbox para ver el Diagrama SVG en Grande */}
+          {/* Modal Lightbox en Portal con bloqueo real de scroll del fondo y Zoom interno */}
           {isZoomOpen && (
-            <div
-              onClick={() => setIsZoomOpen(false)}
-              className="fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6"
-            >
-              <div
-                onClick={(e) => e.stopPropagation()}
-                className="bg-white border-2 border-[#D8D0C0] rounded-2xl max-w-5xl w-full max-h-[92vh] overflow-y-auto p-4 sm:p-6 shadow-2xl space-y-4"
-              >
-                <div className="flex items-start justify-between gap-3 pb-3 border-b border-[#E5DEC9]">
-                  <div>
-                    <span className="inline-block px-2.5 py-0.5 rounded-md bg-teal-800 text-white text-[11px] font-extrabold uppercase tracking-wider mb-1">
-                      {matchedDiagram.badge}
-                    </span>
-                    <h4 className="text-base sm:text-lg font-black text-stone-950">
-                      {matchedDiagram.title}
-                    </h4>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setIsZoomOpen(false)}
-                    className="p-2 rounded-xl bg-[#F3EFE6] hover:bg-stone-900 text-stone-800 hover:text-white transition cursor-pointer shrink-0"
-                    aria-label="Cerrar vista ampliada"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
-
-                <div className="overflow-x-auto rounded-xl border border-[#E5DEC9] bg-[#FAF7F2] p-2 sm:p-4">
-                  <div className="min-w-[640px] sm:min-w-0">
-                    <DiagramComp />
-                  </div>
-                </div>
-
-                {matchedDiagram.caption && (
-                  <div className="text-xs sm:text-sm text-stone-700 leading-relaxed bg-teal-50/70 border border-teal-300 rounded-xl p-3.5">
-                    <strong className="font-extrabold text-teal-950 mr-1.5">
-                      Resumen técnico verificado:
-                    </strong>
-                    {matchedDiagram.caption}
-                  </div>
-                )}
-              </div>
-            </div>
+            <DiagramLightboxModal
+              diagram={matchedDiagram}
+              DiagramComp={DiagramComp}
+              onClose={() => setIsZoomOpen(false)}
+            />
           )}
         </div>
       )}
@@ -1747,4 +1752,460 @@ export function InteractiveFlashcardsDeck({
       )}
     </div>
   );
+}
+
+
+/**
+ * Tarjetas de Mnemotecnias para memorizar rápido (OSI, PDUs, DHCP DORA, Puertos, Syslog, IDS/IPS, etc.)
+ */
+export function MnemonicsSection({ mnemonics = [], compact = false }) {
+  if (!Array.isArray(mnemonics) || mnemonics.length === 0) return null;
+
+  return (
+    <div
+      className={`bg-gradient-to-br from-indigo-50/90 via-white to-amber-50/70 border-2 border-indigo-300/80 rounded-2xl ${
+        compact ? 'p-3.5 sm:p-4' : 'p-4 sm:p-6'
+      } shadow-sm space-y-3`}
+    >
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center shrink-0">
+            <Brain className="w-4 h-4" />
+          </div>
+          <div>
+            <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-indigo-950">
+              Mnemotecnias y Trucos de Memoria Rápida
+            </h3>
+            {!compact && (
+              <p className="text-[11px] sm:text-xs text-stone-600">
+                Frases y asociaciones diseñadas para retener protocolos, capas y reglas sin confundirte en el examen.
+              </p>
+            )}
+          </div>
+        </div>
+        <span className="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-900 border border-indigo-300">
+          {mnemonics.length} {mnemonics.length === 1 ? 'truco' : 'trucos'}
+        </span>
+      </div>
+
+      <div
+        className={`grid grid-cols-1 ${
+          compact ? 'gap-2.5' : 'md:grid-cols-2 gap-3'
+        }`}
+      >
+        {mnemonics.map((m, idx) => (
+          <div
+            key={idx}
+            className="bg-white border border-indigo-200 rounded-xl p-3 sm:p-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.03)] space-y-1.5"
+          >
+            <div className="text-[11px] font-extrabold uppercase tracking-wide text-indigo-700">
+              {m.title}
+            </div>
+            <div className="text-xs sm:text-sm font-black text-stone-950 bg-amber-100/80 border border-amber-300 rounded-lg px-2.5 py-1.5 leading-snug">
+              {m.phrase}
+            </div>
+            <p className="text-xs text-stone-700 leading-relaxed">
+              <FormattedRichText text={m.breakdown} />
+            </p>
+            {m.extra && (
+              <p className="text-[11px] text-teal-900 bg-teal-50/80 border border-teal-200/80 rounded-md px-2 py-1 font-semibold leading-snug">
+                💡 {m.extra}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const HELP_STOPWORDS = new Set([
+  'para', 'como', 'cual', 'cuales', 'donde', 'cuando', 'porque', 'sobre', 'entre',
+  'desde', 'hasta', 'hacia', 'segun', 'contra', 'durante', 'mediante', 'traves',
+  'este', 'esta', 'estos', 'estas', 'aquel', 'aquella', 'unos', 'unas', 'todo',
+  'toda', 'todos', 'todas', 'otro', 'otra', 'otros', 'otras', 'mismo', 'misma',
+  'cada', 'solo', 'mas', 'menos', 'muy', 'bien', 'pero', 'sino', 'aunque', 'mientras',
+  'puede', 'pueden', 'debe', 'deben', 'requiere', 'utiliza', 'utilizan', 'permite',
+  'permiten', 'hace', 'hacen', 'tiene', 'tienen', 'siendo', 'sido', 'estan',
+  'siguiente', 'siguientes', 'correcta', 'correcto', 'incorrecta', 'opcion', 'opciones',
+  'pregunta', 'reactivo', 'caso', 'empresa', 'organizacion', 'sistema', 'sistemas',
+  'usuario', 'usuarios', 'datos', 'informacion', 'red', 'redes', 'equipo', 'equipos',
+]);
+
+function normalizeForMatch(str) {
+  if (!str || typeof str !== 'string') return '';
+  return str
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9/.+-]+/g, ' ')
+    .trim();
+}
+
+function extractSearchTokens(str) {
+  const norm = normalizeForMatch(str);
+  if (!norm) return [];
+  const raw = norm.split(/\s+/);
+  const tokens = new Set();
+  for (const t of raw) {
+    if (!t) continue;
+    if (
+      t.startsWith('/') ||
+      /^\d{2,4}$/.test(t) ||
+      (t.length >= 2 &&
+        /^(ip|l2|l3|l4|l7|ah|cd|ca|mx|ns|ra|rs|io|so|bd|os|rc|op|dc|ac)$/.test(t))
+    ) {
+      tokens.add(t);
+    } else if (t.length >= 3 && !HELP_STOPWORDS.has(t)) {
+      tokens.add(t);
+    }
+  }
+  return Array.from(tokens);
+}
+
+/**
+ * Empareja automáticamente la pregunta actual con los puntos teóricos,
+ * mnemotecnias, fórmulas y tips MÁS relevantes de la subárea
+ * (sin revelar nunca la respuesta correcta ni la explicación de la pregunta).
+ */
+export function findRelevantHelpForQuestion(question, theoryGuide) {
+  if (!question || !theoryGuide) {
+    return {
+      matchedPoints: [],
+      matchedMnemonics: [],
+      matchedFormulas: [],
+      matchedTips: [],
+      detectedTopicLabel: '',
+    };
+  }
+
+  const questionText = question.pregunta || '';
+  const optionsText = (question.opciones || []).map((o) => o.texto || '').join(' ');
+
+  const qTokens = extractSearchTokens(questionText);
+  const optTokens = extractSearchTokens(optionsText);
+  const qNorm = normalizeForMatch(questionText);
+  const combinedNorm = normalizeForMatch(`${questionText} ${optionsText}`);
+
+  const scoreText = (targetText, titleText = '', extraKeywords = []) => {
+    const normBody = normalizeForMatch(targetText);
+    const normTitle = normalizeForMatch(titleText);
+    let score = 0;
+
+    for (const tok of qTokens) {
+      if (tok.length <= 2) {
+        const re = new RegExp(`(?:^|\\s)${tok.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:$|\\s)`);
+        if (re.test(normTitle)) score += 6;
+        else if (re.test(normBody)) score += 2.5;
+      } else {
+        if (normTitle.includes(tok)) score += 5;
+        else if (normBody.includes(tok)) score += 2;
+      }
+    }
+
+    for (const tok of optTokens) {
+      if (qTokens.includes(tok)) continue;
+      if (tok.length <= 2) {
+        const re = new RegExp(`(?:^|\\s)${tok.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:$|\\s)`);
+        if (re.test(normTitle)) score += 2.5;
+        else if (re.test(normBody)) score += 1;
+      } else {
+        if (normTitle.includes(tok)) score += 2.5;
+        else if (normBody.includes(tok)) score += 0.9;
+      }
+    }
+
+    for (const kw of extraKeywords) {
+      const nkw = normalizeForMatch(kw);
+      if (!nkw) continue;
+      if (qNorm.includes(nkw)) score += 7;
+      else if (combinedNorm.includes(nkw)) score += 3.5;
+    }
+
+    return score;
+  };
+
+  // 1. Puntuar todos los puntos de todas las secciones
+  const scoredPoints = [];
+  (theoryGuide.sections || []).forEach((sec, sIdx) => {
+    (sec.points || []).forEach((pt, pIdx) => {
+      const parsed = parseStructuredPoint(pt);
+      const s = scoreText(
+        `${sec.title} ${pt}`,
+        `${parsed.title} ${parsed.subtitleBadge}`
+      );
+      scoredPoints.push({
+        score: s,
+        pt,
+        parsed,
+        sectionTitle: sec.title,
+        sIdx,
+        pIdx,
+      });
+    });
+  });
+
+  scoredPoints.sort((a, b) => b.score - a.score);
+  const topScore = scoredPoints[0]?.score || 0;
+  const matchedPoints =
+    topScore > 0
+      ? scoredPoints
+          .filter((item, idx) => idx === 0 || (idx < 2 && item.score >= topScore * 0.55))
+          .slice(0, 2)
+      : scoredPoints.slice(0, 1);
+
+  // 2. Puntuar mnemotecnias
+  const scoredMnemonics = (theoryGuide.mnemonics || [])
+    .map((m) => ({
+      item: m,
+      score: scoreText(
+        `${m.phrase} ${m.breakdown} ${m.extra || ''}`,
+        m.title,
+        m.keywords || []
+      ),
+    }))
+    .filter((x) => x.score >= 4)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 2)
+    .map((x) => x.item);
+
+  // 3. Puntuar fórmulas enriquecidas
+  const allFormulas = getEnrichedFormulasForSubarea(
+    theoryGuide.subareaCode,
+    theoryGuide.formulas || []
+  );
+  const scoredFormulas = allFormulas
+    .map((f) => ({
+      item: f,
+      score: scoreText(
+        `${f.code || ''} ${f.category || ''} ${f.examMatch || ''}`,
+        f.label || ''
+      ),
+    }))
+    .filter((x) => x.score >= 3.5)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 2)
+    .map((x) => x.item);
+
+  // 4. Puntuar tips de examen
+  const scoredTips = (theoryGuide.examTips || [])
+    .map((tip) => ({
+      item: tip,
+      score: scoreText(tip, ''),
+    }))
+    .filter((x) => x.score >= 3)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 2)
+    .map((x) => x.item);
+
+  return {
+    matchedPoints,
+    matchedMnemonics: scoredMnemonics,
+    matchedFormulas: scoredFormulas,
+    matchedTips: scoredTips,
+    detectedTopicLabel:
+      matchedPoints[0]?.parsed?.title ||
+      matchedPoints[0]?.sectionTitle ||
+      theoryGuide.subareaName,
+  };
+}
+
+
+/**
+ * Visor Lightbox en Portal (document.body) para Diagramas SVG:
+ * - Bloquea el scroll del sitio de fondo incluso en iOS Safari / Android Chrome.
+ * - Implementa Zoom interno vectorial (botones +/- y gesto pinch de 2 dedos solo sobre el diagrama)
+ *   evitando que hacer zoom afecte a la página de fondo.
+ */
+function DiagramLightboxModal({ diagram, DiagramComp, onClose }) {
+  const [zoom, setZoom] = useState(1);
+  const viewerRef = useRef(null);
+  const zoomRef = useRef(1);
+  const pinchStartRef = useRef({ dist: 0, zoom: 1 });
+
+  useEffect(() => {
+    zoomRef.current = zoom;
+  }, [zoom]);
+
+  // Bloqueo robusto de scroll del fondo + tecla Escape
+  useEffect(() => {
+    const scrollY = window.scrollY;
+    const prevBodyStyle = {
+      position: document.body.style.position,
+      top: document.body.style.top,
+      left: document.body.style.left,
+      right: document.body.style.right,
+      overflow: document.body.style.overflow,
+      width: document.body.style.width,
+    };
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      document.body.style.position = prevBodyStyle.position;
+      document.body.style.top = prevBodyStyle.top;
+      document.body.style.left = prevBodyStyle.left;
+      document.body.style.right = prevBodyStyle.right;
+      document.body.style.width = prevBodyStyle.width;
+      document.body.style.overflow = prevBodyStyle.overflow;
+      window.scrollTo(0, scrollY);
+    };
+  }, [onClose]);
+
+  const clampZoom = (val) => Math.min(3, Math.max(1, Math.round(val * 100) / 100));
+
+  // Listener nativo non-passive para interceptar pinch-to-zoom de 2 dedos SOLO dentro del diagrama
+  useEffect(() => {
+    const el = viewerRef.current;
+    if (!el) return undefined;
+
+    const getDist = (touches) =>
+      Math.hypot(
+        touches[0].clientX - touches[1].clientX,
+        touches[0].clientY - touches[1].clientY
+      );
+
+    const onTouchStart = (e) => {
+      if (e.touches.length === 2) {
+        pinchStartRef.current = {
+          dist: getDist(e.touches),
+          zoom: zoomRef.current,
+        };
+      }
+    };
+
+    const onTouchMove = (e) => {
+      if (e.touches.length === 2 && pinchStartRef.current.dist > 0) {
+        e.preventDefault();
+        const ratio = getDist(e.touches) / pinchStartRef.current.dist;
+        setZoom(clampZoom(pinchStartRef.current.zoom * ratio));
+      }
+    };
+
+    el.addEventListener('touchstart', onTouchStart, { passive: true });
+    el.addEventListener('touchmove', onTouchMove, { passive: false });
+    return () => {
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchmove', onTouchMove);
+    };
+  }, []);
+
+  const modalContent = (
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-[100] bg-stone-950/85 backdrop-blur-xs flex items-center justify-center p-2 sm:p-5 overscroll-none touch-none"
+      role="dialog"
+      aria-modal="true"
+      aria-label={diagram.title}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="bg-white border-2 border-[#D8D0C0] rounded-2xl max-w-5xl w-full max-h-[94dvh] flex flex-col overflow-hidden shadow-2xl touch-auto"
+      >
+        {/* Cabecera fija del modal */}
+        <div className="shrink-0 flex items-start justify-between gap-2.5 p-3.5 sm:p-5 border-b border-[#E5DEC9] bg-white">
+          <div className="min-w-0 flex-1">
+            <span className="inline-block px-2 py-0.5 rounded-md bg-teal-800 text-white text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider mb-1">
+              {diagram.badge}
+            </span>
+            <h4 className="text-sm sm:text-lg font-black text-stone-950 leading-snug break-words">
+              {diagram.title}
+            </h4>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="p-2 rounded-xl bg-[#F3EFE6] hover:bg-stone-900 text-stone-800 hover:text-white transition cursor-pointer shrink-0"
+            aria-label="Cerrar vista ampliada"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Barra de Controles de Zoom Interno (sin hacer zoom al sitio de fondo) */}
+        <div className="shrink-0 flex flex-wrap items-center justify-between gap-2 px-3.5 sm:px-5 py-2 bg-[#FAF7F2] border-b border-[#E5DEC9]">
+          <span className="text-[11px] text-stone-600 font-semibold">
+            Zoom interno (pellizca o usa los botones y desliza ↔↕)
+          </span>
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => setZoom((z) => clampZoom(z - 0.35))}
+              disabled={zoom <= 1}
+              className="p-1.5 rounded-lg bg-white hover:bg-[#EFEAE0] disabled:opacity-40 border border-[#D8D0C0] text-stone-800 cursor-pointer"
+              aria-label="Alejar diagrama"
+              title="Alejar"
+            >
+              <ZoomOut className="w-4 h-4" />
+            </button>
+            <span className="min-w-[48px] text-center font-mono text-xs font-extrabold text-teal-900">
+              {Math.round(zoom * 100)}%
+            </span>
+            <button
+              type="button"
+              onClick={() => setZoom((z) => clampZoom(z + 0.35))}
+              disabled={zoom >= 3}
+              className="p-1.5 rounded-lg bg-white hover:bg-[#EFEAE0] disabled:opacity-40 border border-[#D8D0C0] text-stone-800 cursor-pointer"
+              aria-label="Acercar diagrama"
+              title="Acercar"
+            >
+              <ZoomIn className="w-4 h-4" />
+            </button>
+            {zoom > 1 && (
+              <button
+                type="button"
+                onClick={() => setZoom(1)}
+                className="px-2 py-1 rounded-lg bg-teal-700 hover:bg-teal-800 text-white text-[11px] font-bold flex items-center gap-1 cursor-pointer"
+              >
+                <RotateCcw className="w-3 h-3" />
+                <span>Ajustar</span>
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Visor scrollable bidireccional del diagrama */}
+        <div
+          ref={viewerRef}
+          className="flex-1 min-h-0 overflow-auto overscroll-contain bg-[#FAF7F2] p-2 sm:p-4 touch-pan-x touch-pan-y"
+        >
+          <div
+            style={{
+              width: `${Math.round(zoom * 100)}%`,
+              minWidth: `${Math.round(680 * zoom)}px`,
+            }}
+            className="mx-auto transition-[width,min-width] duration-150"
+          >
+            <DiagramComp />
+          </div>
+        </div>
+
+        {/* Resumen técnico fijo abajo */}
+        {diagram.caption && (
+          <div className="shrink-0 max-h-24 sm:max-h-32 overflow-y-auto overscroll-contain text-[11px] sm:text-sm text-stone-700 leading-relaxed bg-teal-50/90 border-t border-teal-300 px-3.5 sm:px-5 py-2.5 sm:py-3">
+            <strong className="font-extrabold text-teal-950 mr-1.5">
+              Resumen técnico:
+            </strong>
+            {diagram.caption}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  return createPortal(modalContent, document.body);
 }

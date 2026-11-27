@@ -40,6 +40,8 @@ import {
   InteractiveFlashcardsDeck,
   StructuredSummaryDigest,
   FormattedRichText,
+  MnemonicsSection,
+  findRelevantHelpForQuestion,
 } from './TheoryComponents';
 import { getEnrichedFormulasForSubarea } from './formulaDefinitions';
 import { FormulaSectionList, MathExpression } from './FormulaComponents';
@@ -438,6 +440,7 @@ export default function App() {
   const [revealedCatalogQuestions, setRevealedCatalogQuestions] = useState({});
   const [showTheorySources, setShowTheorySources] = useState(false);
   const [showTheoryDrawerInQuiz, setShowTheoryDrawerInQuiz] = useState(false);
+  const [quizHelpTab, setQuizHelpTab] = useState('focused'); // 'focused' | 'full'
   const [preReadingSubareaTab, setPreReadingSubareaTab] = useState(
     () => savedActiveState?.preReadingSubareaTab || ''
   );
@@ -1630,6 +1633,9 @@ export default function App() {
             title="Fórmulas Formateadas, Significado de Variables y Reglas Exactas para el Cuestionario"
           />
 
+          {/* Mnemotecnias y Trucos de Memoria Rápida */}
+          <MnemonicsSection mnemonics={readingGuide.mnemonics} />
+
           {/* Tips de Examen */}
           {readingGuide.examTips?.length > 0 && (
             <div className="bg-amber-50 border border-amber-300 rounded-2xl p-5 shadow-sm">
@@ -1680,7 +1686,7 @@ export default function App() {
     );
   }
 
-  // VISTA 1: Sesión de Estudio Intensiva (Con Botón de Consulta Teórica en Vivo)
+  // VISTA 1: Sesión de Estudio Intensiva (Con Botón de Consulta Teórica Contextual en Vivo)
   if (activeTab === 'session' && sessionQueue.length > 0) {
     const currentQ = sessionQueue[currentIndex] || sessionQueue[0];
     const progressPct = Math.round(((currentIndex + 1) / sessionQueue.length) * 100);
@@ -1689,12 +1695,16 @@ export default function App() {
     const currentTheoryGuide =
       THEORY_GUIDE.find((t) => t.subareaName === currentQ.subarea) ||
       THEORY_GUIDE[0];
+    const contextualHelp = findRelevantHelpForQuestion(
+      currentQ,
+      currentTheoryGuide
+    );
 
     return (
-      <div className="min-h-screen bg-[#F8F5EE] text-stone-900 flex flex-col">
-        {/* Barra Superior */}
-        <header className="border-b border-[#E5DEC9] bg-white/95 backdrop-blur sticky top-0 z-20 shadow-sm">
-          <div className="max-w-3xl w-full mx-auto px-3 sm:px-4 py-2.5 sm:py-3.5 flex items-center gap-2 sm:gap-3">
+      <div className="h-[100dvh] bg-[#F8F5EE] text-stone-900 flex flex-col overflow-hidden">
+        {/* Barra Superior Fija */}
+        <header className="shrink-0 border-b border-[#E5DEC9] bg-white/95 backdrop-blur z-20 shadow-sm">
+          <div className="max-w-3xl w-full mx-auto px-3 sm:px-4 py-2 sm:py-3 flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => setActiveTab('home')}
               title="Pausar y volver al menú (tu progreso queda guardado)"
@@ -1734,102 +1744,202 @@ export default function App() {
             </div>
 
             <button
-              onClick={() => setShowTheoryDrawerInQuiz((v) => !v)}
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200/80 border border-amber-300 text-amber-900 text-xs font-bold transition shrink-0"
+              onClick={() => {
+                setQuizHelpTab('focused');
+                setShowTheoryDrawerInQuiz((v) => !v);
+              }}
+              title="Abrir ayuda directa del tema de esta pregunta"
+              className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border text-xs font-bold transition shrink-0 ${
+                showTheoryDrawerInQuiz
+                  ? 'bg-amber-500 border-amber-600 text-stone-950 shadow-sm'
+                  : 'bg-amber-100 hover:bg-amber-200/80 border-amber-300 text-amber-900'
+              }`}
             >
               <Lightbulb className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Apunte</span>
+              <span className="hidden sm:inline">Ayuda</span>
             </button>
           </div>
         </header>
 
-        {/* Contenedor Principal */}
-        <main className="flex-1 max-w-3xl w-full mx-auto px-4 py-4 sm:py-6 flex flex-col pb-6 sm:pb-8">
-          <div>
-            {/* Panel Desplegable de Teoría y Fórmulas durante el Quiz */}
+        {/* Contenedor Principal con scroll interno (el botón inferior siempre queda visible) */}
+        <main className="flex-1 overflow-y-auto overscroll-contain max-w-3xl w-full mx-auto px-3.5 sm:px-4 py-3 sm:py-6 flex flex-col">
+          <div className="pb-4">
+            {/* Panel Desplegable de Ayuda Contextual (Enfocado en la pregunta actual) */}
             {showTheoryDrawerInQuiz && currentTheoryGuide && (
-              <div className="mb-6 bg-white border-2 border-amber-400 rounded-2xl p-4 sm:p-5 shadow-xl max-h-[65vh] overflow-y-auto space-y-4">
-                <div className="flex items-start justify-between gap-3 pb-3 border-b border-[#E5DEC9]">
-                  <div className="min-w-0 flex-1">
-                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-800">
-                      Enciclopedia Teórica en Vivo • {currentTheoryGuide.subareaName}
-                    </span>
-                    <StructuredSummaryDigest
-                      text={currentTheoryGuide.summary}
-                      compact={true}
-                    />
+              <div className="mb-4 sm:mb-5 bg-white border-2 border-amber-400 rounded-2xl p-3.5 sm:p-5 shadow-xl space-y-3.5">
+                <div className="flex items-start justify-between gap-2 pb-2.5 border-b border-[#E5DEC9]">
+                  <div className="min-w-0 flex-1 space-y-2">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 border border-amber-300">
+                        💡 Ayuda del Tema
+                      </span>
+                      <span className="text-xs font-extrabold text-stone-800 truncate">
+                        {contextualHelp.detectedTopicLabel}
+                      </span>
+                    </div>
+
+                    {/* Pestañas: Ayuda directa vs Temario completo */}
+                    <div className="inline-flex items-center bg-[#F3EFE6] p-0.5 rounded-xl border border-[#D8D0C0]">
+                      <button
+                        type="button"
+                        onClick={() => setQuizHelpTab('focused')}
+                        className={`px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition ${
+                          quizHelpTab === 'focused'
+                            ? 'bg-stone-900 text-white shadow-sm'
+                            : 'text-stone-700 hover:text-stone-950'
+                        }`}
+                      >
+                        Ayuda de esta pregunta
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setQuizHelpTab('full')}
+                        className={`px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition ${
+                          quizHelpTab === 'full'
+                            ? 'bg-stone-900 text-white shadow-sm'
+                            : 'text-stone-700 hover:text-stone-950'
+                        }`}
+                      >
+                        Temario completo ({currentTheoryGuide.sections?.length || 0})
+                      </button>
+                    </div>
                   </div>
+
                   <button
                     onClick={() => setShowTheoryDrawerInQuiz(false)}
                     className="p-1.5 rounded-lg bg-[#F3EFE6] hover:bg-[#E5DEC9] text-stone-700 shrink-0"
+                    aria-label="Cerrar ayuda"
                   >
                     <X className="w-4 h-4" />
                   </button>
                 </div>
 
-                <FormulaSectionList
-                  formulas={getEnrichedFormulasForSubarea(
-                    currentTheoryGuide.subareaCode,
-                    currentTheoryGuide.formulas || []
-                  )}
-                  title="Fórmulas Formateadas y Significado de Variables en Vivo"
-                  compact={true}
-                />
+                {quizHelpTab === 'focused' ? (
+                  <div className="space-y-3.5">
+                    {/* Mnemotecnias relevantes a esta pregunta */}
+                    {contextualHelp.matchedMnemonics.length > 0 && (
+                      <MnemonicsSection
+                        mnemonics={contextualHelp.matchedMnemonics}
+                        compact={true}
+                      />
+                    )}
 
-                {currentTheoryGuide.sections?.length > 0 && (
-                  <div className="space-y-2.5">
-                    <div className="text-xs font-extrabold uppercase tracking-wider text-indigo-800">
-                      Fundamentos del Temario ({currentTheoryGuide.sections.length} bloques):
-                    </div>
-                    {currentTheoryGuide.sections.map((sec, sIdx) => (
-                      <details
-                        key={sIdx}
-                        className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl p-3 group"
-                      >
-                        <summary className="text-xs font-bold text-stone-900 cursor-pointer list-none flex items-center justify-between">
-                          <span>{sec.title}</span>
-                          <ChevronDown className="w-4 h-4 text-stone-500 group-open:rotate-180 transition-transform" />
-                        </summary>
-                        {sec.description && (
-                          <p className="text-xs text-stone-600 mt-2 leading-relaxed">
-                            {sec.description}
-                          </p>
-                        )}
-                        <div className="mt-2.5 space-y-2.5 border-t border-[#E5DEC9] pt-3">
-                          {sec.points.map((pt, pIdx) => (
+                    {/* Conceptos + Diagramas SVG exactos de esta pregunta */}
+                    {contextualHelp.matchedPoints.length > 0 && (
+                      <div className="space-y-3">
+                        {contextualHelp.matchedPoints.map((item, idx) => (
+                          <div key={`${item.sIdx}_${item.pIdx}`} className="space-y-1.5">
+                            <div className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-800 px-1">
+                              Bloque relacionado: {item.sectionTitle}
+                            </div>
                             <StructuredPointCard
-                              key={pIdx}
-                              pt={pt}
-                              index={pIdx}
-                              pointKey={`drawer_${sIdx}_${pIdx}`}
+                              pt={item.pt}
+                              index={idx}
+                              pointKey={`focused_${currentQ.id}_${idx}`}
                               areaStyle={areaStyle}
                               isRecallMode={false}
                               isRevealed={true}
                             />
-                          ))}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Fórmulas relevantes */}
+                    {contextualHelp.matchedFormulas.length > 0 && (
+                      <FormulaSectionList
+                        formulas={contextualHelp.matchedFormulas}
+                        title="Fórmula / Regla Aplicable"
+                        compact={true}
+                      />
+                    )}
+
+                    {/* Tips relevantes */}
+                    {contextualHelp.matchedTips.length > 0 && (
+                      <div className="bg-amber-50 border border-amber-300 rounded-xl p-3">
+                        <div className="text-[11px] font-extrabold uppercase tracking-wider text-amber-900 mb-1.5">
+                          Clave EGEL para este tema:
                         </div>
-                      </details>
-                    ))}
+                        <ul className="space-y-1 text-xs text-amber-950">
+                          {contextualHelp.matchedTips.map((tip, tIdx) => (
+                            <li key={tIdx}>→ {tip}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <StructuredSummaryDigest
+                      text={currentTheoryGuide.summary}
+                      compact={true}
+                    />
+
+                    <MnemonicsSection
+                      mnemonics={currentTheoryGuide.mnemonics}
+                      compact={true}
+                    />
+
+                    <FormulaSectionList
+                      formulas={getEnrichedFormulasForSubarea(
+                        currentTheoryGuide.subareaCode,
+                        currentTheoryGuide.formulas || []
+                      )}
+                      title="Fórmulas Formateadas y Significado de Variables"
+                      compact={true}
+                    />
+
+                    {currentTheoryGuide.sections?.length > 0 && (
+                      <div className="space-y-2.5">
+                        <div className="text-xs font-extrabold uppercase tracking-wider text-indigo-800">
+                          Fundamentos del Temario ({currentTheoryGuide.sections.length} bloques):
+                        </div>
+                        {currentTheoryGuide.sections.map((sec, sIdx) => (
+                          <details
+                            key={sIdx}
+                            className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl p-3 group"
+                          >
+                            <summary className="text-xs font-bold text-stone-900 cursor-pointer list-none flex items-center justify-between">
+                              <span>{sec.title}</span>
+                              <ChevronDown className="w-4 h-4 text-stone-500 group-open:rotate-180 transition-transform" />
+                            </summary>
+                            {sec.description && (
+                              <p className="text-xs text-stone-600 mt-2 leading-relaxed">
+                                {sec.description}
+                              </p>
+                            )}
+                            <div className="mt-2.5 space-y-2.5 border-t border-[#E5DEC9] pt-3">
+                              {sec.points.map((pt, pIdx) => (
+                                <StructuredPointCard
+                                  key={pIdx}
+                                  pt={pt}
+                                  index={pIdx}
+                                  pointKey={`drawer_${sIdx}_${pIdx}`}
+                                  areaStyle={areaStyle}
+                                  isRecallMode={false}
+                                  isRevealed={true}
+                                />
+                              ))}
+                            </div>
+                          </details>
+                        ))}
+                      </div>
+                    )}
+
+                    {currentTheoryGuide.examTips?.length > 0 && (
+                      <div className="bg-amber-50 border border-amber-300 rounded-xl p-3">
+                        <div className="text-[11px] font-extrabold uppercase tracking-wider text-amber-900 mb-1.5">
+                          Tips CENEVAL para no fallar:
+                        </div>
+                        <ul className="space-y-1 text-xs text-amber-950">
+                          {currentTheoryGuide.examTips.map((tip, tIdx) => (
+                            <li key={tIdx}>→ {tip}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 )}
-
-                {currentTheoryGuide.examTips?.length > 0 && (
-                  <div className="bg-amber-50 border border-amber-300 rounded-xl p-3">
-                    <div className="text-[11px] font-extrabold uppercase tracking-wider text-amber-900 mb-1.5">
-                      Tips CENEVAL para no fallar:
-                    </div>
-                    <ul className="space-y-1 text-xs text-amber-950">
-                      {currentTheoryGuide.examTips.map((tip, tIdx) => (
-                        <li key={tIdx}>→ {tip}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                <div className="text-[11px] text-stone-500 pt-1 border-t border-[#E5DEC9] break-words">
-                  <strong className="text-stone-700">Fuentes: </strong>
-                  {currentTheoryGuide.sources.join(' • ')}
-                </div>
               </div>
             )}
 
@@ -1958,15 +2068,15 @@ export default function App() {
           </div>
         </main>
 
-        {/* Barra Inferior Fija de Comprobación y Siguiente Pregunta */}
-        <div className="sticky bottom-0 z-30 bg-white/95 backdrop-blur-md border-t border-[#E5DEC9] px-4 py-3 sm:py-4 shadow-[0_-4px_16px_rgba(0,0,0,0.06)]">
+        {/* Barra Inferior Siempre Visible (sin scroll en móvil) */}
+        <div className="shrink-0 z-30 bg-white/95 backdrop-blur-md border-t border-[#E5DEC9] px-3.5 sm:px-4 pt-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:py-4 shadow-[0_-4px_16px_rgba(0,0,0,0.06)]">
           <div className="max-w-3xl mx-auto w-full">
             {!isAnswerChecked ? (
               <button
                 type="button"
                 disabled={!selectedOption}
                 onClick={handleCheckAnswer}
-                className={`w-full py-3.5 sm:py-4 rounded-xl font-extrabold text-sm sm:text-base tracking-wide transition shadow-md active:scale-[0.99] ${
+                className={`w-full py-3 sm:py-4 rounded-xl font-extrabold text-sm sm:text-base tracking-wide transition shadow-md active:scale-[0.99] ${
                   selectedOption
                     ? 'bg-[#D95D39] hover:bg-[#C04D2B] text-white cursor-pointer shadow-[#D95D39]/25'
                     : 'bg-[#E5DEC9] text-stone-500 cursor-not-allowed shadow-none'
@@ -1975,7 +2085,7 @@ export default function App() {
                 {selectedOption ? 'COMPROBAR RESPUESTA' : 'SELECCIONA UNA RESPUESTA'}
               </button>
             ) : (
-              <div className="space-y-3">
+              <div className="space-y-2.5 sm:space-y-3">
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2 min-w-0">
                     {isCorrectAnswer ? (
@@ -1992,10 +2102,13 @@ export default function App() {
 
                   <button
                     type="button"
-                    onClick={() => setShowTheoryDrawerInQuiz(true)}
+                    onClick={() => {
+                      setQuizHelpTab('focused');
+                      setShowTheoryDrawerInQuiz(true);
+                    }}
                     className="text-xs font-extrabold underline text-stone-800 hover:text-stone-950 shrink-0"
                   >
-                    Ver apunte
+                    Ver ayuda
                   </button>
                 </div>
 
@@ -3325,6 +3438,9 @@ export default function App() {
                 formulas={filteredTheoryFormulas}
                 title="Fórmulas Formateadas, Significado de Variables y Reglas Exactas para el Examen"
               />
+
+              {/* Mnemotecnias y Trucos de Memoria Rápida */}
+              <MnemonicsSection mnemonics={activeTheoryObj.mnemonics} />
 
               {/* Consejos Clave y Trampas Frecuentes del CENEVAL */}
               {activeTheoryObj.examTips?.length > 0 && (
