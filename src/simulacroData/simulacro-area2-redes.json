@@ -1,0 +1,2723 @@
+[
+  {
+    "id": "sim_net_001",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Una empresa de desarrollo requiere implementar una subred Ethernet dedicada para 50 estaciones de trabajo con direccionamiento IPv4 contiguo, minimizando el desperdicio de direcciones. ¿Qué prefijo CIDR y máscara de subred debe asignar el ingeniero?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "/27 (255.255.255.224), que proporciona 30 direcciones útiles."
+      },
+      {
+        "id": "B",
+        "texto": "/26 (255.255.255.192), que proporciona 62 direcciones útiles."
+      },
+      {
+        "id": "C",
+        "texto": "/25 (255.255.255.128), que proporciona 126 direcciones útiles."
+      },
+      {
+        "id": "D",
+        "texto": "/28 (255.255.255.240), que proporciona 14 direcciones útiles."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "Para alojar 50 hosts se busca el menor entero h tal que 2^h - 2 >= 50. Con h = 6 se obtienen 2^6 - 2 = 62 hosts útiles. Por tanto, el prefijo es 32 - 6 = /26 y la máscara decimal es 255.255.255.192.",
+    "acronimos": [
+      {
+        "sigla": "CIDR",
+        "significado": "Classless Inter-Domain Routing (Enrutamiento entre Dominios sin Clases)",
+        "pista": "Permite asignar bloques IP usando prefijos de longitud flexible (/n) en lugar de clases fijas A, B o C."
+      },
+      {
+        "sigla": "IPv4",
+        "significado": "Internet Protocol version 4 (Protocolo de Internet versión 4)",
+        "pista": "Protocolo de Capa 3 que utiliza direcciones de 32 bits divididas en cuatro octetos."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_002",
+    "diagrama": "vlsm-block-map",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Se cuenta con el bloque 172.16.40.0/22 para asignar subredes mediante VLSM en orden descendente de tamaño: Departamento A (200 hosts), Departamento B (110 hosts), Departamento C (25 hosts) y un enlace WAN punto a punto (2 hosts). ¿Cuál es la dirección de red y prefijo correspondiente al enlace WAN?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "172.16.41.128/30"
+      },
+      {
+        "id": "B",
+        "texto": "172.16.42.0/30"
+      },
+      {
+        "id": "C",
+        "texto": "172.16.41.192/30"
+      },
+      {
+        "id": "D",
+        "texto": "172.16.41.160/30"
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "Asignando en orden descendente: Depto A (200 hosts) toma /24 -> 172.16.40.0/24 (40.0 a 40.255). Depto B (110 hosts) toma /25 -> 172.16.41.0/25 (41.0 a 41.127). Depto C (25 hosts) toma /27 (30 hosts) -> 172.16.41.128/27 (41.128 a 41.159). El siguiente bloque disponible para el enlace WAN (2 hosts, /30) inicia en 172.16.41.160/30.",
+    "acronimos": [
+      {
+        "sigla": "VLSM",
+        "significado": "Variable Length Subnet Mask (Máscara de Subred de Longitud Variable)",
+        "pista": "Técnica que subdivide una red en subredes de diferentes tamaños asignando primero las más grandes."
+      },
+      {
+        "sigla": "WAN",
+        "significado": "Wide Area Network (Red de Área Amplia)",
+        "pista": "Red que interconecta sitios geográficamente distantes, usualmente mediante enlaces punto a punto /30 o /31."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_003",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Un router de distribución anuncia las redes contiguas 192.168.16.0/24, 192.168.17.0/24, 192.168.18.0/24 y 192.168.19.0/24 hacia el núcleo. Para reducir el tamaño de la tabla de enrutamiento, ¿cuál es la ruta sumarizada exacta (superred CIDR)?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "192.168.16.0/21"
+      },
+      {
+        "id": "B",
+        "texto": "192.168.16.0/23"
+      },
+      {
+        "id": "C",
+        "texto": "192.168.16.0/22"
+      },
+      {
+        "id": "D",
+        "texto": "192.168.0.0/20"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "En binario, el tercer octeto de las cuatro redes es: 16=00010000, 17=00010001, 18=00010010 y 19=00010011. Los primeros 6 bits del tercer octeto coinciden, sumados a los 16 bits de los dos primeros octetos dan 22 bits comunes. La ruta sumarizada exacta es 192.168.16.0/22.",
+    "acronimos": [
+      {
+        "sigla": "CIDR",
+        "significado": "Classless Inter-Domain Routing (Enrutamiento entre Dominios sin Clases)",
+        "pista": "Permite agrupar múltiples prefijos contiguos en una sola ruta sumarizada (supernetting)."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_004",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Un servidor corporativo tiene asignada la dirección IPv4 10.14.75.200/21. ¿Cuáles son la dirección de red y la dirección de broadcast de la subred a la que pertenece?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Red: 10.14.72.0 y Broadcast: 10.14.75.255"
+      },
+      {
+        "id": "B",
+        "texto": "Red: 10.14.74.0 y Broadcast: 10.14.75.255"
+      },
+      {
+        "id": "C",
+        "texto": "Red: 10.14.64.0 y Broadcast: 10.14.79.255"
+      },
+      {
+        "id": "D",
+        "texto": "Red: 10.14.72.0 y Broadcast: 10.14.79.255"
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "El prefijo /21 corresponde a la máscara 255.255.248.0, cuyo tamaño de bloque en el tercer octeto es 256 - 248 = 8. Los múltiplos de 8 más cercanos a 75 son 72 y 80; por lo tanto, la subred inicia en 10.14.72.0 y su dirección de broadcast es 10.14.79.255.",
+    "acronimos": [
+      {
+        "sigla": "IPv4",
+        "significado": "Internet Protocol version 4 (Protocolo de Internet versión 4)",
+        "pista": "La dirección de red tiene todos los bits de host en 0 y la de broadcast todos los bits de host en 1."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_005",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada capa del Modelo OSI con el conjunto de protocolos o estándares que operan principalmente en ella:\n\n1. Capa 2 (Enlace de datos)\n2. Capa 3 (Red)\n3. Capa 4 (Transporte)\n4. Capa 5 (Sesión)\n5. Capa 7 (Aplicación)\n\na) TCP, UDP\nb) Ethernet, HDLC, CDP\nc) HTTP, SSH, SNMP, POP3\nd) IP, ICMP, IGMP\ne) NetBIOS, RPC",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1e, 2d, 3a, 4b, 5c"
+      },
+      {
+        "id": "B",
+        "texto": "1d, 2b, 3a, 4c, 5e"
+      },
+      {
+        "id": "C",
+        "texto": "1b, 2a, 3d, 4e, 5c"
+      },
+      {
+        "id": "D",
+        "texto": "1b, 2d, 3a, 4e, 5c"
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "En el modelo OSI: Capa 2 (Enlace) agrupa Ethernet, HDLC y CDP; Capa 3 (Red) incluye IP, ICMP e IGMP; Capa 4 (Transporte) corresponde a TCP y UDP; Capa 5 (Sesión) a NetBIOS y RPC; y Capa 7 (Aplicación) a HTTP, SSH, SNMP y POP3.",
+    "acronimos": [
+      {
+        "sigla": "OSI",
+        "significado": "Open Systems Interconnection (Interconexión de Sistemas Abiertos)",
+        "pista": "Modelo de referencia de 7 capas que estandariza las funciones de comunicación en red."
+      },
+      {
+        "sigla": "HDLC",
+        "significado": "High-Level Data Link Control (Control de Enlace de Datos de Alto Nivel)",
+        "pista": "Protocolo síncrono de Capa 2 orientado a bit usado en enlaces seriales WAN."
+      },
+      {
+        "sigla": "CDP",
+        "significado": "Cisco Discovery Protocol (Protocolo de Descubrimiento de Cisco)",
+        "pista": "Protocolo propietario de Capa 2 que descubre dispositivos Cisco directamente conectados."
+      },
+      {
+        "sigla": "IGMP",
+        "significado": "Internet Group Management Protocol (Protocolo de Gestión de Grupos de Internet)",
+        "pista": "Protocolo de Capa 3 usado por hosts y routers IPv4 para gestionar membresías multicast."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_006",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordene cronológicamente las fases estándar para ejecutar un proyecto de instalación de cableado estructurado en un edificio corporativo:\n\n1. Pruebas, certificación de enlaces y documentación as-built\n2. Precableado (tendido de cables en canalizaciones y rutas)\n3. Capacitación al personal de TI y entrega formal\n4. Preinstalación (inspección del sitio, planos y selección de materiales)\n5. Recorte, terminación y ponchado en paneles de parcheo y jacks",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "4, 5, 2, 1, 3"
+      },
+      {
+        "id": "B",
+        "texto": "2, 4, 5, 1, 3"
+      },
+      {
+        "id": "C",
+        "texto": "4, 2, 5, 1, 3"
+      },
+      {
+        "id": "D",
+        "texto": "4, 2, 1, 5, 3"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "La secuencia lógica y estándar en cableado estructurado inicia con la preinstalación (4), continúa con el precableado o tendido (2), sigue con el recorte y terminación física (5), posteriormente se realizan las pruebas y certificación (1) y finaliza con la capacitación y entrega (3).",
+    "acronimos": [
+      {
+        "sigla": "TIA",
+        "significado": "Telecommunications Industry Association (Asociación de la Industria de Telecomunicaciones)",
+        "pista": "Organismo que publica la norma TIA-568 para diseño, instalación y certificación de cableado estructurado."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_007",
+    "diagrama": "network-topologies-4",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada topología física o lógica de red con su característica distintiva:\n\n1. Malla total\n2. Estrella\n3. Anillo\n4. Bus (multiacceso compartido)\n\na) Todos los nodos se conectan a un concentrador o switch central; la falla de un enlace terminal no afecta al resto.\nb) Cada nodo posee un enlace dedicado hacia todos los demás nodos, ofreciendo máxima redundancia a mayor costo.\nc) Todos los dispositivos comparten un único medio troncal con terminadores en los extremos; vulnerable a colisiones.\nd) Cada nodo se enlaza con dos vecinos formando un lazo cerrado por donde circula la señal o testigo.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1d, 2a, 3b, 4c"
+      },
+      {
+        "id": "B",
+        "texto": "1a, 2b, 3d, 4c"
+      },
+      {
+        "id": "C",
+        "texto": "1b, 2c, 3a, 4d"
+      },
+      {
+        "id": "D",
+        "texto": "1b, 2a, 3d, 4c"
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "La malla total conecta cada par de nodos directamente (1b); la estrella centraliza conexiones en un switch/hub (2a); el anillo enlaza cada nodo con sus dos adyacentes en un lazo cerrado (3d); y el bus usa un medio troncal único con terminadores (4c).",
+    "acronimos": [
+      {
+        "sigla": "LAN",
+        "significado": "Local Area Network (Red de Área Local)",
+        "pista": "Red confinada a un área geográfica limitada donde hoy predomina la topología física en estrella."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_008",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Para garantizar alta disponibilidad en el núcleo de un centro de datos, se decide interconectar 7 switches principales en una topología de malla total (full mesh). ¿Cuántos enlaces físicos punto a punto y cuántos puertos dedicados por switch se requieren?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "14 enlaces físicos y 7 puertos por switch."
+      },
+      {
+        "id": "B",
+        "texto": "28 enlaces físicos y 7 puertos por switch."
+      },
+      {
+        "id": "C",
+        "texto": "42 enlaces físicos y 6 puertos por switch."
+      },
+      {
+        "id": "D",
+        "texto": "21 enlaces físicos y 6 puertos por switch."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "En una topología de malla total con n nodos, el número de enlaces bidireccionales es n(n - 1) / 2 = 7(6) / 2 = 21 enlaces, y cada nodo requiere n - 1 = 6 puertos para conectarse a los demás.",
+    "acronimos": [
+      {
+        "sigla": "HA",
+        "significado": "High Availability (Alta Disponibilidad)",
+        "pista": "Capacidad de una red para operar de forma continua eliminando puntos únicos de falla."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_009",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Una interfaz de router genera automáticamente la dirección IPv6 fe80:0000:0000:0000:020c:29ff:fe4a:001b. ¿Cuál es su representación comprimida válida conforme a RFC 5952 y qué tipo de dirección es?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "fe80::20c:29ff:fe4a:1b — Dirección Multicast de enlace local."
+      },
+      {
+        "id": "B",
+        "texto": "fe80::020c:29ff:fe4a:001b — Dirección Global Unicast."
+      },
+      {
+        "id": "C",
+        "texto": "fe80:0:0:0::20c:29ff:fe4a:1b — Dirección Unique Local."
+      },
+      {
+        "id": "D",
+        "texto": "fe80::20c:29ff:fe4a:1b — Dirección Link-Local Unicast."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "Según RFC 5952, se omiten los ceros a la izquierda de cada hexteto (020c -> 20c, 001b -> 1b) y se comprime la secuencia más larga de hextetos en cero con '::' una sola vez. El prefijo fe80::/10 identifica una dirección Link-Local Unicast (no enrutable fuera del enlace).",
+    "acronimos": [
+      {
+        "sigla": "IPv6",
+        "significado": "Internet Protocol version 6 (Protocolo de Internet versión 6)",
+        "pista": "Utiliza direcciones de 128 bits representadas en 8 hextetos hexadecimales."
+      },
+      {
+        "sigla": "RFC",
+        "significado": "Request for Comments (Petición de Comentarios)",
+        "pista": "Serie de documentos técnicos del IETF que definen los estándares de Internet."
+      },
+      {
+        "sigla": "EUI-64",
+        "significado": "Extended Unique Identifier 64-bit (Identificador Único Extendido de 64 bits)",
+        "pista": "Método que deriva el ID de interfaz IPv6 desde la MAC de 48 bits insertando FFFE en el centro."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_010",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Completamiento",
+    "pregunta": "De acuerdo con el estándar ANSI/TIA-568 para cableado horizontal de cobre UTP Categoría 6A, la longitud máxima del enlace permanente es de _____ metros, permitiendo hasta _____ metros adicionales en cordones de parcheo (patch cords) para un canal total de 100 metros capaz de operar 10GBASE-T.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "80 — 20"
+      },
+      {
+        "id": "B",
+        "texto": "95 — 5"
+      },
+      {
+        "id": "C",
+        "texto": "90 — 10"
+      },
+      {
+        "id": "D",
+        "texto": "100 — 15"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "La norma ANSI/TIA-568 establece un máximo de 90 metros para el enlace permanente (del panel de parcheo al jack de pared) y hasta 10 metros combinados para los patch cords en ambos extremos, totalizando 100 metros de canal.",
+    "acronimos": [
+      {
+        "sigla": "UTP",
+        "significado": "Unshielded Twisted Pair (Par Trenzado sin Blindaje)",
+        "pista": "Cable de cobre cuyos pares trenzados reducen la diafonía (crosstalk) e interferencia electromagnética."
+      },
+      {
+        "sigla": "ANSI",
+        "significado": "American National Standards Institute (Instituto Nacional Estadounidense de Estándares)",
+        "pista": "Organismo que acredita normas técnicas como TIA-568 en Norteamérica."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_011",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Una universidad necesita enlazar dos edificios de su campus separados por 2.4 kilómetros mediante un enlace troncal Ethernet a 10 Gbps inmune a interferencia electromagnética. ¿Qué medio físico y estándar óptico debe seleccionarse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Cable UTP Cat 6A con estándar 10GBASE-T."
+      },
+      {
+        "id": "B",
+        "texto": "Fibra óptica multimodo OM3 con estándar 10GBASE-SR."
+      },
+      {
+        "id": "C",
+        "texto": "Fibra óptica monomodo OS2 con estándar 10GBASE-LR."
+      },
+      {
+        "id": "D",
+        "texto": "Fibra óptica multimodo OM4 con estándar 10GBASE-SR."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "Para 2.4 km a 10 Gbps, UTP Cat 6A está limitado a 100 m y la fibra multimodo (OM3/OM4 con 10GBASE-SR) alcanza máximo 300-400 m. La fibra monomodo OS2 con 10GBASE-LR (1310 nm) soporta hasta 10 km con inmunidad total a EMI.",
+    "acronimos": [
+      {
+        "sigla": "SMF",
+        "significado": "Single-Mode Fiber (Fibra Óptica Monomodo)",
+        "pista": "Núcleo estrecho (~9 µm) con láser que minimiza la dispersión modal para largas distancias."
+      },
+      {
+        "sigla": "EMI",
+        "significado": "Electromagnetic Interference (Interferencia Electromagnética)",
+        "pista": "Perturbación eléctrica externa a la cual la fibra óptica es completamente inmune."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_012",
+    "diagrama": "campus-3tier-arch",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "En el diseño jerárquico de campus de tres capas (Núcleo, Distribución y Acceso), ¿en qué capa se recomienda implementar el filtrado de tráfico mediante ACLs, el enrutamiento inter-VLAN y la sumarización de rutas para no degradar la velocidad de conmutación del backbone?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Capa de Núcleo (Core)."
+      },
+      {
+        "id": "B",
+        "texto": "Capa de Distribución."
+      },
+      {
+        "id": "C",
+        "texto": "Capa de Acceso."
+      },
+      {
+        "id": "D",
+        "texto": "Capa Física de demarcación."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "La capa de Distribución actúa como frontera entre las capas de Acceso y Núcleo; ahí se aplican políticas de seguridad (ACLs), QoS, enrutamiento inter-VLAN y sumarización, dejando al Núcleo dedicado exclusivamente a conmutación de muy alta velocidad.",
+    "acronimos": [
+      {
+        "sigla": "ACL",
+        "significado": "Access Control List (Lista de Control de Acceso)",
+        "pista": "Conjunto de reglas secuenciales que permiten o deniegan paquetes en interfaces de red."
+      },
+      {
+        "sigla": "VLAN",
+        "significado": "Virtual Local Area Network (Red de Área Local Virtual)",
+        "pista": "Segmentación lógica en Capa 2 que divide dominios de broadcast en un mismo switch."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_013",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada tipo de dirección IPv6 con el prefijo estándar reservado por la IANA:\n\n1. Global Unicast (enrutable en Internet)\n2. Unique Local (equivalente a privadas RFC 1918)\n3. Link-Local (comunicación en un mismo enlace)\n4. Multicast (uno a muchos)\n\na) ff00::/8\nb) fe80::/10\nc) 2000::/3\nd) fc00::/7",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1a, 2d, 3b, 4c"
+      },
+      {
+        "id": "B",
+        "texto": "1d, 2c, 3b, 4a"
+      },
+      {
+        "id": "C",
+        "texto": "1c, 2b, 3d, 4a"
+      },
+      {
+        "id": "D",
+        "texto": "1c, 2d, 3b, 4a"
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "En IPv6: Global Unicast actualmente asignado corresponde a 2000::/3 (1c); Unique Local (ULA) a fc00::/7 (2d); Link-Local a fe80::/10 (3b); y Multicast a ff00::/8 (4a).",
+    "acronimos": [
+      {
+        "sigla": "IANA",
+        "significado": "Internet Assigned Numbers Authority (Autoridad de Números Asignados en Internet)",
+        "pista": "Entidad global encargada de coordinar bloques IP, puertos y protocolos de Internet."
+      },
+      {
+        "sigla": "ULA",
+        "significado": "Unique Local Address (Dirección Local Única)",
+        "pista": "Direcciones IPv6 internas (fc00::/7, usualmente fd00::/8) no enrutables en Internet público."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_014",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Al desplegar una red inalámbrica WLAN empresarial con múltiples puntos de acceso (AP) en la banda de 2.4 GHz (canales de 20 MHz) en América, ¿qué combinación de canales debe asignarse a celdas adyacentes para evitar interferencia de canal adyacente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Canales 1, 5 y 9."
+      },
+      {
+        "id": "B",
+        "texto": "Canales 3, 6 y 9."
+      },
+      {
+        "id": "C",
+        "texto": "Canales 2, 7 y 12."
+      },
+      {
+        "id": "D",
+        "texto": "Canales 1, 6 y 11."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "En la banda de 2.4 GHz cada canal está separado 5 MHz y ocupa 20-22 MHz de ancho de banda; por ello, solo los canales 1, 6 y 11 no se superponen espectralmente entre sí.",
+    "acronimos": [
+      {
+        "sigla": "WLAN",
+        "significado": "Wireless Local Area Network (Red de Área Local Inalámbrica)",
+        "pista": "Red local basada en la familia de estándares IEEE 802.11 (Wi-Fi)."
+      },
+      {
+        "sigla": "AP",
+        "significado": "Access Point (Punto de Acceso)",
+        "pista": "Dispositivo puente que conecta clientes inalámbricos a una red cableada Ethernet."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_015",
+    "diagrama": "collision-broadcast-domains",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Un router tiene dos interfaces FastEthernet activas sin VLANs adicionales: la interfaz F0/0 se conecta al Switch 1, el cual conecta 3 estaciones de trabajo y 1 hub con 4 estaciones; la interfaz F0/1 se conecta al Switch 2, el cual conecta 5 estaciones. ¿Cuántos dominios de colisión y cuántos dominios de broadcast existen en total?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "14 dominios de colisión y 2 dominios de broadcast."
+      },
+      {
+        "id": "B",
+        "texto": "11 dominios de colisión y 1 dominio de broadcast."
+      },
+      {
+        "id": "C",
+        "texto": "11 dominios de colisión y 2 dominios de broadcast."
+      },
+      {
+        "id": "D",
+        "texto": "9 dominios de colisión y 3 dominios de broadcast."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "Cada interfaz del router separa dominios de broadcast, resultando 2 dominios de broadcast. Para dominios de colisión: cada puerto activo de switch es un dominio de colisión, pero un hub forma un solo dominio compartido. En Switch 1: 1 (hacia router) + 3 (PCs) + 1 (puerto hacia el hub y sus 4 PCs) = 5. En Switch 2: 1 (hacia router) + 5 (PCs) = 6. Total = 11 dominios de colisión.",
+    "acronimos": [
+      {
+        "sigla": "CSMA/CD",
+        "significado": "Carrier Sense Multiple Access with Collision Detection (Acceso Múltiple por Detección de Portadora con Detección de Colisiones)",
+        "pista": "Mecanismo de Ethernet half-duplex usado en dominios de colisión compartidos como los hubs."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_016",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Completamiento",
+    "pregunta": "En arquitecturas de almacenamiento en red, un sistema _____ proporciona acceso a nivel de archivo mediante protocolos como NFS o SMB/CIFS sobre la red IP estándar, mientras que una red _____ ofrece acceso de alto rendimiento a nivel de bloque utilizando Fibre Channel o iSCSI.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "SAN — NAS"
+      },
+      {
+        "id": "B",
+        "texto": "NAS — SAN"
+      },
+      {
+        "id": "C",
+        "texto": "DAS — NAS"
+      },
+      {
+        "id": "D",
+        "texto": "SAN — DAS"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "NAS (Network Attached Storage) expone sistemas de archivos compartidos vía NFS/SMB, mientras que SAN (Storage Area Network) presenta volúmenes de almacenamiento a nivel de bloque (LUNs) mediante Fibre Channel o iSCSI.",
+    "acronimos": [
+      {
+        "sigla": "NAS",
+        "significado": "Network Attached Storage (Almacenamiento Conectado en Red)",
+        "pista": "Dispositivo dedicado que comparte carpetas y archivos en la LAN usando SMB/CIFS o NFS."
+      },
+      {
+        "sigla": "SAN",
+        "significado": "Storage Area Network (Red de Área de Almacenamiento)",
+        "pista": "Red dedicada de alta velocidad que entrega discos a nivel de bloque a servidores."
+      },
+      {
+        "sigla": "CIFS",
+        "significado": "Common Internet File System (Sistema Común de Archivos de Internet)",
+        "pista": "Dialecto del protocolo SMB empleado para compartir archivos e impresoras en red."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_017",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Al encender una estación de trabajo configurada para recibir direccionamiento automático, el usuario reporta que no tiene acceso a la intranet ni a Internet; el comando ipconfig muestra la dirección 169.254.84.12/16. ¿Qué ocurrió y qué bloque RFC 1918 sería adecuado para una LAN corporativa privada de Clase B?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "El switch bloqueó la MAC por Port Security; el bloque privado Clase B es 10.0.0.0/8."
+      },
+      {
+        "id": "B",
+        "texto": "Se agotaron las direcciones públicas del ISP y NAT asignó una IP temporal; el bloque privado Clase B es 172.0.0.0/12."
+      },
+      {
+        "id": "C",
+        "texto": "Existe una IP duplicada en el servidor DNS; el bloque privado Clase B es 192.168.0.0/16."
+      },
+      {
+        "id": "D",
+        "texto": "Falló la comunicación con el servidor DHCP y el sistema asignó una dirección APIPA; el bloque privado Clase B es 172.16.0.0/12."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "El rango 169.254.0.0/16 corresponde a APIPA (RFC 3927), asignado automáticamente por el sistema operativo cuando no recibe respuesta de un servidor DHCP. Según RFC 1918, el rango privado de Clase B es 172.16.0.0/12 (172.16.0.0 a 172.31.255.255).",
+    "acronimos": [
+      {
+        "sigla": "APIPA",
+        "significado": "Automatic Private IP Addressing (Direccionamiento IP Privado Automático)",
+        "pista": "Mecanismo de respaldo (169.254.0.0/16) cuando un cliente no logra contactar al servidor DHCP."
+      },
+      {
+        "sigla": "DHCP",
+        "significado": "Dynamic Host Configuration Protocol (Protocolo de Configuración Dinámica de Host)",
+        "pista": "Asigna automáticamente IP, máscara, puerta de enlace y servidores DNS a los clientes."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_018",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Ordenamiento",
+    "pregunta": "El Host A (192.168.1.10/24) necesita enviar un paquete IP al Host B (10.20.30.5/24) por primera vez, con su caché ARP vacía. Ordene la secuencia de pasos que ejecuta el Host A:\n\n1. El router (gateway) responde con un ARP Reply unicast indicando su dirección MAC.\n2. El Host A compara mediante operación AND la IP destino con su máscara y determina que está en una red remota.\n3. El Host A encapsula la trama Ethernet con la MAC destino del gateway y la IP destino del Host B.\n4. El Host A transmite un ARP Request en broadcast solicitando la MAC de su puerta de enlace predeterminada.\n5. El Host A consulta su tabla de enrutamiento local e identifica la IP de la puerta de enlace predeterminada.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "2, 5, 4, 1, 3"
+      },
+      {
+        "id": "B",
+        "texto": "5, 2, 4, 3, 1"
+      },
+      {
+        "id": "C",
+        "texto": "2, 4, 5, 1, 3"
+      },
+      {
+        "id": "D",
+        "texto": "4, 1, 2, 5, 3"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Primero se determina que el destino es remoto mediante AND con la máscara (2); luego se busca el gateway en la tabla de rutas local (5); al no conocer su MAC se envía ARP Request en broadcast (4); el gateway responde con ARP Reply unicast (1); finalmente se encapsula la trama con MAC del gateway e IP destino final (3).",
+    "acronimos": [
+      {
+        "sigla": "ARP",
+        "significado": "Address Resolution Protocol (Protocolo de Resolución de Direcciones)",
+        "pista": "Traduce una dirección IPv4 conocida a su dirección física MAC en la red local."
+      },
+      {
+        "sigla": "MAC",
+        "significado": "Media Access Control (Control de Acceso al Medio)",
+        "pista": "Dirección física única de 48 bits quemada en la interfaz de red para comunicación en Capa 2."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_019",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Se instalarán 12 puntos de acceso Wi-Fi 6 empresariales alimentados por cable de red, cada uno con un consumo máximo de 24 W. ¿Qué estándar mínimo de alimentación sobre Ethernet y qué presupuesto mínimo de potencia PoE requiere el switch de acceso?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "IEEE 802.3af (PoE) con presupuesto mínimo de 185 W."
+      },
+      {
+        "id": "B",
+        "texto": "IEEE 802.3at (PoE+) con presupuesto mínimo de 180 W."
+      },
+      {
+        "id": "C",
+        "texto": "IEEE 802.3af (PoE) con presupuesto mínimo de 288 W."
+      },
+      {
+        "id": "D",
+        "texto": "IEEE 802.3at (PoE+) con presupuesto mínimo de 288 W."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "IEEE 802.3af (PoE) entrega solo hasta 15.4 W por puerto (12.95 W útiles), insuficiente para 24 W. Se requiere al menos IEEE 802.3at (PoE+), que entrega hasta 30 W por puerto (25.5 W útiles). Para 12 equipos de 24 W se necesitan 12 x 24 W = 288 W mínimos de presupuesto PoE.",
+    "acronimos": [
+      {
+        "sigla": "PoE",
+        "significado": "Power over Ethernet (Alimentación sobre Ethernet)",
+        "pista": "Tecnología que transmite energía eléctrica y datos simultáneamente por el mismo cable UTP."
+      },
+      {
+        "sigla": "IEEE",
+        "significado": "Institute of Electrical and Electronics Engineers (Instituto de Ingenieros Eléctricos y Electrónicos)",
+        "pista": "Organismo que define los estándares 802.3 (Ethernet/PoE) y 802.11 (Wi-Fi)."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_020",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Un ISP asigna a una organización el prefijo IPv6 2001:db8:4a00::/48 y el arquitecto decide crear subredes estándar /64. ¿Cuántas subredes /64 están disponibles en total y cuál corresponde a la cuarta subred iniciando la numeración desde cero?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "4,096 subredes; cuarta subred: 2001:db8:4a00:4::/64"
+      },
+      {
+        "id": "B",
+        "texto": "65,536 subredes; cuarta subred: 2001:db8:4a00:4::/64"
+      },
+      {
+        "id": "C",
+        "texto": "65,536 subredes; cuarta subred: 2001:db8:4a00:3::/64"
+      },
+      {
+        "id": "D",
+        "texto": "16,384 subredes; cuarta subred: 2001:db8:4a00:3::/64"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "La diferencia entre /64 y /48 es de 16 bits para el ID de subred (el cuarto hexteto completo), generando 2^16 = 65,536 subredes. Iniciando desde 0 (0, 1, 2, 3), la cuarta subred es 2001:db8:4a00:3::/64.",
+    "acronimos": [
+      {
+        "sigla": "ISP",
+        "significado": "Internet Service Provider (Proveedor de Servicios de Internet)",
+        "pista": "Organización que suministra conectividad a Internet y asigna bloques de direcciones IP."
+      },
+      {
+        "sigla": "IPv6",
+        "significado": "Internet Protocol version 6 (Protocolo de Internet versión 6)",
+        "pista": "En redes LAN estándar utiliza un prefijo /64 para el ID de red/subred y 64 bits para el ID de interfaz."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_021",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada medio físico de transmisión con su conector o característica técnica principal:\n\n1. Cable UTP Cat 6\n2. Fibra óptica monomodo\n3. Cable coaxial RG-6\n4. Enlace microondas / RF 802.11\n\na) Conector LC o SC con transmisión mediante pulsos de luz láser.\nb) Conector modular RJ-45 (8P8C) con normas de ponchado T568A/T568B.\nc) Propagación en espacio libre sujeta a atenuación por obstáculos y multitrayecto.\nd) Conector tipo F o BNC con conductor central de cobre y malla blindada.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1d, 2a, 3b, 4c"
+      },
+      {
+        "id": "B",
+        "texto": "1a, 2b, 3d, 4c"
+      },
+      {
+        "id": "C",
+        "texto": "1b, 2d, 3a, 4c"
+      },
+      {
+        "id": "D",
+        "texto": "1b, 2a, 3d, 4c"
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "El cable UTP usa conectores RJ-45 con pinout T568A/T568B (1b); la fibra óptica emplea conectores LC/SC y luz (2a); el cable coaxial utiliza conectores F o BNC (3d); y los enlaces RF se propagan por aire sujetos a multitrayecto (4c).",
+    "acronimos": [
+      {
+        "sigla": "RJ-45",
+        "significado": "Registered Jack 45 (Conector Registrado 45)",
+        "pista": "Interfaz física de 8 posiciones y 8 contactos (8P8C) estándar en redes Ethernet UTP."
+      },
+      {
+        "sigla": "RF",
+        "significado": "Radio Frequency (Radiofrecuencia)",
+        "pista": "Espectro electromagnético usado en comunicaciones inalámbricas como Wi-Fi y enlaces microondas."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_022",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Se toma la red 192.168.50.0/24 y se piden prestados 5 bits de la porción de host para crear subredes de igual tamaño destinadas a pequeños puntos de venta. ¿Cuántas subredes totales, cuántos hosts utilizables por subred y qué máscara decimal se obtienen?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "32 subredes, 6 hosts útiles por subred, máscara 255.255.255.248."
+      },
+      {
+        "id": "B",
+        "texto": "16 subredes, 14 hosts útiles por subred, máscara 255.255.255.240."
+      },
+      {
+        "id": "C",
+        "texto": "32 subredes, 8 hosts útiles por subred, máscara 255.255.255.248."
+      },
+      {
+        "id": "D",
+        "texto": "64 subredes, 2 hosts útiles por subred, máscara 255.255.255.252."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Al tomar 5 bits prestados de /24 se obtiene el prefijo /29 (máscara 255.255.255.248). El número de subredes es 2^5 = 32. Quedan 3 bits para host, por lo que hay 2^3 - 2 = 6 hosts utilizables por subred.",
+    "acronimos": [
+      {
+        "sigla": "FLSM",
+        "significado": "Fixed Length Subnet Mask (Máscara de Subred de Longitud Fija)",
+        "pista": "Esquema de subneteo donde todas las subredes creadas tienen exactamente el mismo tamaño y prefijo."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_023",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Completamiento",
+    "pregunta": "La Capa de Enlace de Datos del modelo OSI se divide en dos subcapas definidas por el IEEE: la subcapa _____ (IEEE 802.2), que interactúa con la capa de red e identifica el protocolo superior, y la subcapa _____ (IEEE 802.3 / 802.11), encargada del direccionamiento físico de 48 bits y el control de acceso al medio.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "MAC — LLC"
+      },
+      {
+        "id": "B",
+        "texto": "LLC — MAC"
+      },
+      {
+        "id": "C",
+        "texto": "ARP — LLC"
+      },
+      {
+        "id": "D",
+        "texto": "LLC — PDU"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "LLC (Logical Link Control) es la subcapa superior que proporciona la interfaz con la Capa 3 (Red), mientras que MAC (Media Access Control) es la subcapa inferior que gestiona las direcciones físicas y el acceso al medio.",
+    "acronimos": [
+      {
+        "sigla": "LLC",
+        "significado": "Logical Link Control (Control de Enlace Lógico)",
+        "pista": "Subcapa superior de Capa 2 (IEEE 802.2) que comunica el software de red con la subcapa MAC."
+      },
+      {
+        "sigla": "MAC",
+        "significado": "Media Access Control (Control de Acceso al Medio)",
+        "pista": "Subcapa inferior de Capa 2 responsable de delimitar tramas y asignar direcciones físicas."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_024",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Una cadena comercial con 40 sucursales desea migrar de enlaces WAN costosos hacia una arquitectura capaz de combinar enlaces MPLS, banda ancha e LTE de forma activa, controlando políticas de enrutamiento por aplicación desde un orquestador centralizado. ¿Qué tecnología WAN cumple mejor este objetivo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Frame Relay con circuitos PVC estáticos."
+      },
+      {
+        "id": "B",
+        "texto": "SD-WAN (Software-Defined WAN)."
+      },
+      {
+        "id": "C",
+        "texto": "ISDN BRI con conmutación de circuitos."
+      },
+      {
+        "id": "D",
+        "texto": "ATM con celdas fijas de 53 bytes."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "SD-WAN desacopla el plano de control del plano de datos, permitiendo gestionar de forma centralizada múltiples transportes (MPLS, Internet, 4G/5G) y dirigir tráfico dinámicamente según la calidad del enlace y la aplicación.",
+    "acronimos": [
+      {
+        "sigla": "SD-WAN",
+        "significado": "Software-Defined Wide Area Network (Red de Área Amplia Definida por Software)",
+        "pista": "Arquitectura WAN virtualizada con control centralizado y balanceo inteligente sobre múltiples enlaces."
+      },
+      {
+        "sigla": "MPLS",
+        "significado": "Multiprotocol Label Switching (Conmutación de Etiquetas Multiprotocolo)",
+        "pista": "Técnica WAN de capa 2.5 que reenvía paquetes rápidamente usando etiquetas cortas en lugar de búsquedas IP."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_025",
+    "area": "Implementación de Redes",
+    "subarea": "2.1 Diseño y direccionamiento de redes",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Al configurar un router, la interfaz Gig0/0 ya tiene la dirección 192.168.10.65/26. Cuando el ingeniero intenta asignar 192.168.10.97/27 a la interfaz Gig0/1, el router rechaza el comando con el error '% 192.168.10.96 overlaps with GigabitEthernet0/0'. ¿Cuál es la causa y una dirección válida alternativa para Gig0/1?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "El prefijo /26 abarca hasta 192.168.10.191; se debe asignar 192.168.10.193/27."
+      },
+      {
+        "id": "B",
+        "texto": "La máscara /27 no es compatible con interfaces GigabitEthernet; se debe usar 192.168.10.97/26."
+      },
+      {
+        "id": "C",
+        "texto": "192.168.10.97 es una dirección de broadcast; una dirección válida es 192.168.10.98/27."
+      },
+      {
+        "id": "D",
+        "texto": "El rango 192.168.10.96/27 está contenido dentro de 192.168.10.64/26 (.64 a .127); una dirección válida sin traslape es 192.168.10.129/27."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "La subred 192.168.10.64/26 comprende desde 192.168.10.64 hasta 192.168.10.127, por lo que 192.168.10.96/27 (.96 a .127) se solapa completamente con ella. La siguiente subred /27 disponible inicia en 192.168.10.128/27, siendo 192.168.10.129/27 su primer host válido.",
+    "acronimos": [
+      {
+        "sigla": "VLSM",
+        "significado": "Variable Length Subnet Mask (Máscara de Subred de Longitud Variable)",
+        "pista": "Un error frecuente al diseñar con VLSM es el traslape (overlapping) de rangos entre interfaces de un router."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_026",
+    "diagrama": "frame-relay-eigrp",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "En una topología Hub-and-Spoke Frame Relay (NBMA) ejecutando EIGRP, el router central RTA utiliza una única interfaz física multipunto para conectarse con los routers remotos RTB y RTC. RTA aprende las redes de RTB y RTC, pero RTB y RTC no reciben las rutas entre sí. ¿Qué acción resuelve el problema?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Activar el comando passive-interface en la interfaz serial de RTA."
+      },
+      {
+        "id": "B",
+        "texto": "Habilitar auto-summary en RTB y RTC para forzar la redistribución de rutas."
+      },
+      {
+        "id": "C",
+        "texto": "Cambiar el número de Sistema Autónomo (AS) de EIGRP en RTC para diferenciarlo de RTB."
+      },
+      {
+        "id": "D",
+        "texto": "Desactivar el Horizonte Dividido (no ip split-horizon eigrp <AS>) en la interfaz multipunto de RTA."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "La regla de Split Horizon (Horizonte Dividido) impide anunciar una ruta por la misma interfaz física por la que fue aprendida. En redes NBMA multipunto, esto bloquea la propagación de rutas entre spokes a través del hub; desactivar Split Horizon en la interfaz de RTA (o migrar a subinterfaces punto a punto) corrige el problema.",
+    "acronimos": [
+      {
+        "sigla": "EIGRP",
+        "significado": "Enhanced Interior Gateway Routing Protocol (Protocolo de Enrutamiento de Puerta de Enlace Interior Mejorado)",
+        "pista": "Protocolo avanzado de vector distancia que usa el algoritmo DUAL y distancia administrativa interna de 90."
+      },
+      {
+        "sigla": "NBMA",
+        "significado": "Non-Broadcast Multiple Access (Acceso Múltiple sin Difusión)",
+        "pista": "Red multiacceso (como Frame Relay o ATM) que no soporta broadcasts nativos de Capa 2."
+      },
+      {
+        "sigla": "AS",
+        "significado": "Autonomous System (Sistema Autónomo)",
+        "pista": "Conjunto de redes bajo una misma administración; en EIGRP todos los vecinos deben coincidir en el mismo número de AS."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_027",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordene secuencialmente los mensajes del proceso DORA mediante el cual un cliente IPv4 obtiene su configuración de red desde un servidor DHCP:\n\n1. DHCPACK (el servidor confirma el arrendamiento y los parámetros)\n2. DHCPREQUEST (el cliente solicita formalmente la dirección ofrecida)\n3. DHCPDISCOVER (el cliente envía un broadcast buscando servidores disponibles)\n4. DHCPOFFER (el servidor propone una dirección IP disponible y su máscara)",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "3, 4, 2, 1"
+      },
+      {
+        "id": "B",
+        "texto": "3, 2, 4, 1"
+      },
+      {
+        "id": "C",
+        "texto": "4, 3, 2, 1"
+      },
+      {
+        "id": "D",
+        "texto": "3, 4, 1, 2"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El acrónimo DORA resume el intercambio DHCP: Discover (3) -> Offer (4) -> Request (2) -> Acknowledge (1).",
+    "acronimos": [
+      {
+        "sigla": "DHCP",
+        "significado": "Dynamic Host Configuration Protocol (Protocolo de Configuración Dinámica de Host)",
+        "pista": "Opera sobre UDP puertos 67 (servidor) y 68 (cliente) siguiendo el ciclo DORA."
+      },
+      {
+        "sigla": "DORA",
+        "significado": "Discover, Offer, Request, Acknowledge",
+        "pista": "Mnemotecnia de los cuatro mensajes secuenciales para obtener un arrendamiento IPv4."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_028",
+    "diagrama": "tcp-3way-blank",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordene las etapas del establecimiento de sesión TCP de tres vías (Three-Way Handshake) entre un cliente y un servidor web:\n\n1. El cliente envía un segmento ACK confirmando el número de secuencia del servidor (ack = y + 1); ambos pasan a ESTABLISHED.\n2. El cliente envía un segmento con bandera SYN activa y número de secuencia inicial seq = x.\n3. El servidor responde con un segmento SYN-ACK con su secuencia seq = y y acuse ack = x + 1.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "2, 1, 3"
+      },
+      {
+        "id": "B",
+        "texto": "3, 2, 1"
+      },
+      {
+        "id": "C",
+        "texto": "2, 3, 1"
+      },
+      {
+        "id": "D",
+        "texto": "1, 2, 3"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "El saludo de tres vías de TCP sigue siempre el orden: SYN del cliente (2) -> SYN-ACK del servidor (3) -> ACK del cliente (1), sincronizando los números de secuencia antes de transmitir datos.",
+    "acronimos": [
+      {
+        "sigla": "TCP",
+        "significado": "Transmission Control Protocol (Protocolo de Control de Transmisión)",
+        "pista": "Protocolo de Capa 4 orientado a conexión que garantiza entrega ordenada y confiable."
+      },
+      {
+        "sigla": "SYN",
+        "significado": "Synchronize (Sincronizar)",
+        "pista": "Bandera TCP usada para iniciar una conexión y acordar el número de secuencia inicial."
+      },
+      {
+        "sigla": "ACK",
+        "significado": "Acknowledgment (Acuse de Recibo)",
+        "pista": "Bandera TCP que confirma la recepción correcta de segmentos previos."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_029",
+    "diagrama": "trunk-8021q-mismatch",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Dos switches interconectados mediante un enlace troncal IEEE 802.1Q muestran continuamente el mensaje '%CDP-4-NATIVE_VLAN_MISMATCH' en la consola. SW1 tiene configurada la VLAN nativa 99 y SW2 conserva la VLAN 1 por defecto. ¿Qué riesgo implica y cómo se corrige?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "El tráfico sin etiqueta se cruza entre la VLAN 99 y la VLAN 1 generando fallas de conectividad y riesgo de VLAN hopping; se corrige configurando switchport trunk native vlan 99 en el puerto troncal de SW2."
+      },
+      {
+        "id": "B",
+        "texto": "El enlace troncal reduce su velocidad a 10 Mbps half-duplex; se corrige desactivando CDP globalmente."
+      },
+      {
+        "id": "C",
+        "texto": "Todas las VLANs etiquetadas se bloquean permanentemente; se corrige eliminando la VLAN 1 de la base de datos."
+      },
+      {
+        "id": "D",
+        "texto": "Solo afecta al tráfico IPv6; se corrige cambiando el encapsulamiento a ISL en ambos switches."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "En 802.1Q, las tramas de la VLAN nativa viajan sin etiqueta. Si los extremos tienen distinta VLAN nativa, las tramas no etiquetadas enviadas por SW1 (VLAN 99) son ubicadas por SW2 en la VLAN 1, rompiendo el aislamiento y exponiendo a VLAN hopping. Ambos extremos deben compartir la misma VLAN nativa.",
+    "acronimos": [
+      {
+        "sigla": "802.1Q",
+        "significado": "IEEE 802.1Q (Estándar de Etiquetado de VLAN)",
+        "pista": "Inserta una etiqueta de 4 bytes en la cabecera Ethernet para identificar la VLAN en enlaces troncales."
+      },
+      {
+        "sigla": "CDP",
+        "significado": "Cisco Discovery Protocol (Protocolo de Descubrimiento de Cisco)",
+        "pista": "Detecta discrepancias de VLAN nativa y dúplex entre dispositivos Cisco vecinos."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_030",
+    "diagrama": "stp-triangle",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Tres switches forman un triángulo redundante ejecutando Spanning Tree Protocol (STP) en la VLAN 10 con los siguientes valores de Bridge ID:\n- SW-A: Prioridad 32768, MAC 000A.1111.2222\n- SW-B: Prioridad 24576, MAC 000B.9999.8888\n- SW-C: Prioridad 24576, MAC 000A.5555.4444\n\n¿Qué switch será elegido como Puente Raíz (Root Bridge)?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "SW-A, porque posee la dirección MAC más baja de toda la topología."
+      },
+      {
+        "id": "B",
+        "texto": "SW-B, porque tiene prioridad 24576 y el valor hexadecimal más alto."
+      },
+      {
+        "id": "C",
+        "texto": "SW-C, porque tiene la prioridad más baja empatada (24576) y desempata con la dirección MAC menor frente a SW-B."
+      },
+      {
+        "id": "D",
+        "texto": "Ninguno; al haber empate en la prioridad 24576, STP entra en bucle de Capa 2."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "STP elige como Root Bridge al switch con el Bridge ID (BID) más bajo, evaluando primero la Prioridad y luego la dirección MAC como desempate. SW-B y SW-C empatan con prioridad 24576 (menor que 32768 de SW-A), y SW-C gana porque su MAC (000A.5555.4444) es menor que la de SW-B (000B.9999.8888).",
+    "acronimos": [
+      {
+        "sigla": "STP",
+        "significado": "Spanning Tree Protocol (Protocolo de Árbol de Expansión)",
+        "pista": "Protocolo IEEE 802.1D de Capa 2 que evita bucles de conmutación bloqueando enlaces redundantes."
+      },
+      {
+        "sigla": "BID",
+        "significado": "Bridge ID (Identificador de Puente)",
+        "pista": "Valor compuesto por Prioridad + ID de sistema extendido + dirección MAC usado para elegir el Root Bridge."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_031",
+    "diagrama": "router-on-a-stick",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "En una configuración Router-on-a-Stick, los equipos de las VLANs 20 y 30 no logran hacer ping a sus respectivas puertas de enlace configuradas en las subinterfaces Gig0/0.20 y Gig0/0.30. Al ejecutar 'show ip interface brief', las subinterfaces aparecen como 'administratively down/down'. ¿Qué instrucción omitió el administrador?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Configurar 'switchport mode trunk' en la interfaz física del router."
+      },
+      {
+        "id": "B",
+        "texto": "Asignar una dirección IP a la interfaz física GigabitEthernet0/0."
+      },
+      {
+        "id": "C",
+        "texto": "Activar el enrutamiento RIPv2 entre las dos subinterfaces."
+      },
+      {
+        "id": "D",
+        "texto": "Ejecutar 'no shutdown' en la interfaz física padre GigabitEthernet0/0."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "En Router-on-a-Stick, las subinterfaces heredan el estado operativo de la interfaz física padre. Si la interfaz física Gig0/0 permanece apagada (administratively down), todas sus subinterfaces permanecen inactivas hasta ejecutar 'no shutdown' en Gig0/0.",
+    "acronimos": [
+      {
+        "sigla": "VLAN",
+        "significado": "Virtual Local Area Network (Red de Área Local Virtual)",
+        "pista": "Para comunicar distintas VLANs se requiere un dispositivo de Capa 3 (router o switch multicapa)."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_032",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Dos routers conectados directamente por un enlace Ethernet en el Área 0 de OSPF no logran establecer adyacencia. Al inspeccionar 'show ip ospf interface', se observa que R1 usa temporizadores Hello=10s / Dead=40s y R2 tiene configurados Hello=15s / Dead=60s, con misma máscara de subred y MTU 1500. ¿Cuál es la causa raíz?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "OSPF requiere obligatoriamente que los routers estén en áreas diferentes."
+      },
+      {
+        "id": "B",
+        "texto": "El valor MTU 1500 impide el intercambio de paquetes DBD en enlaces Ethernet."
+      },
+      {
+        "id": "C",
+        "texto": "Los intervalos Hello y Dead deben coincidir exactamente entre vecinos OSPF para formar adyacencia."
+      },
+      {
+        "id": "D",
+        "texto": "Falta configurar el mismo número de Sistema Autónomo que en EIGRP."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "Para formar adyacencia en OSPF, los vecinos deben coincidir en: Área, subred/máscara, autenticación, bandera de área stub, MTU y temporizadores Hello y Dead. Al diferir los temporizadores entre R1 y R2, los paquetes Hello son descartados.",
+    "acronimos": [
+      {
+        "sigla": "OSPF",
+        "significado": "Open Shortest Path First (Primero el Camino Más Corto Abierto)",
+        "pista": "Protocolo de enrutamiento de estado de enlace que usa el algoritmo Dijkstra (SPF) y métrica de costo."
+      },
+      {
+        "sigla": "MTU",
+        "significado": "Maximum Transmission Unit (Unidad Máxima de Transmisión)",
+        "pista": "Tamaño máximo en bytes de la carga útil que una trama puede transportar (1500 bytes en Ethernet estándar)."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_033",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Un router Cisco aprende rutas hacia un destino mediante tres fuentes:\n- OSPF: 10.50.0.0/16 (AD 110)\n- EIGRP interno: 10.50.0.0/16 (AD 90)\n- RIPv2: 10.50.4.0/24 (AD 120)\n\nSi llega un paquete con IP destino 10.50.4.25, ¿qué ruta utilizará el router para reenviarlo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "La ruta de EIGRP (10.50.0.0/16) porque tiene la menor Distancia Administrativa (90)."
+      },
+      {
+        "id": "B",
+        "texto": "La ruta de RIPv2 (10.50.4.0/24) porque aplica la regla de coincidencia de prefijo más largo (Longest Prefix Match)."
+      },
+      {
+        "id": "C",
+        "texto": "La ruta de OSPF (10.50.0.0/16) por ser un protocolo de estado de enlace."
+      },
+      {
+        "id": "D",
+        "texto": "Balanceará la carga entre EIGRP y RIPv2 simultáneamente."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "La Distancia Administrativa (AD) solo decide qué ruta se instala cuando dos protocolos anuncian exactamente el mismo prefijo (aquí EIGRP gana sobre OSPF para /16). Al reenviar un paquete, el router siempre elige la coincidencia más específica (prefijo más largo): /24 (RIPv2) vence a /16 (EIGRP).",
+    "acronimos": [
+      {
+        "sigla": "AD",
+        "significado": "Administrative Distance (Distancia Administrativa)",
+        "pista": "Valor de confiabilidad de una fuente de enrutamiento (menor es mejor: Estática=1, EIGRP=90, OSPF=110, RIP=120)."
+      },
+      {
+        "sigla": "RIP",
+        "significado": "Routing Information Protocol (Protocolo de Información de Enrutamiento)",
+        "pista": "Protocolo vector distancia basado en conteo de saltos (máximo 15) con AD de 120."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_034",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Una sucursal con 140 equipos en la red privada 192.168.100.0/24 dispone únicamente de una dirección IPv4 pública asignada a la interfaz externa Gig0/1 del router de borde. ¿Qué modalidad de traducción de direcciones y qué palabra clave en Cisco IOS permiten dar salida simultánea a todos los equipos?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "NAT estático 1:1 con la palabra clave 'static'."
+      },
+      {
+        "id": "B",
+        "texto": "NAT dinámico con pool de una sola IP sin sobrecarga."
+      },
+      {
+        "id": "C",
+        "texto": "PAT (NAT Overload) incluyendo la palabra clave 'overload' en el comando ip nat inside source."
+      },
+      {
+        "id": "D",
+        "texto": "Proxy ARP en la interfaz externa Gig0/1."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "PAT (Port Address Translation o NAT Overload) mapea múltiples IPs privadas a una única IP pública diferenciando cada sesión mediante números de puerto origen TCP/UDP. En Cisco IOS se habilita añadiendo la palabra clave 'overload'.",
+    "acronimos": [
+      {
+        "sigla": "NAT",
+        "significado": "Network Address Translation (Traducción de Direcciones de Red)",
+        "pista": "Traduce direcciones IPv4 privadas internas a direcciones públicas en el borde de la red."
+      },
+      {
+        "sigla": "PAT",
+        "significado": "Port Address Translation (Traducción de Direcciones de Puerto)",
+        "pista": "Variante de NAT (Overload) que permite a muchos hosts compartir una sola IP pública usando puertos distintos."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_035",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada protocolo de red con su puerto bien conocido y protocolo de transporte estándar:\n\n1. SSH\n2. DNS (consultas estándar)\n3. NTP\n4. SNMP (agente y traps)\n5. HTTPS\n\na) UDP 123\nb) TCP 22\nc) TCP 443\nd) UDP 53\ne) UDP 161 y 162",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1b, 2d, 3a, 4e, 5c"
+      },
+      {
+        "id": "B",
+        "texto": "1c, 2d, 3a, 4e, 5b"
+      },
+      {
+        "id": "C",
+        "texto": "1b, 2a, 3d, 4e, 5c"
+      },
+      {
+        "id": "D",
+        "texto": "1b, 2d, 3e, 4a, 5c"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Los puertos estándar son: SSH = TCP 22 (1b), DNS = UDP 53 para consultas estándar (2d), NTP = UDP 123 (3a), SNMP = UDP 161/162 (4e) y HTTPS = TCP 443 (5c).",
+    "acronimos": [
+      {
+        "sigla": "SSH",
+        "significado": "Secure Shell (Intérprete de Órdenes Seguro)",
+        "pista": "Protocolo cifrado (TCP 22) que sustituye a Telnet para administración remota segura."
+      },
+      {
+        "sigla": "NTP",
+        "significado": "Network Time Protocol (Protocolo de Tiempo de Red)",
+        "pista": "Sincroniza relojes de dispositivos de red (UDP 123) usando una jerarquía de estratos."
+      },
+      {
+        "sigla": "SNMP",
+        "significado": "Simple Network Management Protocol (Protocolo Simple de Administración de Red)",
+        "pista": "Monitorea y gestiona equipos de red mediante consultas (UDP 161) y alertas/traps (UDP 162)."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_036",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Un empleado reporta que no puede abrir páginas web por nombre de dominio (ej. www.ejemplo.org), mostrando error de nombre no resuelto; sin embargo, al ejecutar 'ping 8.8.8.8' recibe respuestas exitosas con baja latencia. ¿Qué servicio presenta la falla y qué herramienta de línea de comandos permite diagnosticarla directamente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Servicio DHCP; se diagnostica con 'arp -a'."
+      },
+      {
+        "id": "B",
+        "texto": "Servicio NAT; se diagnostica con 'route print'."
+      },
+      {
+        "id": "C",
+        "texto": "Puerta de enlace predeterminada; se diagnostica con 'netstat -an'."
+      },
+      {
+        "id": "D",
+        "texto": "Servicio DNS; se diagnostica con 'nslookup' o 'dig'."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "El éxito de 'ping 8.8.8.8' confirma que hay direccionamiento IP, gateway, enrutamiento y NAT funcionando correctamente. La incapacidad de resolver nombres de dominio apunta al servicio DNS, el cual se prueba con 'nslookup' o 'dig'.",
+    "acronimos": [
+      {
+        "sigla": "DNS",
+        "significado": "Domain Name System (Sistema de Nombres de Dominio)",
+        "pista": "Traduce nombres legibles por humanos (FQDN) a direcciones IPv4/IPv6."
+      },
+      {
+        "sigla": "ICMP",
+        "significado": "Internet Control Message Protocol (Protocolo de Mensajes de Control de Internet)",
+        "pista": "Protocolo de Capa 3 empleado por ping (Echo Request/Reply) y traceroute para diagnóstico."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_037",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Un administrador configura un enlace agregado EtherChannel mediante LACP (IEEE 802.3ad) entre SW1 y SW2 utilizando dos puertos GigabitEthernet. Ambos switches quedan configurados en modo 'passive', pero el Port-Channel nunca se levanta. ¿Por qué ocurre esto?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "LACP solo admite enlaces de 10 Gbps en adelante."
+      },
+      {
+        "id": "B",
+        "texto": "En modo passive ambos switches esperan recibir tramas LACP sin iniciar la negociación; al menos un extremo debe configurarse en modo 'active'."
+      },
+      {
+        "id": "C",
+        "texto": "Se debe configurar un extremo en modo 'desirable' (PAgP) y el otro en 'passive' (LACP)."
+      },
+      {
+        "id": "D",
+        "texto": "EtherChannel requiere un número impar de interfaces físicas."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "En LACP, el modo 'active' inicia la negociación enviando PDUs LACP, mientras que 'passive' solo responde si recibe una solicitud. Por tanto, las combinaciones válidas son active-active o active-passive; passive-passive nunca forma el canal.",
+    "acronimos": [
+      {
+        "sigla": "LACP",
+        "significado": "Link Aggregation Control Protocol (Protocolo de Control de Agregación de Enlaces)",
+        "pista": "Estándar abierto IEEE 802.3ad que agrupa múltiples enlaces físicos en un solo enlace lógico."
+      },
+      {
+        "sigla": "PAgP",
+        "significado": "Port Aggregation Protocol (Protocolo de Agregación de Puertos)",
+        "pista": "Protocolo propietario de Cisco equivalente a LACP que utiliza los modos desirable y auto."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_038",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Una organización con dos routers de borde redundantes en la misma VLAN requiere ofrecer una sola dirección IP de gateway predeterminado a todos los hosts y, simultáneamente, balancear la carga del tráfico saliente entre ambos routers sin configurar múltiples grupos. ¿Qué protocolo FHRP propietario de Cisco cumple este requerimiento?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "HSRP (Hot Standby Router Protocol)."
+      },
+      {
+        "id": "B",
+        "texto": "VRRP (Virtual Router Redundancy Protocol)."
+      },
+      {
+        "id": "C",
+        "texto": "GLBP (Gateway Load Balancing Protocol)."
+      },
+      {
+        "id": "D",
+        "texto": "RSTP (Rapid Spanning Tree Protocol)."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "GLBP permite balanceo de carga activo-activo usando una sola IP virtual: un router actúa como AVG (Active Virtual Gateway) asignando distintas direcciones MAC virtuales a cada AVF (Active Virtual Forwarder) al responder solicitudes ARP.",
+    "acronimos": [
+      {
+        "sigla": "FHRP",
+        "significado": "First Hop Redundancy Protocol (Protocolo de Redundancia de Primer Salto)",
+        "pista": "Familia de protocolos (HSRP, VRRP, GLBP) que evitan que la falla del gateway aísle a una LAN."
+      },
+      {
+        "sigla": "GLBP",
+        "significado": "Gateway Load Balancing Protocol (Protocolo de Balanceo de Carga de Puerta de Enlace)",
+        "pista": "Protocolo FHRP de Cisco que combina redundancia y balanceo de carga en un único grupo."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_039",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Completamiento",
+    "pregunta": "El protocolo _____ es el protocolo de enrutamiento externo estándar de Internet; clasificado como de vector de ruta (Path Vector), establece sesiones entre pares mediante el puerto _____ y utiliza atributos como AS_PATH y LOCAL_PREF para seleccionar trayectorias entre Sistemas Autónomos.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "OSPF — UDP 89"
+      },
+      {
+        "id": "B",
+        "texto": "BGP — TCP 179"
+      },
+      {
+        "id": "C",
+        "texto": "EIGRP — TCP 88"
+      },
+      {
+        "id": "D",
+        "texto": "BGP — UDP 520"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "BGP (Border Gateway Protocol) es un protocolo Path Vector que intercambia prefijos entre Sistemas Autónomos (eBGP) o dentro de uno (iBGP) utilizando TCP puerto 179 y atributos de ruta como AS_PATH, LOCAL_PREF y MED.",
+    "acronimos": [
+      {
+        "sigla": "BGP",
+        "significado": "Border Gateway Protocol (Protocolo de Puerta de Enlace de Frontera)",
+        "pista": "Único protocolo EGP usado actualmente para interconectar Sistemas Autónomos en Internet."
+      },
+      {
+        "sigla": "AS",
+        "significado": "Autonomous System (Sistema Autónomo)",
+        "pista": "Dominio de enrutamiento identificado por un número único (ASN) en BGP."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_040",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "En una red corporativa convergente, las llamadas de telefonía IP (VoIP) sufren cortes y retardo variable (jitter) cuando se realizan respaldos masivos. Para priorizar la voz con el modelo DiffServ de QoS, ¿qué marcado DSCP y qué mecanismo de encolamiento deben implementarse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Marcado Best Effort (DSCP 0) con cola FIFO."
+      },
+      {
+        "id": "B",
+        "texto": "Marcado CS1 (Scavenger, DSCP 8) con WRED."
+      },
+      {
+        "id": "C",
+        "texto": "Marcado EF (Expedited Forwarding, DSCP 46) con cola de prioridad estricta LLQ."
+      },
+      {
+        "id": "D",
+        "texto": "Marcado AF11 (DSCP 10) con fragmentación IPv4."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "El tráfico VoIP es muy sensible a la latencia y al jitter (< 150 ms de latencia unidireccional y < 30 ms de jitter). Según RFC 3246, debe marcarse con EF (Expedited Forwarding, DSCP 46) y despacharse en una cola de prioridad estricta (LLQ).",
+    "acronimos": [
+      {
+        "sigla": "QoS",
+        "significado": "Quality of Service (Calidad de Servicio)",
+        "pista": "Conjunto de mecanismos para clasificar, marcar y priorizar tráfico sensible como voz y video."
+      },
+      {
+        "sigla": "DSCP",
+        "significado": "Differentiated Services Code Point (Punto de Código de Servicios Diferenciados)",
+        "pista": "Campo de 6 bits en la cabecera IP usado por DiffServ para indicar la prioridad por salto (PHB)."
+      },
+      {
+        "sigla": "VoIP",
+        "significado": "Voice over IP (Voz sobre Protocolo de Internet)",
+        "pista": "Transmisión de voz en tiempo real encapsulada en paquetes IP/UDP/RTP."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_041",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada protocolo de administración y monitoreo de red con su función principal:\n\n1. SNMP\n2. Syslog\n3. NTP\n4. NetFlow\n\na) Recopila estadísticas detalladas de flujos de tráfico (IP origen/destino, puertos, volumen).\nb) Sincroniza el reloj de routers, switches y servidores para correlacionar registros.\nc) Envía mensajes centralizados de eventos y fallas clasificados por nivel de severidad (0-7).\nd) Consulta métricas de dispositivos mediante OIDs/MIBs y recibe notificaciones (traps).",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1d, 2c, 3b, 4a"
+      },
+      {
+        "id": "B",
+        "texto": "1c, 2d, 3b, 4a"
+      },
+      {
+        "id": "C",
+        "texto": "1d, 2b, 3c, 4a"
+      },
+      {
+        "id": "D",
+        "texto": "1a, 2c, 3b, 4d"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "SNMP consulta MIBs/OIDs y recibe traps (1d); Syslog centraliza logs con severidad 0-7 (2c); NTP sincroniza relojes (3b); y NetFlow analiza flujos y patrones de consumo de ancho de banda (4a).",
+    "acronimos": [
+      {
+        "sigla": "MIB",
+        "significado": "Management Information Base (Base de Información de Gestión)",
+        "pista": "Estructura jerárquica de variables (OIDs) que SNMP consulta en un dispositivo administrado."
+      },
+      {
+        "sigla": "SNMP",
+        "significado": "Simple Network Management Protocol (Protocolo Simple de Administración de Red)",
+        "pista": "Protocolo estándar de monitoreo; su versión SNMPv3 añade autenticación y cifrado."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_042",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Un enlace entre un switch y un servidor presenta lentitud severa. Al revisar 'show interfaces FastEthernet0/12', el administrador detecta un incremento acelerado de 'late collisions', 'CRC errors' y 'runts'. ¿Cuál es la causa más probable?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "La VLAN nativa del puerto de acceso no coincide con el router."
+      },
+      {
+        "id": "B",
+        "texto": "La tabla de enrutamiento OSPF superó el límite de memoria."
+      },
+      {
+        "id": "C",
+        "texto": "El servidor tiene configurado un servidor DNS secundario incorrecto."
+      },
+      {
+        "id": "D",
+        "texto": "Una discrepancia de modo dúplex (duplex mismatch: un extremo en full-duplex y el otro en half-duplex)."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "Un duplex mismatch (un extremo fijo en full-duplex y el otro en half-duplex por fallo de autonegociación) provoca que el extremo full-duplex transmita sin escuchar el medio, generando colisiones tardías (late collisions), tramas truncadas (runts) y errores de CRC en el enlace.",
+    "acronimos": [
+      {
+        "sigla": "CRC",
+        "significado": "Cyclic Redundancy Check (Verificación de Redundancia Cíclica)",
+        "pista": "Código de detección de errores incluido en el campo FCS al final de una trama Ethernet."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_043",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "El servidor DHCP corporativo se ubica en la VLAN 100 (IP 10.0.100.10), pero los clientes de la VLAN 20 (10.0.20.0/24) no reciben direcciones IP porque el router no reenvía broadcasts entre subredes. ¿Qué comando y en qué interfaz del router debe configurarse para solucionar esto?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "ip helper-address 10.0.100.10 en la interfaz/SVI del router que sirve a la VLAN 20."
+      },
+      {
+        "id": "B",
+        "texto": "ip helper-address 10.0.20.1 en la interfaz/SVI del router que sirve a la VLAN 100."
+      },
+      {
+        "id": "C",
+        "texto": "ip dhcp excluded-address 10.0.100.10 en modo de configuración global."
+      },
+      {
+        "id": "D",
+        "texto": "ip directed-broadcast en la interfaz WAN del router."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El comando 'ip helper-address <IP_servidor_DHCP>' convierte al router en un Agente de Retransmisión DHCP (DHCP Relay): se configura en la interfaz que recibe los broadcasts de los clientes (VLAN 20) y los reenvía como paquetes unicast hacia 10.0.100.10.",
+    "acronimos": [
+      {
+        "sigla": "SVI",
+        "significado": "Switched Virtual Interface (Interfaz Virtual Conmutada)",
+        "pista": "Interfaz lógica de Capa 3 creada en un switch multicapa para enrutar tráfico de una VLAN."
+      },
+      {
+        "sigla": "DHCP",
+        "significado": "Dynamic Host Configuration Protocol (Protocolo de Configuración Dinámica de Host)",
+        "pista": "Requiere un agente de retransmisión (relay) cuando el servidor está en una subred distinta al cliente."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_044",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Durante una transferencia masiva de archivos sobre TCP, el receptor comienza a llenar su búfer de memoria y reduce el valor anunciado en el campo 'Window Size' de sus segmentos ACK. ¿Qué mecanismo de TCP se está ejecutando?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Control de flujo mediante ventana deslizante (Sliding Window)."
+      },
+      {
+        "id": "B",
+        "texto": "Resolución de direcciones físicas mediante ARP gratuito."
+      },
+      {
+        "id": "C",
+        "texto": "Cierre abrupto de sesión mediante bandera RST."
+      },
+      {
+        "id": "D",
+        "texto": "Fragmentación obligatoria de paquetes en Capa 2."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El control de flujo en TCP utiliza el mecanismo de ventana deslizante: el receptor indica dinámicamente en el campo Window Size cuántos bytes adicionales puede aceptar sin saturar su búfer, obligando al emisor a regular su ritmo de envío.",
+    "acronimos": [
+      {
+        "sigla": "TCP",
+        "significado": "Transmission Control Protocol (Protocolo de Control de Transmisión)",
+        "pista": "Provee control de flujo (ventana deslizante) y control de congestión (Slow Start) en Capa 4."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_045",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Al ejecutar 'traceroute' hacia un servidor externo, los saltos 1, 2 y 3 muestran tiempos de respuesta menores a 15 ms; el salto 4 muestra '* * *' (tiempo de espera agotado), pero el salto 5 responde con normalidad y corresponde al servidor destino. ¿Qué interpretación técnica es correcta?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "El enlace físico del salto 4 está caído y el tráfico no llega al destino."
+      },
+      {
+        "id": "B",
+        "texto": "El valor TTL inicial del equipo origen es insuficiente para alcanzar el salto 4."
+      },
+      {
+        "id": "C",
+        "texto": "Existe un bucle de enrutamiento infinito entre el salto 3 y el salto 4."
+      },
+      {
+        "id": "D",
+        "texto": "El router del salto 4 reenvía los paquetes normalmente hacia el destino, pero tiene filtrado o deshabilitado el envío de respuestas ICMP Time Exceeded."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "Dado que el salto 5 (destino) sí responde, el paquete atravesó el salto 4 sin pérdida. Los asteriscos en un salto intermedio indican que dicho router no responde mensajes ICMP Time Exceeded (por política de firewall o rate limiting), pero sí cumple su función de reenvío.",
+    "acronimos": [
+      {
+        "sigla": "TTL",
+        "significado": "Time To Live (Tiempo de Vida)",
+        "pista": "Campo de la cabecera IPv4 que se decrementa en cada router; al llegar a 0 se descarta y se genera ICMP Time Exceeded."
+      },
+      {
+        "sigla": "ICMP",
+        "significado": "Internet Control Message Protocol (Protocolo de Mensajes de Control de Internet)",
+        "pista": "Notifica errores de red y permite mapear rutas en herramientas como traceroute."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_046",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Al migrar el correo corporativo y el portal web de la empresa a un nuevo proveedor en la nube, ¿qué par de registros de recursos DNS debe actualizarse para dirigir el correo hacia los nuevos servidores y mapear el dominio a su nueva dirección IPv6 respectivamente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Registro PTR para correo y registro A para IPv6."
+      },
+      {
+        "id": "B",
+        "texto": "Registro MX para correo y registro AAAA para IPv6."
+      },
+      {
+        "id": "C",
+        "texto": "Registro CNAME para correo y registro NS para IPv6."
+      },
+      {
+        "id": "D",
+        "texto": "Registro SOA para correo y registro TXT para IPv6."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "En DNS, el registro MX (Mail Exchange) especifica los servidores responsables de recibir correo electrónico para un dominio (con prioridad), mientras que el registro AAAA asocia un nombre de host a una dirección IPv6 de 128 bits (A es para IPv4).",
+    "acronimos": [
+      {
+        "sigla": "DNS",
+        "significado": "Domain Name System (Sistema de Nombres de Dominio)",
+        "pista": "Base de datos jerárquica distribuida que almacena registros A, AAAA, MX, CNAME, NS y PTR."
+      },
+      {
+        "sigla": "MX",
+        "significado": "Mail Exchange (Intercambio de Correo)",
+        "pista": "Registro DNS que indica qué servidor SMTP recibe los correos de un dominio."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_047",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Completamiento",
+    "pregunta": "En el protocolo Syslog (RFC 5424), los eventos se clasifican del nivel 0 (Emergency) al nivel 7 (Debugging). Si un router Cisco se configura con el comando 'logging trap warnings' (nivel 4), enviará al servidor Syslog todos los mensajes cuya severidad esté entre los niveles _____.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "4 al 7 (Warnings hasta Debugging)"
+      },
+      {
+        "id": "B",
+        "texto": "0 al 4 (Emergency hasta Warnings)"
+      },
+      {
+        "id": "C",
+        "texto": "Únicamente el nivel 4 (Warnings)"
+      },
+      {
+        "id": "D",
+        "texto": "1 al 3 (Alert hasta Error)"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "En Syslog, un número menor indica mayor criticidad (0=Emergency, 1=Alert, 2=Critical, 3=Error, 4=Warning). Configurar un umbral envía ese nivel y todos los más críticos (números menores), es decir, del 0 al 4.",
+    "acronimos": [
+      {
+        "sigla": "Syslog",
+        "significado": "System Logging Protocol (Protocolo de Registro del Sistema)",
+        "pista": "Estándar (UDP 514 / TCP 6514 con TLS) para centralizar bitácoras de eventos de dispositivos de red."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_048",
+    "diagrama": "ospf-multiarea",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "En una topología OSPF multiárea, el router R-Edge posee una interfaz en el Área 0, otra en el Área 10 y además redistribuye rutas estáticas hacia una red externa no-OSPF. ¿Qué dos roles OSPF desempeña simultáneamente R-Edge?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Router Interno y BDR."
+      },
+      {
+        "id": "B",
+        "texto": "Únicamente Router de Backbone."
+      },
+      {
+        "id": "C",
+        "texto": "ABR (Area Border Router) y ASBR (Autonomous System Boundary Router)."
+      },
+      {
+        "id": "D",
+        "texto": "Route Reflector y Stub Router."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "Un router con interfaces en más de un área (incluyendo Área 0) es un ABR (Area Border Router) que genera LSA Tipo 3; al redistribuir rutas desde un dominio externo hacia OSPF también actúa como ASBR (Autonomous System Boundary Router) generando LSA Tipo 5.",
+    "acronimos": [
+      {
+        "sigla": "ABR",
+        "significado": "Area Border Router (Router de Borde de Área)",
+        "pista": "Conecta el Área 0 (backbone) con áreas regulares en OSPF y mantiene una LSDB por cada área."
+      },
+      {
+        "sigla": "ASBR",
+        "significado": "Autonomous System Boundary Router (Router de Frontera de Sistema Autónomo)",
+        "pista": "Inyecta rutas externas (de BGP, EIGRP o estáticas) dentro del dominio OSPF."
+      },
+      {
+        "sigla": "LSA",
+        "significado": "Link-State Advertisement (Anuncio de Estado de Enlace)",
+        "pista": "Paquete con información topológica intercambiado por routers OSPF para construir su base de datos."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_049",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Un router de sucursal posee un único enlace WAN hacia su ISP con la IP de siguiente salto 209.165.200.1. Para enrutar todo el tráfico cuyo destino no figure en la tabla de enrutamiento local hacia Internet, ¿qué comando de ruta estática por defecto en IPv4 debe configurarse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "ip route 209.165.200.1 255.255.255.255 0.0.0.0"
+      },
+      {
+        "id": "B",
+        "texto": "ip route 0.0.0.0 0.0.0.0 209.165.200.1"
+      },
+      {
+        "id": "C",
+        "texto": "ip default-gateway 0.0.0.0"
+      },
+      {
+        "id": "D",
+        "texto": "ip route 255.255.255.255 0.0.0.0 209.165.200.1"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "La ruta estática por defecto IPv4 (quad-zero route) utiliza red 0.0.0.0 y máscara 0.0.0.0, seguida de la IP del siguiente salto o interfaz de salida: 'ip route 0.0.0.0 0.0.0.0 209.165.200.1'.",
+    "acronimos": [
+      {
+        "sigla": "IOS",
+        "significado": "Internetwork Operating System (Sistema Operativo de Interconexión de Redes)",
+        "pista": "Sistema operativo de línea de comandos utilizado en routers y switches Cisco."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_050",
+    "area": "Implementación de Redes",
+    "subarea": "2.2 Administración y configuración de redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Al conectar estaciones de trabajo a un switch con STP 802.1D clásico, los usuarios tardan más de 30 segundos en obtener dirección IP por DHCP debido a los estados Listening y Learning. ¿Qué par de funciones deben habilitarse en los puertos de acceso para acelerar la conexión sin arriesgar bucles si alguien conecta un switch no autorizado?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "PortFast y BPDU Guard."
+      },
+      {
+        "id": "B",
+        "texto": "Root Guard y Loop Guard."
+      },
+      {
+        "id": "C",
+        "texto": "VTP Server y DTP Desirable."
+      },
+      {
+        "id": "D",
+        "texto": "EtherChannel On y Storm Control."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "PortFast lleva un puerto de acceso directamente al estado Forwarding omitiendo Listening y Learning (ahorrando 30 s). Combinado con BPDU Guard, si alguien conecta un switch y el puerto recibe una trama BPDU, se deshabilita inmediatamente en estado err-disabled evitando bucles.",
+    "acronimos": [
+      {
+        "sigla": "BPDU",
+        "significado": "Bridge Protocol Data Unit (Unidad de Datos de Protocolo de Puente)",
+        "pista": "Trama de control intercambiada por switches STP cada 2 segundos para construir la topología libre de bucles."
+      },
+      {
+        "sigla": "STP",
+        "significado": "Spanning Tree Protocol (Protocolo de Árbol de Expansión)",
+        "pista": "En 802.1D tarda 30 segundos (15s Listening + 15s Learning) antes de reenviar tráfico en un puerto nuevo."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_051",
+    "diagrama": "firewall-dmz-3zones",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Una institución financiera desplegará un portal web público y un servidor de base de datos confidencial detrás de un firewall perimetral con tres interfaces (Externa/WAN, DMZ e Interna/LAN). ¿Cuál es la arquitectura de segmentación y política de acceso más segura?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Ubicar ambos servidores en la DMZ y permitir acceso HTTPS (443) y SQL desde Internet."
+      },
+      {
+        "id": "B",
+        "texto": "Ubicar el servidor web en la DMZ (permitiendo solo HTTPS 443 desde Internet) y la base de datos en la LAN interna (permitiendo consultas solo desde la IP del servidor web en el puerto específico de BD)."
+      },
+      {
+        "id": "C",
+        "texto": "Ubicar ambos servidores en la LAN interna y habilitar redirección de puertos (Port Forwarding) directamente desde Internet hacia ambos."
+      },
+      {
+        "id": "D",
+        "texto": "Ubicar la base de datos en la DMZ y el servidor web en la LAN interna para proteger el frontend."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "La DMZ aísla los servicios expuestos a Internet (servidor web en TCP 443) de la red interna. La base de datos debe permanecer en la red interna sin exposición directa a Internet, aceptando tráfico únicamente desde el servidor web por el puerto estrictamente necesario.",
+    "acronimos": [
+      {
+        "sigla": "DMZ",
+        "significado": "Demilitarized Zone (Zona Desmilitarizada)",
+        "pista": "Subred perimetral aislada donde se alojan servicios públicos para proteger la LAN corporativa."
+      },
+      {
+        "sigla": "HTTPS",
+        "significado": "Hypertext Transfer Protocol Secure (Protocolo Seguro de Transferencia de Hipertexto)",
+        "pista": "Versión cifrada de HTTP sobre TLS/SSL que opera en el puerto TCP 443."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_052",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Se aplica la siguiente ACL extendida en sentido de entrada (inbound) en la interfaz LAN del router de borde para la subred 192.168.10.0/24:\n\naccess-list 101 permit tcp 192.168.10.0 0.0.0.255 host 10.0.0.50 eq 443\n\nTras aplicarla, los usuarios pueden acceder a https://10.0.0.50 por IP, pero pierden todo el resto de la conectividad (DNS, correo y otros sitios web). ¿Cuál es la causa y la mejor práctica de ubicación para ACLs extendidas?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Toda ACL posee un 'deny ip any any' implícito al final que bloquea todo tráfico no permitido explícitamente; las ACLs extendidas deben colocarse lo más cerca posible del origen."
+      },
+      {
+        "id": "B",
+        "texto": "La ACL 101 es una ACL estándar y no soporta números de puerto; debe colocarse lo más cerca posible del destino."
+      },
+      {
+        "id": "C",
+        "texto": "La máscara wildcard 0.0.0.255 bloquea la subred completa; debe cambiarse a 255.255.255.0."
+      },
+      {
+        "id": "D",
+        "texto": "Las ACLs extendidas solo funcionan en sentido outbound en interfaces seriales."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Toda ACL en Cisco IOS termina con un 'deny any' implícito: si solo se permite TCP 443 hacia 10.0.0.50, el resto del tráfico (incluido DNS) se descarta. Además, las ACLs extendidas (100-199) se colocan lo más cerca del origen para descartar tráfico no deseado antes de cruzar la red.",
+    "acronimos": [
+      {
+        "sigla": "ACL",
+        "significado": "Access Control List (Lista de Control de Acceso)",
+        "pista": "Se evalúa de arriba hacia abajo (primera coincidencia) y siempre cierra con una denegación implícita."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_053",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Un atacante conectado a un puerto de acceso de la LAN ejecuta un ataque ARP Spoofing (envenenamiento ARP) enviando respuestas ARP gratuitas para suplantar la puerta de enlace y realizar un ataque Hombre en el Medio (MITM). ¿Qué par de controles en un switch gestionable mitigan directamente este ataque?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "DHCP Snooping y DAI (Dynamic ARP Inspection)."
+      },
+      {
+        "id": "B",
+        "texto": "PortFast y VTP Pruning."
+      },
+      {
+        "id": "C",
+        "texto": "NAT Overload y Split Horizon."
+      },
+      {
+        "id": "D",
+        "texto": "SNMPv2c y Telnet."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "DHCP Snooping crea una tabla confiable de enlaces IP-MAC-Puerto (binding table) y bloquea servidores DHCP falsos; DAI (Dynamic ARP Inspection) consulta dicha tabla para validar cada paquete ARP en puertos no confiables y descartar los falsificados.",
+    "acronimos": [
+      {
+        "sigla": "MITM",
+        "significado": "Man-in-the-Middle (Hombre en el Medio)",
+        "pista": "Ataque donde el adversario intercepta y potencialmente altera la comunicación entre dos víctimas."
+      },
+      {
+        "sigla": "DAI",
+        "significado": "Dynamic ARP Inspection (Inspección Dinámica de ARP)",
+        "pista": "Función de seguridad en Capa 2 que valida paquetes ARP contra la tabla de DHCP Snooping."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_054",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordene la secuencia lógica del establecimiento de una conexión segura HTTPS mediante TLS y PKI:\n\n1. El cliente verifica la firma digital del certificado del servidor usando la clave pública de una Autoridad Certificadora (CA) confiable.\n2. Cliente y servidor intercambian datos de aplicación cifrados mediante criptografía simétrica con la clave de sesión derivada.\n3. El cliente envía el mensaje ClientHello proponiendo versiones de TLS, suites de cifrado y parámetros de intercambio de clave.\n4. El servidor responde con ServerHello, selecciona la suite criptográfica y envía su certificado digital X.509.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "3, 4, 1, 2"
+      },
+      {
+        "id": "B",
+        "texto": "4, 3, 1, 2"
+      },
+      {
+        "id": "C",
+        "texto": "3, 1, 4, 2"
+      },
+      {
+        "id": "D",
+        "texto": "1, 3, 4, 2"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El cliente inicia con ClientHello (3), el servidor contesta con ServerHello y su certificado X.509 (4), el cliente autentica el certificado mediante la cadena de confianza PKI/CA (1) y finalmente ambos derivan la clave de sesión simétrica para cifrar el tráfico HTTP (2).",
+    "acronimos": [
+      {
+        "sigla": "TLS",
+        "significado": "Transport Layer Security (Seguridad de la Capa de Transporte)",
+        "pista": "Protocolo criptográfico (sucesor de SSL) que brinda confidencialidad e integridad en Internet."
+      },
+      {
+        "sigla": "PKI",
+        "significado": "Public Key Infrastructure (Infraestructura de Clave Pública)",
+        "pista": "Marco de políticas, CAs y certificados digitales que vinculan claves públicas con identidades."
+      },
+      {
+        "sigla": "CA",
+        "significado": "Certificate Authority (Autoridad Certificadora)",
+        "pista": "Entidad de confianza que emite y firma digitalmente certificados X.509."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_055",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada ataque de red con su mecanismo de explotación:\n\n1. SYN Flood\n2. MAC Flooding\n3. DNS Cache Poisoning\n4. Smurf Attack\n\na) Inyecta registros DNS falsos en un resolvedor para redirigir usuarios a sitios fraudulentos.\nb) Agota la tabla de conexiones semiabiertas de un servidor enviando miles de solicitudes TCP SYN sin completar el ACK.\nc) Desborda la tabla CAM de un switch con direcciones MAC falsas para forzarlo a inundar tráfico como un hub.\nd) Envía ICMP Echo Request con IP origen falsificada de la víctima hacia direcciones de broadcast.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1b, 2c, 3a, 4d"
+      },
+      {
+        "id": "B",
+        "texto": "1c, 2b, 3a, 4d"
+      },
+      {
+        "id": "C",
+        "texto": "1b, 2a, 3c, 4d"
+      },
+      {
+        "id": "D",
+        "texto": "1d, 2c, 3a, 4b"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "SYN Flood agota conexiones TCP semiabiertas (1b); MAC Flooding llena la tabla CAM del switch (2c); DNS Cache Poisoning introduce registros falsos en caché DNS (3a); y Smurf amplifica ICMP usando IP spoofing hacia broadcast (4d).",
+    "acronimos": [
+      {
+        "sigla": "CAM",
+        "significado": "Content Addressable Memory (Memoria Direccionable por Contenido)",
+        "pista": "Tabla interna del switch que asocia cada dirección MAC aprendida con su puerto físico."
+      },
+      {
+        "sigla": "DoS",
+        "significado": "Denial of Service (Denegación de Servicio)",
+        "pista": "Ataque diseñado para agotar recursos de red o cómputo e impedir el acceso legítimo a un servicio."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_056",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Dos oficinas corporativas deben interconectar sus redes LAN privadas a través de Internet mediante una VPN Site-to-Site con IPsec que garantice confidencialidad (cifrado), integridad y ocultamiento de las direcciones IP privadas internas. ¿Qué protocolo IPsec y qué modo de operación deben seleccionarse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Protocolo AH en modo Transporte."
+      },
+      {
+        "id": "B",
+        "texto": "Protocolo AH en modo Túnel."
+      },
+      {
+        "id": "C",
+        "texto": "Protocolo ESP en modo Túnel."
+      },
+      {
+        "id": "D",
+        "texto": "Protocolo GRE sin cifrado en modo Transporte."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "ESP (Encapsulating Security Payload) proporciona cifrado (confidencialidad), integridad y autenticación, a diferencia de AH que no cifra. En VPN Site-to-Site entre gateways se usa el modo Túnel, que cifra todo el paquete IP original y le agrega una nueva cabecera IP pública.",
+    "acronimos": [
+      {
+        "sigla": "VPN",
+        "significado": "Virtual Private Network (Red Privada Virtual)",
+        "pista": "Túnel lógico cifrado que extiende una red privada de forma segura sobre una red pública como Internet."
+      },
+      {
+        "sigla": "IPsec",
+        "significado": "Internet Protocol Security (Seguridad del Protocolo de Internet)",
+        "pista": "Suite de protocolos de Capa 3 (IKE, AH, ESP) para autenticar y cifrar paquetes IP."
+      },
+      {
+        "sigla": "ESP",
+        "significado": "Encapsulating Security Payload (Carga Útil de Seguridad Encapsulada)",
+        "pista": "Protocolo IPsec (IP protocolo 50) que brinda cifrado e integridad a los datos."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_057",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Una empresa busca eliminar la vulnerabilidad de ataques de diccionario fuera de línea (offline) sobre el saludo de 4 vías de WPA2-Personal y obtener confidencialidad directa (Forward Secrecy) en su red inalámbrica de invitados con contraseña compartida. ¿Qué estándar de seguridad Wi-Fi debe implementar?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "WEP con claves de 128 bits."
+      },
+      {
+        "id": "B",
+        "texto": "WPA-TKIP con ocultamiento de SSID."
+      },
+      {
+        "id": "C",
+        "texto": "WPA3-Personal con protocolo SAE (Simultaneous Authentication of Equals)."
+      },
+      {
+        "id": "D",
+        "texto": "Red abierta con filtrado estático de direcciones MAC."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "WPA3-Personal reemplaza el intercambio PSK de WPA2 por SAE (basado en Dragonfly), lo que impide ataques de diccionario offline al capturar el handshake y añade Forward Secrecy (si la contraseña se compromete después, el tráfico previo no puede descifrarse).",
+    "acronimos": [
+      {
+        "sigla": "WPA3",
+        "significado": "Wi-Fi Protected Access 3 (Acceso Protegido Wi-Fi versión 3)",
+        "pista": "Estándar actual de seguridad inalámbrica que introduce SAE y cifrado obligatorio de tramas de gestión (PMF)."
+      },
+      {
+        "sigla": "SAE",
+        "significado": "Simultaneous Authentication of Equals (Autenticación Simultánea de Pares)",
+        "pista": "Protocolo de intercambio de claves de WPA3 resistente a ataques de diccionario offline."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_058",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Completamiento",
+    "pregunta": "Un sistema _____ se despliega de forma pasiva (recibiendo una copia del tráfico vía puerto SPAN o TAP) para analizar firmas y generar alertas sin interrumpir el flujo, mientras que un sistema _____ opera en línea (inline) con capacidad para descartar paquetes o restablecer sesiones maliciosas en tiempo real.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "IPS — IDS"
+      },
+      {
+        "id": "B",
+        "texto": "IDS — IPS"
+      },
+      {
+        "id": "C",
+        "texto": "WAF — SIEM"
+      },
+      {
+        "id": "D",
+        "texto": "NAC — IDS"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "Un IDS (Intrusion Detection System) monitorea pasivamente fuera de banda y emite alertas; un IPS (Intrusion Prevention System) se ubica en línea con el tráfico para detectar y bloquear ataques activamente.",
+    "acronimos": [
+      {
+        "sigla": "IDS",
+        "significado": "Intrusion Detection System (Sistema de Detección de Intrusiones)",
+        "pista": "Sensor pasivo que inspecciona copias de tráfico y alerta sobre patrones de ataque."
+      },
+      {
+        "sigla": "IPS",
+        "significado": "Intrusion Prevention System (Sistema de Prevención de Intrusiones)",
+        "pista": "Dispositivo inline que detiene proactivamente paquetes maliciosos antes de que alcancen el objetivo."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_059",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Caso práctico",
+    "pregunta": "En un puerto de acceso de un switch Cisco se configura Port Security con 'maximum 2', 'mac-address sticky' y 'violation restrict'. Después de aprender 2 direcciones MAC legítimas, un usuario conecta un tercer equipo no autorizado al mismo puerto. ¿Cuál será el comportamiento exacto del switch?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Coloca inmediatamente el puerto en estado err-disabled (apagado) bloqueando a los tres equipos."
+      },
+      {
+        "id": "B",
+        "texto": "Descarta silenciosamente las tramas del tercer equipo sin registrar eventos ni incrementar contadores."
+      },
+      {
+        "id": "C",
+        "texto": "Descarta las tramas del tercer equipo, incrementa el contador de violaciones y genera un mensaje Syslog/SNMP trap, manteniendo el puerto activo para los equipos legítimos."
+      },
+      {
+        "id": "D",
+        "texto": "Reemplaza la MAC más antigua por la del tercer equipo automáticamente."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "Port Security posee tres modos de violación: 'shutdown' (apaga el puerto en err-disabled), 'protect' (descarta tramas sin notificar) y 'restrict' (descarta las tramas infractoras, suma al contador de violaciones y envía alerta Syslog/SNMP manteniendo el puerto activo).",
+    "acronimos": [
+      {
+        "sigla": "MAC",
+        "significado": "Media Access Control (Control de Acceso al Medio)",
+        "pista": "Port Security limita la cantidad de direcciones MAC permitidas por puerto para prevenir MAC Flooding y accesos no autorizados."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_060",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione los protocolos AAA (RADIUS y TACACS+) con sus características técnicas:\n\n1. TACACS+\n2. RADIUS\n\na) Protocolo propietario de Cisco sobre TCP 49; cifra todo el cuerpo del paquete y separa Autenticación, Autorización y Contabilidad (ideal para administración de dispositivos).\nb) Estándar abierto sobre UDP 1812/1813; cifra únicamente el campo de contraseña y combina Autenticación y Autorización (ampliamente usado en 802.1X y Wi-Fi).",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1a, 2b"
+      },
+      {
+        "id": "B",
+        "texto": "1b, 2a"
+      },
+      {
+        "id": "C",
+        "texto": "1a, 2a"
+      },
+      {
+        "id": "D",
+        "texto": "1b, 2b"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "TACACS+ usa TCP 49, cifra toda la carga útil y desacopla las funciones A-A-A (permitiendo autorización granular por comando CLI). RADIUS usa UDP 1812/1813, cifra solo la contraseña en el paquete Access-Request y combina autenticación y autorización.",
+    "acronimos": [
+      {
+        "sigla": "AAA",
+        "significado": "Authentication, Authorization, and Accounting (Autenticación, Autorización y Contabilidad)",
+        "pista": "Marco de control de acceso que valida quién entra, qué puede hacer y registra sus acciones."
+      },
+      {
+        "sigla": "RADIUS",
+        "significado": "Remote Authentication Dial-In User Service",
+        "pista": "Protocolo AAA estándar (UDP 1812/1813) muy común en acceso de usuarios Wi-Fi y VPN."
+      },
+      {
+        "sigla": "TACACS+",
+        "significado": "Terminal Access Controller Access-Control System Plus",
+        "pista": "Protocolo AAA (TCP 49) preferido para administrar routers y switches con control granular de comandos."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_061",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Un protocolo de comunicación segura en red necesita autenticar al servidor, intercambiar una clave secreta de forma segura, cifrar grandes volúmenes de datos a alta velocidad y garantizar que ningún bit haya sido alterado en tránsito. ¿Qué combinación de algoritmos criptográficos cumple cada función correctamente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "AES-256 para intercambio de claves, SHA-256 para cifrado masivo y RSA para integridad."
+      },
+      {
+        "id": "B",
+        "texto": "ECDHE/RSA (asimétrica) para autenticación e intercambio de claves, AES-256-GCM (simétrica) para cifrado masivo y SHA-256 (hash) para integridad."
+      },
+      {
+        "id": "C",
+        "texto": "DES para autenticación, MD5 para cifrado masivo y Base64 para confidencialidad."
+      },
+      {
+        "id": "D",
+        "texto": "RSA únicamente para cifrar todo el flujo de video y datos sin claves de sesión."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "La criptografía híbrida usa algoritmos asimétricos (RSA/ECDHE) para autenticación e intercambio seguro de claves; algoritmos simétricos rápidos (AES-256-GCM) para el cifrado masivo de datos; y funciones hash criptográficas (SHA-256) para integridad.",
+    "acronimos": [
+      {
+        "sigla": "AES",
+        "significado": "Advanced Encryption Standard (Estándar de Cifrado Avanzado)",
+        "pista": "Algoritmo de cifrado simétrico por bloques (128/192/256 bits) estándar actual para confidencialidad."
+      },
+      {
+        "sigla": "SHA",
+        "significado": "Secure Hash Algorithm (Algoritmo de Hash Seguro)",
+        "pista": "Familia de funciones hash unidireccionales (como SHA-256) usadas para verificar integridad."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_062",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordene las cuatro fases del ciclo de vida de Respuesta a Incidentes de Seguridad Informática establecidas en la guía NIST SP 800-61:\n\n1. Actividad posterior al incidente (lecciones aprendidas y mejora de controles)\n2. Contención, erradicación y recuperación\n3. Preparación (políticas, herramientas, equipo CSIRT y capacitación)\n4. Detección y análisis (identificación de indicadores de compromiso y alcance)",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "3, 4, 2, 1"
+      },
+      {
+        "id": "B",
+        "texto": "4, 3, 2, 1"
+      },
+      {
+        "id": "C",
+        "texto": "3, 2, 4, 1"
+      },
+      {
+        "id": "D",
+        "texto": "3, 4, 1, 2"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El marco NIST SP 800-61 define el ciclo de respuesta a incidentes en el orden: 1) Preparación (3), 2) Detección y análisis (4), 3) Contención, erradicación y recuperación (2), y 4) Actividad posterior al incidente (1).",
+    "acronimos": [
+      {
+        "sigla": "NIST",
+        "significado": "National Institute of Standards and Technology (Instituto Nacional de Estándares y Tecnología)",
+        "pista": "Organismo estadounidense que publica marcos de referencia en ciberseguridad como SP 800-61 y CSF."
+      },
+      {
+        "sigla": "CSIRT",
+        "significado": "Computer Security Incident Response Team (Equipo de Respuesta a Incidentes de Seguridad Informática)",
+        "pista": "Equipo especializado encargado de coordinar la atención ante brechas y ataques cibernéticos."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_063",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Un portal de comercio electrónico sufre un ataque DDoS volumétrico por amplificación DNS y saturación TCP SYN Flood desde miles de direcciones IP distribuidas. ¿Qué conjunto de controles mitiga de manera efectiva ambos vectores?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Desactivar HTTPS y aumentar el tiempo de espera (timeout) de las sesiones TCP."
+      },
+      {
+        "id": "B",
+        "texto": "Cambiar el protocolo de enrutamiento interno de OSPF a RIPv2."
+      },
+      {
+        "id": "C",
+        "texto": "Habilitar SYN Cookies, aplicar filtrado anti-spoofing (BCP 38), limitación de tasa (rate limiting) y utilizar un servicio de mitigación DDoS/CDN Anycast."
+      },
+      {
+        "id": "D",
+        "texto": "Activar PortFast en todos los switches de la DMZ."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "SYN Cookies evita agotar la tabla de conexiones semiabiertas durante un SYN Flood; el filtrado de ingreso BCP 38 frena el spoofing de IP; y el rate limiting junto con centros de limpieza (scrubbing) / CDN Anycast absorben el tráfico volumétrico de amplificación.",
+    "acronimos": [
+      {
+        "sigla": "DDoS",
+        "significado": "Distributed Denial of Service (Denegación de Servicio Distribuida)",
+        "pista": "Ataque coordinado desde múltiples orígenes (botnet) para saturar ancho de banda o servidores."
+      },
+      {
+        "sigla": "CDN",
+        "significado": "Content Delivery Network (Red de Distribución de Contenidos)",
+        "pista": "Red distribuida de servidores perimetrales que acelera entregas y absorbe ataques volumétricos vía Anycast."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_064",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Un administrador debe crear una regla en una ACL estándar de Cisco IOS para permitir el acceso administrativo por SSH únicamente desde la subred 172.20.16.0/22. ¿Cuál es la sintaxis exacta con la máscara wildcard correcta?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "access-list 10 permit 172.20.16.0 0.0.252.255"
+      },
+      {
+        "id": "B",
+        "texto": "access-list 10 permit 172.20.16.0 0.0.3.255"
+      },
+      {
+        "id": "C",
+        "texto": "access-list 10 permit 172.20.16.0 0.0.7.255"
+      },
+      {
+        "id": "D",
+        "texto": "access-list 10 permit 172.20.16.0 255.255.252.0"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "La máscara de subred para /22 es 255.255.252.0. La máscara wildcard se calcula restando la máscara de subred a 255.255.255.255: (255-255).(255-255).(255-252).(255-0) = 0.0.3.255.",
+    "acronimos": [
+      {
+        "sigla": "ACL",
+        "significado": "Access Control List (Lista de Control de Acceso)",
+        "pista": "Usa máscaras wildcard (inverso de la máscara de subred) donde 0 indica coincidencia exacta y 1 comodín."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_065",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Para impedir que visitantes conecten computadoras personales a los nodos Ethernet de la oficina, se implementa Control de Acceso a la Red (NAC) basado en IEEE 802.1X. ¿Qué rol desempeña el switch de acceso dentro de esta arquitectura?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Suplicante (Supplicant): solicita acceso enviando credenciales de usuario."
+      },
+      {
+        "id": "B",
+        "texto": "Autenticador (Authenticator): controla el estado del puerto, permitiendo solo tráfico EAPOL hasta que el servidor RADIUS autorice al cliente."
+      },
+      {
+        "id": "C",
+        "texto": "Servidor de Autenticación: almacena la base de datos de contraseñas y certificados."
+      },
+      {
+        "id": "D",
+        "texto": "Autoridad Certificadora: firma los certificados digitales de los usuarios."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "En IEEE 802.1X existen tres actores: el Suplicante (dispositivo cliente), el Autenticador (switch o AP que mantiene el puerto bloqueado excepto para EAPOL) y el Servidor de Autenticación (RADIUS) que valida las credenciales.",
+    "acronimos": [
+      {
+        "sigla": "NAC",
+        "significado": "Network Access Control (Control de Acceso a la Red)",
+        "pista": "Enfoque de seguridad que autentica dispositivos y valida su postura antes de otorgar acceso a la LAN."
+      },
+      {
+        "sigla": "EAPOL",
+        "significado": "Extensible Authentication Protocol over LAN (EAP sobre LAN)",
+        "pista": "Protocolo usado entre el suplicante y el switch autenticador en IEEE 802.1X."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_066",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Durante una auditoría de endurecimiento (hardening) a los routers de borde de una empresa, se detecta acceso remoto habilitado por Telnet, contraseñas almacenadas con 'enable password' y CDP activo en la interfaz hacia el ISP. ¿Qué conjunto de medidas corrige estas vulnerabilidades?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Migrar acceso VTY exclusivamente a SSHv2 (transport input ssh), usar 'enable secret', deshabilitar CDP en la interfaz hacia el ISP (no cdp enable) y aplicar una ACL a las líneas VTY."
+      },
+      {
+        "id": "B",
+        "texto": "Habilitar HTTP para administración gráfica, mantener Telnet como respaldo y activar SNMPv1 con comunidad 'public'."
+      },
+      {
+        "id": "C",
+        "texto": "Desactivar el enrutamiento dinámico y eliminar los banners de advertencia legal."
+      },
+      {
+        "id": "D",
+        "texto": "Cambiar el puerto de Telnet al 2323 y desactivar el registro Syslog."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "El hardening de dispositivos de red exige eliminar protocolos en texto claro (Telnet -> SSHv2), proteger contraseñas privilegiadas con hash robusto ('enable secret'), desactivar protocolos de descubrimiento (CDP/LLDP) hacia redes externas no confiables y restringir el acceso VTY con ACLs.",
+    "acronimos": [
+      {
+        "sigla": "VTY",
+        "significado": "Virtual Teletype (Línea de Terminal Virtual)",
+        "pista": "Interfaz lógica de un router/switch que gestiona las sesiones de administración remota (SSH/Telnet)."
+      },
+      {
+        "sigla": "SSH",
+        "significado": "Secure Shell (Intérprete de Órdenes Seguro)",
+        "pista": "Reemplaza a Telnet cifrando credenciales y comandos administrativos en tránsito."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_067",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada ataque contra aplicaciones expuestas en red con su contramedida técnica principal:\n\n1. Inyección SQL (SQLi)\n2. Cross-Site Scripting (XSS)\n3. Cross-Site Request Forgery (CSRF)\n4. Fuerza bruta de credenciales\n\na) Tokens sincronizadores anti-CSRF y atributo SameSite en cookies de sesión.\nb) Autenticación multifactor (MFA) y bloqueo temporal ante intentos fallidos.\nc) Consultas parametrizadas (prepared statements) y filtrado con WAF.\nd) Codificación/escape de salida HTML y cabecera Content-Security-Policy (CSP).",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1c, 2d, 3a, 4b"
+      },
+      {
+        "id": "B",
+        "texto": "1d, 2c, 3a, 4b"
+      },
+      {
+        "id": "C",
+        "texto": "1c, 2a, 3d, 4b"
+      },
+      {
+        "id": "D",
+        "texto": "1b, 2d, 3a, 4c"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "SQLi se previene con consultas parametrizadas y WAF (1c); XSS con escape de salida y CSP (2d); CSRF con tokens anti-CSRF y cookies SameSite (3a); y ataques de fuerza bruta con MFA y bloqueo de cuentas (4b).",
+    "acronimos": [
+      {
+        "sigla": "WAF",
+        "significado": "Web Application Firewall (Firewall de Aplicaciones Web)",
+        "pista": "Firewall de Capa 7 que inspecciona tráfico HTTP/HTTPS para bloquear ataques como SQLi y XSS."
+      },
+      {
+        "sigla": "XSS",
+        "significado": "Cross-Site Scripting (Secuencia de Comandos en Sitios Cruzados)",
+        "pista": "Vulnerabilidad que inyecta scripts maliciosos en páginas vistas por otros usuarios."
+      },
+      {
+        "sigla": "MFA",
+        "significado": "Multi-Factor Authentication (Autenticación Multifactor)",
+        "pista": "Exige dos o más factores independientes (algo que sabes, tienes o eres) para iniciar sesión."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_068",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Caso práctico",
+    "pregunta": "La clave privada de un servidor HTTPS corporativo resulta comprometida seis meses antes de la fecha de expiración de su certificado digital. Tras solicitar su revocación ante la Autoridad Certificadora (CA), ¿qué mecanismos permiten a los navegadores verificar en tiempo real o por lista que el certificado ya no es confiable?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "CRL (Certificate Revocation List) y OCSP (Online Certificate Status Protocol)."
+      },
+      {
+        "id": "B",
+        "texto": "ARP gratuito y DNS PTR."
+      },
+      {
+        "id": "C",
+        "texto": "DHCP Snooping y RSTP."
+      },
+      {
+        "id": "D",
+        "texto": "NAT estático y BGP AS_PATH."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Cuando un certificado es revocado antes de vencer, las CAs publican su número de serie en una CRL (lista descargable periódicamente) y responden consultas en tiempo real mediante OCSP (y su optimización OCSP Stapling).",
+    "acronimos": [
+      {
+        "sigla": "CRL",
+        "significado": "Certificate Revocation List (Lista de Revocación de Certificados)",
+        "pista": "Archivo firmado por la CA que enlista certificados invalidados antes de su vencimiento."
+      },
+      {
+        "sigla": "OCSP",
+        "significado": "Online Certificate Status Protocol (Protocolo de Estado de Certificados en Línea)",
+        "pista": "Protocolo que consulta en tiempo real si un certificado digital específico sigue vigente o fue revocado."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_069",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Completamiento",
+    "pregunta": "El modelo de arquitectura de seguridad _____ se fundamenta en el principio de 'nunca confiar, siempre verificar', eliminando la confianza implícita por ubicación dentro del perímetro LAN y aplicando _____ para contener el movimiento lateral entre cargas de trabajo.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Seguridad Perimetral Tradicional — NAT estático"
+      },
+      {
+        "id": "B",
+        "texto": "Zero Trust (Confianza Cero) — microsegmentación"
+      },
+      {
+        "id": "C",
+        "texto": "Defensa por Oscuridad — ocultamiento de SSID"
+      },
+      {
+        "id": "D",
+        "texto": "Acceso Abierto — bridging transparente"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "La arquitectura Zero Trust (NIST SP 800-207) exige verificación continua de identidad, dispositivo y mínimo privilegio en cada solicitud, combinada con microsegmentación para aislar recursos y frenar el movimiento lateral tras una brecha.",
+    "acronimos": [
+      {
+        "sigla": "ZTA",
+        "significado": "Zero Trust Architecture (Arquitectura de Confianza Cero)",
+        "pista": "Paradigma de ciberseguridad que asume que la red interna puede estar comprometida y valida cada acceso."
+      }
+    ]
+  },
+  {
+    "id": "sim_net_070",
+    "area": "Implementación de Redes",
+    "subarea": "2.3 Seguridad en redes",
+    "tipo": "Caso práctico",
+    "pregunta": "Un Centro de Operaciones de Seguridad (SOC) necesita centralizar registros Syslog de routers, alertas de un IPS, eventos de autenticación de servidores RADIUS y flujos NetFlow para detectar automáticamente patrones de compromiso y exfiltración de datos. ¿Qué plataforma cumple esta función?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Un servidor NTP de estrato 1."
+      },
+      {
+        "id": "B",
+        "texto": "Una plataforma SIEM (Security Information and Event Management)."
+      },
+      {
+        "id": "C",
+        "texto": "Un conmutador de Capa 2 con VLANs estáticas."
+      },
+      {
+        "id": "D",
+        "texto": "Un balanceador de carga DNS Round-Robin."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "Un SIEM recolecta, normaliza y correlaciona eventos de seguridad provenientes de múltiples fuentes (firewalls, IPS, switches, servidores AAA, NetFlow) para generar alertas contextualizadas en tiempo real y apoyar la investigación forense en el SOC.",
+    "acronimos": [
+      {
+        "sigla": "SIEM",
+        "significado": "Security Information and Event Management (Gestión de Información y Eventos de Seguridad)",
+        "pista": "Plataforma central del SOC que correlaciona logs heterogéneos para detectar incidentes."
+      },
+      {
+        "sigla": "SOC",
+        "significado": "Security Operations Center (Centro de Operaciones de Seguridad)",
+        "pista": "Equipo e infraestructura dedicados al monitoreo continuo, detección y respuesta ante ciberamenazas."
+      }
+    ]
+  }
+]

@@ -1,0 +1,1458 @@
+[
+  {
+    "id": "sim_hw_001",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Una fuente de alimentación lineal regulada de 5 V DC (con transformador a 60 Hz, puente rectificador de onda completa, capacitor electrolítico de filtrado y regulador 7805) entrega 5.0 V sin carga, pero al conectar un circuito de 400 mA la salida cae con un rizado severo de 120 Hz visible en el osciloscopio. ¿Cuál es la falla más probable?",
+    "opciones": {
+      "A": "El regulador 7805 está operando en cortocircuito térmico permanente",
+      "B": "El capacitor electrolítico de filtrado principal perdió capacitancia o presenta una ESR excesiva",
+      "C": "Uno de los devanados del transformador cambió su frecuencia de operación de 60 Hz a 120 Hz",
+      "D": "Los cuatro diodos del puente rectificador se encuentran en circuito abierto"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Un puente rectificador de onda completa sobre una red de 60 Hz genera pulsos a 120 Hz. Si el capacitor electrolítico de filtrado está seco (baja capacitancia o alta ESR), no logra sostener el voltaje entre picos cuando hay demanda de corriente, haciendo que el voltaje a la entrada del 7805 caiga por debajo de su voltaje mínimo de operación (dropout) a 120 Hz.",
+    "acronimos": [
+      { "sigla": "DC", "significado": "Direct Current (Corriente Continua)", "pista": "Voltaje o corriente de polaridad constante en el tiempo." },
+      { "sigla": "ESR", "significado": "Equivalent Series Resistance (Resistencia Serie Equivalente)", "pista": "Resistencia interna parásita de un capacitor que aumenta al degradarse." }
+    ]
+  },
+  {
+    "id": "sim_hw_002",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Caso práctico",
+    "pregunta": "Un divisor de tensión alimentado por una fuente de 12 V DC utiliza R1 = 4 kΩ en la rama superior y R2 = 4 kΩ en la rama inferior. Si se conecta una resistencia de carga RL = 4 kΩ en paralelo con R2, ¿cuál es el voltaje real que recibe la carga?",
+    "opciones": {
+      "A": "6.0 V",
+      "B": "4.0 V",
+      "C": "3.0 V",
+      "D": "8.0 V"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Sin carga, el divisor entrega V_TH = 12 V × (4 / 8) = 6 V y tiene R_TH = 4 kΩ || 4 kΩ = 2 kΩ. Al conectar RL = 4 kΩ en paralelo con R2, la resistencia inferior equivalente es R2 || RL = (4 × 4)/(4 + 4) = 2 kΩ. Por tanto, V_out = 12 V × [2 kΩ / (4 kΩ + 2 kΩ)] = 12 × (2/6) = 4.0 V.",
+    "acronimos": [
+      { "sigla": "DC", "significado": "Direct Current (Corriente Continua)", "pista": "Alimentación de tensión constante." },
+      { "sigla": "VTH", "significado": "Voltaje de Thévenin", "pista": "Voltaje equivalente en circuito abierto visto desde las terminales de carga." },
+      { "sigla": "RTH", "significado": "Resistencia de Thévenin", "pista": "Resistencia equivalente vista desde la carga con fuentes independientes apagadas." }
+    ]
+  },
+  {
+    "id": "sim_hw_003",
+    "diagrama": "rc-lowpass-filter",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Caso práctico",
+    "pregunta": "Para eliminar ruido de alta frecuencia antes de ingresar una señal analógica a un ADC, se diseña un filtro pasa-bajas RC pasivo de primer orden con R = 1.59 kΩ y C = 100 nF. ¿Cuál es aproximadamente la frecuencia de corte (-3 dB) de este filtro?",
+    "opciones": {
+      "A": "100 Hz",
+      "B": "500 Hz",
+      "C": "1 kHz",
+      "D": "10 kHz"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "La frecuencia de corte de un filtro RC de primer orden es f_c = 1 / (2πRC). Sustituyendo R = 1590 Ω y C = 100 × 10^-9 F: 2πRC ≈ 6.2832 × 1590 × 10^-7 ≈ 0.000999 s, por lo que f_c ≈ 1 / 0.000999 ≈ 1001 Hz ≈ 1 kHz.",
+    "acronimos": [
+      { "sigla": "ADC", "significado": "Analog-to-Digital Converter (Convertidor Analógico-Digital)", "pista": "Transforma señales continuas en valores binarios discretos." },
+      { "sigla": "RC", "significado": "Resistor-Capacitor", "pista": "Red pasiva de primer orden cuya respuesta depende de la constante de tiempo τ = R·C." },
+      { "sigla": "dB", "significado": "Decibel", "pista": "Unidad logarítmica; -3 dB corresponde a la caída al 70.7% de la amplitud (mitad de potencia)." }
+    ]
+  },
+  {
+    "id": "sim_hw_004",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relaciona cada dispositivo semiconductor con su característica operativa principal:\n1. Diodo Zener\n2. MOSFET de canal N\n3. BJT tipo NPN\n4. Diodo Schottky\n\na. Dispositivo controlado por voltaje con compuerta aislada y muy alta impedancia de entrada\nb. Opera en región de ruptura inversa controlada para mantener un voltaje de referencia estable\nc. Unión metal-semiconductor con conmutación ultrarrápida y baja caída directa (~0.2–0.3 V)\nd. Dispositivo controlado por corriente donde I_C = β·I_B en región activa",
+    "opciones": {
+      "A": "1a, 2b, 3c, 4d",
+      "B": "1c, 2a, 3d, 4b",
+      "C": "1b, 2d, 3a, 4c",
+      "D": "1b, 2a, 3d, 4c"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "El diodo Zener regula voltaje en polarización inversa (1b); el MOSFET es controlado por campo eléctrico/voltaje V_GS con altísima impedancia de compuerta (2a); el BJT es controlado por corriente de base (3d); y el diodo Schottky ofrece baja caída directa y recuperación muy rápida (4c).",
+    "acronimos": [
+      { "sigla": "MOSFET", "significado": "Metal-Oxide-Semiconductor Field-Effect Transistor", "pista": "Transistor de efecto de campo controlado por voltaje en la compuerta." },
+      { "sigla": "BJT", "significado": "Bipolar Junction Transistor (Transistor de Unión Bipolar)", "pista": "Transistor controlado por corriente de base (NPN o PNP)." },
+      { "sigla": "NPN", "significado": "Negativo-Positivo-Negativo", "pista": "Estructura de dopaje de un transistor bipolar que conduce al polarizar positivamente la base respecto al emisor." }
+    ]
+  },
+  {
+    "id": "sim_hw_005",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Caso práctico",
+    "pregunta": "Un amplificador operacional ideal (Op-Amp) alimentado con ±12 V se configura como amplificador inversor con R_in = 10 kΩ y resistencia de realimentación R_f = 47 kΩ. Si se aplica un voltaje de entrada V_in = +0.2 V, ¿cuál será el voltaje de salida V_out?",
+    "opciones": {
+      "A": "+0.94 V",
+      "B": "+1.14 V",
+      "C": "-1.14 V",
+      "D": "-0.94 V"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "En configuración inversora, la ganancia de voltaje es A_v = -R_f / R_in = -47 kΩ / 10 kΩ = -4.7. Al aplicar V_in = +0.2 V, la salida resulta V_out = (-4.7)(0.2 V) = -0.94 V, valor dentro del rango lineal de alimentación (±12 V).",
+    "acronimos": [
+      { "sigla": "Op-Amp", "significado": "Operational Amplifier (Amplificador Operacional)", "pista": "Amplificador diferencial de muy alta ganancia usado con realimentación negativa." }
+    ]
+  },
+  {
+    "id": "sim_hw_006",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordena secuencialmente los pasos para obtener el circuito equivalente de Thévenin de una red resistiva lineal con fuentes independientes respecto a una resistencia de carga RL:\n1. Apagar las fuentes independientes (sustituir fuentes de voltaje por cortocircuito y de corriente por circuito abierto)\n2. Retirar la resistencia de carga RL entre las terminales de análisis A y B\n3. Reconectar la carga RL en serie con la fuente V_TH y la resistencia R_TH\n4. Determinar el voltaje en circuito abierto V_TH entre las terminales A y B\n5. Calcular la resistencia equivalente R_TH vista desde las terminales A y B",
+    "opciones": {
+      "A": "2, 1, 4, 5, 3",
+      "B": "1, 2, 5, 4, 3",
+      "C": "2, 4, 1, 5, 3",
+      "D": "4, 2, 1, 5, 3"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "Primero se retira la carga RL (2) para dejar las terminales A-B abiertas; con las fuentes activas se calcula el voltaje de circuito abierto V_TH (4); luego se apagan las fuentes independientes (1) para hallar la resistencia equivalente R_TH (5); y finalmente se reconecta RL al circuito equivalente (3).",
+    "acronimos": [
+      { "sigla": "VTH", "significado": "Voltaje de Thévenin", "pista": "Voltaje medido en circuito abierto en las terminales de salida." },
+      { "sigla": "RTH", "significado": "Resistencia de Thévenin", "pista": "Impedancia equivalente de la red pasiva vista desde las terminales." }
+    ]
+  },
+  {
+    "id": "sim_hw_007",
+    "diagrama": "mosfet-relay-driver",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Un circuito de control con un MOSFET de canal N acciona la bobina de un relevador electromecánico de 12 V DC. Tras varios ciclos de encendido y apagado, el MOSFET falla en cortocircuito entre drenador y surtidor. ¿Qué elemento de protección se omitió en el diseño?",
+    "opciones": {
+      "A": "Un diodo flyback (rueda libre) en antiparalelo con la bobina del relevador",
+      "B": "Una resistencia de 1 MΩ en serie con la bobina del relevador",
+      "C": "Un capacitor electrolítico de 1000 µF entre drenador y compuerta",
+      "D": "Un transformador elevador entre el drenador y la alimentación de 12 V"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "Al interrumpir bruscamente la corriente en una carga inductiva, la bobina genera un pico de fuerza contraelectromotriz (V = -L·di/dt) que supera el voltaje de ruptura V_DS del MOSFET. Un diodo flyback en antiparalelo con la bobina proporciona un camino de circulación segura para disipar la energía almacenada.",
+    "acronimos": [
+      { "sigla": "MOSFET", "significado": "Metal-Oxide-Semiconductor Field-Effect Transistor", "pista": "Interruptor electrónico de estado sólido sensible a picos de voltaje V_DS." },
+      { "sigla": "VDS", "significado": "Drain-to-Source Voltage (Voltaje Drenador-Surtidor)", "pista": "Tensión máxima que soporta un MOSFET en estado bloqueado." },
+      { "sigla": "DC", "significado": "Direct Current (Corriente Continua)", "pista": "Alimentación utilizada en bobinas de relevadores de control." }
+    ]
+  },
+  {
+    "id": "sim_hw_008",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Caso práctico",
+    "pregunta": "Un pin GPIO de un microcontrolador entrega 3.3 V en estado lógico alto y se desea conectar un diodo LED rojo con caída directa V_f = 1.8 V y corriente nominal I_f = 15 mA. ¿Qué resistencia limitadora en serie debe colocarse?",
+    "opciones": {
+      "A": "47 Ω",
+      "B": "220 Ω",
+      "C": "330 Ω",
+      "D": "100 Ω"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "Por Ley de Voltajes de Kirchhoff y Ley de Ohm: R = (V_CC - V_f) / I_f = (3.3 V - 1.8 V) / 0.015 A = 1.5 V / 0.015 A = 100 Ω.",
+    "acronimos": [
+      { "sigla": "GPIO", "significado": "General-Purpose Input/Output (Entrada/Salida de Propósito General)", "pista": "Pin digital configurable de un microcontrolador." },
+      { "sigla": "LED", "significado": "Light-Emitting Diode (Diodo Emisor de Luz)", "pista": "Semiconductor que requiere limitar su corriente directa mediante resistor." }
+    ]
+  },
+  {
+    "id": "sim_hw_009",
+    "diagrama": "wheatstone-opamp",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Completamiento",
+    "pregunta": "Al acondicionar la señal milivoltaica de un puente de Wheatstone con un amplificador de instrumentación basado en Op-Amp, una elevada relación de rechazo en modo común (_____) garantiza amplificar la señal _____ de interés mientras atenúa el ruido electromagnético inducido por igual en ambos cables.",
+    "opciones": {
+      "A": "THD — armónica",
+      "B": "CMRR — diferencial",
+      "C": "SNR — continua",
+      "D": "PSRR — resonante"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "El CMRR (Common-Mode Rejection Ratio) mide la capacidad de un amplificador diferencial o de instrumentación para rechazar señales presentes simultáneamente con la misma fase y amplitud en ambas entradas (ruido en modo común) y amplificar exclusivamente la diferencia entre ellas (señal diferencial).",
+    "acronimos": [
+      { "sigla": "CMRR", "significado": "Common-Mode Rejection Ratio (Relación de Rechazo en Modo Común)", "pista": "Cociente entre ganancia diferencial y ganancia en modo común, expresado en dB." },
+      { "sigla": "Op-Amp", "significado": "Operational Amplifier (Amplificador Operacional)", "pista": "Bloque base de los amplificadores de instrumentación." }
+    ]
+  },
+  {
+    "id": "sim_hw_010",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Caso práctico",
+    "pregunta": "Tres resistencias de 6 Ω, 12 Ω y 4 Ω se conectan en paralelo a una fuente de 12 V DC. ¿Cuál es la resistencia equivalente del conjunto y la corriente total suministrada por la fuente?",
+    "opciones": {
+      "A": "R_eq = 22 Ω, I_total = 0.55 A",
+      "B": "R_eq = 3 Ω, I_total = 4 A",
+      "C": "R_eq = 2 Ω, I_total = 6 A",
+      "D": "R_eq = 4 Ω, I_total = 3 A"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "La conductancia total es 1/R_eq = 1/6 + 1/12 + 1/4 = 2/12 + 1/12 + 3/12 = 6/12 = 1/2, por lo que R_eq = 2 Ω. Aplicando la Ley de Ohm (o sumando corrientes por LCK: 2 A + 1 A + 3 A), I_total = 12 V / 2 Ω = 6 A.",
+    "acronimos": [
+      { "sigla": "DC", "significado": "Direct Current (Corriente Continua)", "pista": "Fuente de voltaje constante." },
+      { "sigla": "LCK", "significado": "Ley de Corrientes de Kirchhoff", "pista": "La suma de corrientes que entran a un nodo es igual a la suma de las que salen." }
+    ]
+  },
+  {
+    "id": "sim_hw_011",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Caso práctico",
+    "pregunta": "Un circuito RLC en serie está compuesto por R = 50 Ω, L = 1 mH y C = 10 µF. ¿Cuál es su frecuencia de resonancia f_0 y cuál es la impedancia total del circuito exactamente en resonancia?",
+    "opciones": {
+      "A": "f_0 ≈ 503 Hz, Z = 100 Ω",
+      "B": "f_0 ≈ 1.59 kHz, Z = 0 Ω",
+      "C": "f_0 ≈ 15.9 kHz, Z = 50 Ω",
+      "D": "f_0 ≈ 1.59 kHz, Z = 50 Ω"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "En resonancia serie, X_L = X_C y se cancelan mutuamente, dejando Z = R = 50 Ω. La frecuencia de resonancia es f_0 = 1 / (2π√(LC)) = 1 / (2π√(10^-3 × 10^-5)) = 1 / (2π × 10^-4) ≈ 1591.5 Hz ≈ 1.59 kHz.",
+    "acronimos": [
+      { "sigla": "RLC", "significado": "Resistor-Inductor-Capacitor", "pista": "Circuito resonante de segundo orden usado en filtrado y sintonización." }
+    ]
+  },
+  {
+    "id": "sim_hw_012",
+    "diagrama": "linear-psu-stages",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relaciona cada etapa de una fuente de alimentación lineal regulada con la función que desempeña:\n1. Transformador reductor\n2. Puente rectificador de diodos\n3. Filtro capacitivo\n4. Regulador lineal (LDO o serie 78xx)\n\na. Convierte la señal alterna en corriente directa pulsante de onda completa\nb. Reduce el voltaje de rizado almacenando energía entre los picos de la onda rectificada\nc. Proporciona aislamiento galvánico y reduce la amplitud de la tensión AC de red\nd. Mantiene un voltaje DC constante ante variaciones de entrada o de corriente de carga",
+    "opciones": {
+      "A": "1c, 2b, 3a, 4d",
+      "B": "1c, 2a, 3b, 4d",
+      "C": "1a, 2c, 3b, 4d",
+      "D": "1c, 2a, 3d, 4b"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "El orden funcional en una fuente lineal es: transformador para reducir tensión y aislar (1c), puente de diodos para rectificar a DC pulsante (2a), capacitor para suavizar el rizado (3b) y regulador para estabilizar la salida DC final (4d).",
+    "acronimos": [
+      { "sigla": "LDO", "significado": "Low-Dropout Regulator (Regulador de Baja Caída)", "pista": "Regulador lineal capaz de operar con poca diferencia entre V_in y V_out." },
+      { "sigla": "AC", "significado": "Alternating Current (Corriente Alterna)", "pista": "Corriente que invierte periódicamente su sentido, como la red eléctrica." },
+      { "sigla": "DC", "significado": "Direct Current (Corriente Continua)", "pista": "Salida constante requerida por la mayoría de los circuitos electrónicos." }
+    ]
+  },
+  {
+    "id": "sim_hw_013",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Un transistor BJT NPN configurado como interruptor para conmutar una carga de 500 mA alimentada a 12 V se sobrecalienta rápidamente. Al medir con multímetro en estado encendido se obtiene V_CE = 4.2 V. ¿Cuál es el diagnóstico técnico?",
+    "opciones": {
+      "A": "El transistor está en corte y la corriente circula únicamente por el emisor",
+      "B": "La corriente de base es insuficiente, por lo que el transistor opera en región activa en vez de saturación y disipa 2.1 W",
+      "C": "El voltaje V_CE = 4.2 V es normal en saturación profunda para transistores de silicio",
+      "D": "La ganancia β del transistor es infinita y está provocando avalancha térmica inversa"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "En saturación, un BJT de silicio debe presentar V_CE(sat) ≈ 0.2 V. Medir V_CE = 4.2 V con I_C = 0.5 A indica que el transistor quedó en región activa por falta de corriente de base (I_B < I_C / β_min), disipando P ≈ V_CE × I_C = 4.2 × 0.5 = 2.1 W en calor.",
+    "acronimos": [
+      { "sigla": "BJT", "significado": "Bipolar Junction Transistor", "pista": "Requiere suficiente corriente de base para entrar en saturación." },
+      { "sigla": "NPN", "significado": "Negativo-Positivo-Negativo", "pista": "Tipo de transistor bipolar donde el colector se polariza positivamente respecto al emisor." },
+      { "sigla": "VCE", "significado": "Collector-to-Emitter Voltage (Voltaje Colector-Emisor)", "pista": "Debe ser mínimo (~0.2 V) cuando el BJT actúa como interruptor cerrado." }
+    ]
+  },
+  {
+    "id": "sim_hw_014",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Caso práctico",
+    "pregunta": "Un convertidor DC-DC reductor tipo Buck ideal opera en modo de conducción continua (CCM) con un voltaje de entrada V_in = 24 V y una señal de conmutación PWM con ciclo de trabajo D = 25%. ¿Cuál es el voltaje de salida V_out esperado?",
+    "opciones": {
+      "A": "18 V",
+      "B": "12 V",
+      "C": "6 V",
+      "D": "3 V"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "En un convertidor Buck ideal operando en modo de conducción continua, la relación de conversión es V_out = D × V_in. Con D = 0.25 y V_in = 24 V, se obtiene V_out = 0.25 × 24 V = 6 V.",
+    "acronimos": [
+      { "sigla": "DC", "significado": "Direct Current (Corriente Continua)", "pista": "Los convertidores Buck reducen un nivel de voltaje DC a otro menor con alta eficiencia." },
+      { "sigla": "CCM", "significado": "Continuous Conduction Mode (Modo de Conducción Continua)", "pista": "Modo donde la corriente del inductor nunca cae a cero durante el periodo PWM." },
+      { "sigla": "PWM", "significado": "Pulse-Width Modulation (Modulación por Ancho de Pulso)", "pista": "Controla el tiempo de encendido del interruptor para regular el voltaje." }
+    ]
+  },
+  {
+    "id": "sim_hw_015",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Completamiento",
+    "pregunta": "Antes de medir una señal digital de alta velocidad con un osciloscopio utilizando una sonda atenuadora 10x, se conecta la punta a la salida cuadrada de referencia del equipo para ajustar el capacitor de _____ de la sonda, eliminando distorsiones por desajuste de _____.",
+    "opciones": {
+      "A": "desacoplo — frecuencia de muestreo",
+      "B": "compensación — capacitancia de entrada",
+      "C": "filtrado — voltaje de offset",
+      "D": "resonancia — corriente alterna"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Las sondas 10x forman un divisor resistivo-capacitivo con la impedancia de entrada del osciloscopio. Ajustar el trimmer de compensación iguala las constantes de tiempo RC de la sonda y del canal del osciloscopio, evitando subcompensación (flancos redondeados) o sobrecompensación (picos en los flancos).",
+    "acronimos": [
+      { "sigla": "RC", "significado": "Resistor-Capacitor", "pista": "La compensación de sonda busca igualar R1·C1 = R2·C2." }
+    ]
+  },
+  {
+    "id": "sim_hw_016",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Caso práctico",
+    "pregunta": "Un transformador entrega 12 V_RMS en su devanado secundario y alimenta un rectificador de onda completa en puente construido con cuatro diodos de silicio (V_d = 0.7 V cada uno). ¿Cuál es el voltaje pico aproximado a la salida del puente rectificador?",
+    "opciones": {
+      "A": "10.6 V",
+      "B": "12.0 V",
+      "C": "15.6 V",
+      "D": "17.0 V"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "El voltaje pico en el secundario es V_p = V_RMS × √2 = 12 × 1.4142 ≈ 16.97 V. En cada semiciclo conducen dos diodos en serie, restando 2 × 0.7 V = 1.4 V. Por lo tanto, V_p(salida) ≈ 16.97 - 1.4 = 15.57 V ≈ 15.6 V.",
+    "acronimos": [
+      { "sigla": "RMS", "significado": "Root Mean Square (Valor Eficaz)", "pista": "Valor equivalente en potencia DC de una señal senoidal: V_p = V_RMS × √2." }
+    ]
+  },
+  {
+    "id": "sim_hw_017",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordena el flujo de potencia y control en una fuente conmutada aislada (SMPS) desde la entrada de red AC hasta la regulación de la salida DC:\n1. Transformación de alta frecuencia y aislamiento galvánico mediante transformador de núcleo de ferrita\n2. Filtrado EMI, rectificación de red AC y filtrado capacitivo de alto voltaje DC\n3. Realimentación aislada mediante optocoplador hacia el controlador PWM para ajustar el ciclo de trabajo\n4. Conmutación rápida del voltaje DC mediante un MOSFET controlado por PWM\n5. Rectificación con diodos rápidos (Schottky) y filtrado LC en el secundario",
+    "opciones": {
+      "A": "2, 4, 1, 5, 3",
+      "B": "2, 1, 4, 5, 3",
+      "C": "4, 2, 1, 3, 5",
+      "D": "2, 4, 5, 1, 3"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "En una SMPS aislada, la red AC se filtra contra EMI y se rectifica a DC de alto voltaje (2); luego un MOSFET la conmuta a decenas de kHz (4) para alimentar un transformador compacto de ferrita (1); en el secundario se rectifica y filtra (5); finalmente un lazo con optocoplador realimenta el error al controlador PWM manteniendo el aislamiento (3).",
+    "acronimos": [
+      { "sigla": "SMPS", "significado": "Switched-Mode Power Supply (Fuente de Alimentación Conmutada)", "pista": "Fuente de alta eficiencia que opera conmutando energía a alta frecuencia." },
+      { "sigla": "EMI", "significado": "Electromagnetic Interference (Interferencia Electromagnética)", "pista": "Ruido eléctrico conducido o radiado que debe filtrarse en la entrada." },
+      { "sigla": "PWM", "significado": "Pulse-Width Modulation (Modulación por Ancho de Pulso)", "pista": "Señal que modula la conducción del transistor de potencia." }
+    ]
+  },
+  {
+    "id": "sim_hw_018",
+    "area": "Implementación de Hardware",
+    "subarea": "1.1 Circuitos eléctricos y electrónica",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Un amplificador operacional en configuración seguidor de voltaje está alimentado con fuente simple (+5 V y GND). Al inyectarle una señal senoidal de ±1 V centrada en 0 V, la salida reproduce correctamente los semiciclos positivos pero recorta por completo todos los semiciclos negativos en 0 V. ¿Cómo se corrige este comportamiento?",
+    "opciones": {
+      "A": "Reemplazar el Op-Amp por una compuerta lógica inversora CMOS",
+      "B": "Alimentar el Op-Amp con fuente simétrica (ej. ±5 V) o agregar un voltaje de polarización (offset/tierra virtual) a la señal de entrada",
+      "C": "Conectar la entrada no inversora directamente a GND",
+      "D": "Aumentar la resistencia de realimentación a 10 MΩ"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Un Op-Amp nunca puede generar en su salida un voltaje fuera de sus rieles de alimentación. Con alimentación simple de 0 V a +5 V, cualquier excursión negativa de la entrada se recorta cerca de 0 V. Se resuelve usando fuente dual (±V) o desplazando el nivel DC de la señal a V_CC/2 (2.5 V).",
+    "acronimos": [
+      { "sigla": "Op-Amp", "significado": "Operational Amplifier (Amplificador Operacional)", "pista": "Su excursión de salida está limitada por sus rieles de alimentación." },
+      { "sigla": "GND", "significado": "Ground (Tierra / Referencia de 0 V)", "pista": "Nodo común de referencia eléctrica del circuito." }
+    ]
+  },
+  {
+    "id": "sim_hw_019",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Una computadora de escritorio pierde la fecha, la hora del sistema y el orden de arranque configurado en el BIOS cada vez que se desconecta de la toma de corriente, mostrando el mensaje 'CMOS Checksum Bad' al encenderla nuevamente. ¿Cuál es la causa más probable y la solución?",
+    "opciones": {
+      "A": "El disco duro principal tiene sectores dañados; debe formatearse a bajo nivel",
+      "B": "La batería de respaldo del CMOS (tipo CR2032) está agotada; debe reemplazarse y reconfigurar el BIOS",
+      "C": "La memoria RAM principal es incompatible con el bus frontal; debe sustituirse el módulo DIMM",
+      "D": "El ventilador de la CPU falla y el sistema reinicia el firmware por protección térmica"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "La configuración del BIOS y el reloj en tiempo real (RTC) se mantienen energizados cuando el equipo está apagado gracias a una batería de litio de 3 V (CR2032) en la tarjeta madre. Al agotarse, la memoria CMOS pierde sus datos y genera un error de suma de verificación (checksum).",
+    "acronimos": [
+      { "sigla": "BIOS", "significado": "Basic Input/Output System (Sistema Básico de Entrada/Salida)", "pista": "Firmware encargado de inicializar el hardware al encender la PC." },
+      { "sigla": "CMOS", "significado": "Complementary Metal-Oxide-Semiconductor", "pista": "Memoria de bajísimo consumo respaldada por batería que guarda la configuración del BIOS." }
+    ]
+  },
+  {
+    "id": "sim_hw_020",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Caso práctico",
+    "pregunta": "Durante el mantenimiento de un servidor industrial legado, un técnico conecta dos unidades de disco duro con interfaz PATA (IDE) en el mismo cable plano conectado al canal primario de la tarjeta madre, pero al encender el equipo el BIOS no reconoce ninguna de las dos unidades. ¿Qué configuración física debe verificar y corregir?",
+    "opciones": {
+      "A": "Desconectar la batería CMOS para forzar la detección automática SATA",
+      "B": "Cambiar el voltaje de la fuente de alimentación de 115 V a 230 V",
+      "C": "Instalar ambos discos con el jumper en posición Master para balancear la carga del bus",
+      "D": "Configurar los jumpers traseros dejando una unidad como Master (MA) y la otra como Slave (SL), o ambas en Cable Select (CS) con cable de 80 hilos"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "En un canal PATA (IDE) paralelo pueden coexistir hasta dos dispositivos compartiendo el mismo bus; para evitar colisiones de direccionamiento, es obligatorio asignar roles distintos mediante jumpers: uno como Maestro (Master) y otro como Esclavo (Slave), o ambos en Cable Select (CS) si el cable lo soporta.",
+    "acronimos": [
+      { "sigla": "PATA", "significado": "Parallel Advanced Technology Attachment", "pista": "Interfaz paralela heredada para discos duros y unidades ópticas con cables planos de 40/80 hilos." },
+      { "sigla": "IDE", "significado": "Integrated Drive Electronics", "pista": "Nombre comercial común de la interfaz PATA." },
+      { "sigla": "BIOS", "significado": "Basic Input/Output System", "pista": "Detecta las unidades conectadas durante el arranque." }
+    ]
+  },
+  {
+    "id": "sim_hw_021",
+    "diagrama": "cpu-blocks-blank",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Completamiento",
+    "pregunta": "Dentro de la arquitectura de Von Neumann, la Unidad Central de Procesamiento (CPU) se divide funcionalmente en dos componentes principales: la _____, que ejecuta operaciones aritméticas y lógicas sobre los datos, y la _____, que busca, decodifica las instrucciones y coordina las señales de control del sistema.",
+    "opciones": {
+      "A": "ALU — CU",
+      "B": "RAM — ROM",
+      "C": "MMU — DMA",
+      "D": "GPU — FPU"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "La CPU integra esencialmente la ALU (Arithmetic Logic Unit) para realizar cálculos y comparaciones, junto con la CU (Control Unit) para interpretar instrucciones y orquestar el flujo de datos entre registros, memoria y periféricos.",
+    "acronimos": [
+      { "sigla": "CPU", "significado": "Central Processing Unit (Unidad Central de Procesamiento)", "pista": "Cerebro del sistema de cómputo formado por ALU, CU y registros." },
+      { "sigla": "ALU", "significado": "Arithmetic Logic Unit (Unidad Aritmético-Lógica)", "pista": "Realiza sumas, restas, desplazamientos y operaciones booleanas." },
+      { "sigla": "CU", "significado": "Control Unit (Unidad de Control)", "pista": "Decodifica instrucciones y genera las señales de sincronización y control." }
+    ]
+  },
+  {
+    "id": "sim_hw_022",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordena cronológicamente los eventos del proceso de arranque de una computadora personal desde que se presiona el botón de encendido hasta cargar el sistema operativo:\n1. El firmware ejecuta el autodiagnóstico POST para verificar CPU, memoria RAM y adaptador de video\n2. La fuente de alimentación estabiliza los voltajes y envía la señal Power Good a la tarjeta madre\n3. El gestor de arranque (bootloader) carga el núcleo (kernel) del sistema operativo en la RAM\n4. La CPU salta al vector de reinicio y comienza a ejecutar el firmware BIOS/UEFI\n5. El firmware localiza el dispositivo de arranque configurado y carga el gestor de arranque",
+    "opciones": {
+      "A": "2, 4, 1, 5, 3",
+      "B": "4, 2, 1, 5, 3",
+      "C": "2, 1, 4, 5, 3",
+      "D": "2, 4, 5, 1, 3"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "Al encender el equipo, la fuente primero emite Power Good (2) liberando el reset de la CPU; esta ejecuta el BIOS/UEFI (4), el cual corre el POST (1), busca el medio booteable y transfiere control al bootloader (5), y finalmente este carga el kernel del sistema operativo en RAM (3).",
+    "acronimos": [
+      { "sigla": "POST", "significado": "Power-On Self-Test (Autoprueba de Encendido)", "pista": "Rutina diagnóstica inicial del BIOS/UEFI que comprueba el hardware esencial." },
+      { "sigla": "UEFI", "significado": "Unified Extensible Firmware Interface", "pista": "Sucesor moderno del BIOS clásico con soporte para particiones GPT y Secure Boot." },
+      { "sigla": "RAM", "significado": "Random Access Memory (Memoria de Acceso Aleatorio)", "pista": "Memoria principal volátil donde se carga el sistema operativo." }
+    ]
+  },
+  {
+    "id": "sim_hw_023",
+    "diagrama": "usb-token-packet",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Caso práctico",
+    "pregunta": "Al analizar el tráfico de un bus USB con un analizador de protocolos, se inspecciona un paquete tipo Token compuesto por los campos SYNC, PID, ADDR, ENDP y CRC5. ¿Qué información especifican exactamente los campos PID, ADDR y ENDP?",
+    "opciones": {
+      "A": "PID indica el tipo de paquete (ej. IN, OUT, SETUP), ADDR identifica la dirección del dispositivo USB y ENDP selecciona el punto final (endpoint) dentro del dispositivo",
+      "B": "PID indica la velocidad en Mbps, ADDR define la dirección IP del periférico y ENDP marca el fin de archivo",
+      "C": "PID contiene la carga útil de datos, ADDR es la dirección MAC del hub y ENDP es el código de corrección de errores",
+      "D": "PID indica la prioridad de interrupción, ADDR selecciona el canal DMA y ENDP establece el voltaje de alimentación"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "En el protocolo USB, todo paquete inicia con SYNC y un PID (Packet Identifier) de 8 bits (4 bits + 4 de complemento) que define su tipo. En un paquete Token, ADDR (7 bits) direcciona hasta 127 dispositivos en el bus y ENDP (4 bits) selecciona el endpoint específico (buffer de entrada/salida) dentro de ese dispositivo.",
+    "acronimos": [
+      { "sigla": "USB", "significado": "Universal Serial Bus", "pista": "Bus serial estándar con arquitectura maestro-esclavo (Host-Device)." },
+      { "sigla": "PID", "significado": "Packet Identifier (Identificador de Paquete)", "pista": "Campo que especifica si el paquete USB es Token, Data, Handshake o Special." },
+      { "sigla": "ADDR", "significado": "Address (Dirección de Dispositivo)", "pista": "Campo de 7 bits que identifica un dispositivo único en el bus USB." },
+      { "sigla": "ENDP", "significado": "Endpoint (Punto Final)", "pista": "Campo de 4 bits que identifica un canal lógico de comunicación dentro del dispositivo USB." }
+    ]
+  },
+  {
+    "id": "sim_hw_024",
+    "diagrama": "san-storage-blank",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Completamiento",
+    "pregunta": "En centros de datos de alta disponibilidad, una arquitectura de red dedicada de alta velocidad que interconecta servidores con arreglos de almacenamiento masivo presentando los discos a nivel de bloques mediante Fibre Channel o iSCSI se conoce como _____.",
+    "opciones": {
+      "A": "SAN",
+      "B": "PAN",
+      "C": "BIOS",
+      "D": "ALU"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "Una SAN (Storage Area Network) es una red especializada de baja latencia que ofrece acceso a almacenamiento a nivel de bloques directamente a los servidores, a diferencia de un NAS que comparte archivos a nivel de sistema de archivos (SMB/NFS) sobre una LAN convencional.",
+    "acronimos": [
+      { "sigla": "SAN", "significado": "Storage Area Network (Red de Área de Almacenamiento)", "pista": "Red dedicada de acceso a almacenamiento por bloques (Fibre Channel / iSCSI)." },
+      { "sigla": "iSCSI", "significado": "Internet Small Computer Systems Interface", "pista": "Protocolo que encapsula comandos SCSI sobre redes TCP/IP." }
+    ]
+  },
+  {
+    "id": "sim_hw_025",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Caso práctico",
+    "pregunta": "Un circuito combinacional de tres entradas (A, B, C) tiene su salida definida por la suma de mintérminos F(A, B, C) = Σm(1, 3, 5, 6, 7). Al simplificar la función mediante un Mapa de Karnaugh, ¿cuál es la expresión mínima en suma de productos (SOP)?",
+    "opciones": {
+      "A": "F = A·C + B",
+      "B": "F = A + B·C",
+      "C": "F = C' + A·B",
+      "D": "F = C + A·B"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "Los mintérminos m(1)=001, m(3)=011, m(5)=101 y m(7)=111 forman un grupo de 4 celdas donde C = 1, reduciéndose al término C. El mintérmino restante m(6)=110 se agrupa con m(7)=111 formando un par donde A = 1 y B = 1, dando A·B. Resultado mínimo: F = C + A·B.",
+    "acronimos": [
+      { "sigla": "SOP", "significado": "Sum of Products (Suma de Productos)", "pista": "Forma canónica o simplificada OR de términos AND." }
+    ]
+  },
+  {
+    "id": "sim_hw_026",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relaciona cada tecnología de memoria en la jerarquía de una computadora con su principio físico y uso habitual:\n1. SRAM\n2. DRAM\n3. Flash / EEPROM\n4. SSD NVMe\n\na. Celda de 1 transistor y 1 capacitor que requiere refresco periódico; usada como memoria RAM principal\nb. Celda de 6 transistores (biestable) sin refresco y latencia mínima; usada en cachés L1/L2\nc. Almacenamiento secundario no volátil conectado directamente al bus PCIe\nd. Memoria no volátil borrable eléctricamente empleada para guardar firmware BIOS/UEFI",
+    "opciones": {
+      "A": "1a, 2b, 3d, 4c",
+      "B": "1b, 2a, 3d, 4c",
+      "C": "1b, 2a, 3c, 4d",
+      "D": "1d, 2a, 3b, 4c"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "La SRAM emplea flip-flops (6T) y se usa en caché (1b); la DRAM usa capacitores que deben refrescarse y forma la RAM principal (2a); la memoria Flash/EEPROM almacena firmware no volátil (3d); y los SSD NVMe son almacenamiento secundario de alta velocidad sobre PCIe (4c).",
+    "acronimos": [
+      { "sigla": "SRAM", "significado": "Static Random Access Memory", "pista": "Memoria estática rápida y costosa usada en caché de CPU." },
+      { "sigla": "DRAM", "significado": "Dynamic Random Access Memory", "pista": "Memoria dinámica de alta densidad que requiere ciclos de refresco." },
+      { "sigla": "NVMe", "significado": "Non-Volatile Memory Express", "pista": "Protocolo de almacenamiento de alta velocidad sobre bus PCIe." },
+      { "sigla": "SSD", "significado": "Solid-State Drive (Unidad de Estado Sólido)", "pista": "Almacenamiento secundario basado en memoria Flash sin partes móviles." }
+    ]
+  },
+  {
+    "id": "sim_hw_027",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Caso práctico",
+    "pregunta": "Una ALU de 8 bits utiliza representación en complemento a dos para enteros con signo. ¿Qué valor decimal representa el registro que contiene el patrón binario `11101100`?",
+    "opciones": {
+      "A": "-20",
+      "B": "-19",
+      "C": "-44",
+      "D": "+236"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "Como el bit más significativo (MSB) es 1, el número es negativo. Para hallar su magnitud se invierten los bits (`00010011` = 19) y se suma 1 (`00010100` = 20). Por tanto, `11101100` equivale a -20 (comprobación: -128 + 64 + 32 + 8 + 4 = -20).",
+    "acronimos": [
+      { "sigla": "ALU", "significado": "Arithmetic Logic Unit (Unidad Aritmético-Lógica)", "pista": "Ejecuta operaciones en complemento a dos." },
+      { "sigla": "MSB", "significado": "Most Significant Bit (Bit Más Significativo)", "pista": "En complemento a dos indica el signo (0 positivo, 1 negativo)." }
+    ]
+  },
+  {
+    "id": "sim_hw_028",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Caso práctico",
+    "pregunta": "Al diseñar un controlador secuencial en una FPGA mediante una Máquina de Estados Finitos (FSM), ¿qué diferencia estructural distingue a una máquina de Moore frente a una máquina de Mealy?",
+    "opciones": {
+      "A": "La máquina de Moore no utiliza señal de reloj, mientras que la de Mealy es estrictamente síncrona",
+      "B": "En Moore las salidas cambian asincrónicamente ante cualquier pulso de entrada antes del flanco de reloj",
+      "C": "La máquina de Mealy requiere siempre más estados que la máquina de Moore equivalente",
+      "D": "En Moore las salidas dependen únicamente del estado actual; en Mealy las salidas dependen tanto del estado actual como de las entradas actuales"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "En una FSM de Moore, las salidas son función exclusiva del estado presente (sincronizadas con el reloj y menos propensas a glitches). En una FSM de Mealy, las salidas dependen del estado actual y de las entradas presentes, lo que suele permitir menos estados pero reacciona inmediatamente a cambios de entrada.",
+    "acronimos": [
+      { "sigla": "FPGA", "significado": "Field-Programmable Gate Array", "pista": "Dispositivo lógico reconfigurable para implementar hardware digital." },
+      { "sigla": "FSM", "significado": "Finite State Machine (Máquina de Estados Finitos)", "pista": "Modelo secuencial de estados, transiciones y salidas (Moore o Mealy)." }
+    ]
+  },
+  {
+    "id": "sim_hw_029",
+    "diagrama": "risc-pipeline-blank",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordena las cinco etapas clásicas del cauce segmentado (pipeline) de un procesador RISC (como MIPS) durante la ejecución de una instrucción de lectura de memoria (`LW`):\n1. EX (Execute: cálculo de la dirección efectiva en la ALU)\n2. WB (Write Back: escritura del dato obtenido en el banco de registros)\n3. IF (Instruction Fetch: búsqueda de la instrucción en la memoria de instrucciones)\n4. MEM (Memory Access: lectura del dato desde la memoria de datos)\n5. ID (Instruction Decode: decodificación de la instrucción y lectura de operandos de registro)",
+    "opciones": {
+      "A": "3, 5, 1, 4, 2",
+      "B": "3, 1, 5, 4, 2",
+      "C": "5, 3, 1, 4, 2",
+      "D": "3, 5, 4, 1, 2"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "El pipeline clásico de 5 etapas sigue estrictamente el flujo: IF (3) → ID (5) → EX (1) → MEM (4) → WB (2), permitiendo solapar hasta cinco instrucciones en distintas fases de ejecución simultáneamente.",
+    "acronimos": [
+      { "sigla": "RISC", "significado": "Reduced Instruction Set Computer", "pista": "Arquitectura optimizada para ejecución segmentada (pipeline)." },
+      { "sigla": "ALU", "significado": "Arithmetic Logic Unit", "pista": "Opera en la etapa EX para cálculos aritméticos o de direcciones." }
+    ]
+  },
+  {
+    "id": "sim_hw_030",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Caso práctico",
+    "pregunta": "Un microprocesador dispone de un bus de direcciones de 24 bits y un esquema de direccionamiento por byte (cada dirección apunta a 1 byte). ¿Cuál es el espacio máximo de memoria física que puede direccionar directamente?",
+    "opciones": {
+      "A": "4 MiB",
+      "B": "64 MiB",
+      "C": "24 MiB",
+      "D": "16 MiB"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "Con n = 24 líneas de dirección, el número de localidades direccionables es 2^24 = 2^4 × 2^20 = 16 × 1 MiB = 16 MiB (16,777,216 bytes).",
+    "acronimos": [
+      { "sigla": "MiB", "significado": "Mebibyte (2^20 bytes = 1,048,576 bytes)", "pista": "Unidad binaria estándar para capacidad de memoria." },
+      { "sigla": "CPU", "significado": "Central Processing Unit", "pista": "El ancho de su bus de direcciones fija el límite de memoria direccionable." }
+    ]
+  },
+  {
+    "id": "sim_hw_031",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Al encender una estación de trabajo recién ensamblada, los ventiladores giran pero el monitor permanece en negro y el altavoz interno de la tarjeta madre emite una secuencia repetitiva de pitidos. ¿Qué mecanismo está generando esta señal y cuál es su propósito?",
+    "opciones": {
+      "A": "El sistema operativo reporta un fallo del controlador gráfico en modo kernel",
+      "B": "La rutina POST del BIOS/UEFI notifica un error crítico de hardware (como memoria RAM o video) antes de poder inicializar la pantalla",
+      "C": "El disco SSD advierte que su tabla de particiones GPT no ha sido formateada",
+      "D": "La fuente de alimentación indica que el voltaje de la línea de 3.3 V es óptimo"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Durante el arranque inicial, si falla un componente esencial (RAM mal asentada, tarjeta de video ausente o defectuosa) antes de inicializar la salida de pantalla, la rutina POST comunica el diagnóstico mediante códigos de pitidos (beep codes) o LEDs de estado en la tarjeta madre.",
+    "acronimos": [
+      { "sigla": "POST", "significado": "Power-On Self-Test", "pista": "Prueba diagnóstica de arranque que emite códigos de pitidos ante fallas tempranas." },
+      { "sigla": "BIOS", "significado": "Basic Input/Output System", "pista": "Firmware encargado de ejecutar el POST." },
+      { "sigla": "RAM", "significado": "Random Access Memory", "pista": "Su ausencia o fallo es una de las causas más frecuentes de códigos de pitidos." }
+    ]
+  },
+  {
+    "id": "sim_hw_032",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relaciona cada registro interno fundamental de la CPU con su función específica durante el ciclo de instrucción:\n1. PC (Program Counter)\n2. IR (Instruction Register)\n3. MAR (Memory Address Register)\n4. MDR (Memory Data Register)\n\na. Contiene la dirección de memoria de la siguiente instrucción que se va a buscar\nb. Almacena temporalmente el dato leído de la memoria o el dato a escribir en ella\nc. Retiene el código de operación y operandos de la instrucción actualmente en decodificación\nd. Coloca sobre el bus de direcciones la localidad física de memoria a la que se accederá",
+    "opciones": {
+      "A": "1a, 2c, 3d, 4b",
+      "B": "1c, 2a, 3d, 4b",
+      "C": "1a, 2c, 3b, 4d",
+      "D": "1d, 2c, 3a, 4b"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "El PC apunta a la próxima instrucción (1a), el IR guarda la instrucción actual para decodificarla (2c), el MAR almacena la dirección física hacia la memoria (3d) y el MDR sirve de búfer para los datos transferidos hacia o desde la memoria (4b).",
+    "acronimos": [
+      { "sigla": "PC", "significado": "Program Counter (Contador de Programa)", "pista": "Registro que apunta a la siguiente instrucción a ejecutar." },
+      { "sigla": "IR", "significado": "Instruction Register (Registro de Instrucción)", "pista": "Almacena la instrucción actualmente en ejecución." },
+      { "sigla": "MAR", "significado": "Memory Address Register (Registro de Dirección de Memoria)", "pista": "Conecta la CPU con el bus de direcciones." },
+      { "sigla": "MDR", "significado": "Memory Data Register (Registro de Datos de Memoria)", "pista": "Conecta la CPU con el bus de datos." }
+    ]
+  },
+  {
+    "id": "sim_hw_033",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Caso práctico",
+    "pregunta": "En un procesador con pipeline de 5 etapas se ejecutan consecutivamente las instrucciones:\n`ADD R1, R2, R3` (R1 ← R2 + R3)\n`SUB R4, R1, R5` (R4 ← R1 - R5)\n¿Qué tipo de riesgo (hazard) ocurre y qué técnica de hardware permite resolverlo sin detener (stall) el pipeline?",
+    "opciones": {
+      "A": "Riesgo estructural; se resuelve agregando un segundo disco duro",
+      "B": "Riesgo de datos RAW (Read After Write); se resuelve mediante adelantamiento de datos (forwarding/bypassing) desde la salida de la ALU",
+      "C": "Riesgo de control por salto condicional; se resuelve con predicción de saltos",
+      "D": "Riesgo WAR (Write After Read); se resuelve desactivando la memoria caché L1"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "La instrucción `SUB` necesita leer el nuevo valor de R1 antes de que `ADD` lo haya escrito en la etapa WB, configurando una dependencia verdadera de datos RAW. El mecanismo de forwarding (bypassing) redirige el resultado directamente desde el registro intermedio EX/MEM hacia la entrada de la ALU en el siguiente ciclo.",
+    "acronimos": [
+      { "sigla": "RAW", "significado": "Read After Write (Lectura Después de Escritura)", "pista": "Dependencia verdadera de datos entre instrucciones consecutivas." },
+      { "sigla": "ALU", "significado": "Arithmetic Logic Unit", "pista": "Su salida puede realimentarse directamente mediante forwarding." }
+    ]
+  },
+  {
+    "id": "sim_hw_034",
+    "diagrama": "computer-io-memory-blank",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Completamiento",
+    "pregunta": "En el diagrama funcional general de una computadora, los datos ingresan por la Unidad de entrada hacia la _____, donde interactúan directamente con la _____ (volátil y de acceso rápido) durante la ejecución, se resguardan a largo plazo en la _____ (no volátil) y se entregan resultados mediante la Unidad de salida.",
+    "opciones": {
+      "A": "CPU — memoria primaria — memoria secundaria",
+      "B": "GPU — memoria secundaria — memoria caché",
+      "C": "ALU — memoria ROM — memoria virtual",
+      "D": "SAN — memoria Flash — memoria primaria"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "El flujo clásico de un sistema de cómputo es: Unidad de entrada → CPU (con soporte de memoria primaria/RAM para instrucciones y datos activos) → Unidad de salida, complementado por la memoria secundaria (HDD/SSD) para almacenamiento persistente.",
+    "acronimos": [
+      { "sigla": "CPU", "significado": "Central Processing Unit", "pista": "Núcleo que procesa los datos recibidos de la unidad de entrada." },
+      { "sigla": "RAM", "significado": "Random Access Memory", "pista": "Constituye la memoria primaria volátil." }
+    ]
+  },
+  {
+    "id": "sim_hw_035",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Caso práctico",
+    "pregunta": "Un equipo de diseño selecciona una arquitectura RISC (como ARM o RISC-V) en lugar de una arquitectura CISC tradicional para un dispositivo portátil con restricciones estrictas de energía. ¿Qué característica de RISC sustenta principalmente esta elección?",
+    "opciones": {
+      "A": "Instrucciones de longitud variable que ejecutan operaciones complejas directamente en memoria sin usar registros",
+      "B": "Instrucciones de longitud fija, arquitectura load/store, decodificación simple y menor consumo energético por instrucción",
+      "C": "Ausencia total de memoria caché para reducir el tamaño del silicio",
+      "D": "Uso obligatorio de microcódigo en ROM para cada operación aritmética básica"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Las arquitecturas RISC emplean un repertorio reducido de instrucciones de longitud fija y modelo load/store (solo las instrucciones de carga y almacenamiento acceden a memoria), lo que simplifica el decodificador, facilita el pipelining y reduce la complejidad y disipación de potencia.",
+    "acronimos": [
+      { "sigla": "RISC", "significado": "Reduced Instruction Set Computer", "pista": "Arquitectura de instrucciones simples y longitud fija (ej. ARM, RISC-V)." },
+      { "sigla": "CISC", "significado": "Complex Instruction Set Computer", "pista": "Arquitectura de instrucciones complejas y longitud variable (ej. x86)." }
+    ]
+  },
+  {
+    "id": "sim_hw_036",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Caso práctico",
+    "pregunta": "Se diseña un contador binario síncrono módulo 16 (cuenta de 0 a 15) utilizando flip-flops tipo D alimentados por un reloj maestro de 16 kHz. ¿Cuántos flip-flops se requieren como mínimo y cuál será la frecuencia de la señal en la salida del bit más significativo (MSB)?",
+    "opciones": {
+      "A": "4 flip-flops; frecuencia en MSB = 1 kHz",
+      "B": "4 flip-flops; frecuencia en MSB = 4 kHz",
+      "C": "8 flip-flops; frecuencia en MSB = 2 kHz",
+      "D": "16 flip-flops; frecuencia en MSB = 1 kHz"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "Un contador módulo N requiere ⌈log2(N)⌉ flip-flops; para N = 16 se necesitan 4 flip-flops (2^4 = 16 estados). El MSB completa un ciclo completo cada 16 pulsos de reloj, dividiendo la frecuencia por 16: 16 kHz / 16 = 1 kHz.",
+    "acronimos": [
+      { "sigla": "MSB", "significado": "Most Significant Bit (Bit Más Significativo)", "pista": "En un contador binario, su frecuencia es f_clk / 2^n." },
+      { "sigla": "CLK", "significado": "Clock (Señal de Reloj)", "pista": "Pulso periódico que sincroniza las transiciones de los flip-flops." }
+    ]
+  },
+  {
+    "id": "sim_hw_037",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Caso práctico",
+    "pregunta": "Un procesador con direcciones físicas de 32 bits utiliza una memoria caché de correspondencia directa (direct-mapped) de 64 KiB con bloques (líneas) de 64 bytes. ¿Cómo se dividen los 32 bits de la dirección en los campos Etiqueta (Tag), Índice (Index) y Desplazamiento (Offset)?",
+    "opciones": {
+      "A": "Tag = 16 bits, Index = 10 bits, Offset = 6 bits",
+      "B": "Tag = 18 bits, Index = 8 bits, Offset = 6 bits",
+      "C": "Tag = 14 bits, Index = 12 bits, Offset = 6 bits",
+      "D": "Tag = 16 bits, Index = 8 bits, Offset = 8 bits"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "El tamaño de bloque es 64 B = 2^6 → Offset = 6 bits. El número de líneas en caché es 64 KiB / 64 B = 65536 / 64 = 1024 = 2^10 → Index = 10 bits. Los bits restantes corresponden a la etiqueta: Tag = 32 - 10 - 6 = 16 bits.",
+    "acronimos": [
+      { "sigla": "KiB", "significado": "Kibibyte (1024 bytes)", "pista": "Unidad binaria usada en el cálculo de bloques y líneas de caché." },
+      { "sigla": "SRAM", "significado": "Static Random Access Memory", "pista": "Tecnología con la que se construye la memoria caché." }
+    ]
+  },
+  {
+    "id": "sim_hw_038",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Al sintetizar un diseño digital síncrono en una FPGA, la herramienta de análisis de temporización estática (STA) reporta una violación de tiempo de establecimiento (setup time violation) en la ruta crítica entre dos registros. ¿Qué medida corrige esta falla?",
+    "opciones": {
+      "A": "Aumentar la frecuencia del reloj para que los datos lleguen más rápido",
+      "B": "Reducir la frecuencia del reloj o insertar una etapa de pipeline (registro intermedio) para dividir el retardo combinacional",
+      "C": "Eliminar la señal de reloj y convertir el circuito en lógica combinacional pura",
+      "D": "Reducir el voltaje de alimentación del núcleo por debajo del nominal"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Una violación de setup indica que el retardo de propagación de la lógica combinacional entre dos flip-flops excede el periodo del reloj disponible (T_clk < t_cq + t_comb + t_setup). Se soluciona aumentando el periodo (bajando frecuencia) o acortando la ruta crítica mediante pipelining.",
+    "acronimos": [
+      { "sigla": "FPGA", "significado": "Field-Programmable Gate Array", "pista": "Circuito integrado programable donde se verifican restricciones de tiempo." },
+      { "sigla": "STA", "significado": "Static Timing Analysis (Análisis de Temporización Estática)", "pista": "Verificación de tiempos setup y hold en todas las rutas síncronas." }
+    ]
+  },
+  {
+    "id": "sim_hw_039",
+    "area": "Implementación de Hardware",
+    "subarea": "1.2 Arquitectura de computadoras y diseño digital",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relaciona cada nivel de arreglo de discos RAID con su característica de rendimiento y tolerancia a fallos:\n1. RAID 0\n2. RAID 1\n3. RAID 5\n4. RAID 10\n\na. Espejeo completo (mirroring); tolera el fallo de 1 disco sacrificando el 50% de la capacidad\nb. Distribución de datos (striping) sin redundancia; máximo rendimiento pero pérdida total si falla un disco\nc. Combina espejeo y striping; requiere mínimo 4 discos y ofrece alta velocidad y redundancia\nd. Striping con paridad distribuida; requiere mínimo 3 discos y tolera el fallo simultáneo de 1 disco",
+    "opciones": {
+      "A": "1b, 2d, 3a, 4c",
+      "B": "1a, 2b, 3d, 4c",
+      "C": "1b, 2a, 3c, 4d",
+      "D": "1b, 2a, 3d, 4c"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "RAID 0 hace striping puro sin tolerancia a fallos (1b); RAID 1 duplica datos por espejeo (2a); RAID 5 distribuye paridad entre al menos 3 discos tolerando 1 fallo (3d); y RAID 10 (1+0) combina pares espejeados en striping desde 4 discos (4c).",
+    "acronimos": [
+      { "sigla": "RAID", "significado": "Redundant Array of Independent Disks", "pista": "Tecnología que combina múltiples discos para mejorar rendimiento y/o redundancia." }
+    ]
+  },
+  {
+    "id": "sim_hw_040",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Caso práctico",
+    "pregunta": "Un nodo embebido digitaliza una señal de vibración con componentes útiles de hasta 4 kHz utilizando un ADC de 12 bits con voltaje de referencia V_ref = 3.3 V. Según el teorema de Nyquist-Shannon, ¿cuál es la frecuencia mínima de muestreo para evitar aliasing y cuál es la resolución aproximada por LSB?",
+    "opciones": {
+      "A": "f_s > 4 kHz; resolución ≈ 1.61 mV",
+      "B": "f_s > 8 kHz; resolución ≈ 0.81 mV",
+      "C": "f_s > 12 kHz; resolución ≈ 0.40 mV",
+      "D": "f_s > 8 kHz; resolución ≈ 3.22 mV"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "El teorema de Nyquist-Shannon exige f_s > 2·f_max = 2 × 4 kHz = 8 kHz para evitar traslape espectral (aliasing). Un ADC de 12 bits tiene 2^12 = 4096 niveles, por lo que 1 LSB = 3.3 V / 4096 ≈ 0.0008057 V ≈ 0.81 mV.",
+    "acronimos": [
+      { "sigla": "ADC", "significado": "Analog-to-Digital Converter", "pista": "Digitaliza señales analógicas con resolución V_ref / 2^n." },
+      { "sigla": "LSB", "significado": "Least Significant Bit (Bit Menos Significativo)", "pista": "Representa el paso mínimo de voltaje detectable por el ADC." }
+    ]
+  },
+  {
+    "id": "sim_hw_041",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Un controlador embebido instalado en un entorno industrial con fuerte ruido electromagnético se congela ocasionalmente y deja de responder hasta que un operador desconecta y reconecta la alimentación. ¿Qué periférico interno del microcontrolador debe activarse para recuperarlo automáticamente?",
+    "opciones": {
+      "A": "Un convertidor DAC de 10 bits en modo continuo",
+      "B": "El comparador analógico interno en modo ahorro de energía",
+      "C": "El Watchdog Timer (WDT), reiniciándolo periódicamente en el flujo normal de ejecución",
+      "D": "El módulo RTC configurado únicamente como calendario solar"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "El Watchdog Timer (WDT) es un temporizador de hardware independiente que provoca un reinicio (reset) del sistema si el firmware no lo refresca dentro de un intervalo definido, permitiendo recuperación autónoma ante bloqueos por ruido o fallas de software.",
+    "acronimos": [
+      { "sigla": "WDT", "significado": "Watchdog Timer (Temporizador Perro Guardián)", "pista": "Reinicia el microcontrolador si el programa se cuelga y deja de refrescarlo." },
+      { "sigla": "MCU", "significado": "Microcontroller Unit (Unidad Microcontroladora)", "pista": "Integra CPU, memoria y periféricos en un solo chip." }
+    ]
+  },
+  {
+    "id": "sim_hw_042",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relaciona cada protocolo de comunicación serial empleado en sistemas embebidos con sus características físicas:\n1. UART\n2. SPI\n3. I2C\n4. CAN\n\na. Bus síncrono half-duplex de 2 hilos (SDA y SCL) en drenador abierto con direccionamiento por software\nb. Comunicación asíncrona punto a punto (TX y RX) sin señal de reloj compartida\nc. Bus diferencial multimaster con arbitraje no destructivo por prioridad de identificador\nd. Bus síncrono full-duplex de alta velocidad con líneas MOSI, MISO, SCLK y CS/SS",
+    "opciones": {
+      "A": "1b, 2d, 3a, 4c",
+      "B": "1d, 2b, 3a, 4c",
+      "C": "1b, 2a, 3d, 4c",
+      "D": "1b, 2d, 3c, 4a"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "UART es asíncrono TX/RX sin reloj (1b); SPI es síncrono full-duplex de 4 hilos (2d); I2C usa 2 líneas open-drain SDA/SCL (3a); y CAN es un bus diferencial robusto con arbitraje por ID muy usado en entornos automotrices e industriales (4c).",
+    "acronimos": [
+      { "sigla": "UART", "significado": "Universal Asynchronous Receiver-Transmitter", "pista": "Comunicación serial asíncrona basada en baudios compartidos." },
+      { "sigla": "SPI", "significado": "Serial Peripheral Interface", "pista": "Bus síncrono rápido de 4 hilos con selección por pin CS." },
+      { "sigla": "I2C", "significado": "Inter-Integrated Circuit", "pista": "Bus de 2 hilos (SDA, SCL) que requiere resistencias pull-up." },
+      { "sigla": "CAN", "significado": "Controller Area Network", "pista": "Bus diferencial multimaster tolerante a fallas y ruido." }
+    ]
+  },
+  {
+    "id": "sim_hw_043",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordena secuencialmente los pasos que ocurren en un microcontrolador al recibir una interrupción externa (IRQ):\n1. La CPU consulta la tabla de vectores de interrupción para saltar a la dirección de la ISR\n2. El periférico activa la solicitud de interrupción hacia el controlador de interrupciones (NVIC)\n3. Se restaura el contexto guardado en la pila y se reanuda el programa interrumpido\n4. Se ejecuta el código de la ISR y se limpia la bandera de interrupción del periférico\n5. La CPU finaliza la instrucción en curso y guarda el PC y registros de estado en la pila (stack)",
+    "opciones": {
+      "A": "2, 1, 5, 4, 3",
+      "B": "2, 5, 4, 1, 3",
+      "C": "5, 2, 1, 4, 3",
+      "D": "2, 5, 1, 4, 3"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "Primero el periférico genera la solicitud al NVIC (2); la CPU termina la instrucción actual y apila su contexto (5); luego obtiene la dirección desde la tabla de vectores (1); ejecuta la ISR limpiando la bandera (4); y por último desapila el contexto para retomar el programa principal (3).",
+    "acronimos": [
+      { "sigla": "IRQ", "significado": "Interrupt Request (Solicitud de Interrupción)", "pista": "Señal de hardware que solicita atención inmediata de la CPU." },
+      { "sigla": "ISR", "significado": "Interrupt Service Routine (Rutina de Servicio de Interrupción)", "pista": "Función breve que atiende el evento de interrupción." },
+      { "sigla": "NVIC", "significado": "Nested Vectored Interrupt Controller", "pista": "Controlador de interrupciones anidadas y priorizadas en ARM Cortex-M." }
+    ]
+  },
+  {
+    "id": "sim_hw_044",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Caso práctico",
+    "pregunta": "En un RTOS con planificación apropiativa por prioridades fijas, una tarea de alta prioridad (T1) se bloquea esperando un mutex que posee una tarea de baja prioridad (T3). Mientras tanto, una tarea de prioridad media (T2) acapara la CPU e impide que T3 termine y libere el mutex. ¿Cómo se denomina este fenómeno y cómo se mitiga?",
+    "opciones": {
+      "A": "Inanición de memoria; se mitiga aumentando la frecuencia del reloj",
+      "B": "Condición de carrera; se mitiga desactivando las interrupciones globales permanentemente",
+      "C": "Inversión de prioridad; se mitiga aplicando herencia de prioridad (priority inheritance) o protocolo de techo de prioridad",
+      "D": "Fragmentación de heap; se mitiga reemplazando el mutex por una variable booleana simple"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "En la inversión de prioridad no acotada, una tarea de prioridad intermedia retrasa indirectamente a una de alta prioridad. Con herencia de prioridad, T3 hereda temporalmente la alta prioridad de T1 mientras retiene el mutex, evitando que T2 la desplace.",
+    "acronimos": [
+      { "sigla": "RTOS", "significado": "Real-Time Operating System (Sistema Operativo de Tiempo Real)", "pista": "Garantiza ejecución determinista con plazos definidos." },
+      { "sigla": "CPU", "significado": "Central Processing Unit", "pista": "Recurso compartido entre las tareas planificadas por el RTOS." }
+    ]
+  },
+  {
+    "id": "sim_hw_045",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Caso práctico",
+    "pregunta": "Un microcontrolador ARM Cortex-M4 debe transferir continuamente bloques de 4 KiB de muestras desde un ADC hacia un búfer en SRAM sin consumir ciclos de la CPU por cada muestra, dejando al procesador libre para calcular una FFT. ¿Qué módulo de hardware debe configurarse?",
+    "opciones": {
+      "A": "Watchdog Timer (WDT)",
+      "B": "Controlador de Acceso Directo a Memoria (DMA)",
+      "C": "Interfaz de depuración SWD",
+      "D": "Registro de pila principal (MSP)"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "El controlador DMA (Direct Memory Access) gestiona transferencias periférico-memoria o memoria-memoria de forma autónoma y solo genera una interrupción a la CPU cuando completa medio búfer o el búfer entero, liberando drásticamente al núcleo.",
+    "acronimos": [
+      { "sigla": "DMA", "significado": "Direct Memory Access (Acceso Directo a Memoria)", "pista": "Transfiere datos entre periféricos y RAM sin intervención constante de la CPU." },
+      { "sigla": "FFT", "significado": "Fast Fourier Transform (Transformada Rápida de Fourier)", "pista": "Algoritmo intensivo para análisis espectral en sistemas DSP/embebidos." },
+      { "sigla": "SRAM", "significado": "Static Random Access Memory", "pista": "Memoria de trabajo interna de los microcontroladores." }
+    ]
+  },
+  {
+    "id": "sim_hw_046",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Caso práctico",
+    "pregunta": "Un temporizador de 16 bits genera una señal PWM de 50 Hz (periodo = 20 ms) para controlar un servomotor. El reloj del temporizador está prescalado a 1 MHz (1 µs por cuenta) y el registro de autorrecarga (ARR) se fija en 19999. ¿Qué valor debe cargarse en el registro de comparación (CCR) para producir un pulso en alto de 1.5 ms?",
+    "opciones": {
+      "A": "150",
+      "B": "750",
+      "C": "1500",
+      "D": "15000"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "Con una resolución de 1 µs por cuenta, un ancho de pulso de 1.5 ms equivale a 1500 µs, por lo que el registro CCR debe configurarse en 1500 (ciclo de trabajo de 1500 / 20000 = 7.5%, posición neutra estándar de un servomotor).",
+    "acronimos": [
+      { "sigla": "PWM", "significado": "Pulse-Width Modulation (Modulación por Ancho de Pulso)", "pista": "Controla servomotores y potencia mediante el ancho del pulso en alto." },
+      { "sigla": "ARR", "significado": "Auto-Reload Register (Registro de Autorrecarga)", "pista": "Define el periodo total del temporizador PWM." },
+      { "sigla": "CCR", "significado": "Capture/Compare Register (Registro de Captura/Comparación)", "pista": "Define el instante de conmutación y por tanto el ciclo de trabajo." }
+    ]
+  },
+  {
+    "id": "sim_hw_047",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "En una tarjeta prototipo con bus I2C a 400 kHz, el microcontrolador no recibe respuesta ACK de ninguno de los tres sensores esclavos. Al observar las líneas SDA y SCL en el osciloscopio, ambas permanecen en 0 V o presentan tiempos de subida extremadamente lentos. ¿Cuál es la causa más probable?",
+    "opciones": {
+      "A": "Se cruzaron las líneas MOSI y MISO en el conector",
+      "B": "Se requiere agregar un resistor de terminación de 120 Ω entre SDA y SCL",
+      "C": "La velocidad de 400 kHz no existe en el estándar I2C",
+      "D": "Faltan las resistencias pull-up externas en SDA y SCL (o su valor es excesivamente alto para la capacitancia del bus)"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "Las líneas SDA y SCL del bus I2C son salidas en drenador abierto (open-drain): solo pueden forzar un 0 lógico hacia GND y dependen de resistencias pull-up externas (típicamente 2.2 kΩ a 4.7 kΩ) para elevar la línea a estado alto respetando los tiempos de subida del estándar Fast-Mode (400 kHz).",
+    "acronimos": [
+      { "sigla": "I2C", "significado": "Inter-Integrated Circuit", "pista": "Protocolo serial open-drain que exige resistencias pull-up." },
+      { "sigla": "ACK", "significado": "Acknowledge (Acuse de Recibo)", "pista": "Bit en estado bajo que confirma la recepción correcta de un byte en I2C." },
+      { "sigla": "SDA", "significado": "Serial Data Line", "pista": "Línea bidireccional de datos del bus I2C." },
+      { "sigla": "SCL", "significado": "Serial Clock Line", "pista": "Línea de reloj generada por el maestro I2C." }
+    ]
+  },
+  {
+    "id": "sim_hw_048",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Completamiento",
+    "pregunta": "En ingeniería de tiempo real, un sistema de tiempo real _____ (como el despliegue de bolsas de aire o un controlador de frenos ABS) sufre una falla crítica si incumple un plazo límite (deadline); mientras que en un sistema de tiempo real _____ (como transmisión de audio o video), un retraso ocasional degrada la calidad pero no invalida el sistema.",
+    "opciones": {
+      "A": "estático — dinámico",
+      "B": "síncrono — asíncrono",
+      "C": "estricto (hard) — blando (soft)",
+      "D": "cooperativo — secuencial"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "Los sistemas Hard Real-Time requieren garantía determinista del peor tiempo de ejecución (WCET) ya que perder un deadline es inaceptable; los Soft Real-Time toleran incumplimientos esporádicos con degradación gradual del servicio.",
+    "acronimos": [
+      { "sigla": "ABS", "significado": "Anti-lock Braking System (Sistema de Frenos Antibloqueo)", "pista": "Ejemplo clásico de sistema embebido de tiempo real estricto." },
+      { "sigla": "WCET", "significado": "Worst-Case Execution Time (Peor Tiempo de Ejecución)", "pista": "Cota superior de tiempo que tarda una tarea en completarse." }
+    ]
+  },
+  {
+    "id": "sim_hw_049",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Caso práctico",
+    "pregunta": "Un RTOS utiliza planificación Rate Monotonic Scheduling (RMS) para dos tareas periódicas independientes: T1 (periodo P1 = 10 ms, tiempo de ejecución C1 = 3 ms) y T2 (periodo P2 = 20 ms, tiempo de ejecución C2 = 8 ms). Considerando la prueba de utilización de Liu y Layland para n = 2 (cota U_lim = 0.828), ¿qué se concluye?",
+    "opciones": {
+      "A": "La utilización es U = 0.70 ≤ 0.828; el conjunto es planificable asignando mayor prioridad a T1 por tener menor periodo",
+      "B": "La utilización es U = 0.70 ≤ 0.828; el conjunto es planificable asignando mayor prioridad a T2 por requerir más CPU",
+      "C": "La utilización es U = 0.90 > 0.828; el sistema es no planificable",
+      "D": "La utilización es U = 1.10; se requiere obligatoriamente un procesador de doble núcleo"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "En RMS se asigna mayor prioridad a la tarea con periodo más corto (T1, 10 ms). La utilización total de CPU es U = C1/P1 + C2/P2 = 3/10 + 8/20 = 0.30 + 0.40 = 0.70. Como 0.70 ≤ 2(2^(1/2) - 1) ≈ 0.828, la planificabilidad está matemáticamente garantizada.",
+    "acronimos": [
+      { "sigla": "RMS", "significado": "Rate Monotonic Scheduling (Planificación Monotónica en Frecuencia)", "pista": "Algoritmo de prioridades fijas donde menor periodo implica mayor prioridad." },
+      { "sigla": "RTOS", "significado": "Real-Time Operating System", "pista": "Sistema operativo que implementa algoritmos de planificación determinista." }
+    ]
+  },
+  {
+    "id": "sim_hw_050",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Caso práctico",
+    "pregunta": "Un puerto UART transmite datos continuos a 9600 baudios con configuración estándar 8N1 (1 bit de inicio, 8 bits de datos, sin bit de paridad y 1 bit de parada). ¿Cuál es la tasa máxima teórica de transferencia de bytes útiles por segundo?",
+    "opciones": {
+      "A": "1200 bytes/s",
+      "B": "960 bytes/s",
+      "C": "800 bytes/s",
+      "D": "9600 bytes/s"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Con el formato 8N1 cada byte útil requiere 1 + 8 + 0 + 1 = 10 bits en la línea serial. Por lo tanto, la tasa útil máxima es 9600 bits/s ÷ 10 bits/byte = 960 bytes/s.",
+    "acronimos": [
+      { "sigla": "UART", "significado": "Universal Asynchronous Receiver-Transmitter", "pista": "Agrega bits de inicio y parada a cada byte transmitido." }
+    ]
+  },
+  {
+    "id": "sim_hw_051",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Un pulsador mecánico conectado a una entrada GPIO configurada con interrupción por flanco de bajada provoca que el microcontrolador cuente entre 4 y 8 eventos falsos en cada pulsación humana. ¿Cuál es la causa y cómo se soluciona?",
+    "opciones": {
+      "A": "Desbordamiento del temporizador principal; se soluciona cambiando el cristal oscilador",
+      "B": "Rebote mecánico de contactos (contact bouncing); se soluciona con debouncing por hardware (filtro RC + Schmitt Trigger) o por software (ventana de retardo)",
+      "C": "Falla de paridad UART; se soluciona activando el bit de paridad par",
+      "D": "Inversión de prioridad del RTOS; se soluciona usando un semáforo binario"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Los contactos metálicos de un interruptor mecánico rebotan físicamente durante varios milisegundos al cerrarse o abrirse, generando múltiples flancos rápidos. El debouncing filtra estas transiciones espurias mediante una red RC con histéresis (Schmitt Trigger) o ignorando rebotes en firmware durante ~10–30 ms.",
+    "acronimos": [
+      { "sigla": "GPIO", "significado": "General-Purpose Input/Output", "pista": "Pin digital donde se conecta el pulsador." },
+      { "sigla": "RC", "significado": "Resistor-Capacitor", "pista": "Filtro pasa-bajas usado en circuitos anti-rebote por hardware." }
+    ]
+  },
+  {
+    "id": "sim_hw_052",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Caso práctico",
+    "pregunta": "Se diseña un nodo sensor IoT alimentado por una batería de litio que debe operar durante 2 años leyendo temperatura y transmitiendo una trama cada 15 minutos. ¿Qué arquitectura de firmware minimiza de forma más efectiva el consumo promedio de energía?",
+    "opciones": {
+      "A": "Ejecutar un bucle de espera activa (polling) a la máxima frecuencia del reloj para verificar el tiempo transcurrido",
+      "B": "Mantener el transceptor inalámbrico encendido en recepción continua para reducir la latencia",
+      "C": "Deshabilitar periféricos inactivos, poner el MCU en modo Deep Sleep / Stop y despertarlo cada 15 minutos mediante una alarma del RTC de bajo consumo",
+      "D": "Aumentar el voltaje de alimentación del MCU a 5 V para acelerar las lecturas analógicas"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "La técnica 'sleep-wake' reduce la corriente promedio a pocos microamperios: el MCU permanece dormido (Deep Sleep) más del 99% del tiempo con sus relojes de alta frecuencia apagados, y un RTC de bajo consumo genera la interrupción periódica para muestrear, transmitir y volver a dormir.",
+    "acronimos": [
+      { "sigla": "IoT", "significado": "Internet of Things (Internet de las Cosas)", "pista": "Nodos conectados que suelen depender de diseño de ultrabajo consumo." },
+      { "sigla": "MCU", "significado": "Microcontroller Unit", "pista": "Dispone de modos de bajo consumo como Sleep, Stop y Standby." },
+      { "sigla": "RTC", "significado": "Real-Time Clock (Reloj de Tiempo Real)", "pista": "Periférico de bajísimo consumo capaz de despertar al MCU mediante alarmas." }
+    ]
+  },
+  {
+    "id": "sim_hw_053",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relaciona cada herramienta o componente del ciclo de desarrollo embebido con su función principal:\n1. Interfaz JTAG / SWD\n2. Bootloader\n3. Analizador lógico\n4. Compilador cruzado (Cross-compiler)\n\na. Programa que corre en una PC host (ej. x86) pero genera código máquina ejecutable en la arquitectura destino (ej. ARM)\nb. Interfaz de depuración en hardware que permite puntos de ruptura (breakpoints), inspección de registros y programación Flash\nc. Firmware residente en memoria protegida que permite actualizar la aplicación vía UART, USB u OTA sin programador físico\nd. Instrumento que captura múltiples canales digitales en paralelo y decodifica tramas SPI, I2C o UART",
+    "opciones": {
+      "A": "1b, 2c, 3d, 4a",
+      "B": "1c, 2b, 3d, 4a",
+      "C": "1b, 2c, 3a, 4d",
+      "D": "1d, 2c, 3b, 4a"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "JTAG/SWD permite depuración en circuito y flasheo (1b); el bootloader habilita actualizaciones de firmware en campo (2c); el analizador lógico captura y decodifica buses digitales (3d); y el cross-compiler compila desde la máquina de desarrollo hacia la arquitectura objetivo (4a).",
+    "acronimos": [
+      { "sigla": "JTAG", "significado": "Joint Test Action Group", "pista": "Estándar IEEE 1149.1 para pruebas de placa y depuración en circuito." },
+      { "sigla": "SWD", "significado": "Serial Wire Debug", "pista": "Alternativa de 2 hilos a JTAG en microcontroladores ARM Cortex." },
+      { "sigla": "OTA", "significado": "Over-The-Air", "pista": "Actualización inalámbrica remota de firmware." }
+    ]
+  },
+  {
+    "id": "sim_hw_054",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Completamiento",
+    "pregunta": "En programación en C para sistemas embebidos, toda variable global modificada dentro de una Rutina de Servicio de Interrupción (ISR) y consultada en el bucle principal `main()` debe declararse con el calificador _____ para impedir que el compilador la optimice manteniéndola cacheada en un registro interno de la CPU.",
+    "opciones": {
+      "A": "register",
+      "B": "const",
+      "C": "extern",
+      "D": "volatile"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "El calificador `volatile` indica al compilador que el valor de la variable puede cambiar de forma externa al flujo secuencial visible (por hardware, DMA o una ISR), obligándolo a leer y escribir siempre desde la dirección real de memoria.",
+    "acronimos": [
+      { "sigla": "ISR", "significado": "Interrupt Service Routine", "pista": "Modifica banderas y registros de forma asíncrona al flujo principal." },
+      { "sigla": "CPU", "significado": "Central Processing Unit", "pista": "Sus registros internos no deben cachear indefinidamente variables compartidas con ISR." }
+    ]
+  },
+  {
+    "id": "sim_hw_055",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordena las etapas del flujo completo de procesamiento digital de una señal analógica (DSP) en un sistema embebido:\n1. Cuantificación y codificación binaria mediante el ADC\n2. Filtrado analógico pasa-bajas anti-aliasing\n3. Conversión digital-analógica (DAC) seguida de un filtro pasa-bajas de reconstrucción\n4. Muestreo y retención (Sample & Hold) a frecuencia f_s > 2·f_max\n5. Ejecución del algoritmo de filtrado o procesamiento digital en el MCU/DSP",
+    "opciones": {
+      "A": "2, 1, 4, 5, 3",
+      "B": "4, 2, 1, 5, 3",
+      "C": "2, 4, 1, 5, 3",
+      "D": "2, 4, 5, 1, 3"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "Primero se limita el ancho de banda con un filtro anti-aliasing (2), luego se muestrea y retiene la señal (4), el ADC la cuantifica y codifica en binario (1), el procesador ejecuta el algoritmo digital (5) y finalmente el DAC y el filtro de reconstrucción recuperan la señal analógica suavizada (3).",
+    "acronimos": [
+      { "sigla": "DSP", "significado": "Digital Signal Processing / Processor", "pista": "Procesamiento numérico de señales discretas." },
+      { "sigla": "ADC", "significado": "Analog-to-Digital Converter", "pista": "Etapa de entrada que digitaliza las muestras." },
+      { "sigla": "DAC", "significado": "Digital-to-Analog Converter", "pista": "Etapa de salida que convierte muestras digitales a voltaje analógico." }
+    ]
+  },
+  {
+    "id": "sim_hw_056",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Caso práctico",
+    "pregunta": "Los microcontroladores de arquitectura Harvard (como AVR o ARM Cortex-M con buses independientes I-Code y D-Code) superan el rendimiento de una arquitectura Von Neumann clásica a la misma frecuencia de reloj porque:",
+    "opciones": {
+      "A": "Eliminan la necesidad de utilizar memoria Flash no volátil",
+      "B": "Comparten un único bus serial entre la ALU y todos los periféricos externos",
+      "C": "Ejecutan exclusivamente código interpretado en Python sin compilación previa",
+      "D": "Cuentan con buses y espacios físicamente separados para instrucciones y datos, permitiendo buscar la siguiente instrucción mientras se accede a un dato en paralelo"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "La arquitectura Harvard separa las rutas físicas de memoria de programa y memoria de datos, eliminando el cuello de botella de Von Neumann y permitiendo captar instrucciones y leer/escribir datos en el mismo ciclo de reloj.",
+    "acronimos": [
+      { "sigla": "MCU", "significado": "Microcontroller Unit", "pista": "Muchos MCU emplean arquitectura Harvard o Harvard modificada." },
+      { "sigla": "ALU", "significado": "Arithmetic Logic Unit", "pista": "Recibe operandos sin esperar a que el bus de instrucciones se libere." }
+    ]
+  },
+  {
+    "id": "sim_hw_057",
+    "area": "Implementación de Hardware",
+    "subarea": "1.3 Sistemas embebidos y tiempo real",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Durante pruebas de estrés en un firmware basado en FreeRTOS, una tarea de telemetría dispara aleatoriamente una excepción HardFault cada vez que invoca una función recursiva que declara un arreglo local de 2 KiB, cuando el tamaño de pila asignado a la tarea es de 1 KiB. ¿Cuál es la causa raíz?",
+    "opciones": {
+      "A": "Fallo físico de la batería CMOS del reloj en tiempo real",
+      "B": "Latencia excesiva en el bus I2C de los sensores externos",
+      "C": "Desbordamiento de pila (stack overflow) de la tarea, que sobrescribe estructuras de control adyacentes en SRAM",
+      "D": "Saturación de la frecuencia de muestreo del ADC por encima de Nyquist"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "Las variables locales y los marcos de llamadas recursivas se alojan en el stack de la tarea. Declarar un arreglo local de 2 KiB dentro de un stack de 1 KiB provoca un stack overflow que corrompe memoria adyacente y dispara un HardFault.",
+    "acronimos": [
+      { "sigla": "RTOS", "significado": "Real-Time Operating System", "pista": "Cada tarea en FreeRTOS tiene su propia pila (stack) de tamaño acotado." },
+      { "sigla": "SRAM", "significado": "Static Random Access Memory", "pista": "Memoria volátil donde residen las pilas y bloques de control de tareas." }
+    ]
+  },
+  {
+    "id": "sim_hw_058",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordena secuencialmente las fases que integran un ciclo de barrido (scan cycle) típico de un Controlador Lógico Programable (PLC):\n1. Actualización de las salidas físicas a partir de la tabla imagen de salidas\n2. Lectura del estado de las entradas físicas y almacenamiento en la tabla imagen de entradas\n3. Tareas internas de autodiagnóstico y atención de comunicaciones\n4. Ejecución secuencial del programa de control del usuario (ej. Ladder o ST)",
+    "opciones": {
+      "A": "2, 4, 1, 3",
+      "B": "4, 2, 1, 3",
+      "C": "2, 1, 4, 3",
+      "D": "3, 2, 4, 1"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "El ciclo de barrido determinista del PLC sigue el orden: lectura de entradas físicas hacia la memoria imagen (2) → ejecución del programa lógico (4) → escritura de la memoria imagen hacia las salidas físicas (1) → mantenimiento, diagnósticos y comunicaciones (3), repitiéndose cíclicamente.",
+    "acronimos": [
+      { "sigla": "PLC", "significado": "Programmable Logic Controller (Controlador Lógico Programable)", "pista": "Computadora industrial robusta que opera en ciclos de barrido deterministas." },
+      { "sigla": "ST", "significado": "Structured Text (Texto Estructurado)", "pista": "Lenguaje textual del estándar IEC 61131-3 para PLC." }
+    ]
+  },
+  {
+    "id": "sim_hw_059",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relaciona cada elemento de un controlador PID industrial con su función dentro del lazo de control:\n1. Acción Proporcional (P)\n2. Acción Integral (I)\n3. Acción Derivativa (D)\n4. Mecanismo Anti-windup\n\na. Elimina el error en estado estacionario acumulando el error a lo largo del tiempo\nb. Reacciona a la tasa de cambio del error para anticipar tendencias y reducir el sobreimpulso\nc. Impide la acumulación desmedida del término integral cuando el actuador alcanza su límite de saturación\nd. Genera una salida proporcional al error instantáneo; acelera la respuesta pero suele dejar error permanente",
+    "opciones": {
+      "A": "1d, 2a, 3b, 4c",
+      "B": "1a, 2d, 3b, 4c",
+      "C": "1d, 2b, 3a, 4c",
+      "D": "1d, 2a, 3c, 4b"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "La acción P responde al error actual (1d), la acción I elimina el offset estacionario integrando el error (2a), la acción D amortigua oscilaciones reaccionando a la velocidad de cambio (3b) y el anti-windup evita el retardo severo causado por la saturación del integrador (4c).",
+    "acronimos": [
+      { "sigla": "PID", "significado": "Proporcional-Integral-Derivativo", "pista": "Algoritmo de control retroalimentado más difundido en la industria." }
+    ]
+  },
+  {
+    "id": "sim_hw_060",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Caso práctico",
+    "pregunta": "Un transmisor de presión industrial con lazo de corriente estándar de 4–20 mA se conecta a una entrada analógica de PLC de 0–10 V a través de una resistencia de precisión de 500 Ω. ¿Por qué se emplea 4 mA como valor mínimo en lugar de 0 mA, y qué voltaje lee el PLC cuando la presión está al 50% de su rango?",
+    "opciones": {
+      "A": "Para reducir el consumo de potencia; al 50% lee 5.0 V",
+      "B": "El 'cero vivo' de 4 mA permite distinguir un valor mínimo válido de un cable roto (0 mA); al 50% circulan 12 mA y el PLC lee 6.0 V",
+      "C": "Para evitar la saturación del PLC; al 50% circulan 10 mA y el PLC lee 5.0 V",
+      "D": "Porque los PLC no pueden leer voltajes menores a 4 V; al 50% lee 8.0 V"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "El estándar 4–20 mA usa un 'cero vivo' (4 mA = 0%) para detectar fallas de circuito abierto (0 mA) y alimentar transmisores de 2 hilos, además de ser inmune a caídas de voltaje en cables largos. Al 50% del span: I = 4 + 0.5×(20 - 4) = 12 mA; sobre 500 Ω produce V = 0.012 A × 500 Ω = 6.0 V.",
+    "acronimos": [
+      { "sigla": "PLC", "significado": "Programmable Logic Controller", "pista": "Recibe señales de instrumentación 4–20 mA o 0–10 V en sus módulos analógicos." }
+    ]
+  },
+  {
+    "id": "sim_hw_061",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "En un lazo de control PID de temperatura de un reactor químico, tras una modificación en los parámetros de sintonización, la variable de proceso (PV) comienza a oscilar violentamente de forma sostenida alrededor del setpoint (SP). ¿Qué ajuste correctivo es el más indicado para recuperar la estabilidad?",
+    "opciones": {
+      "A": "Duplicar la ganancia proporcional K_p y reducir el tiempo integral T_i a cero",
+      "B": "Desconectar el sensor de temperatura para pasar a lazo abierto permanente",
+      "C": "Reducir la ganancia proporcional K_p y suavizar la acción integral (aumentando T_i o reduciendo K_i)",
+      "D": "Incrementar al máximo la ganancia derivativa K_d en presencia de ruido de medición"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "Las oscilaciones sostenidas o crecientes en un PID suelen deberse a una ganancia proporcional excesiva o a una acción integral demasiado agresiva (T_i muy pequeño). Reducir K_p y disminuir la ganancia integral restaura el margen de fase y amortigua la respuesta.",
+    "acronimos": [
+      { "sigla": "PID", "significado": "Proporcional-Integral-Derivativo", "pista": "Controlador cuyos parámetros deben sintonizarse para garantizar estabilidad." },
+      { "sigla": "PV", "significado": "Process Variable (Variable de Proceso)", "pista": "Valor real medido por el sensor en planta." },
+      { "sigla": "SP", "significado": "Setpoint (Valor de Consigna)", "pista": "Valor objetivo deseado para la variable controlada." }
+    ]
+  },
+  {
+    "id": "sim_hw_062",
+    "diagrama": "isa95-pyramid",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relaciona los primeros cuatro niveles de la pirámide de automatización industrial (estándar ISA-95) con los dispositivos o sistemas que los integran:\n1. Nivel 0 — Proceso / Campo\n2. Nivel 1 — Control\n3. Nivel 2 — Supervisión\n4. Nivel 3 — Gestión de Operaciones (MES)\n\na. Sistemas SCADA y paneles HMI para monitoreo de planta, tendencias y alarmas\nb. Sensores, transmisores, válvulas proporcionales y actuadores neumáticos\nc. Controladores PLC, RTU y sistemas embebidos de control en tiempo real\nd. Trazabilidad de lotes, control de calidad, programación de manufactura y OEE",
+    "opciones": {
+      "A": "1b, 2c, 3a, 4d",
+      "B": "1c, 2b, 3a, 4d",
+      "C": "1b, 2a, 3c, 4d",
+      "D": "1b, 2c, 3d, 4a"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "En la pirámide ISA-95: Nivel 0 aloja sensores y actuadores de campo (1b); Nivel 1 contiene PLC/RTU de control directo (2c); Nivel 2 agrupa SCADA y HMI de supervisión (3a); y Nivel 3 corresponde al MES de ejecución de manufactura (4d).",
+    "acronimos": [
+      { "sigla": "ISA", "significado": "International Society of Automation", "pista": "Organismo que define el estándar ISA-95 de integración empresarial-control." },
+      { "sigla": "SCADA", "significado": "Supervisory Control and Data Acquisition", "pista": "Software de supervisión y adquisición de datos a nivel de planta." },
+      { "sigla": "HMI", "significado": "Human-Machine Interface (Interfaz Hombre-Máquina)", "pista": "Panel gráfico que permite al operador interactuar con la máquina o proceso." },
+      { "sigla": "MES", "significado": "Manufacturing Execution System", "pista": "Sistema que gestiona la producción y trazabilidad entre planta y ERP." }
+    ]
+  },
+  {
+    "id": "sim_hw_063",
+    "diagrama": "closed-loop-feedback",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Caso práctico",
+    "pregunta": "Una planta lineal tiene la función de transferencia en lazo abierto G(s) = 10 / (s + 2). Si se cierra el lazo con realimentación unitaria negativa (H(s) = 1), ¿cuál es la función de transferencia en lazo cerrado T(s) y dónde se ubica su polo?",
+    "opciones": {
+      "A": "T(s) = 10 / (s - 8); polo en s = +8 (inestable)",
+      "B": "T(s) = 10 / (s + 10); polo en s = -10 (estable)",
+      "C": "T(s) = 10 / (s + 12); polo en s = -12 (estable)",
+      "D": "T(s) = 12 / (s + 10); polo en s = -10 (estable)"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "Con realimentación unitaria negativa, T(s) = G(s) / [1 + G(s)] = [10/(s+2)] / [1 + 10/(s+2)] = 10 / (s + 2 + 10) = 10 / (s + 12). La raíz del denominador está en s = -12 (semiplano izquierdo), por lo que el sistema en lazo cerrado es estable.",
+    "acronimos": [
+      { "sigla": "LTI", "significado": "Linear Time-Invariant (Lineal Invariante en el Tiempo)", "pista": "Tipo de sistema modelable mediante funciones de transferencia en el dominio de Laplace." }
+    ]
+  },
+  {
+    "id": "sim_hw_064",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Completamiento",
+    "pregunta": "Por criterio de seguridad intrínseca ante fallas (fail-safe), el pulsador físico de paro de emergencia en un tablero eléctrico industrial debe cablearse utilizando un contacto normalmente _____ (_____), de modo que si el cable se rompe o desconecta, el circuito se abra y detenga de inmediato la máquina.",
+    "opciones": {
+      "A": "abierto — NO",
+      "B": "cerrado — NC",
+      "C": "flotante — Z",
+      "D": "pulsado — PWM"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Un contacto físico normalmente cerrado (NC) mantiene energizada la entrada de paro durante la operación normal. Tanto al presionar el botón como al ocurrir una rotura accidental del cableado, la señal cae a 0 V y activa la detención segura.",
+    "acronimos": [
+      { "sigla": "NC", "significado": "Normally Closed (Normalmente Cerrado)", "pista": "Contacto que conduce en reposo y se abre al accionarse; estándar en paros de emergencia." },
+      { "sigla": "NO", "significado": "Normally Open (Normalmente Abierto)", "pista": "Contacto que permanece abierto en reposo; usado habitualmente en botones de arranque." }
+    ]
+  },
+  {
+    "id": "sim_hw_065",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Caso práctico",
+    "pregunta": "En una línea de embotellado automatizada se requiere detectar sin contacto físico la presencia de nivel de líquido dentro de botellas de plástico transparente que avanzan por una banda transportadora. ¿Qué tipo de sensor de proximidad industrial es el adecuado?",
+    "opciones": {
+      "A": "Sensor de proximidad inductivo",
+      "B": "Sensor de proximidad capacitivo",
+      "C": "Termopar tipo K",
+      "D": "Encoder incremental óptico"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Los sensores inductivos solo detectan objetos metálicos. Los sensores de proximidad capacitivos detectan cambios en la constante dieléctrica, por lo que pueden detectar materiales no metálicos e incluso líquidos a través de paredes de plástico o vidrio.",
+    "acronimos": [
+      { "sigla": "PLC", "significado": "Programmable Logic Controller", "pista": "Recibe la señal discreta (PNP/NPN) del sensor capacitivo para el conteo o rechazo." }
+    ]
+  },
+  {
+    "id": "sim_hw_066",
+    "diagrama": "s-plane-poles",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Caso práctico",
+    "pregunta": "Un sistema de control LTI en lazo cerrado presenta tres polos ubicados en el plano complejo s en: s1 = -4, s2 = -1 + 2j y s3 = -1 - 2j. ¿Cómo se clasifican su estabilidad BIBO y la naturaleza de su respuesta transitoria ante un escalón?",
+    "opciones": {
+      "A": "Inestable y oscilatorio creciente",
+      "B": "Marginalmente estable con oscilaciones permanentes sin amortiguamiento",
+      "C": "Estable y sobreamortiguado sin oscilaciones",
+      "D": "Estable y subamortiguado (presenta oscilaciones que decaen exponencialmente hasta el valor final)"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "Todos los polos tienen parte real estrictamente negativa (-4 y -1), por lo que el sistema es estable BIBO. Además, el par dominante de polos complejos conjugados (-1 ± 2j) introduce una respuesta transitoria subamortiguada con sobreimpulso y oscilaciones decrecientes.",
+    "acronimos": [
+      { "sigla": "LTI", "significado": "Linear Time-Invariant", "pista": "Sistema cuya estabilidad se determina por la ubicación de sus polos en el plano s." },
+      { "sigla": "BIBO", "significado": "Bounded-Input, Bounded-Output (Entrada Acotada, Salida Acotada)", "pista": "Criterio de estabilidad garantizado cuando todos los polos están en el semiplano izquierdo." }
+    ]
+  },
+  {
+    "id": "sim_hw_067",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Un motor de inducción trifásico accionado por un Variador de Frecuencia (VFD) se detiene repetidamente por alarma de sobrecorriente durante el arranque de un transportador de carga pesada con elevada inercia. ¿Qué parámetro del VFD conviene ajustar primero?",
+    "opciones": {
+      "A": "Aumentar el tiempo de la rampa de aceleración para reducir el pico de corriente de arranque",
+      "B": "Disminuir el tiempo de aceleración a 0.1 segundos para vencer la inercia más rápido",
+      "C": "Invertir dos fases en la salida del VFD para duplicar el par eléctrico",
+      "D": "Deshabilitar permanentemente la protección térmica electrónica del variador"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "Acelerar una carga de alta inercia en muy poco tiempo demanda un par y una corriente excesivos que disparan la protección del VFD. Incrementar el tiempo de la rampa de aceleración permite que la frecuencia y velocidad suban suavemente manteniendo la corriente dentro de límites seguros.",
+    "acronimos": [
+      { "sigla": "VFD", "significado": "Variable Frequency Drive (Variador de Frecuencia)", "pista": "Controla velocidad y par de motores AC variando frecuencia y voltaje mediante PWM." }
+    ]
+  },
+  {
+    "id": "sim_hw_068",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Caso práctico",
+    "pregunta": "Un sistema de control retroalimentado unitario estable de Tipo 0 presenta un error finito en estado estacionario frente a una entrada escalón unitario. Si se agrega un integrador puro (1/s) en la trayectoria directa convirtiéndolo en un sistema estable de Tipo 1, ¿cuál será el nuevo error en estado estacionario ante un escalón?",
+    "opciones": {
+      "A": "Infinito",
+      "B": "Igual a 1",
+      "C": "Exactamente cero (e_ss = 0)",
+      "D": "Se duplica respecto al sistema Tipo 0"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "La constante de error de posición es K_p = lim(s→0) G(s). Al incluir un polo en el origen (1/s, sistema Tipo 1), K_p → ∞ y, por el teorema del valor final, el error en estado estacionario ante un escalón unitario es e_ss = 1 / (1 + K_p) = 0.",
+    "acronimos": [
+      { "sigla": "LTI", "significado": "Linear Time-Invariant", "pista": "Permite aplicar el teorema del valor final para calcular errores estacionarios." }
+    ]
+  },
+  {
+    "id": "sim_hw_069",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relaciona los lenguajes estandarizados por la norma IEC 61131-3 para programación de PLC con su paradigma:\n1. LD (Ladder Diagram)\n2. FBD (Function Block Diagram)\n3. ST (Structured Text)\n4. SFC (Sequential Function Chart)\n\na. Lenguaje textual de alto nivel similar a Pascal, ideal para algoritmos matemáticos, ciclos e iteraciones\nb. Lenguaje gráfico basado en diagramas de escalera con contactos y bobinas heredados de la lógica de relevadores\nc. Lenguaje gráfico basado en etapas, acciones y transiciones (derivado de Grafcet) para procesos secuenciales\nd. Lenguaje gráfico que conecta bloques funcionales mediante líneas de flujo de señales",
+    "opciones": {
+      "A": "1b, 2a, 3d, 4c",
+      "B": "1d, 2b, 3a, 4c",
+      "C": "1b, 2d, 3c, 4a",
+      "D": "1b, 2d, 3a, 4c"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "LD representa lógica de contactos/relevadores (1b); FBD interconecta bloques funcionales (2d); ST es texto estructurado de alto nivel (3a); y SFC modela máquinas de estados y secuencias con etapas y transiciones (4c).",
+    "acronimos": [
+      { "sigla": "IEC", "significado": "International Electrotechnical Commission", "pista": "Organismo emisor del estándar IEC 61131-3 para programación de PLC." },
+      { "sigla": "LD", "significado": "Ladder Diagram (Diagrama de Escalera)", "pista": "Lenguaje gráfico más extendido en automatización industrial." },
+      { "sigla": "FBD", "significado": "Function Block Diagram", "pista": "Programación visual basada en bloques funcionales." },
+      { "sigla": "SFC", "significado": "Sequential Function Chart", "pista": "Ideal para estructurar procesos industriales por etapas." }
+    ]
+  },
+  {
+    "id": "sim_hw_070",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Caso práctico",
+    "pregunta": "Un organismo operador de agua potable necesita monitorear y comandar remotamente 18 estaciones de bombeo distribuidas a lo largo de 45 km mediante enlaces de radio y red celular, registrando históricos de presión y alarmas en un cuarto de control central. ¿Qué arquitectura de automatización es la más apropiada?",
+    "opciones": {
+      "A": "Un único PLC centralizado conectado por cables analógicos directos de 45 km a cada bomba",
+      "B": "Un sistema SCADA central comunicado con Unidades Terminales Remotas (RTU) en cada estación mediante protocolos como Modbus o DNP3",
+      "C": "Una red de buses I2C de 5 V interconectando todas las estaciones de bombeo",
+      "D": "Relevadores electromecánicos locales sin comunicación remota"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Los sistemas SCADA combinados con RTU (Remote Terminal Units) están diseñados específicamente para telemetría, adquisición de datos y control supervisado en infraestructuras geográficamente dispersas sobre enlaces de radio, celular o satélite.",
+    "acronimos": [
+      { "sigla": "SCADA", "significado": "Supervisory Control and Data Acquisition", "pista": "Plataforma central de supervisión, históricos y control remoto." },
+      { "sigla": "RTU", "significado": "Remote Terminal Unit (Unidad Terminal Remota)", "pista": "Controlador de campo robusto diseñado para telemetría en sitios remotos." },
+      { "sigla": "DNP3", "significado": "Distributed Network Protocol 3", "pista": "Protocolo de telecontrol con estampado de tiempo muy usado en agua y energía." }
+    ]
+  },
+  {
+    "id": "sim_hw_071",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordena los pasos del método clásico de sintonización PID en lazo cerrado de Ziegler-Nichols (método de la ganancia última):\n1. Registrar el valor de ganancia crítica (K_u) y el periodo de las oscilaciones sostenidas (T_u)\n2. Anular las acciones integral y derivativa para operar únicamente con control proporcional\n3. Validar la respuesta del proceso ante cambios de consigna y realizar ajuste fino\n4. Calcular K_p, T_i y T_d aplicando las relaciones empíricas de Ziegler-Nichols a partir de K_u y T_u\n5. Incrementar gradualmente la ganancia proporcional hasta llevar el sistema a oscilaciones sostenidas de amplitud constante",
+    "opciones": {
+      "A": "2, 5, 1, 4, 3",
+      "B": "5, 2, 1, 4, 3",
+      "C": "2, 1, 5, 4, 3",
+      "D": "2, 5, 4, 1, 3"
+    },
+    "respuesta_correcta": "A",
+    "explicacion": "El método de Ziegler-Nichols en lazo cerrado inicia desactivando I y D (2), subiendo K_p hasta alcanzar estabilidad marginal con oscilaciones constantes (5), midiendo K_u y T_u (1), sustituyendo en las fórmulas de la tabla empírica (4) y verificando/afinando en planta (3).",
+    "acronimos": [
+      { "sigla": "PID", "significado": "Proporcional-Integral-Derivativo", "pista": "Sus tres parámetros pueden estimarse con las reglas de Ziegler-Nichols." }
+    ]
+  },
+  {
+    "id": "sim_hw_072",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Completamiento",
+    "pregunta": "En un lazo de control retroalimentado negativo, la señal de _____ se obtiene restando la variable de proceso medida (_____) del valor de consigna o setpoint (SP), y constituye la entrada directa al bloque controlador.",
+    "opciones": {
+      "A": "actuación — MV",
+      "B": "perturbación — CV",
+      "C": "error — PV",
+      "D": "ganancia — PID"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "La ecuación fundamental del comparador en un lazo cerrado negativo es e(t) = SP - PV, donde e(t) es la señal de error que el controlador busca minimizar a cero ajustando la variable manipulada (MV).",
+    "acronimos": [
+      { "sigla": "PV", "significado": "Process Variable (Variable de Proceso)", "pista": "Medición real retroalimentada por el sensor." },
+      { "sigla": "SP", "significado": "Setpoint (Consigna)", "pista": "Referencia deseada del lazo de control." }
+    ]
+  },
+  {
+    "id": "sim_hw_073",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Caso práctico",
+    "pregunta": "Se requiere comunicar un PLC maestro con 20 variadores de frecuencia distribuidos a lo largo de 400 metros en una nave industrial usando Modbus RTU. ¿Por qué se elige la capa física RS-485 en lugar de RS-232?",
+    "opciones": {
+      "A": "Porque RS-485 transmite energía trifásica de 480 V por el mismo par trenzado",
+      "B": "Porque RS-232 solo soporta comunicación inalámbrica de corto alcance",
+      "C": "Porque RS-485 usa señalización diferencial resistente al ruido EMI, soporta topología multipunto y alcanza hasta 1200 m, mientras RS-232 es punto a punto y se limita a ~15 m",
+      "D": "Porque RS-485 no requiere definir velocidad en baudios ni resistencias de terminación"
+    },
+    "respuesta_correcta": "C",
+    "explicacion": "RS-485 emplea un par trenzado diferencial (A/B) que rechaza interferencia electromagnética industrial, admite múltiples dispositivos en bus (topología multipunto) y alcanza distancias de hasta 1200 m, superando ampliamente las limitaciones punto a punto y de distancia de RS-232.",
+    "acronimos": [
+      { "sigla": "RTU", "significado": "Remote Terminal Unit (en Modbus RTU: formato binario compacto)", "pista": "Modo de transmisión binario de Modbus muy usado sobre RS-485." },
+      { "sigla": "EMI", "significado": "Electromagnetic Interference", "pista": "Ruido eléctrico industrial mitigado por la transmisión diferencial de RS-485." },
+      { "sigla": "PLC", "significado": "Programmable Logic Controller", "pista": "Actúa como maestro consultando esclavos en el bus Modbus." }
+    ]
+  },
+  {
+    "id": "sim_hw_074",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Diagnóstico técnico",
+    "pregunta": "Una estación de ensamblaje neumática emplea una válvula direccional 5/2 monoestable con retorno por muelle y solenoide de 24 VDC para extender un cilindro de doble efecto. Si ocurre un corte repentino de energía eléctrica mientras el suministro de aire comprimido permanece activo, ¿cuál será el comportamiento del cilindro?",
+    "opciones": {
+      "A": "El cilindro permanecerá bloqueado en la posición intermedia exacta donde se encontraba",
+      "B": "El muelle retornará la válvula 5/2 a su posición de reposo y el cilindro regresará a su posición inicial retraída",
+      "C": "El cilindro oscilará continuamente hacia adelante y atrás hasta que se agote el aire",
+      "D": "La válvula se dañará permanentemente por sobrepresión en la cámara de escape"
+    },
+    "respuesta_correcta": "B",
+    "explicacion": "Una válvula 5/2 monoestable (una sola bobina y retorno por resorte) únicamente mantiene su estado accionado mientras el solenoide de 24 VDC esté energizado. Ante pérdida de alimentación, el resorte conmuta la válvula a reposo, dirigiendo el aire comprimido hacia la cámara de retroceso del cilindro.",
+    "acronimos": [
+      { "sigla": "VDC", "significado": "Volts Direct Current (Voltios de Corriente Continua)", "pista": "24 VDC es el voltaje estándar de control industrial para PLC y electroválvulas." }
+    ]
+  },
+  {
+    "id": "sim_hw_075",
+    "area": "Implementación de Hardware",
+    "subarea": "1.4 Automatización y control",
+    "tipo": "Caso práctico",
+    "pregunta": "Un proceso térmico modelado como un sistema de primer orden tiene una constante de tiempo τ = 5 segundos. Al aplicar un cambio en escalón en la entrada, ¿cuánto tiempo aproximado tarda la salida en alcanzar el 98% de su valor final (criterio de tiempo de asentamiento al 2%)?",
+    "opciones": {
+      "A": "5 segundos (1τ)",
+      "B": "10 segundos (2τ)",
+      "C": "15 segundos (3τ)",
+      "D": "20 segundos (4τ)"
+    },
+    "respuesta_correcta": "D",
+    "explicacion": "La respuesta al escalón de un sistema de primer orden sigue y(t) = K(1 - e^(-t/τ)). En t = 1τ alcanza 63.2%, en 3τ alcanza 95.0% y en t = 4τ alcanza 1 - e^(-4) ≈ 98.2% (criterio estándar del 2%). Con τ = 5 s, 4τ = 20 segundos.",
+    "acronimos": [
+      { "sigla": "LTI", "significado": "Linear Time-Invariant", "pista": "En sistemas LTI de primer orden, el tiempo de asentamiento al 2% es T_s ≈ 4τ." }
+    ]
+  }
+]

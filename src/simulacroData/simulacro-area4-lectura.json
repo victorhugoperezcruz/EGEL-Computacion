@@ -1,0 +1,828 @@
+[
+  {
+    "titulo": "El horizonte cuántico y la transición hacia la criptografía post-cuántica",
+    "parrafos": [
+      "Durante más de cuatro décadas, la seguridad del comercio electrónico, la banca digital y las comunicaciones gubernamentales ha descansado sobre sistemas de criptografía de clave pública como RSA y la criptografía de curvas elípticas (ECC). La fortaleza de estos esquemas no radica en una imposibilidad absoluta de ser vulnerados, sino en una asimetría computacional: mientras resulta trivial multiplicar dos números primos gigantescos, factorizar el producto resultante o resolver el problema del logaritmo discreto demandaría miles de años a las supercomputadoras clásicas actuales. Sin embargo, el progreso sostenido en el desarrollo de computadoras cuánticas tolerantes a fallos amenaza con derrumbar ese supuesto fundacional.",
+      "Esta vulnerabilidad fue anticipada teóricamente en 1994 por el matemático Peter Shor, quien demostró que una computadora cuántica suficientemente estable podría ejecutar un algoritmo capaz de factorizar enteros enormes en tiempo polinómico aprovechando la superposición y la interferencia cuántica. En contraste, el impacto cuántico sobre la criptografía simétrica, representada por estándares como AES, resulta significativamente más manejable: el algoritmo cuántico de Grover apenas reduce a la mitad la complejidad efectiva de búsqueda por fuerza bruta, por lo que duplicar la longitud de la clave —por ejemplo, migrar de AES-128 a AES-256— basta para preservar un margen de seguridad robusto.",
+      "Aunque los procesadores cuánticos actuales aún carecen de la cantidad de cúbits lógicos y de la corrección de errores necesarias para romper claves RSA de 2048 bits en la práctica, el riesgo no pertenece únicamente al futuro lejano. Especialistas en ciberseguridad advierten sobre la táctica conocida como 'cosechar ahora, descifrar después' (HNDL, por sus siglas en inglés), mediante la cual actores maliciosos interceptan y almacenan hoy tráfico cifrado con la expectativa de descifrarlo en una o dos décadas. Para secretos diplomáticos, registros clínicos longitudinales o propiedad intelectual de alto valor, cuya confidencialidad debe perdurar durante decenios, la amenaza ya es operativa.",
+      "Ante este escenario, el Instituto Nacional de Estándares y Tecnología de Estados Unidos (NIST) encabezó un proceso internacional de evaluación de varios años para estandarizar algoritmos de Criptografía Post-Cuántica (PQC). A diferencia de la distribución cuántica de claves, que exige hardware óptico especializado, los algoritmos PQC operan en computadoras clásicas convencionales y se fundamentan en problemas matemáticos distintos —como la geometría de retículos multidimensionales (lattices) o las funciones hash— para los cuales no se conocen atajos cuánticos eficientes. Entre los primeros estándares publicados destacan ML-KEM para el encapsulamiento de claves y ML-DSA para firmas digitales.",
+      "No obstante, adoptar estos nuevos algoritmos conlleva fricciones técnicas considerables. En comparación con las curvas elípticas tradicionales, los esquemas post-cuánticos suelen requerir claves públicas y firmas digitales de mayor tamaño, lo que incrementa la sobrecarga en protocolos de transporte como TLS y puede degradar el desempeño en dispositivos embebidos con memoria restringida. Por ello, los arquitectos de software enfatizan la necesidad de incorporar 'criptoagilidad': la capacidad estructural de un sistema para inventariar, actualizar o sustituir primitivas criptográficas de forma modular sin rediseñar la aplicación completa, recurriendo inicialmente a esquemas híbridos que combinen criptografía clásica y post-cuántica.",
+      "En última instancia, la migración hacia un ecosistema resistente a la computación cuántica trasciende la mera actualización de bibliotecas de programación. Dado que la renovación de infraestructuras críticas, certificados digitales y cadenas de suministro de hardware suele tardar más de una década, postergar la planificación hasta el llamado 'Día Q' —el momento en que una máquina cuántica quiebre RSA en producción— equivaldría a aceptar una derrota anticipada. La transición post-cuántica constituye, por tanto, un imperativo de gobernanza tecnológica que exige acción coordinada desde el presente."
+    ],
+    "preguntas": [
+      {
+        "id": "sim_cl_001",
+        "tipo": "Comprensión lectora",
+        "pregunta": "¿Cuál es la idea principal del texto?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Las computadoras cuánticas actuales ya han logrado vulnerar los estándares RSA y AES, obligando a reemplazar todo el hardware de internet por sistemas ópticos."
+          },
+          {
+            "id": "B",
+            "texto": "El algoritmo de Grover representa una amenaza mayor para la ciberseguridad mundial que el algoritmo de Shor debido a su impacto en la criptografía simétrica."
+          },
+          {
+            "id": "C",
+            "texto": "El avance de la computación cuántica compromete la criptografía asimétrica actual incluso antes de su madurez plena, por lo que es urgente iniciar una transición planificada y criptoágil hacia estándares post-cuánticos."
+          },
+          {
+            "id": "D",
+            "texto": "El NIST ha concluido exitosamente la migración global hacia algoritmos basados en retículos, eliminando definitivamente el riesgo de espionaje digital."
+          }
+        ],
+        "respuesta_correcta": "C",
+        "explicacion": "A lo largo de los párrafos [1] a [6], el texto expone cómo la computación cuántica amenaza la criptografía de clave pública [1]-[2], explica por qué el riesgo ya existe mediante HNDL [3], detalla la estandarización PQC liderada por el NIST [4] y concluye que se requiere criptoagilidad y planificación inmediata [5]-[6]. Las demás opciones contradicen el texto: en [3] se indica que aún no se rompe RSA-2048 en la práctica, en [2] Grover es menos severo que Shor, y en [4] se aclara que PQC no requiere hardware óptico.",
+        "acronimos": [
+          {
+            "sigla": "PQC",
+            "significado": "Post-Quantum Cryptography (Criptografía Post-Cuántica)",
+            "pista": "Algoritmos matemáticos clásicos diseñados para resistir ataques de computadoras cuánticas."
+          },
+          {
+            "sigla": "RSA",
+            "significado": "Rivest-Shamir-Adleman",
+            "pista": "Algoritmo de criptografía asimétrica basado en la dificultad de factorizar números primos grandes."
+          },
+          {
+            "sigla": "NIST",
+            "significado": "National Institute of Standards and Technology",
+            "pista": "Organismo estadounidense que lidera la estandarización global de algoritmos criptográficos."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_002",
+        "tipo": "Comprensión lectora",
+        "pregunta": "¿Qué relación lógica establece el párrafo [2] entre el impacto cuántico sobre la criptografía asimétrica y sobre la criptografía simétrica?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "De contraste, al señalar que mientras el algoritmo de Shor compromete estructuralmente a RSA, el algoritmo de Grover sobre AES puede contrarrestarse duplicando el tamaño de la clave."
+          },
+          {
+            "id": "B",
+            "texto": "De causa y efecto, pues la ejecución del algoritmo de Shor desencadena automáticamente la ruptura de claves AES-256."
+          },
+          {
+            "id": "C",
+            "texto": "De equivalencia, ya que ambos tipos de criptografía pierden exactamente la mitad de su fortaleza ante cualquier procesador cuántico."
+          },
+          {
+            "id": "D",
+            "texto": "De ejemplificación, utilizando a AES como un caso particular de los problemas de factorización de números primos."
+          }
+        ],
+        "respuesta_correcta": "A",
+        "explicacion": "El párrafo [2] emplea explícitamente el marcador 'En contraste' para oponer el efecto devastador del algoritmo de Shor sobre la criptografía asimétrica (factorización en tiempo polinómico) frente al impacto moderado del algoritmo de Grover sobre la criptografía simétrica (AES), que se mitiga duplicando la longitud de la clave (de 128 a 256 bits).",
+        "acronimos": [
+          {
+            "sigla": "AES",
+            "significado": "Advanced Encryption Standard",
+            "pista": "Estándar de cifrado simétrico en bloques; AES-256 mantiene alta resistencia frente al algoritmo de Grover."
+          },
+          {
+            "sigla": "ECC",
+            "significado": "Elliptic Curve Cryptography (Criptografía de Curvas Elípticas)",
+            "pista": "Esquema asimétrico vulnerable al algoritmo de Shor por basarse en el logaritmo discreto."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_003",
+        "tipo": "Comprensión lectora",
+        "pregunta": "A partir del párrafo [3], ¿qué se puede inferir sobre las organizaciones que gestionan historiales médicos o secretos industriales?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Pueden posponer la adopción de PQC de manera segura hasta que existan computadoras cuánticas comerciales disponibles en la nube."
+          },
+          {
+            "id": "B",
+            "texto": "Solo necesitan proteger sus bases de datos internas, ya que el tráfico que circula cifrado por la red es inmune al almacenamiento masivo."
+          },
+          {
+            "id": "C",
+            "texto": "Deben sustituir sus protocolos actuales únicamente si manejan transacciones financieras de corta duración."
+          },
+          {
+            "id": "D",
+            "texto": "Sus datos transmitidos hoy ya están expuestos a una pérdida futura de confidencialidad si son interceptados y conservados hasta que madure la computación cuántica."
+          }
+        ],
+        "respuesta_correcta": "D",
+        "explicacion": "En el párrafo [3] se describe la estrategia HNDL ('cosechar ahora, descifrar después') y se indica que la información cuya confidencialidad debe perdurar durante decenios —como registros clínicos o propiedad intelectual— ya enfrenta una amenaza operativa hoy, pues puede ser capturada ahora para descifrarse en el futuro.",
+        "acronimos": [
+          {
+            "sigla": "HNDL",
+            "significado": "Harvest Now, Decrypt Later (Cosechar ahora, descifrar después)",
+            "pista": "Estrategia de captura presente de datos cifrados para descifrarlos cuando existan computadoras cuánticas capaces."
+          },
+          {
+            "sigla": "PQC",
+            "significado": "Post-Quantum Cryptography (Criptografía Post-Cuántica)",
+            "pista": "Respuesta criptográfica preventiva contra amenazas futuras y presentes como HNDL."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_004",
+        "tipo": "Comprensión lectora",
+        "pregunta": "Según el contexto del párrafo [5], ¿qué significa el término 'criptoagilidad'?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "La velocidad máxima con la que un procesador cuántico logra factorizar una clave pública."
+          },
+          {
+            "id": "B",
+            "texto": "La cualidad arquitectónica de un sistema para reemplazar o actualizar algoritmos criptográficos de manera modular sin reconstruir toda la aplicación."
+          },
+          {
+            "id": "C",
+            "texto": "La reducción automática del tamaño de las claves y firmas digitales en dispositivos embebidos."
+          },
+          {
+            "id": "D",
+            "texto": "La eliminación total de algoritmos clásicos como RSA en favor de enlaces de comunicación cuántica óptica."
+          }
+        ],
+        "respuesta_correcta": "B",
+        "explicacion": "El párrafo [5] define explícitamente la 'criptoagilidad' como 'la capacidad estructural de un sistema para inventariar, actualizar o sustituir primitivas criptográficas de forma modular sin rediseñar la aplicación completa', permitiendo además despliegues híbridos.",
+        "acronimos": [
+          {
+            "sigla": "TLS",
+            "significado": "Transport Layer Security",
+            "pista": "Protocolo criptográfico que asegura las comunicaciones en red (como HTTPS) y que debe adaptarse a claves PQC más grandes."
+          },
+          {
+            "sigla": "ML-KEM",
+            "significado": "Module-Lattice-Based Key-Encapsulation Mechanism",
+            "pista": "Estándar del NIST (basado en Kyber) para el intercambio seguro de claves resistente a computación cuántica."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_005",
+        "tipo": "Comprensión lectora",
+        "pregunta": "¿Cuál es el propósito comunicativo predominante del autor en el párrafo [6]?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Demostrar matemáticamente la superioridad de las funciones hash frente a la geometría de retículos."
+          },
+          {
+            "id": "B",
+            "texto": "Relatar de forma cronológica cómo los fabricantes de hardware diseñan certificados digitales."
+          },
+          {
+            "id": "C",
+            "texto": "Persuadir sobre la urgencia estratégica y organizacional de planificar la migración post-cuántica antes de que la amenaza se materialice."
+          },
+          {
+            "id": "D",
+            "texto": "Descartar la utilidad de los estándares del NIST por el largo tiempo que toma implementarlos."
+          }
+        ],
+        "respuesta_correcta": "C",
+        "explicacion": "En el párrafo [6], el autor adopta una postura argumentativa y persuasiva al afirmar que postergar la transición hasta el 'Día Q' equivaldría a una derrota anticipada y concluir que la migración es un 'imperativo de gobernanza tecnológica que exige acción coordinada desde el presente'.",
+        "acronimos": [
+          {
+            "sigla": "ML-DSA",
+            "significado": "Module-Lattice-Based Digital Signature Algorithm",
+            "pista": "Estándar PQC del NIST (basado en Dilithium) destinado a firmas digitales."
+          },
+          {
+            "sigla": "NIST",
+            "significado": "National Institute of Standards and Technology",
+            "pista": "Entidad que definió los estándares ML-KEM y ML-DSA para guiar la migración global."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "La caja negra en juicio: sesgos algorítmicos, explicabilidad y ética en la inteligencia artificial",
+    "parrafos": [
+      "La adopción acelerada de sistemas de Inteligencia Artificial (IA) y Aprendizaje Automático (ML) en sectores como la concesión de créditos, la selección de personal, el diagnóstico clínico y la evaluación del riesgo judicial ha transformado procesos decisorios que antes recaían exclusivamente en personas. Con frecuencia, estas herramientas se presentan bajo un aura de neutralidad matemática, bajo la premisa de que un modelo estadístico carece de prejuicios humanos. Sin embargo, diversas auditorías independientes han demostrado que los algoritmos no operan en un vacío social y pueden reproducir —e incluso amplificar a escala industrial— inequidades preexistentes.",
+      "El origen de estos sesgos algorítmicos suele encontrarse tanto en la formulación del problema como en los datos históricos utilizados para el entrenamiento. Cuando un modelo aprende patrones a partir de registros pasados marcados por desigualdades estructurales, asimila dichas asimetrías como criterios predictivos válidos. Incluso cuando los desarrolladores eliminan explícitamente atributos protegidos como el género o el origen étnico, los algoritmos complejos pueden reconstruirlos indirectamente mediante 'variables sustitutas' (proxies), como el código postal, el historial de navegación o la institución educativa, perpetuando decisiones discriminatorias bajo una fachada de rigor técnico.",
+      "A esta problemática se suma la creciente opacidad de las arquitecturas contemporáneas. Mientras un árbol de decisión sencillo permite rastrear con claridad qué reglas condujeron a un resultado, las redes neuronales profundas y los Grandes Modelos de Lenguaje (LLM) integran millones o miles de millones de parámetros que interactúan de forma no lineal. Esta complejidad confiere una notable capacidad predictiva y generativa, pero convierte el funcionamiento interno del sistema en una 'caja negra' difícil de auditar, donde ni siquiera sus propios creadores pueden explicar con precisión por qué se produjo una salida específica.",
+      "Como respuesta a este desafío ha surgido el campo de la Inteligencia Artificial Explicable (XAI), orientado a desarrollar métodos que hagan comprensibles las inferencias algorítmicas para auditores, reguladores y ciudadanos afectados. Técnicas populares como SHAP o LIME generan explicaciones post-hoc que estiman cuánto contribuyó cada variable de entrada a una predicción particular. No obstante, varios investigadores advierten que estas aproximaciones pueden resultar engañosas: una explicación simplificada puede ofrecer una ilusión de transparencia sin reflejar fielmente los mecanismos causales internos del modelo, lo que en ámbitos críticos resulta insuficiente para garantizar justicia.",
+      "El debate técnico ha impulsado respuestas regulatorias de gran calado. En Europa, el Reglamento General de Protección de Datos (GDPR) sentó un precedente al reconocer protecciones frente a decisiones exclusivamente automatizadas con efectos jurídicos significativos, impulsando discusiones en torno al llamado 'derecho a la explicación'. De manera complementaria, marcos normativos más recientes clasifican las aplicaciones de IA según su nivel de riesgo, exigiendo evaluaciones de impacto algorítmico, trazabilidad de conjuntos de datos y mecanismos efectivos de supervisión humana significativa (Human-in-the-Loop) que eviten el sesgo de automatización.",
+      "En definitiva, construir sistemas de inteligencia artificial confiables no es un problema que pueda resolverse exclusivamente ajustando funciones de pérdida o métricas matemáticas de equidad, las cuales a menudo resultan mutuamente incompatibles en términos estadísticos. La gobernanza ética de la IA demanda una perspectiva sociotécnica multidisciplinaria que combine rigor ingenieril, auditorías externas, rendición de cuentas institucional y deliberación pública sobre qué decisiones una sociedad está dispuesta a delegar en sistemas automatizados."
+    ],
+    "preguntas": [
+      {
+        "id": "sim_cl_006",
+        "tipo": "Comprensión lectora",
+        "pregunta": "¿Cuál es la tesis central que defiende el texto?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Los modelos de Aprendizaje Automático deben prohibirse en la banca y la medicina porque es técnicamente imposible auditar sus datos."
+          },
+          {
+            "id": "B",
+            "texto": "Los sistemas de IA heredan sesgos sociales y presentan opacidad estructural, por lo que su uso ético exige no solo técnicas de explicabilidad, sino también regulación y gobernanza sociotécnica."
+          },
+          {
+            "id": "C",
+            "texto": "Basta con eliminar atributos sensibles como el género o la etnia de las bases de datos y aplicar técnicas como SHAP para garantizar la equidad algorítmica."
+          },
+          {
+            "id": "D",
+            "texto": "Los Grandes Modelos de Lenguaje son más transparentes que los árboles de decisión gracias a la cantidad de parámetros que procesan."
+          }
+        ],
+        "respuesta_correcta": "B",
+        "explicacion": "El texto desmantela la idea de neutralidad algorítmica [1]-[2], expone la opacidad de la 'caja negra' [3], analiza los alcances y límites de XAI [4] y subraya que la solución requiere marcos regulatorios [5] y gobernanza sociotécnica multidisciplinaria [6]. Las opciones A, C y D contradicen afirmaciones directas de los párrafos [2], [3], [4] y [6].",
+        "acronimos": [
+          {
+            "sigla": "IA",
+            "significado": "Inteligencia Artificial",
+            "pista": "Campo de la computación enfocado en sistemas capaces de realizar tareas asociadas a la inteligencia humana."
+          },
+          {
+            "sigla": "ML",
+            "significado": "Machine Learning (Aprendizaje Automático)",
+            "pista": "Subcampo de la IA en el que los modelos aprenden patrones estadísticos a partir de datos."
+          },
+          {
+            "sigla": "XAI",
+            "significado": "Explainable Artificial Intelligence (IA Explicable)",
+            "pista": "Conjunto de métodos diseñados para hacer interpretables las decisiones de los modelos de IA."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_007",
+        "tipo": "Comprensión lectora",
+        "pregunta": "¿Cómo se relaciona el párrafo [2] con el planteamiento presentado en el párrafo [1]?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Contradice la afirmación del párrafo [1] al demostrar que los modelos estadísticos son completamente objetivos."
+          },
+          {
+            "id": "B",
+            "texto": "Introduce una solución normativa a los problemas de privacidad mencionados en el párrafo [1]."
+          },
+          {
+            "id": "C",
+            "texto": "Reemplaza el tema del aprendizaje automático por un análisis exclusivo de leyes de protección de datos."
+          },
+          {
+            "id": "D",
+            "texto": "Explica las causas técnicas y sociales por las cuales se produce la reproducción de inequidades anunciada en el párrafo [1]."
+          }
+        ],
+        "respuesta_correcta": "D",
+        "explicacion": "El párrafo [1] introduce la afirmación de que los algoritmos pueden reproducir y amplificar inequidades preexistentes, mientras que el párrafo [2] desarrolla el origen y las causas de ese fenómeno: entrenamiento con datos históricos desiguales y reconstrucción indirecta de atributos protegidos mediante variables sustitutas.",
+        "acronimos": [
+          {
+            "sigla": "ML",
+            "significado": "Machine Learning (Aprendizaje Automático)",
+            "pista": "Depende directamente de la calidad y representatividad de los datos históricos de entrenamiento."
+          },
+          {
+            "sigla": "IA",
+            "significado": "Inteligencia Artificial",
+            "pista": "Sistemas automatizados cuya supuesta neutralidad matemática es cuestionada por el sesgo en los datos."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_008",
+        "tipo": "Comprensión lectora",
+        "pregunta": "Con base en los párrafos [3] y [4], ¿qué puede inferirse sobre la relación entre complejidad algorítmica y transparencia?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Existe una tensión entre la capacidad predictiva de modelos altamente complejos y la facilidad para comprender sus razones internas, que las técnicas XAI post-hoc solo mitigan parcialmente."
+          },
+          {
+            "id": "B",
+            "texto": "Cuantos más parámetros tiene un LLM, más sencillo resulta para sus creadores verificar los mecanismos causales de cada respuesta."
+          },
+          {
+            "id": "C",
+            "texto": "Las herramientas como LIME y SHAP sustituyen por completo la necesidad de diseñar modelos intrínsecamente interpretables en ámbitos críticos."
+          },
+          {
+            "id": "D",
+            "texto": "Los árboles de decisión sencillos son superiores en precisión predictiva a las redes neuronales profundas en todas las tareas."
+          }
+        ],
+        "respuesta_correcta": "A",
+        "explicacion": "En el párrafo [3] se señala que la complejidad no lineal de redes profundas y LLM otorga gran capacidad predictiva a costa de convertirlos en una 'caja negra', y en el párrafo [4] se advierte que las explicaciones post-hoc (SHAP, LIME) son aproximaciones que pueden generar una 'ilusión de transparencia' sin reflejar fielmente los mecanismos causales.",
+        "acronimos": [
+          {
+            "sigla": "LLM",
+            "significado": "Large Language Model (Gran Modelo de Lenguaje)",
+            "pista": "Modelo de aprendizaje profundo con miles de millones de parámetros cuyo funcionamiento interno resulta opaco."
+          },
+          {
+            "sigla": "XAI",
+            "significado": "Explainable Artificial Intelligence (IA Explicable)",
+            "pista": "Disciplina que busca abrir la 'caja negra' de los modelos complejos mediante técnicas como SHAP o LIME."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_009",
+        "tipo": "Comprensión lectora",
+        "pregunta": "En el párrafo [2], ¿a qué se refiere el autor con el concepto de 'variables sustitutas' (proxies)?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "A servidores intermedios que protegen la privacidad de los usuarios durante el entrenamiento de un modelo."
+          },
+          {
+            "id": "B",
+            "texto": "A métricas matemáticas diseñadas por los reguladores para medir la equidad de un algoritmo."
+          },
+          {
+            "id": "C",
+            "texto": "A datos aparentemente neutrales que se correlacionan estrechamente con atributos protegidos y permiten al modelo inferirlos de manera indirecta."
+          },
+          {
+            "id": "D",
+            "texto": "A valores aleatorios que se insertan en una base de datos cuando falta información histórica."
+          }
+        ],
+        "respuesta_correcta": "C",
+        "explicacion": "El párrafo [2] explica que, aun al eliminar atributos protegidos como el género o el origen étnico, el algoritmo puede reconstruirlos indirectamente a través de 'variables sustitutas' (proxies) como el código postal o la institución educativa, perpetuando así la discriminación.",
+        "acronimos": [
+          {
+            "sigla": "GDPR",
+            "significado": "General Data Protection Regulation (Reglamento General de Protección de Datos)",
+            "pista": "Normativa europea que protege a los ciudadanos frente a decisiones automatizadas con efectos jurídicos significativos."
+          },
+          {
+            "sigla": "XAI",
+            "significado": "Explainable Artificial Intelligence (IA Explicable)",
+            "pista": "Ayuda a detectar cuándo un modelo está asignando peso indebido a variables sustitutas."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_010",
+        "tipo": "Comprensión lectora",
+        "pregunta": "¿Qué postura crítica asume el autor en los párrafos [5] y [6] frente a la solución del problema ético en la IA?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Sostiene que el problema es estrictamente matemático y se resolverá en cuanto los ingenieros unifiquen todas las métricas de equidad."
+          },
+          {
+            "id": "B",
+            "texto": "Argumenta que los ajustes puramente técnicos son insuficientes y que se requiere combinar regulación, supervisión humana real, auditorías y deliberación social."
+          },
+          {
+            "id": "C",
+            "texto": "Afirma que el GDPR ha resuelto definitivamente el sesgo de automatización en todo el mundo."
+          },
+          {
+            "id": "D",
+            "texto": "Propone delegar la supervisión ética exclusivamente en los equipos de desarrollo para acelerar la innovación."
+          }
+        ],
+        "respuesta_correcta": "B",
+        "explicacion": "En el párrafo [5] destaca el papel de la regulación basada en riesgo y la supervisión humana significativa, y en el párrafo [6] afirma explícitamente que construir IA confiable no se resuelve solo ajustando funciones matemáticas, sino mediante una perspectiva sociotécnica multidisciplinaria con auditorías, rendición de cuentas y deliberación pública.",
+        "acronimos": [
+          {
+            "sigla": "GDPR",
+            "significado": "General Data Protection Regulation",
+            "pista": "Referente normativo europeo que impulsó el debate sobre el derecho a la explicación en decisiones automatizadas."
+          },
+          {
+            "sigla": "LLM",
+            "significado": "Large Language Model (Gran Modelo de Lenguaje)",
+            "pista": "Tipo de modelo de alto impacto sujeto a debates sobre auditoría, riesgo y gobernanza."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Más allá de la nube centralizada: Edge Computing y la huella energética digital",
+    "parrafos": [
+      "Durante la última década, el modelo dominante de computación en la nube centralizada permitió escalar servicios globales con una agilidad sin precedentes. Sin embargo, la proliferación masiva de sensores del Internet de las Cosas (IoT), la conducción autónoma y el auge de cargas de trabajo intensivas en Unidades de Procesamiento Gráfico (GPU) están tensionando los límites físicos de esa arquitectura. Enviar terabytes de datos sin procesar hacia megacentros de datos ubicados a cientos o miles de kilómetros no solo introduce latencias inaceptables para aplicaciones críticas, sino que también dispara el consumo eléctrico y la demanda hídrica destinados a la transmisión y refrigeración.",
+      "Frente a esta saturación, la computación en el borde (Edge Computing) propone desplazar el procesamiento y el almacenamiento hacia la periferia de la red, cerca del lugar donde se originan los datos. Al integrarse con Redes de Entrega de Contenido (CDN) y microcentros de datos regionales, esta arquitectura filtra y analiza información localmente, enviando a la nube central únicamente resúmenes o eventos relevantes. Gracias a ello, sectores como la telemedicina, la manufactura automatizada y la movilidad conectada logran cumplir estrictos Acuerdos de Nivel de Servicio (SLA) que exigen respuestas en milisegundos y alta continuidad operativa incluso ante interrupciones en el enlace principal.",
+      "No obstante, desde la perspectiva de la sostenibilidad ambiental, el desplazamiento hacia el borde encierra una paradoja energética. La eficiencia de un centro de datos suele medirse mediante el indicador PUE (Power Usage Effectiveness), que compara la energía total consumida por la instalación frente a la energía utilizada exclusivamente por los equipos informáticos; cuanto más cercano a 1.0 sea el valor, mayor es la eficiencia. Mientras los grandes centros hiperescala alcanzan valores de PUE próximos a 1.1 gracias a economías de escala y sistemas avanzados de enfriamiento líquido, los nodos pequeños en el borde suelen operar con PUE menos favorables —entre 1.5 y 1.8— debido a restricciones de espacio y climatización, lo que puede contrarrestar parte del ahorro obtenido al reducir el tráfico de red.",
+      "Para resolver esta tensión, la ingeniería de sistemas sostenibles impulsa tres líneas complementarias de innovación. En primer lugar, sustituir GPU de propósito general por aceleradores de hardware especializados de bajo consumo, como Unidades de Procesamiento Neuronal (NPU) y circuitos integrados de aplicación específica (ASIC), optimizados para inferencia en el borde. En segundo lugar, aplicar técnicas de compresión de software como la cuantización y la poda de modelos, que reducen el cómputo requerido sin sacrificar drásticamente la precisión. Por último, implementar la 'programación de cargas consciente del carbono' (carbon-aware computing), estrategia que desplaza dinámicamente tareas no urgentes hacia nodos u horarios en los que la red eléctrica cuenta con mayor proporción de fuentes renovables.",
+      "En consecuencia, el debate contemporáneo sobre infraestructura digital no debe plantearse como una disyuntiva excluyente entre la nube centralizada y el borde. El camino más viable consiste en orquestar un 'continuo nube-borde' (cloud-edge continuum) en el que cada carga de trabajo se ejecute en el punto óptimo según sus requisitos de latencia, privacidad y costo energético. Solo mediante esta visión integrada, acompañada de métricas transparentes sobre emisiones y consumo real, la transformación digital podrá expandirse sin agravar la crisis climática."
+    ],
+    "preguntas": [
+      {
+        "id": "sim_cl_011",
+        "tipo": "Comprensión lectora",
+        "pregunta": "¿Cuál es la idea principal del texto?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Ante las limitaciones de latencia y energía de la nube centralizada, el Edge Computing ofrece respuestas en tiempo real pero plantea nuevos retos de eficiencia energética que deben abordarse mediante innovación técnica y un continuo nube-borde."
+          },
+          {
+            "id": "B",
+            "texto": "Los megacentros de datos hiperescala deben clausurarse por completo porque su indicador PUE es significativamente peor que el de los microcentros de datos locales."
+          },
+          {
+            "id": "C",
+            "texto": "La única forma de reducir la huella ambiental del Internet de las Cosas consiste en prohibir el uso de redes CDN y de aceleradores GPU."
+          },
+          {
+            "id": "D",
+            "texto": "El Edge Computing elimina automáticamente todo consumo eléctrico y de agua al evitar el uso de sistemas de climatización."
+          }
+        ],
+        "respuesta_correcta": "A",
+        "explicacion": "El texto presenta las presiones sobre la nube centralizada [1], explica cómo el Edge Computing resuelve problemas de latencia y SLA [2], expone la paradoja del PUE en el borde [3], detalla innovaciones de hardware/software sostenible [4] y concluye abogando por un continuo nube-borde [5]. Las opciones B, C y D distorsionan o contradicen el texto.",
+        "acronimos": [
+          {
+            "sigla": "IoT",
+            "significado": "Internet of Things (Internet de las Cosas)",
+            "pista": "Red de dispositivos y sensores interconectados que generan volúmenes masivos de datos en el borde."
+          },
+          {
+            "sigla": "GPU",
+            "significado": "Graphics Processing Unit (Unidad de Procesamiento Gráfico)",
+            "pista": "Procesador muy usado en cómputo paralelo e IA, pero con alto consumo energético en centros de datos."
+          },
+          {
+            "sigla": "PUE",
+            "significado": "Power Usage Effectiveness (Eficacia en el Uso de la Energía)",
+            "pista": "Métrica de eficiencia energética de centros de datos; un valor cercano a 1.0 indica eficiencia óptima."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_012",
+        "tipo": "Comprensión lectora",
+        "pregunta": "¿En qué consiste la 'paradoja energética' descrita en el párrafo [3]?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "En que los centros hiperescala consumen más energía por tarea de refrigeración que cualquier nodo pequeño debido a que usan enfriamiento líquido."
+          },
+          {
+            "id": "B",
+            "texto": "En que un valor de PUE cercano a 1.8 refleja mayor eficiencia energética que un valor cercano a 1.1."
+          },
+          {
+            "id": "C",
+            "texto": "En que, aunque procesar datos en el borde ahorra energía al reducir el tráfico de red, los nodos pequeños suelen tener un PUE menos eficiente que los megacentros hiperescala."
+          },
+          {
+            "id": "D",
+            "texto": "En que el Edge Computing incrementa la latencia de red justo cuando disminuye el consumo eléctrico de los servidores."
+          }
+        ],
+        "respuesta_correcta": "C",
+        "explicacion": "El párrafo [3] explica que, si bien el borde ahorra energía en transmisión de red, los microcentros de datos locales operan con un PUE menos favorable (1.5 a 1.8) frente a los hiperescaladores (cercano a 1.1), lo cual puede contrarrestar parte del beneficio energético.",
+        "acronimos": [
+          {
+            "sigla": "PUE",
+            "significado": "Power Usage Effectiveness",
+            "pista": "Relación entre energía total de la instalación y energía de los equipos TI (ideal = 1.0)."
+          },
+          {
+            "sigla": "SLA",
+            "significado": "Service Level Agreement (Acuerdo de Nivel de Servicio)",
+            "pista": "Compromiso contractual de disponibilidad y latencia que impulsa el procesamiento en el borde."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_013",
+        "tipo": "Comprensión lectora",
+        "pregunta": "De acuerdo con los párrafos [1], [2] y [3], ¿por qué un sistema de conducción autónoma no podría depender exclusivamente de un megacentro de datos lejano aunque este tenga un PUE óptimo?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Porque los megacentros de datos carecen de capacidad para almacenar resúmenes o eventos históricos."
+          },
+          {
+            "id": "B",
+            "texto": "Porque las redes CDN bloquean la comunicación entre vehículos y servidores en la nube."
+          },
+          {
+            "id": "C",
+            "texto": "Porque los centros hiperescala no utilizan GPU ni sistemas de refrigeración avanzados."
+          },
+          {
+            "id": "D",
+            "texto": "Porque requiere respuestas en milisegundos y continuidad operativa incluso ante fallos de conectividad, condiciones que la latencia de la nube distante compromete."
+          }
+        ],
+        "respuesta_correcta": "D",
+        "explicacion": "En [1] se señala que enviar datos a megacentros lejanos introduce latencias inaceptables para aplicaciones críticas como la conducción autónoma, y en [2] se indica que el procesamiento local permite cumplir SLA de milisegundos y mantener continuidad incluso ante interrupciones del enlace principal.",
+        "acronimos": [
+          {
+            "sigla": "SLA",
+            "significado": "Service Level Agreement (Acuerdo de Nivel de Servicio)",
+            "pista": "Garantiza tiempos máximos de respuesta y disponibilidad en aplicaciones críticas."
+          },
+          {
+            "sigla": "CDN",
+            "significado": "Content Delivery Network (Red de Entrega de Contenido)",
+            "pista": "Red distribuida de servidores que acerca contenidos y cómputo a los usuarios finales."
+          },
+          {
+            "sigla": "IoT",
+            "significado": "Internet of Things (Internet de las Cosas)",
+            "pista": "Ecosistema de sensores y actuadores que demanda procesamiento de baja latencia."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_014",
+        "tipo": "Comprensión lectora",
+        "pregunta": "Según el párrafo [4], ¿en qué consiste la 'programación de cargas consciente del carbono' (carbon-aware computing)?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "En reducir el tamaño de los modelos de inteligencia artificial eliminando parámetros redundantes."
+          },
+          {
+            "id": "B",
+            "texto": "En trasladar dinámicamente procesos no urgentes hacia ubicaciones u horarios con mayor disponibilidad de electricidad proveniente de energías renovables."
+          },
+          {
+            "id": "C",
+            "texto": "En reemplazar el software de gestión de centros de datos por circuitos ASIC diseñados para la refrigeración líquida."
+          },
+          {
+            "id": "D",
+            "texto": "En suspender todas las operaciones de la nube centralizada durante las horas de mayor tráfico de internet."
+          }
+        ],
+        "respuesta_correcta": "B",
+        "explicacion": "El párrafo [4] define explícitamente la 'programación de cargas consciente del carbono' como la 'estrategia que desplaza dinámicamente tareas no urgentes hacia nodos u horarios en los que la red eléctrica cuenta con mayor proporción de fuentes renovables'. La opción A corresponde a la poda de modelos, no a carbon-aware computing.",
+        "acronimos": [
+          {
+            "sigla": "NPU",
+            "significado": "Neural Processing Unit (Unidad de Procesamiento Neuronal)",
+            "pista": "Acelerador de hardware de bajo consumo especializado en inferencia de redes neuronales."
+          },
+          {
+            "sigla": "ASIC",
+            "significado": "Application-Specific Integrated Circuit",
+            "pista": "Circuito integrado diseñado a medida para una tarea específica con alta eficiencia energética."
+          },
+          {
+            "sigla": "GPU",
+            "significado": "Graphics Processing Unit",
+            "pista": "Hardware más versátil pero generalmente menos eficiente energéticamente que un ASIC para inferencia en el borde."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_015",
+        "tipo": "Comprensión lectora",
+        "pregunta": "¿Cuál es la intención comunicativa del autor en el párrafo [5]?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Superar la falsa dicotomía entre nube y borde, proponiendo una integración equilibrada y ambientalmente verificable."
+          },
+          {
+            "id": "B",
+            "texto": "Demostrar que la privacidad de los datos es irrelevante frente al ahorro de energía eléctrica."
+          },
+          {
+            "id": "C",
+            "texto": "Presentar una lista exhaustiva de proveedores comerciales de microcentros de datos."
+          },
+          {
+            "id": "D",
+            "texto": "Argumentar que la expansión digital es incompatible con cualquier forma de sostenibilidad ambiental."
+          }
+        ],
+        "respuesta_correcta": "A",
+        "explicacion": "En el párrafo [5], el autor rechaza plantear el tema como 'una disyuntiva excluyente' y propone orquestar un 'continuo nube-borde' equilibrando latencia, privacidad y costo energético, respaldado por métricas transparentes de emisiones y consumo.",
+        "acronimos": [
+          {
+            "sigla": "CDN",
+            "significado": "Content Delivery Network",
+            "pista": "Infraestructura clave dentro del continuo nube-borde para distribuir tráfico y cómputo."
+          },
+          {
+            "sigla": "PUE",
+            "significado": "Power Usage Effectiveness",
+            "pista": "Una de las métricas empleadas para auditar el consumo real de los centros de datos."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Infraestructuras críticas bajo asedio: convergencia IT/OT y ciberseguridad industrial",
+    "parrafos": [
+      "Durante décadas, las redes de Tecnología Operacional (OT) responsables de gestionar subestaciones eléctricas, plantas potabilizadoras, sistemas ferroviarios y refinerías funcionaron en un entorno radicalmente distinto al de la informática corporativa. Su principal mecanismo de protección consistía en el aislamiento físico absoluto —conocido como arquitectura 'air-gapped'— respecto a las redes de Tecnología de la Información (IT) e internet, reforzado por el uso de protocolos industriales propietarios poco conocidos fuera del ámbito de la ingeniería de control.",
+      "Sin embargo, el avance de la Industria 4.0 y la búsqueda de eficiencia operativa derrumbaron progresivamente esa frontera. Para habilitar el mantenimiento predictivo, la telemetría en tiempo real y la administración remota de activos distribuidos, las organizaciones interconectaron sus Sistemas de Control Industrial (ICS) y plataformas de supervisión SCADA con redes corporativas y servicios en la nube. Como consecuencia directa de esta convergencia IT/OT, el antiguo aislamiento desapareció y la superficie de ataque se amplió de manera drástica, exponiendo procesos físicos críticos a amenazas que antes solo afectaban oficinas administrativas.",
+      "Proteger estos entornos entraña una complejidad particular debido a que IT y OT responden a jerarquías de prioridades opuestas. En la seguridad informática tradicional (IT), suele aplicarse la tríada CIA (Confidencialidad, Integridad y Disponibilidad) otorgando un peso preponderante a la confidencialidad de los datos, y resulta habitual reiniciar servidores periódicamente para aplicar parches de seguridad. Por el contrario, en entornos OT la disponibilidad ininterrumpida y la seguridad física (safety) son innegociables: detener un Controlador Lógico Programable (PLC) o introducir milisegundos de latencia por un escaneo agresivo puede paralizar una línea de producción o desencadenar accidentes industriales graves.",
+      "Las consecuencias de esta vulnerabilidad estructural ya trascienden el plano teórico. Mientras en el pasado los ataques de ransomware buscaban principalmente cifrar archivos administrativos para exigir rescates, hoy los adversarios avanzados aprovechan el movimiento lateral desde la red IT hacia la red OT para alterar parámetros de sensores, válvulas o actuadores. El panorama se agrava por la longevidad de la maquinaria industrial: muchos equipos heredados (legacy) operan durante veinte o treinta años sin soporte de fabricante ni capacidad de cifrado nativa, convirtiéndose en el auténtico talón de Aquiles de las infraestructuras críticas.",
+      "Ante la imposibilidad de simplemente trasladar recetas de seguridad corporativa a la planta industrial, los especialistas impulsan una adaptación pragmática del paradigma Zero Trust (Confianza Cero) y de la microsegmentación de redes. Esto implica eliminar la confianza implícita dentro de la red interna, exigir autenticación robusta en cada punto de acceso remoto, restringir las comunicaciones OT mediante listas blancas de protocolos permitidos y desplegar sistemas de monitoreo pasivo de anomalías que inspeccionen el tráfico sin interferir con el control en tiempo real, complementados con planes de recuperación resilientes.",
+      "En última instancia, fortalecer la resiliencia de las infraestructuras críticas exige mucho más que adquirir cortafuegos industriales de última generación. Requiere cerrar la histórica brecha cultural entre los ingenieros de operación de planta —enfocados en la continuidad física del proceso— y los especialistas en ciberseguridad —acostumbrados a la dinámica de las redes corporativas—. En un mundo cada vez más ciberfísico, la seguridad digital ha dejado de ser un asunto departamental para convertirse en un componente inseparable de la seguridad pública."
+    ],
+    "preguntas": [
+      {
+        "id": "sim_cl_016",
+        "tipo": "Comprensión lectora",
+        "pregunta": "¿Cuál es la idea principal del texto?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Las plantas industriales deben desconectarse por completo de la Industria 4.0 y regresar a protocolos propietarios para evitar ataques de ransomware."
+          },
+          {
+            "id": "B",
+            "texto": "La seguridad en redes OT es idéntica a la de redes IT, por lo que basta con instalar parches automáticos mensuales en todos los PLC."
+          },
+          {
+            "id": "C",
+            "texto": "Los equipos industriales modernos duran menos de cinco años, lo que facilita su sustitución constante por sistemas con cifrado nativo."
+          },
+          {
+            "id": "D",
+            "texto": "La convergencia entre redes IT y OT ha expuesto a las infraestructuras críticas a nuevos ciberriesgos físicos que exigen defensas adaptadas como Zero Trust, monitoreo pasivo y colaboración interdisciplinaria."
+          }
+        ],
+        "respuesta_correcta": "D",
+        "explicacion": "El texto explica la pérdida del aislamiento tradicional por la convergencia IT/OT [1]-[2], las diferencias de prioridades y riesgos físicos en sistemas heredados [3]-[4], la necesidad de controles adaptados como Zero Trust y monitoreo pasivo [5] y la integración cultural entre ingeniería de planta y ciberseguridad [6].",
+        "acronimos": [
+          {
+            "sigla": "IT",
+            "significado": "Information Technology (Tecnología de la Información)",
+            "pista": "Sistemas y redes corporativas orientadas al procesamiento y gestión de datos empresariales."
+          },
+          {
+            "sigla": "OT",
+            "significado": "Operational Technology (Tecnología Operacional)",
+            "pista": "Hardware y software que monitorean y controlan directamente equipos y procesos físicos industriales."
+          },
+          {
+            "sigla": "ICS",
+            "significado": "Industrial Control Systems (Sistemas de Control Industrial)",
+            "pista": "Conjunto de dispositivos y sistemas encargados de automatizar y controlar operaciones en plantas críticas."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_017",
+        "tipo": "Comprensión lectora",
+        "pregunta": "¿Qué relación causal se establece entre el párrafo [1] y el párrafo [2]?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "La aparición de ciberataques obligó a las empresas a interconectar sus plataformas SCADA con servicios en la nube."
+          },
+          {
+            "id": "B",
+            "texto": "La búsqueda de eficiencia operativa y telemetría de la Industria 4.0 eliminó el aislamiento físico previo de las redes OT y amplió drásticamente su superficie de ataque."
+          },
+          {
+            "id": "C",
+            "texto": "El uso de protocolos propietarios causó la paralización de las redes corporativas IT."
+          },
+          {
+            "id": "D",
+            "texto": "El mantenimiento predictivo reforzó la arquitectura 'air-gapped' de las subestaciones eléctricas."
+          }
+        ],
+        "respuesta_correcta": "B",
+        "explicacion": "Mientras el párrafo [1] describe el aislamiento físico original de las redes OT, el párrafo [2] establece que la necesidad de mantenimiento predictivo, telemetría y gestión remota de la Industria 4.0 interconectó los ICS y SCADA con redes corporativas, causando la desaparición del aislamiento y la ampliación de la superficie de ataque.",
+        "acronimos": [
+          {
+            "sigla": "SCADA",
+            "significado": "Supervisory Control and Data Acquisition",
+            "pista": "Sistema industrial utilizado para supervisar y controlar procesos físicos a distancia."
+          },
+          {
+            "sigla": "ICS",
+            "significado": "Industrial Control Systems",
+            "pista": "Abarca plataformas como SCADA y controladores de campo como los PLC."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_018",
+        "tipo": "Comprensión lectora",
+        "pregunta": "¿Qué contraste fundamental señala el párrafo [3] entre los entornos IT y los entornos OT?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "En IT nunca se aplican actualizaciones de software, mientras que en OT los equipos se reinician a diario."
+          },
+          {
+            "id": "B",
+            "texto": "En IT solo importa la disponibilidad de los servidores, mientras que en OT se prioriza la confidencialidad de los archivos administrativos."
+          },
+          {
+            "id": "C",
+            "texto": "Mientras en IT suele priorizarse la confidencialidad y es viable reiniciar sistemas para parchearlos, en OT priman la disponibilidad continua y la seguridad física."
+          },
+          {
+            "id": "D",
+            "texto": "En IT los ataques no tienen impacto financiero, mientras que en OT únicamente generan pérdidas de datos confidenciales."
+          }
+        ],
+        "respuesta_correcta": "C",
+        "explicacion": "El párrafo [3] contrasta explícitamente ambas prioridades: en IT la tríada CIA suele dar gran peso a la confidencialidad y permite reinicios periódicos para parchear, mientras que 'Por el contrario, en entornos OT la disponibilidad ininterrumpida y la seguridad física (safety) son innegociables'.",
+        "acronimos": [
+          {
+            "sigla": "CIA",
+            "significado": "Confidentiality, Integrity, Availability (Confidencialidad, Integridad y Disponibilidad)",
+            "pista": "Tríada fundamental de la seguridad de la información cuya jerarquía cambia entre IT y OT."
+          },
+          {
+            "sigla": "PLC",
+            "significado": "Programmable Logic Controller (Controlador Lógico Programable)",
+            "pista": "Computadora industrial robusta que controla maquinaria y procesos físicos en tiempo real."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_019",
+        "tipo": "Comprensión lectora",
+        "pregunta": "En el contexto del párrafo [4], ¿por qué el autor califica a los equipos heredados (legacy) como 'el auténtico talón de Aquiles' de las infraestructuras críticas?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Porque permanecen en operación durante décadas sin soporte del fabricante ni cifrado nativo, representando un punto de vulnerabilidad persistente."
+          },
+          {
+            "id": "B",
+            "texto": "Porque son los únicos dispositivos capaces de detectar el movimiento lateral de ransomware desde la nube."
+          },
+          {
+            "id": "C",
+            "texto": "Porque consumen menos energía que los controladores modernos pero requieren actualizaciones semanales."
+          },
+          {
+            "id": "D",
+            "texto": "Porque fueron diseñados originalmente para conectarse de forma directa y abierta a internet."
+          }
+        ],
+        "respuesta_correcta": "A",
+        "explicacion": "En el párrafo [4], la expresión metafórica 'talón de Aquiles' (punto más vulnerable) se justifica inmediatamente antes al explicar que estos equipos heredados operan veinte o treinta años 'sin soporte de fabricante ni capacidad de cifrado nativa'.",
+        "acronimos": [
+          {
+            "sigla": "OT",
+            "significado": "Operational Technology (Tecnología Operacional)",
+            "pista": "Entorno caracterizado por ciclos de vida largos de maquinaria y equipos legacy."
+          },
+          {
+            "sigla": "SCADA",
+            "significado": "Supervisory Control and Data Acquisition",
+            "pista": "Plataformas que frecuentemente conviven con dispositivos de campo heredados sin cifrado nativo."
+          }
+        ]
+      },
+      {
+        "id": "sim_cl_020",
+        "tipo": "Comprensión lectora",
+        "pregunta": "A partir de los párrafos [5] y [6], ¿qué puede inferirse sobre una estrategia de ciberseguridad industrial verdaderamente eficaz?",
+        "opciones": [
+          {
+            "id": "A",
+            "texto": "Debe basarse en escaneos activos agresivos sobre los PLC y en la compra exclusiva de cortafuegos corporativos."
+          },
+          {
+            "id": "B",
+            "texto": "Corresponde únicamente al departamento de TI, sin necesidad de involucrar a los ingenieros de operación de planta."
+          },
+          {
+            "id": "C",
+            "texto": "Exige confiar implícitamente en todo el tráfico que ya se encuentra dentro de la red interna de la fábrica."
+          },
+          {
+            "id": "D",
+            "texto": "Debe combinar controles técnicos no intrusivos —como Zero Trust, microsegmentación y monitoreo pasivo— con la alineación cultural entre ingeniería de planta y ciberseguridad."
+          }
+        ],
+        "respuesta_correcta": "D",
+        "explicacion": "El párrafo [5] detalla medidas adaptadas que no interfieren con el control en tiempo real (Zero Trust, microsegmentación, listas blancas y monitoreo pasivo), y el párrafo [6] concluye que esto debe acompañarse de cerrar la brecha cultural entre ingenieros de operación y especialistas en ciberseguridad.",
+        "acronimos": [
+          {
+            "sigla": "ICS",
+            "significado": "Industrial Control Systems",
+            "pista": "Requieren monitoreo pasivo y microsegmentación para protegerse sin interrumpir procesos críticos."
+          },
+          {
+            "sigla": "IT",
+            "significado": "Information Technology",
+            "pista": "Sus especialistas deben colaborar con los ingenieros de OT para lograr resiliencia ciberfísica."
+          },
+          {
+            "sigla": "OT",
+            "significado": "Operational Technology",
+            "pista": "Ámbito donde la adopción de Zero Trust debe ser pragmática y no intrusiva."
+          }
+        ]
+      }
+    ]
+  }
+]

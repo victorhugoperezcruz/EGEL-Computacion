@@ -1,0 +1,3290 @@
+[
+  {
+    "id": "sim_sw_001",
+    "diagrama": "dfd-symbols-blank",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Una analista modela el proceso de facturación electrónica de una distribuidora utilizando la notación Yourdon-DeMarco para construir un Diagrama de Flujo de Datos (DFD). Necesita representar: (1) el cálculo de impuestos y generación del comprobante, (2) el archivo maestro de clientes donde se consulta el RFC, y (3) el Servicio de Administración Tributaria (SAT) que recibe el comprobante timbrado. ¿Qué símbolos debe emplear respectivamente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Rectángulo con esquinas redondeadas (proceso), rectángulo abierto por un lado (almacén) y óvalo (entidad externa)."
+      },
+      {
+        "id": "B",
+        "texto": "Círculo (proceso), dos líneas paralelas horizontales (almacén de datos) y rectángulo (entidad externa)."
+      },
+      {
+        "id": "C",
+        "texto": "Rombo (proceso), cilindro (almacén de datos) y círculo doble (entidad externa)."
+      },
+      {
+        "id": "D",
+        "texto": "Rectángulo (proceso), flecha bidireccional (almacén de datos) y triángulo (entidad externa)."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "En la notación Yourdon-DeMarco para DFD, los procesos (transformaciones de datos) se representan con círculos (burbujas), los almacenes de datos con dos líneas paralelas horizontales, las entidades externas (fuentes/sumideros) con rectángulos y los flujos de datos con flechas etiquetadas. El uso de rectángulos redondeados y rectángulo abierto corresponde parcialmente a Gane & Sarson, pero el óvalo es incorrecto.",
+    "acronimos": [
+      {
+        "sigla": "DFD",
+        "significado": "Diagrama de Flujo de Datos (Data Flow Diagram)",
+        "pista": "Modela cómo se transforman y fluyen los datos entre procesos, almacenes y entidades externas."
+      },
+      {
+        "sigla": "RFC",
+        "significado": "Registro Federal de Contribuyentes",
+        "pista": "Clave alfanumérica fiscal usada como dato de consulta en el almacén de clientes."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_002",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Un equipo de desarrollo construye una plataforma integral de gestión hospitalaria. Para entregar valor temprano y validar los módulos más críticos con los médicos, decide implementar primero únicamente el módulo de consulta externa y recetas electrónicas completamente funcional, dejando para fases posteriores urgencias, quirófanos y farmacia —de forma análoga a un centro comercial que abre al público un ala terminada con tiendas operativas mientras el resto del inmueble sigue en construcción—. ¿Qué tipo de prototipo se está aplicando?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Prototipo de características selectas."
+      },
+      {
+        "id": "B",
+        "texto": "Prototipo no operacional (de papel o maqueta)."
+      },
+      {
+        "id": "C",
+        "texto": "Prototipo de parches (patched-up)."
+      },
+      {
+        "id": "D",
+        "texto": "Prototipo desechable de interfaz."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Según Kendall & Kendall, el prototipo de características selectas incluye solo algunas funciones esenciales pero totalmente operativas del sistema final, permitiendo liberarlo e ir agregando nuevas características progresivamente (analogía clásica del centro comercial que abre parcialmente). El prototipo de parches incluye todas las funciones pero de manera ineficiente; el no operacional es un modelo a escala sin funcionalidad real.",
+    "acronimos": [
+      {
+        "sigla": "SI",
+        "significado": "Sistema de Información",
+        "pista": "Conjunto integrado de componentes para recolectar, almacenar y procesar datos organizacionales."
+      },
+      {
+        "sigla": "RAD",
+        "significado": "Rapid Application Development (Desarrollo Rápido de Aplicaciones)",
+        "pista": "Enfoque iterativo que emplea prototipos para acelerar la validación con usuarios."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_003",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Durante la fase de diseño de un sistema financiero distribuido, el arquitecto elabora inicialmente una vista de baja resolución que define los subsistemas principales, sus responsabilidades generales y los canales de comunicación entre ellos; posteriormente, los ingenieros producen especificaciones de alta resolución con algoritmos internos, firmas exactas de métodos y estructuras de datos de cada módulo. ¿A qué niveles de diseño corresponden estas actividades?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Diseño de interfaz de usuario y diseño de experiencia (UX)."
+      },
+      {
+        "id": "B",
+        "texto": "Diseño físico de hardware y diseño de despliegue."
+      },
+      {
+        "id": "C",
+        "texto": "Diseño conceptual y diseño de pruebas de aceptación."
+      },
+      {
+        "id": "D",
+        "texto": "Diseño arquitectónico (preliminar) y diseño detallado."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "El diseño de software se divide clásicamente en dos niveles: el diseño arquitectónico (o de alto nivel / baja resolución), que establece la estructura global de subsistemas e interfaces, y el diseño detallado (de bajo nivel / alta resolución), que especifica la lógica interna, algoritmos, tipos de datos y firmas de cada componente antes de la codificación.",
+    "acronimos": [
+      {
+        "sigla": "SDLC",
+        "significado": "Software Development Life Cycle (Ciclo de Vida de Desarrollo de Software)",
+        "pista": "Marco estructurado de fases desde la planificación hasta el mantenimiento."
+      },
+      {
+        "sigla": "UX",
+        "significado": "User Experience (Experiencia de Usuario)",
+        "pista": "Disciplina enfocada en la interacción y satisfacción del usuario final."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_004",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Un framework de procesamiento de documentos define una clase base `Aplicacion` con el flujo general de apertura y guardado, pero desconoce qué tipo concreto de documento (`DocumentoPDF`, `DocumentoXML`, `DocumentoJSON`) instanciará cada aplicación cliente. Para desacoplar el framework de las clases concretas, se declara un método abstracto `crearDocumento()` que cada subclase concreta sobreescribe para devolver su instancia específica. ¿Qué patrón de diseño GoF resuelve este escenario?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Singleton."
+      },
+      {
+        "id": "B",
+        "texto": "Adapter."
+      },
+      {
+        "id": "C",
+        "texto": "Factory Method."
+      },
+      {
+        "id": "D",
+        "texto": "Observer."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "El patrón creacional Factory Method define una interfaz para crear un objeto, pero deja que las subclases decidan qué clase concreta instanciar, encapsulando así la creación de objetos fuera del código del framework. Singleton garantiza una única instancia global; Adapter convierte interfaces incompatibles; Observer notifica cambios de estado uno-a-muchos.",
+    "acronimos": [
+      {
+        "sigla": "GoF",
+        "significado": "Gang of Four (Banda de los Cuatro)",
+        "pista": "Autores del catálogo clásico de 23 patrones de diseño orientado a objetos."
+      },
+      {
+        "sigla": "POO",
+        "significado": "Programación Orientada a Objetos",
+        "pista": "Paradigma basado en clases, objetos, herencia, polimorfismo y encapsulamiento."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_005",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordene cronológicamente las fases del ciclo de vida clásico de un Sistema de Información (SDLC) desde la concepción inicial hasta la operación continua:\n1. Implantación (codificación, pruebas y puesta en producción)\n2. Análisis de requerimientos\n3. Planificación y estudio de factibilidad\n4. Uso, operación y mantenimiento\n5. Diseño del sistema",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "2, 3, 5, 1, 4"
+      },
+      {
+        "id": "B",
+        "texto": "3, 2, 5, 1, 4"
+      },
+      {
+        "id": "C",
+        "texto": "3, 5, 2, 1, 4"
+      },
+      {
+        "id": "D",
+        "texto": "3, 2, 1, 5, 4"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "La secuencia estándar del ciclo de vida de un sistema es: Planificación y factibilidad (3) -> Análisis de requerimientos (2) -> Diseño del sistema (5) -> Implantación/construcción y despliegue (1) -> Uso y mantenimiento (4).",
+    "acronimos": [
+      {
+        "sigla": "SDLC",
+        "significado": "System/Software Development Life Cycle",
+        "pista": "Secuencia ordenada de etapas para concebir, construir y mantener un sistema."
+      },
+      {
+        "sigla": "SI",
+        "significado": "Sistema de Información",
+        "pista": "Solución socio-técnica que soporta procesos operativos y toma de decisiones."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_006",
+    "diagrama": "is-hierarchy-pyramid",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione los niveles jerárquicos de Sistemas de Información en una organización con el tipo de sistema y función que les corresponde:\n\nNivel organizacional:\n1. Nivel operativo\n2. Nivel de conocimiento\n3. Nivel administrativo (gerencial)\n4. Nivel estratégico\n\nTipo de sistema:\na) ESS (Executive Support Systems): tendencias a largo plazo y planeación corporativa.\nb) TPS (Transaction Processing Systems): registro diario de ventas, nómina y movimientos de inventario.\nc) MIS / DSS (Management / Decision Support Systems): reportes periódicos de control y análisis 'qué pasaría si'.\nd) KWS / OAS (Knowledge Work / Office Automation Systems): estaciones CAD y herramientas para trabajadores del conocimiento.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1b, 2d, 3c, 4a"
+      },
+      {
+        "id": "B",
+        "texto": "1a, 2d, 3c, 4b"
+      },
+      {
+        "id": "C",
+        "texto": "1b, 2c, 3d, 4a"
+      },
+      {
+        "id": "D",
+        "texto": "1c, 2b, 3d, 4a"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Según Laudon & Laudon, los sistemas se alinean a la pirámide organizacional: Nivel operativo -> TPS (1b); Nivel de conocimiento -> KWS/OAS (2d); Nivel administrativo/gerencial -> MIS y DSS (3c); Nivel estratégico -> ESS (4a).",
+    "acronimos": [
+      {
+        "sigla": "TPS",
+        "significado": "Transaction Processing System (Sistema de Procesamiento de Transacciones)",
+        "pista": "Opera en la base de la pirámide registrando operaciones cotidianas."
+      },
+      {
+        "sigla": "MIS",
+        "significado": "Management Information System (Sistema de Información Gerencial)",
+        "pista": "Genera informes resumidos a partir de datos de los TPS."
+      },
+      {
+        "sigla": "DSS",
+        "significado": "Decision Support System (Sistema de Soporte a Decisiones)",
+        "pista": "Apoya decisiones semiestructuradas mediante modelos analíticos."
+      },
+      {
+        "sigla": "ESS",
+        "significado": "Executive Support System (Sistema de Apoyo a Ejecutivos)",
+        "pista": "Brinda tableros estratégicos para la alta dirección."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_007",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Un portal de comercio electrónico B2C permite a los compradores comparar en tiempo real precios, especificaciones técnicas, reseñas verificadas y costos de envío de cientos de proveedores, reduciendo drásticamente el costo de procesar y almacenar información de alta calidad y precisión. ¿Qué dimensión tecnológica del comercio electrónico describe principalmente este fenómeno?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Estándares universales."
+      },
+      {
+        "id": "B",
+        "texto": "Alcance geográfico local."
+      },
+      {
+        "id": "C",
+        "texto": "Riqueza multimedia."
+      },
+      {
+        "id": "D",
+        "texto": "Densidad de la información."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "En comercio electrónico (Laudon & Traver), la densidad de la información se refiere al incremento en la cantidad total y calidad de la información disponible para todos los participantes del mercado (consumidores y comerciantes), haciendo los precios y costos más transparentes y reduciendo la asimetría de información.",
+    "acronimos": [
+      {
+        "sigla": "B2C",
+        "significado": "Business-to-Consumer (Negocio a Consumidor)",
+        "pista": "Modelo de comercio electrónico donde empresas venden directamente al consumidor final."
+      },
+      {
+        "sigla": "CRM",
+        "significado": "Customer Relationship Management",
+        "pista": "Gestión de relaciones con clientes frecuentemente integrada al comercio electrónico."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_008",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Una empresa de desarrollo adopta Ingeniería de Software Basada en Componentes (CBSE) para ensamblar una nueva plataforma logística integrando módulos binarios COTS de facturación, geolocalización y pasarela de pagos con interfaces estrictamente definidas. ¿Cuál es un principio fundamental de los componentes reutilizables en CBSE?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Los componentes deben compartir variables globales mutables para maximizar la velocidad de integración."
+      },
+      {
+        "id": "B",
+        "texto": "Requieren siempre el acceso al código fuente original para poder recompilarse en cada proyecto cliente."
+      },
+      {
+        "id": "C",
+        "texto": "Deben ser independientes, estandarizados, desplegables por separado y comunicarse únicamente a través de interfaces explícitas (provistas y requeridas)."
+      },
+      {
+        "id": "D",
+        "texto": "Eliminan por completo la necesidad de realizar pruebas de integración y verificación de requisitos."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "En CBSE (Sommerville), un componente es una unidad de software independiente y desplegable que encapsula su implementación interna (caja negra) y se compone con otros únicamente mediante interfaces bien definidas (provistas y requeridas), sin depender de código fuente ni estado global compartido.",
+    "acronimos": [
+      {
+        "sigla": "CBSE",
+        "significado": "Component-Based Software Engineering",
+        "pista": "Ingeniería de software centrada en ensamblar componentes reutilizables independientes."
+      },
+      {
+        "sigla": "COTS",
+        "significado": "Commercial Off-The-Shelf",
+        "pista": "Componentes o productos comerciales listos para integrarse sin desarrollo desde cero."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_009",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Ordenamiento",
+    "pregunta": "Una firma consultora realiza un estudio de simulación de eventos discretos para optimizar las líneas de atención en una sucursal bancaria. Ordene secuencialmente las etapas metodológicas del estudio de simulación:\n1. Formulación del problema y definición de objetivos\n2. Construcción del modelo computacional y verificación\n3. Recolección de datos y formulación del modelo conceptual\n4. Validación del modelo frente al sistema real\n5. Diseño de experimentos, corridas de simulación y análisis de resultados",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1, 2, 3, 4, 5"
+      },
+      {
+        "id": "B",
+        "texto": "1, 3, 2, 4, 5"
+      },
+      {
+        "id": "C",
+        "texto": "3, 1, 2, 5, 4"
+      },
+      {
+        "id": "D",
+        "texto": "1, 3, 4, 2, 5"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "En un estudio de simulación (Banks / Law), primero se formula el problema y objetivos (1); después se recolectan datos y se define el modelo conceptual (3); luego se implementa el código y se verifica que funcione sin errores de programación (2); a continuación se valida que represente fielmente al sistema real (4); finalmente se diseñan experimentos, se ejecutan corridas y se analizan resultados (5).",
+    "acronimos": [
+      {
+        "sigla": "V&V",
+        "significado": "Verificación y Validación",
+        "pista": "Verificación comprueba la correcta implementación del modelo; validación comprueba su fidelidad respecto a la realidad."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_010",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Ordenamiento",
+    "pregunta": "Una organización bancaria migra su monolito hacia una Arquitectura Orientada a Servicios (SOA). Ordene las etapas fundamentales para la construcción e implantación de una SOA:\n1. Despliegue, publicación en el registro de servicios y monitoreo de SLA\n2. Identificación y especificación de servicios candidatos alineados a procesos de negocio\n3. Diseño de contratos de servicio (interfaces, mensajes y políticas de seguridad)\n4. Análisis de procesos de negocio y definición de la arquitectura de referencia\n5. Implementación, orquestación y pruebas de los servicios",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "4, 2, 3, 5, 1"
+      },
+      {
+        "id": "B",
+        "texto": "2, 4, 3, 1, 5"
+      },
+      {
+        "id": "C",
+        "texto": "4, 3, 2, 5, 1"
+      },
+      {
+        "id": "D",
+        "texto": "4, 2, 5, 3, 1"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La construcción de una SOA sigue un enfoque top-down: primero se analizan los procesos de negocio y arquitectura de referencia (4), se identifican los servicios candidatos (2), se diseñan los contratos/interfaces desacopladas (3), se implementan, orquestan y prueban (5), y finalmente se despliegan, publican y monitorean bajo acuerdos de nivel de servicio (1).",
+    "acronimos": [
+      {
+        "sigla": "SOA",
+        "significado": "Service-Oriented Architecture (Arquitectura Orientada a Servicios)",
+        "pista": "Estilo arquitectónico basado en servicios débilmente acoplados e interoperables."
+      },
+      {
+        "sigla": "SLA",
+        "significado": "Service Level Agreement (Acuerdo de Nivel de Servicio)",
+        "pista": "Compromiso medible de disponibilidad, latencia y rendimiento de un servicio."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_011",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada categoría de patrones de diseño GoF con los patrones que pertenecen a ella:\n\nCategoría:\n1. Creacionales\n2. Estructurales\n3. De comportamiento\n\nPatrones:\na) Adapter, Decorator, Facade, Composite\nb) Strategy, Observer, Command, State\nc) Abstract Factory, Builder, Prototype, Singleton",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1a, 2c, 3b"
+      },
+      {
+        "id": "B",
+        "texto": "1b, 2a, 3c"
+      },
+      {
+        "id": "C",
+        "texto": "1c, 2b, 3a"
+      },
+      {
+        "id": "D",
+        "texto": "1c, 2a, 3b"
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "Los patrones creacionales (1c) gestionan la instanciación de objetos (Abstract Factory, Builder, Prototype, Singleton, Factory Method). Los estructurales (2a) componen clases y objetos en estructuras mayores (Adapter, Decorator, Facade, Composite, Proxy). Los de comportamiento (3b) regulan la comunicación y distribución de responsabilidades (Strategy, Observer, Command, State).",
+    "acronimos": [
+      {
+        "sigla": "GoF",
+        "significado": "Gang of Four",
+        "pista": "Clasificación estándar de patrones en creacionales, estructurales y de comportamiento."
+      },
+      {
+        "sigla": "OOP",
+        "significado": "Object-Oriented Programming (Programación Orientada a Objetos)",
+        "pista": "Paradigma donde se aplican los patrones de diseño GoF."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_012",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada herramienta de Cuarta Generación (4GL) con su propósito principal en el desarrollo de sistemas de información:\n\nHerramienta 4GL:\n1. Lenguajes de consulta\n2. Generadores de reportes\n3. Generadores de pantallas y formularios\n4. Generadores de aplicaciones\n\nPropósito:\na) Producen código ejecutable completo a partir de especificaciones de alto nivel y diccionarios de datos.\nb) Permiten extraer y filtrar información de bases de datos de forma declarativa sin escribir ciclos procedimentales.\nc) Permiten diseñar visualmente formatos de impresión con encabezados, totales y agrupamientos.\nd) Facilitan la creación rápida de interfaces de captura y validación de entrada para usuarios.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1b, 2d, 3c, 4a"
+      },
+      {
+        "id": "B",
+        "texto": "1c, 2b, 3a, 4d"
+      },
+      {
+        "id": "C",
+        "texto": "1b, 2c, 3d, 4a"
+      },
+      {
+        "id": "D",
+        "texto": "1a, 2c, 3d, 4b"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "Las herramientas 4GL buscan elevar la productividad mediante especificaciones declarativas: los lenguajes de consulta (como SQL) extraen datos declarativamente (1b); los generadores de reportes formatean salidas con totales y cortes de control (2c); los generadores de pantallas crean formularios de captura (3d); y los generadores de aplicaciones producen módulos ejecutables completos (4a).",
+    "acronimos": [
+      {
+        "sigla": "4GL",
+        "significado": "Fourth-Generation Programming Language (Lenguaje de Cuarta Generación)",
+        "pista": "Lenguajes orientados al 'qué' hacer en lugar del 'cómo', muy usados en desarrollo de SI."
+      },
+      {
+        "sigla": "SQL",
+        "significado": "Structured Query Language",
+        "pista": "Ejemplo más representativo de lenguaje declarativo de consulta 4GL."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_013",
+    "diagrama": "uml-state-order",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Un ingeniero necesita modelar el ciclo de vida de un pedido en una tienda en línea, mostrando que inicia en 'Pendiente', transita a 'Pagado' al recibir la confirmación bancaria, pasa a 'Enviado' al generar la guía de paquetería y termina en 'Entregado' o 'Cancelado' según los eventos recibidos y condiciones de guarda. ¿Qué diagrama UML 2.5 es el más adecuado?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Diagrama de despliegue."
+      },
+      {
+        "id": "B",
+        "texto": "Diagrama de máquina de estados."
+      },
+      {
+        "id": "C",
+        "texto": "Diagrama de componentes."
+      },
+      {
+        "id": "D",
+        "texto": "Diagrama de paquetes."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "El diagrama de máquina de estados (State Machine Diagram) en UML modela el comportamiento dinámico de un objeto individual a lo largo de su ciclo de vida, detallando sus estados, eventos disparadores, condiciones de guarda y transiciones.",
+    "acronimos": [
+      {
+        "sigla": "UML",
+        "significado": "Unified Modeling Language (Lenguaje de Modelado Unificado)",
+        "pista": "Estándar OMG para especificar, visualizar y documentar sistemas de software."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_014",
+    "diagrama": "uml-usecase-bank",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "En un diagrama de casos de uso UML para un sistema de banca móvil, el caso de uso 'Transferir fondos' SIEMPRE requiere ejecutar 'Autenticar usuario con token', mientras que 'Imprimir comprobante PDF' solo se ejecuta de forma opcional si el usuario decide descargarlo al finalizar. ¿Qué relaciones UML deben utilizarse respectivamente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "«include» hacia 'Autenticar usuario con token' y «extend» desde 'Imprimir comprobante PDF' hacia 'Transferir fondos'."
+      },
+      {
+        "id": "B",
+        "texto": "«extend» hacia 'Autenticar usuario con token' y «include» hacia 'Imprimir comprobante PDF'."
+      },
+      {
+        "id": "C",
+        "texto": "Generalización para ambos casos de uso."
+      },
+      {
+        "id": "D",
+        "texto": "Composición fuerte para el primero y agregación para el segundo."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "En UML, «include» indica un comportamiento obligatorio que el caso de uso base siempre invoca (la flecha apunta del base al incluido). «extend» indica un comportamiento opcional o condicional en un punto de extensión (la flecha apunta del caso de uso extensor hacia el caso de uso base).",
+    "acronimos": [
+      {
+        "sigla": "UML",
+        "significado": "Unified Modeling Language",
+        "pista": "Define los estereotipos «include» (obligatorio) y «extend» (opcional) en casos de uso."
+      },
+      {
+        "sigla": "PDF",
+        "significado": "Portable Document Format",
+        "pista": "Formato estándar de documento portátil para comprobantes."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_015",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Un equipo de QA calcula la complejidad ciclomática de McCabe de una función crítica de validación de créditos cuyo grafo de flujo de control tiene 11 aristas (E), 9 nodos (N) y 1 componente conexo (P = 1). ¿Cuál es el valor de la complejidad ciclomática V(G) y qué indica para las pruebas de caja blanca?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "V(G) = 4; representa el número máximo de casos de prueba necesarios para cubrir todos los caminos linealmente independientes."
+      },
+      {
+        "id": "B",
+        "texto": "V(G) = 2; indica que la función no tiene bifurcaciones."
+      },
+      {
+        "id": "C",
+        "texto": "V(G) = 6; indica el número de variables locales de la función."
+      },
+      {
+        "id": "D",
+        "texto": "V(G) = 4; representa el número mínimo de casos de prueba de caja blanca necesarios para lograr cobertura de caminos básicos (independientes)."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "La fórmula de complejidad ciclomática de McCabe es V(G) = E - N + 2P = 11 - 9 + 2(1) = 4. Este valor determina el límite superior del conjunto base de caminos linealmente independientes, es decir, el número mínimo de casos de prueba necesarios en pruebas de camino básico para ejecutar cada sentencia y rama al menos una vez.",
+    "acronimos": [
+      {
+        "sigla": "QA",
+        "significado": "Quality Assurance (Aseguramiento de la Calidad)",
+        "pista": "Disciplina enfocada en garantizar la calidad del proceso y producto de software."
+      },
+      {
+        "sigla": "CFG",
+        "significado": "Control Flow Graph (Grafo de Flujo de Control)",
+        "pista": "Representación de nodos y aristas usada para calcular la complejidad ciclomática."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_016",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Un módulo de descuentos acepta montos de compra enteros entre $100 y $5,000 inclusive para aplicar un cupón promocional. El ingeniero de pruebas aplica análisis de valores límite (prueba de caja negra) sin acceso al código fuente. ¿Qué conjunto de valores de entrada prueba de manera más efectiva las fronteras válidas e inválidas?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "100, 2500, 5000"
+      },
+      {
+        "id": "B",
+        "texto": "0, 50, 1000, 10000"
+      },
+      {
+        "id": "C",
+        "texto": "99, 100, 101, 4999, 5000, 5001"
+      },
+      {
+        "id": "D",
+        "texto": "-100, 0, 100, 5000"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "El análisis de valores límite (BVA) evalúa exactamente los límites de las particiones de equivalencia y los valores inmediatamente adyacentes (mín-1, mín, mín+1, máx-1, máx, máx+1), ya que la mayoría de los defectos de comparación (< vs <=) ocurren en las fronteras: 99, 100, 101 y 4999, 5000, 5001.",
+    "acronimos": [
+      {
+        "sigla": "BVA",
+        "significado": "Boundary Value Analysis (Análisis de Valores Límite)",
+        "pista": "Técnica de caja negra que prueba los extremos de cada partición de equivalencia."
+      },
+      {
+        "sigla": "QA",
+        "significado": "Quality Assurance",
+        "pista": "Aseguramiento de la calidad mediante diseño sistemático de casos de prueba."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_017",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordene lógicamente las actividades clave para el desarrollo e implantación de un sistema de cuentas por cobrar en una empresa comercial:\n1. Capacitación de usuarios de cobranza y migración de saldos iniciales a producción\n2. Levantamiento de reglas de crédito, morosidad y facturación con el departamento contable\n3. Diseño del esquema de base de datos de clientes, facturas y abonos, así como las interfaces\n4. Codificación de módulos de registro de pagos, estados de cuenta y pruebas integrales\n5. Evaluación de factibilidad técnica, económica y operativa del proyecto",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "2, 5, 3, 4, 1"
+      },
+      {
+        "id": "B",
+        "texto": "5, 2, 3, 4, 1"
+      },
+      {
+        "id": "C",
+        "texto": "5, 3, 2, 4, 1"
+      },
+      {
+        "id": "D",
+        "texto": "5, 2, 4, 3, 1"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "El desarrollo estructurado de un sistema administrativo inicia con el estudio de factibilidad (5), continúa con el levantamiento y análisis de reglas de negocio (2), sigue con el diseño de datos e interfaces (3), luego la codificación y pruebas (4) y concluye con la capacitación, migración de saldos y puesta en marcha (1).",
+    "acronimos": [
+      {
+        "sigla": "ERP",
+        "significado": "Enterprise Resource Planning (Planificación de Recursos Empresariales)",
+        "pista": "Suite empresarial que suele incluir módulos como cuentas por cobrar y contabilidad."
+      },
+      {
+        "sigla": "SDLC",
+        "significado": "Software Development Life Cycle",
+        "pista": "Guía la secuencia ordenada de factibilidad, análisis, diseño, construcción e implantación."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_018",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Completamiento",
+    "pregunta": "En el desarrollo guiado por pruebas (TDD), el ciclo iterativo conocido como 'Rojo-Verde-Refactor' consiste en escribir primero una ________ que falla, implementar el código mínimo necesario para que ________, y finalmente ________ el código manteniendo todas las pruebas en verde.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "prueba unitaria automatizada — la prueba pase — refactorizar"
+      },
+      {
+        "id": "B",
+        "texto": "prueba de aceptación — compile sin advertencias — desplegar"
+      },
+      {
+        "id": "C",
+        "texto": "especificación UML — el cliente la apruebe — documentar"
+      },
+      {
+        "id": "D",
+        "texto": "consulta SQL — retorne registros — normalizar"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "En TDD (Test-Driven Development), popularizado por Extreme Programming (XP), cada micro-iteración sigue tres pasos: Rojo (escribir una prueba unitaria automatizada que falle), Verde (escribir el código mínimo para hacer pasar la prueba) y Refactor (mejorar la estructura interna del código sin alterar su comportamiento observable).",
+    "acronimos": [
+      {
+        "sigla": "TDD",
+        "significado": "Test-Driven Development (Desarrollo Guiado por Pruebas)",
+        "pista": "Práctica ágil basada en el ciclo Rojo-Verde-Refactor."
+      },
+      {
+        "sigla": "XP",
+        "significado": "Extreme Programming (Programación Extrema)",
+        "pista": "Metodología ágil que promueve TDD, programación en pareja e integración continua."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_019",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione los niveles de madurez del modelo CMMI (Capability Maturity Model Integration) con su característica distintiva:\n\nNivel CMMI:\n1. Nivel 1 - Inicial\n2. Nivel 2 - Gestionado\n3. Nivel 3 - Definido\n4. Nivel 4 - Gestionado cuantitativamente\n5. Nivel 5 - En optimización\n\nCaracterística:\na) Procesos estandarizados e institucionalizados a nivel de toda la organización.\nb) Procesos impredecibles, reactivos y ad hoc; el éxito depende de esfuerzos heroicos individuales.\nc) Mejora continua de procesos basada en retroalimentación cuantitativa e innovación.\nd) Procesos planificados y controlados a nivel de proyecto individual.\ne) Procesos medidos y controlados mediante técnicas estadísticas y cuantitativas.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1b, 2d, 3e, 4a, 5c"
+      },
+      {
+        "id": "B",
+        "texto": "1b, 2a, 3d, 4e, 5c"
+      },
+      {
+        "id": "C",
+        "texto": "1d, 2b, 3a, 4c, 5e"
+      },
+      {
+        "id": "D",
+        "texto": "1b, 2d, 3a, 4e, 5c"
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "Los 5 niveles de madurez de CMMI son: 1 Inicial (ad hoc/reactivo, 1b), 2 Gestionado (disciplina a nivel proyecto, 2d), 3 Definido (estándar organizacional, 3a), 4 Gestionado cuantitativamente (control estadístico, 4e) y 5 En optimización (mejora continua, 5c).",
+    "acronimos": [
+      {
+        "sigla": "CMMI",
+        "significado": "Capability Maturity Model Integration",
+        "pista": "Modelo de mejora de procesos con 5 niveles de madurez (del 1 al 5)."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_020",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Tras una reforma fiscal que modifica el cálculo del IVA y exige nuevos campos en la factura electrónica, el equipo de soporte modifica un sistema contable en producción que operaba sin fallas previas. De acuerdo con la clasificación de mantenimiento de software de Lientz y Swanson (ISO/IEC 14764), ¿qué tipo de mantenimiento se realiza?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Mantenimiento correctivo."
+      },
+      {
+        "id": "B",
+        "texto": "Mantenimiento preventivo."
+      },
+      {
+        "id": "C",
+        "texto": "Mantenimiento adaptativo."
+      },
+      {
+        "id": "D",
+        "texto": "Mantenimiento perfectivo."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "El mantenimiento adaptativo modifica el software para ajustarlo a cambios en su entorno operativo, regulatorio, legal o de plataforma (como una reforma fiscal o migración de sistema operativo). El correctivo repara defectos; el perfectivo mejora rendimiento o añade mejoras solicitadas; el preventivo reestructura el código para evitar fallos futuros.",
+    "acronimos": [
+      {
+        "sigla": "ISO",
+        "significado": "International Organization for Standardization",
+        "pista": "Organismo emisor del estándar ISO/IEC 14764 de mantenimiento de software."
+      },
+      {
+        "sigla": "IEC",
+        "significado": "International Electrotechnical Commission",
+        "pista": "Comisión que co-publica estándares de ingeniería de software junto con ISO."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_021",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "En una aplicación web de reservas hoteleras construida bajo el patrón arquitectónico MVC, el desarrollador detecta que las reglas de cálculo de tarifas y las consultas a la base de datos están incrustadas dentro de las plantillas HTML que renderizan la pantalla. ¿Qué principio de MVC se está violando y cómo debe corregirse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Se viola el encapsulamiento de red: toda la lógica de negocio debe moverse al Controlador y el HTML al Modelo."
+      },
+      {
+        "id": "B",
+        "texto": "Se viola la separación de responsabilidades: la lógica de negocio y acceso a datos deben residir en el Modelo, la presentación en la Vista y la coordinación de peticiones en el Controlador."
+      },
+      {
+        "id": "C",
+        "texto": "Se viola la normalización: el Controlador debe renderizar directamente el HTML sin usar Vistas."
+      },
+      {
+        "id": "D",
+        "texto": "No existe violación porque en MVC la Vista es responsable de ejecutar consultas SQL directamente."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "MVC (Modelo-Vista-Controlador) promueve la separación de responsabilidades: el Modelo encapsula los datos y reglas de negocio, la Vista presenta la información al usuario sin lógica de negocio compleja, y el Controlador recibe las entradas del usuario, invoca al Modelo y selecciona la Vista adecuada.",
+    "acronimos": [
+      {
+        "sigla": "MVC",
+        "significado": "Model-View-Controller (Modelo-Vista-Controlador)",
+        "pista": "Patrón arquitectónico que desacopla datos/negocio, interfaz gráfica y control de flujo."
+      },
+      {
+        "sigla": "HTML",
+        "significado": "HyperText Markup Language",
+        "pista": "Lenguaje de marcado usado en la capa de Vista en aplicaciones web."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_022",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordene las fases de diseño de un Sistema de Información desde la perspectiva lógica independiente de tecnología hasta la especificación lista para programación:\n1. Diseño físico de almacenamiento, índices y arquitectura de despliegue\n2. Diseño lógico de datos, procesos e interfaces independientes de la plataforma\n3. Especificación de módulos detallados, pseudocódigo y controles de seguridad\n4. Definición de la arquitectura general y descomposición en subsistemas",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "4, 2, 1, 3"
+      },
+      {
+        "id": "B",
+        "texto": "2, 4, 3, 1"
+      },
+      {
+        "id": "C",
+        "texto": "1, 2, 4, 3"
+      },
+      {
+        "id": "D",
+        "texto": "4, 1, 2, 3"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "En el diseño de Sistemas de Información se avanza de lo general y lógico a lo físico y detallado: primero se define la arquitectura general y subsistemas (4), luego el diseño lógico independiente de tecnología (2), después el diseño físico adaptado a la plataforma y SGBD (1), y finalmente la especificación detallada de módulos y controles (3).",
+    "acronimos": [
+      {
+        "sigla": "SI",
+        "significado": "Sistema de Información",
+        "pista": "Su diseño transita de la arquitectura lógica al diseño físico y detallado."
+      },
+      {
+        "sigla": "SGBD",
+        "significado": "Sistema Gestor de Bases de Datos",
+        "pista": "Plataforma tecnológica considerada durante el diseño físico de almacenamiento."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_023",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Un equipo Scrum trabaja en sprints de dos semanas. Al concluir el sprint 4, presentan el incremento de software potencialmente desplegable a los stakeholders para recopilar retroalimentación sobre el producto, y al día siguiente se reúnen internamente para analizar cómo mejorar su proceso de colaboración y herramientas para el sprint 5. ¿Qué eventos de Scrum corresponden a cada reunión?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Daily Scrum y Sprint Planning."
+      },
+      {
+        "id": "B",
+        "texto": "Sprint Retrospective y Daily Scrum."
+      },
+      {
+        "id": "C",
+        "texto": "Refinamiento del Backlog y Sprint Review."
+      },
+      {
+        "id": "D",
+        "texto": "Sprint Review (Revisión del Sprint) y Sprint Retrospective (Retrospectiva del Sprint)."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "En Scrum, la Sprint Review (Revisión) inspecciona el incremento del producto junto con los interesados para adaptar el Product Backlog; la Sprint Retrospective (Retrospectiva) es interna del equipo Scrum y sirve para inspeccionar procesos, interacciones y herramientas con el fin de planear mejoras para el siguiente sprint.",
+    "acronimos": [
+      {
+        "sigla": "PO",
+        "significado": "Product Owner (Dueño del Producto)",
+        "pista": "Rol en Scrum responsable de maximizar el valor del producto y gestionar el Product Backlog."
+      },
+      {
+        "sigla": "DoD",
+        "significado": "Definition of Done (Definición de Terminado)",
+        "pista": "Criterios de calidad que debe cumplir el incremento antes de la Sprint Review."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_024",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Una API RESTful expone el recurso `/api/v1/clientes/{id}`. Al recibir una petición para actualizar únicamente el correo electrónico de un cliente existente sin enviar el resto de sus atributos, y otra petición para eliminar el registro de forma idempotente, ¿qué verbos HTTP y códigos de estado son los más conformes a los principios REST?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "POST (201 Created) para actualización parcial y GET (200 OK) para eliminación."
+      },
+      {
+        "id": "B",
+        "texto": "PUT (404 Not Found) para actualización parcial y HEAD (202 Accepted) para eliminación."
+      },
+      {
+        "id": "C",
+        "texto": "PATCH (200 OK o 204 No Content) para actualización parcial y DELETE (200 OK o 204 No Content) para eliminación."
+      },
+      {
+        "id": "D",
+        "texto": "OPTIONS (200 OK) para actualización parcial y POST (204 No Content) para eliminación."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "En diseño de APIs RESTful, PATCH se utiliza para modificaciones parciales de un recurso (a diferencia de PUT que reemplaza el recurso completo), y DELETE elimina el recurso de manera idempotente. Ambos suelen responder con 200 OK (si devuelven cuerpo) o 204 No Content (si no devuelven cuerpo).",
+    "acronimos": [
+      {
+        "sigla": "REST",
+        "significado": "Representational State Transfer",
+        "pista": "Estilo arquitectónico para servicios web sin estado basado en recursos y verbos HTTP."
+      },
+      {
+        "sigla": "API",
+        "significado": "Application Programming Interface",
+        "pista": "Contrato de comunicación entre aplicaciones."
+      },
+      {
+        "sigla": "HTTP",
+        "significado": "Hypertext Transfer Protocol",
+        "pista": "Protocolo de aplicación que provee verbos (GET, POST, PUT, PATCH, DELETE) y códigos de estado."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_025",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Una plataforma de telemedicina especifica en su documento SRS: 'El sistema debe responder al 95% de las solicitudes de consulta de expediente clínico en menos de 1.5 segundos con hasta 500 usuarios concurrentes, y cifrar los datos en tránsito con TLS 1.3'. ¿Cómo se clasifican estos requerimientos?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Requerimientos funcionales de dominio."
+      },
+      {
+        "id": "B",
+        "texto": "Requerimientos no funcionales (de rendimiento y seguridad)."
+      },
+      {
+        "id": "C",
+        "texto": "Requerimientos de usuario ambiguos no verificables."
+      },
+      {
+        "id": "D",
+        "texto": "Casos de uso secundarios."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "Los requerimientos no funcionales (atributos de calidad) restringen cómo debe comportarse el sistema en términos de desempeño (tiempo de respuesta < 1.5 s bajo 500 usuarios concurrentes) y seguridad (TLS 1.3). Además, al ser cuantificables, son completamente verificables.",
+    "acronimos": [
+      {
+        "sigla": "SRS",
+        "significado": "Software Requirements Specification (Especificación de Requerimientos de Software)",
+        "pista": "Documento formal que detalla requerimientos funcionales y no funcionales."
+      },
+      {
+        "sigla": "TLS",
+        "significado": "Transport Layer Security",
+        "pista": "Protocolo criptográfico que protege la confidencialidad e integridad de datos en tránsito."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_026",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Un equipo de desarrollo adopta un pipeline de CI/CD en GitHub Actions. Cada vez que un desarrollador realiza un 'push' a una rama de funcionalidad, el servidor compila automáticamente el proyecto, ejecuta pruebas unitarias y análisis estático de código; al fusionar con la rama principal, despliega automáticamente a producción si todas las compuertas de calidad aprueban. ¿Qué prácticas describe este flujo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Integración Continua (CI) y Despliegue Continuo (CD)."
+      },
+      {
+        "id": "B",
+        "texto": "Desarrollo en cascada y pruebas manuales de humo."
+      },
+      {
+        "id": "C",
+        "texto": "Ingeniería inversa y mantenimiento correctivo."
+      },
+      {
+        "id": "D",
+        "texto": "Modelado en espiral y gestión de riesgos financiera."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La Integración Continua (CI) automatiza la compilación, pruebas y verificación estática en cada integración de código para detectar defectos tempranamente; el Despliegue Continuo (CD) automatiza la liberación a producción tras pasar todas las validaciones automatizadas sin intervención manual.",
+    "acronimos": [
+      {
+        "sigla": "CI/CD",
+        "significado": "Continuous Integration / Continuous Deployment",
+        "pista": "Automatización del ciclo construir-probar-desplegar en prácticas DevOps."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_027",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "En un sistema de pagos, se necesita soportar múltiples algoritmos de cálculo de comisiones (tarjeta de crédito, transferencia SPEI, criptomoneda) que puedan intercambiarse dinámicamente en tiempo de ejecución sin llenar la clase `ProcesadorPago` de condicionales `if/else` o `switch`. ¿Qué patrón de diseño de comportamiento debe aplicarse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Singleton."
+      },
+      {
+        "id": "B",
+        "texto": "Builder."
+      },
+      {
+        "id": "C",
+        "texto": "Facade."
+      },
+      {
+        "id": "D",
+        "texto": "Strategy."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "El patrón Strategy define una familia de algoritmos, encapsula cada uno en una clase separada con una interfaz común y los hace intercambiables en tiempo de ejecución, respetando el principio Abierto/Cerrado (OCP) de SOLID.",
+    "acronimos": [
+      {
+        "sigla": "OCP",
+        "significado": "Open/Closed Principle (Principio Abierto/Cerrado)",
+        "pista": "Principio SOLID: abierto para extensión, cerrado para modificación."
+      },
+      {
+        "sigla": "SOLID",
+        "significado": "Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion",
+        "pista": "Cinco principios clave del diseño orientado a objetos mantenible."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_028",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Una consultora estima el tamaño funcional de un proyecto de software antes de elegir el lenguaje de programación, contabilizando entradas externas, salidas externas, consultas externas, archivos lógicos internos y archivos de interfaz externa, ajustados por un factor de complejidad técnica. ¿Qué métrica de estimación está empleando?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Líneas de código fuente (SLOC / KLOC)."
+      },
+      {
+        "id": "B",
+        "texto": "Complejidad ciclomática de McCabe."
+      },
+      {
+        "id": "C",
+        "texto": "Puntos de Función (Function Points)."
+      },
+      {
+        "id": "D",
+        "texto": "Velocidad de Story Points en Kanban."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "El Análisis de Puntos de Función (Albrecht / IFPUG) mide la funcionalidad entregada al usuario independientemente de la tecnología o lenguaje, contando cinco componentes: Entradas Externas (EI), Salidas Externas (EO), Consultas Externas (EQ), Archivos Lógicos Internos (ILF) y Archivos de Interfaz Externa (EIF).",
+    "acronimos": [
+      {
+        "sigla": "FP",
+        "significado": "Function Points (Puntos de Función)",
+        "pista": "Métrica de tamaño funcional independiente del lenguaje de programación."
+      },
+      {
+        "sigla": "SLOC",
+        "significado": "Source Lines of Code (Líneas de Código Fuente)",
+        "pista": "Métrica orientada al tamaño físico dependiente del lenguaje."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_029",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Caso práctico",
+    "pregunta": "Un arquitecto diseña un módulo de notificaciones donde un objeto `SensorTemperatura` debe informar automáticamente a múltiples suscriptores (`PanelAlerta`, `RegistroHistorico`, `ServicioSMS`) cada vez que la temperatura supere un umbral, sin que el sensor conozca las clases concretas de los suscriptores. ¿Qué patrón de diseño resuelve este requerimiento?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Prototype."
+      },
+      {
+        "id": "B",
+        "texto": "Observer."
+      },
+      {
+        "id": "C",
+        "texto": "Flyweight."
+      },
+      {
+        "id": "D",
+        "texto": "Proxy."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "El patrón de comportamiento Observer define una dependencia uno-a-muchos entre objetos, de modo que cuando el sujeto (publisher) cambia de estado, todos sus observadores (suscriptores) registrados son notificados y actualizados automáticamente manteniendo bajo acoplamiento.",
+    "acronimos": [
+      {
+        "sigla": "SMS",
+        "significado": "Short Message Service",
+        "pista": "Servicio de mensajería usado aquí como uno de los observadores suscritos."
+      },
+      {
+        "sigla": "GoF",
+        "significado": "Gang of Four",
+        "pista": "Catálogo donde Observer se clasifica como patrón de comportamiento."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_030",
+    "area": "Implementación de Software",
+    "subarea": "3.1 Ingeniería de software y calidad",
+    "tipo": "Completamiento",
+    "pregunta": "En el diseño modular de software, la calidad estructural de los módulos se maximiza logrando ________ cohesión interna (cada módulo realiza una tarea única y bien definida) y ________ acoplamiento entre módulos (mínima interdependencia).",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "alta — bajo"
+      },
+      {
+        "id": "B",
+        "texto": "baja — alto"
+      },
+      {
+        "id": "C",
+        "texto": "nula — máximo"
+      },
+      {
+        "id": "D",
+        "texto": "alta — alto"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Un principio clásico de la ingeniería de software (Yourdon & Constantine, Sommerville) es buscar alta cohesión dentro de cada módulo (funcionalidades estrechamente relacionadas) y bajo acoplamiento entre módulos distintos, lo cual facilita el mantenimiento, las pruebas y la reutilización.",
+    "acronimos": [
+      {
+        "sigla": "SRP",
+        "significado": "Single Responsibility Principle (Principio de Responsabilidad Única)",
+        "pista": "Equivalente orientado a objetos del concepto de alta cohesión."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_031",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "En un servidor con un solo núcleo de CPU, un proceso A realiza una lectura intensiva desde disco duro (operación de E/S bloqueante) mientras el proceso B está listo en memoria principal esperando tiempo de procesador. En un sistema operativo multiprogramado, ¿cómo se aprovecha la CPU durante este evento?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "La CPU permanece en espera activa (busy-waiting) hasta que el disco concluya la transferencia de A."
+      },
+      {
+        "id": "B",
+        "texto": "El sistema operativo finaliza abruptamente el proceso A para liberar memoria y asignarla a B."
+      },
+      {
+        "id": "C",
+        "texto": "Ambos procesos se ejecutan simultáneamente en paralelo físico dentro del mismo núcleo sin cambio de contexto."
+      },
+      {
+        "id": "D",
+        "texto": "El planificador cambia el estado de A a 'Bloqueado' y realiza un cambio de contexto para asignar la CPU al proceso B, solapando la E/S de A con el cómputo de B."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "El objetivo fundamental de la multiprogramación en sistemas operativos es maximizar la utilización de la CPU solapando operaciones de cómputo y de entrada/salida (E/S): cuando el proceso en ejecución se bloquea esperando E/S, el SO guarda su PCB (cambio de contexto) y despacha otro proceso en estado 'Listo'.",
+    "acronimos": [
+      {
+        "sigla": "CPU",
+        "significado": "Central Processing Unit (Unidad Central de Procesamiento)",
+        "pista": "Recurso cuyo aprovechamiento se maximiza mediante la multiprogramación."
+      },
+      {
+        "sigla": "E/S",
+        "significado": "Entrada/Salida (I/O)",
+        "pista": "Operaciones con periféricos mucho más lentas que la CPU que provocan bloqueo del proceso."
+      },
+      {
+        "sigla": "PCB",
+        "significado": "Process Control Block (Bloque de Control de Proceso)",
+        "pista": "Estructura del kernel donde se guarda el contexto del proceso al conmutarlo."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_032",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada algoritmo de planificación de CPU con su característica principal:\n\nAlgoritmo:\n1. FCFS (First-Come, First-Served)\n2. SJF (Shortest Job First - no apropiativo)\n3. SRTF (Shortest Remaining Time First)\n4. Round-Robin (RR)\n5. Priority Scheduling\n\nCaracterística:\na) Asigna la CPU por turnos usando un cuanto de tiempo (quantum) fijo; ideal para sistemas de tiempo compartido.\nb) Versión apropiativa que siempre ejecuta el proceso con menor tiempo restante de ráfaga de CPU.\nc) Atiende los procesos estrictamente en el orden de llegada (cola FIFO); puede sufrir efecto convoy.\nd) Selecciona el proceso con mayor prioridad asignada; puede provocar inanición (starvation), mitigable con envejecimiento (aging).\ne) Minimiza el tiempo promedio de espera para un conjunto dado de procesos al elegir la ráfaga de CPU más corta sin desalojo.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1a, 2e, 3b, 4c, 5d"
+      },
+      {
+        "id": "B",
+        "texto": "1c, 2b, 3e, 4a, 5d"
+      },
+      {
+        "id": "C",
+        "texto": "1c, 2e, 3b, 4a, 5d"
+      },
+      {
+        "id": "D",
+        "texto": "1c, 2e, 3a, 4b, 5d"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "FCFS utiliza una cola FIFO pura y sufre efecto convoy (1c); SJF no apropiativo es óptimo en tiempo promedio de espera (2e); SRTF es la variante apropiativa de SJF (3b); Round-Robin usa un quantum circular (4a); y Priority Scheduling asigna CPU según prioridad y puede causar inanición resuelta con aging (5d).",
+    "acronimos": [
+      {
+        "sigla": "FCFS",
+        "significado": "First-Come, First-Served",
+        "pista": "Planificación no apropiativa en orden de llegada (FIFO)."
+      },
+      {
+        "sigla": "SJF",
+        "significado": "Shortest Job First",
+        "pista": "Ejecuta primero el trabajo con ráfaga de CPU más corta."
+      },
+      {
+        "sigla": "SRTF",
+        "significado": "Shortest Remaining Time First",
+        "pista": "Versión apropiativa (preemptive) de SJF."
+      },
+      {
+        "sigla": "RR",
+        "significado": "Round-Robin",
+        "pista": "Planificación circular basada en quantum de tiempo."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_033",
+    "diagrama": "bst-traversal-50",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Análisis de algoritmo",
+    "pregunta": "Considere un Árbol Binario de Búsqueda (BST) cuya raíz es 50. El subárbol izquierdo tiene raíz 30 (con hijo izquierdo 20 —que a su vez tiene hijo izquierdo 10 e hijo derecho 25— e hijo derecho 40). El subárbol derecho de 50 tiene raíz 70 (con hijo izquierdo 60 e hijo derecho 80). Si se ejecuta un recorrido en POSORDEN (Izquierda, Derecha, Raíz), ¿cuántos nodos en total se habrán visitado exactamente al llegar al nodo 40 (incluyendo el 40)?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "3 nodos (20, 30, 40)."
+      },
+      {
+        "id": "B",
+        "texto": "4 nodos (10, 25, 20, 40)."
+      },
+      {
+        "id": "C",
+        "texto": "5 nodos (50, 30, 20, 10, 40)."
+      },
+      {
+        "id": "D",
+        "texto": "6 nodos (10, 20, 25, 30, 40, 50)."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "En recorrido Posorden (Izquierda -> Derecha -> Raíz): del subárbol izquierdo de 50 (raíz 30), primero se recorre su subárbol izquierdo (raíz 20): se visita 10 (1°), luego 25 (2°), luego 20 (3°). Después se visita el subárbol derecho de 30, que es la hoja 40 (4°). El recorrido completo sería: 10, 25, 20, 40, 30, 60, 80, 70, 50.",
+    "acronimos": [
+      {
+        "sigla": "BST",
+        "significado": "Binary Search Tree (Árbol Binario de Búsqueda)",
+        "pista": "Árbol binario donde todo hijo izquierdo es menor que la raíz y todo derecho es mayor."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_034",
+    "diagrama": "dfs-graph-trace",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Análisis de algoritmo",
+    "pregunta": "Dado un grafo dirigido representado mediante listas de adyacencia ordenadas alfabéticamente: A -> [B, C], B -> [D, E], C -> [F], y D, E, F sin aristas salientes. Un algoritmo de recorrido iniciado en el vértice A visita los nodos en el orden exacto: A, B, D, E, C, F. ¿Qué algoritmo de búsqueda en grafos produjo esta traza y qué estructura de datos subyacente utiliza?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Búsqueda en profundidad (DFS) utilizando una pila LIFO (o pila de recursión)."
+      },
+      {
+        "id": "B",
+        "texto": "Búsqueda en anchura (BFS) utilizando una cola FIFO."
+      },
+      {
+        "id": "C",
+        "texto": "Algoritmo de Dijkstra utilizando un montículo mínimo (Min-Heap)."
+      },
+      {
+        "id": "D",
+        "texto": "Algoritmo de Prim utilizando una tabla hash."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La traza A -> B -> D -> E -> C -> F explora por completo la rama de B (descendiendo hasta D y E) antes de retroceder (backtracking) para visitar el hermano C y su hijo F. Ese comportamiento es característico de la Búsqueda en Profundidad (DFS), implementada con recursión o pila explícita (LIFO). Un recorrido BFS produciría A, B, C, D, E, F.",
+    "acronimos": [
+      {
+        "sigla": "DFS",
+        "significado": "Depth-First Search (Búsqueda en Profundidad)",
+        "pista": "Explora tan profundo como sea posible antes de retroceder; usa pila LIFO."
+      },
+      {
+        "sigla": "BFS",
+        "significado": "Breadth-First Search (Búsqueda en Anchura)",
+        "pista": "Explora nivel por nivel desde el origen; usa cola FIFO."
+      },
+      {
+        "sigla": "LIFO",
+        "significado": "Last-In, First-Out (Último en Entrar, Primero en Salir)",
+        "pista": "Disciplina de acceso de una pila."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_035",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordene los pasos correctos para ejecutar el algoritmo de Búsqueda en Anchura (BFS) a partir de un vértice origen `s` en un grafo no ponderado:\n1. Desencolar el vértice frontal `u` de la cola FIFO.\n2. Marcar el vértice origen `s` como visitado e insertarlo (encolarlo) en la cola.\n3. Repetir mientras la cola no esté vacía.\n4. Para cada vecino adyacente `v` de `u` que no haya sido visitado, marcarlo como visitado y encolarlo.\n5. Inicializar una estructura de cola vacía y el conjunto de nodos visitados.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "5, 2, 1, 3, 4"
+      },
+      {
+        "id": "B",
+        "texto": "2, 5, 1, 4, 3"
+      },
+      {
+        "id": "C",
+        "texto": "5, 1, 2, 3, 4"
+      },
+      {
+        "id": "D",
+        "texto": "5, 2, 3, 1, 4"
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "La secuencia algorítmica de BFS es: inicializar la cola y el arreglo de visitados (5); marcar `s` como visitado y encolarlo (2); iniciar el ciclo mientras la cola no esté vacía (3); desencolar el frente `u` (1); y explorar todos sus vecinos no visitados marcándolos y encolándolos (4).",
+    "acronimos": [
+      {
+        "sigla": "BFS",
+        "significado": "Breadth-First Search (Búsqueda en Anchura)",
+        "pista": "Encuentra el camino más corto en número de aristas en grafos no ponderados."
+      },
+      {
+        "sigla": "FIFO",
+        "significado": "First-In, First-Out (Primero en Entrar, Primero en Salir)",
+        "pista": "Política de la cola que garantiza explorar por niveles."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_036",
+    "diagrama": "bellman-ford-relax",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Análisis de algoritmo",
+    "pregunta": "En un sistema de ruteo financiero para detectar oportunidades de arbitraje, se modela una red como un grafo dirigido con pesos que pueden ser POSITIVOS O NEGATIVOS. El algoritmo inicializa la distancia del origen en 0 y el resto en infinito, realiza exactamente |V| - 1 iteraciones relajando TODAS las aristas |E| del grafo, y finalmente ejecuta una iteración adicional sobre todas las aristas para detectar si existe algún ciclo de peso negativo alcanzable. ¿De qué algoritmo se trata y cuál es su complejidad temporal?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Algoritmo de Dijkstra — O((V + E) log V)."
+      },
+      {
+        "id": "B",
+        "texto": "Algoritmo A* — O(E log V)."
+      },
+      {
+        "id": "C",
+        "texto": "Algoritmo de Bellman-Ford — O(V · E)."
+      },
+      {
+        "id": "D",
+        "texto": "Algoritmo de Floyd-Warshall — O(V³)."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "Bellman-Ford calcula caminos más cortos desde un único origen admitiendo aristas de peso negativo mediante |V|-1 rondas de relajación sobre todas las |E| aristas (complejidad O(V·E)), y permite detectar ciclos negativos en una ronda extra. Dijkstra falla con pesos negativos; Floyd-Warshall calcula todos-contra-todos en O(V³); A* usa heurísticas admisibles.",
+    "acronimos": [
+      {
+        "sigla": "SSSP",
+        "significado": "Single-Source Shortest Path (Camino Más Corto desde un Origen)",
+        "pista": "Problema resuelto por Bellman-Ford (con pesos negativos) y Dijkstra (solo no negativos)."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_037",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Análisis de algoritmo",
+    "pregunta": "Un algoritmo de ordenamiento divide recursivamente un arreglo de tamaño `n` en dos mitades iguales de tamaño `n/2`, ordena cada mitad y luego fusiona ambas mitades ordenadas en tiempo lineal `O(n)`, siguiendo la recurrencia `T(n) = 2T(n/2) + Θ(n)`. ¿Qué algoritmo corresponde a esta descripción y cuál es su complejidad temporal en el peor caso?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "QuickSort — O(n²) en el peor caso."
+      },
+      {
+        "id": "B",
+        "texto": "MergeSort — O(n log n) garantizado en mejor, promedio y peor caso."
+      },
+      {
+        "id": "C",
+        "texto": "InsertionSort — O(n) en el peor caso."
+      },
+      {
+        "id": "D",
+        "texto": "BubbleSort — O(n log n) en el peor caso."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "MergeSort aplica divide y vencerás partiendo siempre el arreglo por la mitad y combinándolo en tiempo lineal. Por el Teorema Maestro (a = 2, b = 2, f(n) = Θ(n) = Θ(n^(log_2 2))), el caso 2 arroja T(n) = Θ(n log n) en todos los casos (mejor, promedio y peor), a cambio de O(n) de memoria auxiliar.",
+    "acronimos": [
+      {
+        "sigla": "D&C",
+        "significado": "Divide and Conquer (Divide y Vencerás)",
+        "pista": "Paradigma algorítmico usado por MergeSort, QuickSort y búsqueda binaria."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_038",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "En un sistema concurrente de reservas de boletos, dos hilos intentan simultáneamente leer el saldo de asientos disponibles (valor = 1), verificar que es mayor a 0 y decrementarlo sin sincronización, provocando que ambos vendan el mismo asiento. ¿Cómo se denomina este defecto y qué mecanismo resuelve la exclusión mutua en la sección crítica?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Condición de carrera (race condition); se resuelve protegiendo la sección crítica con un mutex, semáforo binario o monitor."
+      },
+      {
+        "id": "B",
+        "texto": "Fuga de memoria (memory leak); se resuelve invocando al recolector de basura."
+      },
+      {
+        "id": "C",
+        "texto": "Anomalía de Belady; se resuelve aumentando el número de marcos de página."
+      },
+      {
+        "id": "D",
+        "texto": "Desbordamiento de pila (stack overflow); se resuelve convirtiendo la función a recursión de cola."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Una condición de carrera ocurre cuando el resultado depende del orden no determinista en que múltiples hilos acceden y modifican datos compartidos. Proteger la sección crítica con exclusión mutua (mutex, semáforo binario inicializado en 1 o monitor) garantiza que solo un hilo ejecute la operación leer-verificar-modificar a la vez.",
+    "acronimos": [
+      {
+        "sigla": "MUTEX",
+        "significado": "Mutual Exclusion (Exclusión Mutua)",
+        "pista": "Cerrojo de sincronización que permite a un único hilo entrar en la sección crítica."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_039",
+    "diagrama": "deadlock-resource-graph",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "En un sistema operativo, el proceso P1 retiene el recurso Impresora y solicita el Escáner, mientras el proceso P2 retiene el Escáner y solicita la Impresora; ninguno puede ceder su recurso hasta terminar. Según las condiciones de Coffman para el interbloqueo (deadlock), ¿cuáles son las cuatro condiciones necesarias que se cumplen simultáneamente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Atomicidad, consistencia, aislamiento y durabilidad."
+      },
+      {
+        "id": "B",
+        "texto": "Paginación por demanda, inanición, fragmentación externa y espera activa."
+      },
+      {
+        "id": "C",
+        "texto": "Exclusión mutua, paralelismo masivo, memoria virtual y planificación FIFO."
+      },
+      {
+        "id": "D",
+        "texto": "Exclusión mutua, retención y espera, ausencia de apropiación (no desalojo) y espera circular."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "Las cuatro condiciones necesarias de Coffman para que ocurra un interbloqueo (deadlock) son: (1) Exclusión mutua, (2) Retención y espera (hold and wait), (3) No apropiación/no desalojo (no preemption), y (4) Espera circular. Romper cualquiera de las cuatro previene el interbloqueo.",
+    "acronimos": [
+      {
+        "sigla": "SO",
+        "significado": "Sistema Operativo",
+        "pista": "Gestiona recursos y aplica políticas de prevención, evasión (Banquero) o detección de deadlocks."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_040",
+    "diagrama": "avl-rr-imbalance",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Análisis de algoritmo",
+    "pregunta": "Se inserta la secuencia de claves `10, 20, 30` en ese orden dentro de un Árbol AVL inicialmente vacío. Al insertar el nodo `30`, el factor de equilibrio de la raíz `10` (definido como `altura(izq) - altura(der)`) se vuelve `-2` y el de su hijo derecho `20` es `-1`. ¿Qué rotación se debe aplicar para restaurar el balanceo AVL y cuál queda como nueva raíz?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Rotación simple a la derecha (LL); nueva raíz: 30."
+      },
+      {
+        "id": "B",
+        "texto": "Rotación doble derecha-izquierda (RL); nueva raíz: 10."
+      },
+      {
+        "id": "C",
+        "texto": "Rotación simple a la izquierda (RR) sobre el nodo 10; nueva raíz: 20."
+      },
+      {
+        "id": "D",
+        "texto": "No se requiere rotación porque un factor de equilibrio de -2 es válido en árboles AVL."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "En un árbol AVL el factor de equilibrio de todo nodo debe pertenecer a {-1, 0, +1}. Al insertar 10, 20, 30 se produce un desequilibrio derecha-derecha (RR) en el nodo 10 (FE = -2, hijo derecho 20 con FE = -1). Se corrige con una rotación simple a la izquierda sobre 10, dejando a 20 como nueva raíz con hijo izquierdo 10 e hijo derecho 30.",
+    "acronimos": [
+      {
+        "sigla": "AVL",
+        "significado": "Adelson-Velsky y Landis",
+        "pista": "Árbol binario de búsqueda autobalanceado que garantiza búsquedas en O(log n)."
+      },
+      {
+        "sigla": "FE",
+        "significado": "Factor de Equilibrio",
+        "pista": "Diferencia de alturas entre subárbol izquierdo y derecho; debe estar en {-1, 0, 1}."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_041",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Análisis de algoritmo",
+    "pregunta": "Evalúe la siguiente expresión en notación postfija (polaca inversa) utilizando una pila (LIFO): `5 3 2 * + 8 4 / -`. ¿Cuál es el resultado final que queda en el tope de la pila?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "7"
+      },
+      {
+        "id": "B",
+        "texto": "9"
+      },
+      {
+        "id": "C",
+        "texto": "11"
+      },
+      {
+        "id": "D",
+        "texto": "13"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "Traza de la pila: apilar 5 -> [5]; apilar 3 -> [5,3]; apilar 2 -> [5,3,2]; operador `*` desapila 2 y 3, apila 3*2=6 -> [5,6]; operador `+` desapila 6 y 5, apila 5+6=11 -> [11]; apilar 8 -> [11,8]; apilar 4 -> [11,8,4]; operador `/` desapila 4 y 8, apila 8/4=2 -> [11,2]; operador `-` desapila 2 y 11, apila 11-2=9 -> [9].",
+    "acronimos": [
+      {
+        "sigla": "LIFO",
+        "significado": "Last-In, First-Out",
+        "pista": "Estructura de pila empleada por compiladores y calculadoras RPN."
+      },
+      {
+        "sigla": "RPN",
+        "significado": "Reverse Polish Notation (Notación Polaca Inversa)",
+        "pista": "Notación postfija que elimina la necesidad de paréntesis."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_042",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "Se requiere implementar una cola de prioridad para un planificador de eventos discretos donde constantemente se inserta un nuevo evento y se extrae el evento con la marca de tiempo mínima. ¿Qué estructura de datos proporciona complejidad `O(log n)` para inserción, `O(log n)` para extracción del mínimo y `O(1)` para consultar el mínimo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Montículo binario mínimo (Min-Heap)."
+      },
+      {
+        "id": "B",
+        "texto": "Lista simplemente enlazada no ordenada."
+      },
+      {
+        "id": "C",
+        "texto": "Pila estática basada en arreglo."
+      },
+      {
+        "id": "D",
+        "texto": "Tabla hash con encadenamiento separado."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Un montículo binario mínimo (Min-Heap) mantiene el elemento de menor clave siempre en la raíz (consulta O(1)) y, al ser un árbol binario completo de altura floor(log2 n), permite insertar (sift-up) y extraer el mínimo (sift-down) en O(log n). Una tabla hash no mantiene orden mínimo; una lista desordenada tarda O(n) en extraer el mínimo.",
+    "acronimos": [
+      {
+        "sigla": "PQ",
+        "significado": "Priority Queue (Cola de Prioridad)",
+        "pista": "Tipo de dato abstracto implementado eficientemente con un Heap binario."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_043",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Análisis de algoritmo",
+    "pregunta": "Una tabla hash de tamaño `M = 7` (índices del 0 al 6) utiliza la función de dispersión `h(k) = k mod 7` y resolución de colisiones mediante direccionamiento abierto con sondeo lineal (`(h(k) + i) mod 7`). Si se insertan secuencialmente las claves `15, 22, 9, 16` en una tabla vacía, ¿en qué índice queda almacenada la clave `16`?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Índice 2"
+      },
+      {
+        "id": "B",
+        "texto": "Índice 3"
+      },
+      {
+        "id": "C",
+        "texto": "Índice 5"
+      },
+      {
+        "id": "D",
+        "texto": "Índice 4"
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "Traza: h(15) = 15 mod 7 = 1 -> posición 1 libre, guarda 15 en [1]. h(22) = 22 mod 7 = 1 -> colisión en [1], prueba [2] libre, guarda 22 en [2]. h(9) = 9 mod 7 = 2 -> colisión en [2], prueba [3] libre, guarda 9 en [3]. h(16) = 16 mod 7 = 2 -> colisión en [2] y [3], prueba [4] libre, guarda 16 en [4].",
+    "acronimos": [
+      {
+        "sigla": "TAD",
+        "significado": "Tipo Abstracto de Datos",
+        "pista": "Especificación lógica como Diccionario/Mapa que puede implementarse con tablas hash."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_044",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "En un Árbol Binario de Búsqueda (BST), se desea eliminar un nodo `X` que tiene DOS hijos (subárbol izquierdo y subárbol derecho no vacíos) preservando la propiedad de orden del BST. ¿Cuál es el procedimiento estándar correcto?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Eliminar `X` junto con todo su subárbol derecho."
+      },
+      {
+        "id": "B",
+        "texto": "Reemplazar `X` directamente por la raíz del árbol y reinsertar todas las hojas."
+      },
+      {
+        "id": "C",
+        "texto": "Reemplazar la clave de `X` por su sucesor inorden (el valor mínimo de su subárbol derecho) o su predecesor inorden (el máximo del subárbol izquierdo), y luego eliminar dicho sucesor/predecesor que tiene a lo sumo un hijo."
+      },
+      {
+        "id": "D",
+        "texto": "Intercambiar `X` con su hijo derecho independientemente de si este tiene hijo izquierdo."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "Al eliminar un nodo con dos hijos en un BST, sustituir su valor por el sucesor inorden (mínimo del subárbol derecho) o predecesor inorden (máximo del subárbol izquierdo) mantiene intacto el invariante izquierdo < nodo < derecho, y reduce el borrado físico a un caso trivial de 0 o 1 hijo.",
+    "acronimos": [
+      {
+        "sigla": "BST",
+        "significado": "Binary Search Tree",
+        "pista": "Su recorrido inorden produce todas las claves en orden ascendente."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_045",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Análisis de algoritmo",
+    "pregunta": "Un algoritmo busca un elemento en un arreglo ordenado de 1,048,576 (`2^20`) enteros mediante búsqueda binaria. ¿Cuál es el número máximo aproximado de comparaciones (iteraciones) necesarias en el peor caso cuando el elemento no existe en el arreglo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1,024 comparaciones (O(√n))."
+      },
+      {
+        "id": "B",
+        "texto": "21 comparaciones (O(log₂ n))."
+      },
+      {
+        "id": "C",
+        "texto": "524,288 comparaciones (O(n/2))."
+      },
+      {
+        "id": "D",
+        "texto": "1,048,576 comparaciones (O(n))."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "La búsqueda binaria divide el espacio de búsqueda a la mitad en cada paso, realizando a lo sumo floor(log₂ n) + 1 iteraciones. Para n = 2^20 = 1,048,576, floor(log₂(2^20)) + 1 = 20 + 1 = 21 comparaciones en el peor caso.",
+    "acronimos": [
+      {
+        "sigla": "RAM",
+        "significado": "Random Access Memory",
+        "pista": "La búsqueda binaria requiere acceso aleatorio en O(1) sobre un arreglo ordenado."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_046",
+    "diagrama": "mst-kruskal-graph",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Análisis de algoritmo",
+    "pregunta": "Se desea interconectar 4 sucursales {A, B, C, D} con fibra óptica minimizando el costo total mediante un Árbol de Expansión Mínima (MST). Los enlaces posibles y sus costos son: (A,B)=4, (A,C)=1, (B,C)=2, (B,D)=5, (C,D)=3. Aplicando el algoritmo de Kruskal, ¿cuál es el costo total del MST resultante?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "6"
+      },
+      {
+        "id": "B",
+        "texto": "8"
+      },
+      {
+        "id": "C",
+        "texto": "7"
+      },
+      {
+        "id": "D",
+        "texto": "10"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Kruskal ordena las aristas de menor a mayor peso y agrega aquellas que no formen ciclos (usando Union-Find): (1) (A,C)=1 se agrega; (2) (B,C)=2 se agrega; (3) (C,D)=3 se agrega. Con V - 1 = 3 aristas los 4 vértices quedan conectados. Costo total = 1 + 2 + 3 = 6 (las aristas (A,B)=4 y (B,D)=5 formarían ciclos).",
+    "acronimos": [
+      {
+        "sigla": "MST",
+        "significado": "Minimum Spanning Tree (Árbol de Expansión Mínima)",
+        "pista": "Subgrafo acíclico conexo de peso mínimo que une todos los V vértices con V-1 aristas."
+      },
+      {
+        "sigla": "DSU",
+        "significado": "Disjoint Set Union (Union-Find)",
+        "pista": "Estructura usada en Kruskal para detectar ciclos eficientemente."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_047",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "Un gestor de dependencias de paquetes debe determinar un orden válido de compilación para módulos donde ciertos paquetes dependen de otros, asegurando que ninguna biblioteca se compile antes que sus dependencias. El grafo de dependencias es dirigido y sin ciclos (DAG). ¿Qué algoritmo resuelve este problema?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Algoritmo de Huffman."
+      },
+      {
+        "id": "B",
+        "texto": "Algoritmo de Prim."
+      },
+      {
+        "id": "C",
+        "texto": "Búsqueda binaria iterativa."
+      },
+      {
+        "id": "D",
+        "texto": "Ordenamiento topológico (mediante algoritmo de Kahn con grados de entrada o DFS)."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "El ordenamiento topológico produce una secuencia lineal de los vértices de un Grafo Acíclico Dirigido (DAG) tal que para cada arista dirigida u -> v, el vértice u aparece antes que v. Se implementa en O(V + E) mediante el algoritmo de Kahn (cola de nodos con grado de entrada 0) o invirtiendo el orden de finalización de DFS.",
+    "acronimos": [
+      {
+        "sigla": "DAG",
+        "significado": "Directed Acyclic Graph (Grafo Acíclico Dirigido)",
+        "pista": "Condición necesaria y suficiente para que exista un ordenamiento topológico."
+      },
+      {
+        "sigla": "DFS",
+        "significado": "Depth-First Search",
+        "pista": "Permite obtener el ordenamiento topológico y detectar ciclos."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_048",
+    "diagrama": "lru-page-frames",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Análisis de algoritmo",
+    "pregunta": "Un sistema con memoria virtual paginada asigna exactamente 3 marcos de página inicialmente vacíos a un proceso cuya cadena de referencias de páginas es: `7, 0, 1, 2, 0, 3`. Si se utiliza el algoritmo de reemplazo LRU (Least Recently Used), ¿cuántos fallos de página ocurren y qué páginas quedan cargadas al final?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "4 fallos de página; páginas finales: {7, 0, 3}."
+      },
+      {
+        "id": "B",
+        "texto": "6 fallos de página; páginas finales: {2, 1, 3}."
+      },
+      {
+        "id": "C",
+        "texto": "5 fallos de página; páginas finales: {2, 0, 3}."
+      },
+      {
+        "id": "D",
+        "texto": "5 fallos de página; páginas finales: {1, 0, 3}."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "Traza LRU con 3 marcos: ref 7 -> [7] (fallo 1); ref 0 -> [7,0] (fallo 2); ref 1 -> [7,0,1] (fallo 3); ref 2 -> la menos usada recientemente es 7, se reemplaza -> [2,0,1] (fallo 4); ref 0 -> acierto (hit, 0 se vuelve la más reciente; la menos reciente ahora es 1); ref 3 -> reemplaza a 1 -> [2,0,3] (fallo 5). Total: 5 fallos y conjunto final {2, 0, 3}.",
+    "acronimos": [
+      {
+        "sigla": "LRU",
+        "significado": "Least Recently Used (Menos Usada Recientemente)",
+        "pista": "Política de reemplazo de páginas que desaloja la página con mayor tiempo sin usarse y no sufre anomalía de Belady."
+      },
+      {
+        "sigla": "MMU",
+        "significado": "Memory Management Unit (Unidad de Gestión de Memoria)",
+        "pista": "Hardware que traduce direcciones virtuales a físicas usando la tabla de páginas."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_049",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "En un servidor con poca memoria RAM física y muchos procesos activos simultáneamente, el sistema operativo pasa más tiempo intercambiando páginas entre RAM y disco (paginación constante) que ejecutando instrucciones útiles de los procesos, desplomando la utilización de la CPU. ¿Cómo se denomina este fenómeno?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Spooling."
+      },
+      {
+        "id": "B",
+        "texto": "Thrashing (hiperpaginación o sobrepaginación)."
+      },
+      {
+        "id": "C",
+        "texto": "Pipelining."
+      },
+      {
+        "id": "D",
+        "texto": "Fragmentación interna."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "El thrashing ocurre cuando la suma de los conjuntos de trabajo (working sets) de los procesos activos excede la memoria física disponible, provocando fallos de página continuos que mantienen al disco saturado y a la CPU casi ociosa.",
+    "acronimos": [
+      {
+        "sigla": "RAM",
+        "significado": "Random Access Memory",
+        "pista": "Memoria principal física cuya escasez respecto al conjunto de trabajo detona el thrashing."
+      },
+      {
+        "sigla": "CPU",
+        "significado": "Central Processing Unit",
+        "pista": "Su utilización cae drásticamente durante un episodio de thrashing."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_050",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "Un desarrollador resuelve el problema de la mochila 0/1 (0/1 Knapsack) con pesos y valores enteros. Observa que la solución recursiva ingenua recalcula miles de veces los mismos pares `(índice, capacidad_restante)` en tiempo exponencial `O(2^n)`, pero almacenando los resultados intermedios en una tabla bidimensional logra resolverlo en `O(n · W)`. ¿Qué paradigma algorítmico y propiedades se explotan?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Programación Dinámica, explotando subestructura óptima y subproblemas superpuestos."
+      },
+      {
+        "id": "B",
+        "texto": "Algoritmo voraz (Greedy) basado en elección localmente óptima sin retroceso."
+      },
+      {
+        "id": "C",
+        "texto": "Fuerza bruta con poda alfa-beta."
+      },
+      {
+        "id": "D",
+        "texto": "Algoritmo probabilístico de Monte Carlo."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "La Programación Dinámica aplica cuando un problema exhibe (1) subestructura óptima y (2) subproblemas superpuestos. Al guardar soluciones en tabla (tabulación bottom-up) o caché (memoización top-down), se evita recomputar estados idénticos, reduciendo la mochila 0/1 de O(2^n) a O(n·W). El enfoque voraz solo funciona para la mochila fraccionaria, no la 0/1.",
+    "acronimos": [
+      {
+        "sigla": "DP",
+        "significado": "Dynamic Programming (Programación Dinámica)",
+        "pista": "Optimización basada en memoización o tabulación de subproblemas superpuestos."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_051",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "Un algoritmo de compresión sin pérdida asigna códigos binarios más cortos a los símbolos con mayor frecuencia de aparición y códigos más largos a los menos frecuentes, construyendo un árbol binario de abajo hacia arriba mediante una cola de prioridad mínima de forma que ningún código sea prefijo de otro. ¿A qué algoritmo corresponde?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Ordenamiento por conteo (Counting Sort)."
+      },
+      {
+        "id": "B",
+        "texto": "Transformada Rápida de Fourier (FFT)."
+      },
+      {
+        "id": "C",
+        "texto": "Algoritmo de Euclides extendido."
+      },
+      {
+        "id": "D",
+        "texto": "Codificación de Huffman (algoritmo voraz)."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "La codificación de Huffman es un algoritmo voraz (greedy) clásico que construye un árbol óptimo de códigos prefijo sin pérdida combinando iterativamente los dos nodos de menor frecuencia usando un Min-Heap en O(n log n).",
+    "acronimos": [
+      {
+        "sigla": "FFT",
+        "significado": "Fast Fourier Transform",
+        "pista": "Algoritmo de procesamiento de señales en O(n log n), no de compresión por códigos prefijo."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_052",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "En Java/C#, una clase base `Figura` declara el método virtual `calcularArea()`, el cual es sobreescrito por las subclases `Circulo` y `Triangulo`. Una lista de referencias de tipo `Figura` invoca `f.calcularArea()` en un bucle y, en tiempo de ejecución, la máquina virtual despacha la implementación concreta correspondiente a cada objeto real. ¿Qué mecanismo de la POO se manifiesta?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Sobrecarga estática de operadores (enlace temprano)."
+      },
+      {
+        "id": "B",
+        "texto": "Herencia múltiple de atributos privados."
+      },
+      {
+        "id": "C",
+        "texto": "Polimorfismo de subtipo con enlace dinámico (despacho dinámico en tiempo de ejecución)."
+      },
+      {
+        "id": "D",
+        "texto": "Ocultamiento de variables globales."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "El polimorfismo de subtipo (por sobreescritura o overriding) junto con el enlace dinámico (late/dynamic binding) permite que una referencia del tipo base invoque en tiempo de ejecución la implementación específica de la subclase real del objeto mediante tablas de métodos virtuales (vtable).",
+    "acronimos": [
+      {
+        "sigla": "POO",
+        "significado": "Programación Orientada a Objetos",
+        "pista": "Sus pilares son abstracción, encapsulamiento, herencia y polimorfismo."
+      },
+      {
+        "sigla": "JVM",
+        "significado": "Java Virtual Machine",
+        "pista": "Entorno que resuelve el enlace dinámico de métodos en tiempo de ejecución."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_053",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione los principios de diseño orientado a objetos SOLID con su definición:\n\nPrincipio:\n1. Responsabilidad Única (SRP)\n2. Sustitución de Liskov (LSP)\n3. Segregación de Interfaces (ISP)\n4. Inversión de Dependencias (DIP)\n\nDefinición:\na) Los clientes no deben verse forzados a depender de métodos o interfaces que no utilizan; es preferible dividir interfaces grandes en otras más específicas.\nb) Los módulos de alto nivel no deben depender de módulos de bajo nivel; ambos deben depender de abstracciones.\nc) Una clase debe tener una única razón para cambiar.\nd) Los objetos de una subclase deben poder sustituir a los de su clase base sin alterar la corrección del programa.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1c, 2b, 3a, 4d"
+      },
+      {
+        "id": "B",
+        "texto": "1c, 2d, 3a, 4b"
+      },
+      {
+        "id": "C",
+        "texto": "1c, 2d, 3b, 4a"
+      },
+      {
+        "id": "D",
+        "texto": "1a, 2d, 3c, 4b"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "SRP establece una única razón de cambio por clase (1c); LSP garantiza que una subclase sea sustituible por su superclase sin romper contratos (2d); ISP promueve interfaces pequeñas y específicas (3a); y DIP indica depender de abstracciones en lugar de implementaciones concretas (4b).",
+    "acronimos": [
+      {
+        "sigla": "SRP",
+        "significado": "Single Responsibility Principle",
+        "pista": "Una clase, una sola responsabilidad."
+      },
+      {
+        "sigla": "LSP",
+        "significado": "Liskov Substitution Principle",
+        "pista": "Las subclases deben respetar el contrato de su clase base."
+      },
+      {
+        "sigla": "ISP",
+        "significado": "Interface Segregation Principle",
+        "pista": "Mejor varias interfaces específicas que una interfaz monolítica."
+      },
+      {
+        "sigla": "DIP",
+        "significado": "Dependency Inversion Principle",
+        "pista": "Depender de abstracciones, no de concreciones."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_054",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordene las fases clásicas del proceso de compilación desde el código fuente hasta el código objeto ejecutable:\n1. Análisis semántico (verificación de tipos y tabla de símbolos)\n2. Análisis léxico (generación de tokens)\n3. Generación de código objeto/máquina\n4. Análisis sintáctico (construcción del árbol de sintaxis abstracta / AST)\n5. Generación y optimización de código intermedio",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "2, 4, 1, 5, 3"
+      },
+      {
+        "id": "B",
+        "texto": "4, 2, 1, 5, 3"
+      },
+      {
+        "id": "C",
+        "texto": "2, 1, 4, 5, 3"
+      },
+      {
+        "id": "D",
+        "texto": "2, 4, 5, 1, 3"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Un compilador clásico (Aho, Lam, Sethi, Ullman) opera en el orden: (2) Análisis léxico (scanner -> tokens), (4) Análisis sintáctico (parser -> árbol sintáctico/AST), (1) Análisis semántico (chequeo de tipos y alcances), (5) Generación y optimización de código intermedio, y (3) Generación de código máquina destino.",
+    "acronimos": [
+      {
+        "sigla": "AST",
+        "significado": "Abstract Syntax Tree (Árbol de Sintaxis Abstracta)",
+        "pista": "Representación jerárquica producida durante el análisis sintáctico."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_055",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Completamiento",
+    "pregunta": "En teoría de lenguajes formales y compiladores, los analizadores léxicos reconocen lenguajes ________ descritos por expresiones regulares y aceptados por ________, mientras que los analizadores sintácticos reconocen lenguajes ________ aceptados por autómatas con pila.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "libres de contexto — máquinas de Turing — regulares"
+      },
+      {
+        "id": "B",
+        "texto": "recursivamente enumerables — autómatas finitos — deterministas"
+      },
+      {
+        "id": "C",
+        "texto": "sensibles al contexto — autómatas con pila — regulares"
+      },
+      {
+        "id": "D",
+        "texto": "regulares — autómatas finitos (AFD/AFN) — libres de contexto"
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "Según la jerarquía de Chomsky: los lenguajes regulares (Tipo 3) se especifican con expresiones regulares y son reconocidos por autómatas finitos (AFD/AFN), base del análisis léxico; los lenguajes libres de contexto (Tipo 2) se describen con gramáticas BNF/CFG y son reconocidos por autómatas con pila (PDA), base del análisis sintáctico.",
+    "acronimos": [
+      {
+        "sigla": "AFD",
+        "significado": "Autómata Finito Determinista",
+        "pista": "Modelo computacional que reconoce lenguajes regulares sin ambigüedad de transición."
+      },
+      {
+        "sigla": "AFN",
+        "significado": "Autómata Finito No Determinista",
+        "pista": "Equivalente en poder expresivo al AFD; se obtiene fácilmente desde expresiones regulares."
+      },
+      {
+        "sigla": "PDA",
+        "significado": "Pushdown Automaton (Autómata con Pila)",
+        "pista": "Reconoce lenguajes libres de contexto como paréntesis balanceados."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_056",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Análisis de algoritmo",
+    "pregunta": "Considere el siguiente fragmento de pseudocódigo:\n```text\npara i = 1 hasta n:\n    j = 1\n    mientras j < n:\n        imprimir(i, j)\n        j = j * 2\n```\n¿Cuál es la complejidad temporal asintótica exacta del algoritmo en función de `n`?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Θ(n²)"
+      },
+      {
+        "id": "B",
+        "texto": "Θ(n)"
+      },
+      {
+        "id": "C",
+        "texto": "Θ(n log n)"
+      },
+      {
+        "id": "D",
+        "texto": "Θ(log n)"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "El ciclo externo `para i = 1 hasta n` se ejecuta `n` veces. En cada iteración externa, el ciclo interno duplica `j` (`j = 1, 2, 4, 8, ..., < n`), por lo que ejecuta aproximadamente `log₂ n` iteraciones. El producto de ambos ciclos resulta en una complejidad temporal exacta de Θ(n log n).",
+    "acronimos": [
+      {
+        "sigla": "ALU",
+        "significado": "Arithmetic Logic Unit",
+        "pista": "Ejecuta las operaciones básicas contadas en el análisis asintótico."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_057",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "Un algoritmo de ordenamiento recibe un arreglo con `n` elementos ya ordenados en forma ascendente. Si se utiliza QuickSort eligiendo siempre el PRIMER elemento del subarreglo como pivote, ¿qué comportamiento temporal presenta y cómo se mitiga en la práctica?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Presenta su mejor caso O(n) sin necesidad de mitigación."
+      },
+      {
+        "id": "B",
+        "texto": "Degrada a su peor caso O(n²) debido a particiones totalmente desbalanceadas; se mitiga eligiendo el pivote aleatoriamente o mediante mediana de tres."
+      },
+      {
+        "id": "C",
+        "texto": "Mantiene estrictamente O(n log n) independientemente del pivote."
+      },
+      {
+        "id": "D",
+        "texto": "Entra en un ciclo infinito y no termina."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "Cuando el arreglo ya está ordenado (o inversamente ordenado) y QuickSort elige siempre el primer (o último) elemento como pivote, cada partición genera subarreglos de tamaño 0 y n-1, provocando T(n) = T(n-1) + Θ(n) = Θ(n²). Elegir un pivote aleatorio o la mediana de tres (inicio, medio, fin) evita este caso degenerado en la práctica.",
+    "acronimos": [
+      {
+        "sigla": "D&C",
+        "significado": "Divide and Conquer",
+        "pista": "QuickSort depende de particiones balanceadas para mantener O(n log n)."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_058",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "En C++, una función `void intercambiar(int &a, int &b)` recibe sus parámetros por referencia, mientras que `void procesar(int x)` recibe su parámetro por valor. Si el llamador invoca ambas pasando variables locales, ¿cuál es la diferencia fundamental en memoria y efecto?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "El paso por referencia pasa un alias/dirección de la variable original permitiendo modificarla y evitando copias costosas; el paso por valor copia el dato en el marco de pila de la función."
+      },
+      {
+        "id": "B",
+        "texto": "El paso por valor modifica directamente la variable original del llamador; el paso por referencia crea una copia independiente."
+      },
+      {
+        "id": "C",
+        "texto": "Ambos mecanismos son idénticos en C++ y siempre asignan memoria en el heap."
+      },
+      {
+        "id": "D",
+        "texto": "El paso por referencia solo funciona con constantes literales y prohíbe modificar el dato."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "En el paso por valor se crea una copia local del argumento en el stack frame de la función, por lo que los cambios no afectan a la variable original. En el paso por referencia (`&`) el parámetro actúa como alias de la variable original del llamador, permitiendo modificarla directamente y evitando el costo de copiar estructuras grandes.",
+    "acronimos": [
+      {
+        "sigla": "POO",
+        "significado": "Programación Orientada a Objetos",
+        "pista": "En C++ el paso por referencia constante (const T&) es práctica estándar para evitar copias de objetos."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_059",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Caso práctico",
+    "pregunta": "Un desarrollador debe elegir entre un arreglo dinámico contiguo (`ArrayList` / `std::vector`) y una lista doblemente enlazada (`LinkedList` / `std::list`) para almacenar un catálogo de 1 millón de productos que se consulta aleatoriamente por índice `i` el 99% del tiempo y casi nunca sufre inserciones en medio. ¿Cuál debe elegir y por qué?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Lista doblemente enlazada, porque permite acceso aleatorio por índice en O(1)."
+      },
+      {
+        "id": "B",
+        "texto": "Cualquiera de las dos, pues ambas tienen exactamente O(log n) en acceso por índice."
+      },
+      {
+        "id": "C",
+        "texto": "Lista doblemente enlazada, porque consume menos memoria por elemento al no usar punteros."
+      },
+      {
+        "id": "D",
+        "texto": "Arreglo dinámico contiguo, porque ofrece acceso por índice en O(1) y excelente localidad espacial de caché."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "Un arreglo contiguo calcula la dirección del elemento `i` en O(1) (`base + i * sizeof(T)`) y aprovecha la localidad espacial de la caché de CPU. En cambio, una lista doblemente enlazada requiere O(n) para acceder al índice `i` y consume memoria adicional en dos punteros (`prev`, `next`) por nodo.",
+    "acronimos": [
+      {
+        "sigla": "CPU",
+        "significado": "Central Processing Unit",
+        "pista": "Sus líneas de caché L1/L2/L3 favorecen enormemente los arreglos contiguos en memoria."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_060",
+    "area": "Implementación de Software",
+    "subarea": "3.2 Programación, estructuras de datos y algoritmos",
+    "tipo": "Completamiento",
+    "pregunta": "En teoría de la complejidad computacional, un problema de decisión pertenece a la clase ________ si puede resolverse en tiempo polinomial por una máquina de Turing determinista; pertenece a ________ si una solución candidata puede verificarse en tiempo polinomial; y se denomina ________ si pertenece a NP y todo problema de NP se reduce polinomialmente a él.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "NP — P — indecidible"
+      },
+      {
+        "id": "B",
+        "texto": "NP-Difícil — P — recursivo"
+      },
+      {
+        "id": "C",
+        "texto": "P — NP — NP-Completo"
+      },
+      {
+        "id": "D",
+        "texto": "P — PSPACE — exponencial"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "Por definición formal: P es la clase de problemas decidibles en tiempo polinomial determinista; NP es la clase de problemas cuyas soluciones son verificables en tiempo polinomial (o decidibles por máquina no determinista en tiempo polinomial); un problema es NP-Completo si está en NP y además es NP-Difícil (todo problema de NP se reduce a él en tiempo polinomial, como SAT o el problema del agente viajero en su versión de decisión).",
+    "acronimos": [
+      {
+        "sigla": "P",
+        "significado": "Polynomial Time (Tiempo Polinomial)",
+        "pista": "Problemas resolubles eficientemente de forma determinista."
+      },
+      {
+        "sigla": "NP",
+        "significado": "Nondeterministic Polynomial Time",
+        "pista": "Problemas cuyas soluciones pueden verificarse en tiempo polinomial."
+      },
+      {
+        "sigla": "SAT",
+        "significado": "Boolean Satisfiability Problem",
+        "pista": "Primer problema demostrado NP-Completo (Teorema de Cook-Levin)."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_061",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Ordenamiento",
+    "pregunta": "Ordene las etapas metodológicas para elaborar el modelo conceptual Entidad-Relación (ER) de una base de datos institucional:\n1. Identificar y asociar los atributos propios de cada entidad y relación, señalando las claves candidatas/identificadores.\n2. Determinar las relaciones entre entidades, sus grados y restricciones de cardinalidad y participación.\n3. Recopilar y analizar los requerimientos de información y reglas de negocio de los usuarios.\n4. Identificar los tipos de entidades fuertes y débiles relevantes del dominio.\n5. Revisar y validar el diagrama ER completo con los usuarios y eliminar redundancias.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "3, 1, 4, 2, 5"
+      },
+      {
+        "id": "B",
+        "texto": "3, 4, 2, 1, 5"
+      },
+      {
+        "id": "C",
+        "texto": "4, 3, 2, 1, 5"
+      },
+      {
+        "id": "D",
+        "texto": "3, 4, 1, 5, 2"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "La metodología estándar de diseño conceptual ER (Elmasri & Navathe / Connolly) inicia analizando requerimientos y reglas de negocio (3), luego identifica entidades fuertes y débiles (4), define las relaciones y cardinalidades entre ellas (2), asigna atributos e identificadores/claves (1), y finalmente valida el modelo conceptual con los usuarios (5).",
+    "acronimos": [
+      {
+        "sigla": "ER",
+        "significado": "Entidad-Relación (Entity-Relationship)",
+        "pista": "Modelo conceptual de alto nivel independiente del SGBD."
+      },
+      {
+        "sigla": "PK",
+        "significado": "Primary Key (Clave Primaria)",
+        "pista": "Atributo o conjunto de atributos que identifica de forma única cada instancia de una entidad."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_062",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "En una tabla `Inscripcion(id_alumno, id_curso, nombre_alumno, fecha_inscripcion, calificacion)` cuya clave primaria compuesta es `(id_alumno, id_curso)`, el atributo `nombre_alumno` depende funcionalmente únicamente de `id_alumno` y no de la clave compuesta completa. ¿Qué forma normal se está violando y qué anomalía provoca?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Segunda Forma Normal (2FN), por existir una dependencia funcional parcial respecto a una parte de la clave primaria compuesta, generando redundancia y anomalías de actualización."
+      },
+      {
+        "id": "B",
+        "texto": "Tercera Forma Normal (3FN), por existir una dependencia transitiva entre atributos no clave."
+      },
+      {
+        "id": "C",
+        "texto": "Primera Forma Normal (1FN), por contener atributos multivaluados."
+      },
+      {
+        "id": "D",
+        "texto": "Cuarta Forma Normal (4FN), por dependencias multivaluadas independientes."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Una relación está en 2FN si está en 1FN y ningún atributo no primo depende parcialmente de una clave candidata compuesta. Aquí `id_alumno -> nombre_alumno` es una dependencia parcial que viola la 2FN y obliga a repetir el nombre del alumno en cada curso inscrito. Se corrige separando `Alumno(id_alumno, nombre_alumno)`.",
+    "acronimos": [
+      {
+        "sigla": "2FN",
+        "significado": "Segunda Forma Normal",
+        "pista": "Elimina dependencias funcionales parciales sobre claves primarias compuestas."
+      },
+      {
+        "sigla": "1FN",
+        "significado": "Primera Forma Normal",
+        "pista": "Exige dominios atómicos sin grupos repetitivos ni atributos multivaluados."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_063",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Una tabla `Empleado(id_emp, nombre, id_depto, nombre_depto, ubicacion_depto)` tiene clave primaria simple `id_emp` y cumple 1FN y 2FN. Sin embargo, `id_emp -> id_depto` y `id_depto -> {nombre_depto, ubicacion_depto}`. ¿Qué problema de normalización existe y cómo se lleva a 3FN?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Existe una dependencia parcial; se debe convertir `id_depto` en clave compuesta junto con `id_emp`."
+      },
+      {
+        "id": "B",
+        "texto": "No existe ningún problema porque la tabla ya está en BCNF."
+      },
+      {
+        "id": "C",
+        "texto": "Existe un atributo no atómico; se debe dividir `nombre` en nombre y apellidos."
+      },
+      {
+        "id": "D",
+        "texto": "Existe una dependencia transitiva (`id_emp -> id_depto -> nombre_depto, ubicacion_depto`); se debe descomponer en `Empleado(id_emp, nombre, id_depto)` y `Departamento(id_depto, nombre_depto, ubicacion_depto)`."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "La Tercera Forma Normal (3FN) exige que la relación esté en 2FN y que ningún atributo no clave dependa transitivamente de la clave primaria a través de otro atributo no clave. Separar los datos del departamento en su propia tabla elimina la dependencia transitiva y las anomalías de inserción/actualización/borrado.",
+    "acronimos": [
+      {
+        "sigla": "3FN",
+        "significado": "Tercera Forma Normal",
+        "pista": "Elimina dependencias transitivas entre atributos no clave."
+      },
+      {
+        "sigla": "BCNF",
+        "significado": "Boyce-Codd Normal Form (Forma Normal de Boyce-Codd)",
+        "pista": "Versión más estricta de 3FN donde todo determinante de una dependencia funcional no trivial debe ser superclave."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_064",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Una relación `Tutoria(id_estudiante, materia, profesor)` cumple 3FN, donde cada estudiante tiene un único profesor por materia `(id_estudiante, materia) -> profesor`, pero además cada profesor imparte exclusivamente UNA materia (`profesor -> materia`), siendo `profesor` un determinante que NO es superclave. ¿Qué forma normal se viola?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1FN."
+      },
+      {
+        "id": "B",
+        "texto": "2FN."
+      },
+      {
+        "id": "C",
+        "texto": "Forma Normal de Boyce-Codd (BCNF)."
+      },
+      {
+        "id": "D",
+        "texto": "Ninguna, ya que 3FN implica automáticamente BCNF en todos los casos."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "La relación cumple 3FN porque `materia` es un atributo primo (forma parte de la clave candidata `(id_estudiante, materia)`), pero viola BCNF porque en la dependencia no trivial `profesor -> materia`, el determinante `profesor` no es superclave. En BCNF todo determinante de toda dependencia funcional no trivial debe ser superclave.",
+    "acronimos": [
+      {
+        "sigla": "BCNF",
+        "significado": "Boyce-Codd Normal Form",
+        "pista": "Exige que el lado izquierdo X de toda dependencia X -> Y no trivial sea superclave."
+      },
+      {
+        "sigla": "3FN",
+        "significado": "Tercera Forma Normal",
+        "pista": "Permite excepciones cuando el atributo dependiente Y es parte de una clave candidata."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_065",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada propiedad ACID de las transacciones en bases de datos con su garantía correspondiente:\n\nPropiedad:\n1. Atomicidad (Atomicity)\n2. Consistencia (Consistency)\n3. Aislamiento (Isolation)\n4. Durabilidad (Durability)\n\nGarantía:\na) La ejecución concurrente de transacciones produce el mismo efecto que si se ejecutaran de forma secuencial sin interferencias.\nb) Una vez confirmada (COMMIT), las modificaciones persisten incluso ante un fallo eléctrico o caída del sistema.\nc) La transacción es una unidad 'todo o nada': si falla a mitad, se revierten todos sus cambios (ROLLBACK).\nd) La transacción lleva la base de datos de un estado válido a otro estado válido respetando todas las restricciones de integridad.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1c, 2a, 3d, 4b"
+      },
+      {
+        "id": "B",
+        "texto": "1c, 2d, 3a, 4b"
+      },
+      {
+        "id": "C",
+        "texto": "1c, 2d, 3b, 4a"
+      },
+      {
+        "id": "D",
+        "texto": "1b, 2d, 3a, 4c"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "ACID garantiza confiabilidad transaccional: Atomicidad = todo o nada (1c), Consistencia = preserva reglas e integridad (2d), Aislamiento = independencia frente a concurrencia (3a), y Durabilidad = persistencia permanente tras COMMIT mediante registros de log WAL (4b).",
+    "acronimos": [
+      {
+        "sigla": "ACID",
+        "significado": "Atomicity, Consistency, Isolation, Durability",
+        "pista": "Cuatro propiedades fundamentales de las transacciones relacionales."
+      },
+      {
+        "sigla": "WAL",
+        "significado": "Write-Ahead Logging",
+        "pista": "Técnica de bitácora en disco que garantiza atomicidad y durabilidad ante fallos."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_066",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione los niveles de aislamiento del estándar SQL-92 con las anomalías de concurrencia que permiten o previenen:\n\nNivel de aislamiento:\n1. READ UNCOMMITTED\n2. READ COMMITTED\n3. REPEATABLE READ\n4. SERIALIZABLE\n\nComportamiento:\na) Previene lecturas sucias, lecturas no repetibles y lecturas fantasma; ofrece el aislamiento más estricto.\nb) Permite lecturas sucias (dirty reads), lecturas no repetibles y lecturas fantasma.\nc) Previene lecturas sucias, pero permite lecturas no repetibles y lecturas fantasma.\nd) Previene lecturas sucias y lecturas no repetibles, pero teóricamente puede permitir lecturas fantasma en el estándar SQL-92.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1b, 2c, 3d, 4a"
+      },
+      {
+        "id": "B",
+        "texto": "1b, 2d, 3c, 4a"
+      },
+      {
+        "id": "C",
+        "texto": "1c, 2b, 3d, 4a"
+      },
+      {
+        "id": "D",
+        "texto": "1a, 2c, 3d, 4b"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "En el estándar ANSI SQL-92: READ UNCOMMITTED permite las tres anomalías (1b); READ COMMITTED evita dirty reads (2c); REPEATABLE READ evita dirty reads y non-repeatable reads pero puede permitir phantom reads (3d); SERIALIZABLE previene las tres anomalías (4a).",
+    "acronimos": [
+      {
+        "sigla": "ANSI",
+        "significado": "American National Standards Institute",
+        "pista": "Organismo que estandarizó los 4 niveles de aislamiento en SQL-92."
+      },
+      {
+        "sigla": "SQL",
+        "significado": "Structured Query Language",
+        "pista": "Lenguaje estándar que incluye SET TRANSACTION ISOLATION LEVEL."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_067",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Un DBA debe crear un índice sobre la columna `fecha_venta` de una tabla con 50 millones de facturas porque el 85% de las consultas filtran por rangos de fechas (`WHERE fecha_venta BETWEEN '2026-01-01' AND '2026-03-31' ORDER BY fecha_venta`). ¿Qué estructura de índice es la más adecuada y por qué?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Índice Hash, porque evalúa consultas de rango `BETWEEN` en O(1)."
+      },
+      {
+        "id": "B",
+        "texto": "Índice Hash con encadenamiento, porque mantiene las claves ordenadas alfabéticamente."
+      },
+      {
+        "id": "C",
+        "texto": "Archivo heap sin índice, porque los escaneos completos son siempre más rápidos que los índices."
+      },
+      {
+        "id": "D",
+        "texto": "Índice Árbol B+ (B+Tree), porque almacena todas las claves en orden en los nodos hoja enlazados secuencialmente, optimizando tanto búsquedas puntuales en O(log n) como recorridos de rango y ordenamientos."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "Los índices B+Tree (estándar en PostgreSQL, MySQL InnoDB, SQL Server, Oracle) mantienen un árbol balanceado de poca altura y enlazan todos sus nodos hoja en una lista ordenada, permitiendo localizar el inicio del rango en O(log_b n) y recorrer secuencialmente los registros del rango. Los índices Hash solo sirven para comparaciones de igualdad exacta (`=`).",
+    "acronimos": [
+      {
+        "sigla": "DBA",
+        "significado": "Database Administrator (Administrador de Bases de Datos)",
+        "pista": "Rol encargado del rendimiento, índices, seguridad y respaldos del SGBD."
+      },
+      {
+        "sigla": "SGBD",
+        "significado": "Sistema Gestor de Bases de Datos",
+        "pista": "Motor de software que implementa índices B+Tree para acelerar consultas."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_068",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Dada una tabla `Ventas(id_venta, id_sucursal, monto, estado)`, se requiere listar únicamente las sucursales cuyo monto total de ventas con `estado = 'PAGADA'` supere los $100,000. ¿Cuál consulta SQL expresa correctamente este requerimiento?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "SELECT id_sucursal, SUM(monto) FROM Ventas WHERE estado = 'PAGADA' AND SUM(monto) > 100000 GROUP BY id_sucursal;"
+      },
+      {
+        "id": "B",
+        "texto": "SELECT id_sucursal, SUM(monto) FROM Ventas HAVING estado = 'PAGADA' AND SUM(monto) > 100000 GROUP BY id_sucursal;"
+      },
+      {
+        "id": "C",
+        "texto": "SELECT id_sucursal, SUM(monto) AS total FROM Ventas WHERE estado = 'PAGADA' GROUP BY id_sucursal HAVING SUM(monto) > 100000;"
+      },
+      {
+        "id": "D",
+        "texto": "SELECT id_sucursal, COUNT(monto) FROM Ventas WHERE monto > 100000 GROUP BY estado;"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "En SQL, la cláusula `WHERE` filtra filas individuales ANTES de agrupar (por lo que no admite funciones de agregación como `SUM`), `GROUP BY` agrupa las filas filtradas por `id_sucursal`, y `HAVING` filtra los grupos resultantes evaluando la condición agregada `SUM(monto) > 100000`.",
+    "acronimos": [
+      {
+        "sigla": "SQL",
+        "significado": "Structured Query Language",
+        "pista": "Orden lógico de evaluación: FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY."
+      },
+      {
+        "sigla": "DML",
+        "significado": "Data Manipulation Language",
+        "pista": "Sublenguaje SQL para consultar y manipular registros (SELECT, INSERT, UPDATE, DELETE)."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_069",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Se tienen dos tablas: `Clientes(id_cliente, nombre)` con 100 registros y `Pedidos(id_pedido, id_cliente, total)` donde solo 70 clientes han realizado pedidos. Se necesita un reporte con TODOS los 100 clientes mostrando sus pedidos si los tienen, o `NULL` en las columnas de pedido si nunca han comprado. ¿Qué operación SQL debe emplearse?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Clientes INNER JOIN Pedidos ON Clientes.id_cliente = Pedidos.id_cliente"
+      },
+      {
+        "id": "B",
+        "texto": "Clientes LEFT OUTER JOIN Pedidos ON Clientes.id_cliente = Pedidos.id_cliente"
+      },
+      {
+        "id": "C",
+        "texto": "Clientes RIGHT JOIN Pedidos ON Clientes.id_cliente = Pedidos.id_cliente"
+      },
+      {
+        "id": "D",
+        "texto": "Clientes CROSS JOIN Pedidos"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "`LEFT OUTER JOIN` (o `LEFT JOIN`) conserva todas las filas de la tabla izquierda (`Clientes`) y empareja las coincidencias de la tabla derecha (`Pedidos`), rellenando con `NULL` los atributos de `Pedidos` para los 30 clientes sin compras. `INNER JOIN` omitiría a esos 30 clientes; `CROSS JOIN` produciría el producto cartesiano.",
+    "acronimos": [
+      {
+        "sigla": "FK",
+        "significado": "Foreign Key (Clave Foránea)",
+        "pista": "Columna `id_cliente` en `Pedidos` que referencia la PK de `Clientes`."
+      },
+      {
+        "sigla": "PK",
+        "significado": "Primary Key (Clave Primaria)",
+        "pista": "Identificador único utilizado como condición de reunión en el JOIN."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_070",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada sublenguaje de SQL con las sentencias que le pertenecen:\n\nSublenguaje:\n1. DDL (Data Definition Language)\n2. DML (Data Manipulation Language)\n3. DCL (Data Control Language)\n4. TCL (Transaction Control Language)\n\nSentencias:\na) GRANT, REVOKE\nb) COMMIT, ROLLBACK, SAVEPOINT\nc) CREATE, ALTER, DROP, TRUNCATE\nd) SELECT, INSERT, UPDATE, DELETE",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1c, 2d, 3a, 4b"
+      },
+      {
+        "id": "B",
+        "texto": "1d, 2c, 3a, 4b"
+      },
+      {
+        "id": "C",
+        "texto": "1c, 2d, 3b, 4a"
+      },
+      {
+        "id": "D",
+        "texto": "1a, 2d, 3c, 4b"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "DDL define/modifica estructuras del esquema (CREATE, ALTER, DROP, TRUNCATE -> 1c); DML consulta y manipula datos (SELECT, INSERT, UPDATE, DELETE -> 2d); DCL gestiona permisos de acceso (GRANT, REVOKE -> 3a); TCL controla transacciones (COMMIT, ROLLBACK, SAVEPOINT -> 4b).",
+    "acronimos": [
+      {
+        "sigla": "DDL",
+        "significado": "Data Definition Language",
+        "pista": "Define tablas, vistas e índices."
+      },
+      {
+        "sigla": "DML",
+        "significado": "Data Manipulation Language",
+        "pista": "Opera sobre las tuplas/filas de las tablas."
+      },
+      {
+        "sigla": "DCL",
+        "significado": "Data Control Language",
+        "pista": "Controla privilegios y seguridad de usuarios."
+      },
+      {
+        "sigla": "TCL",
+        "significado": "Transaction Control Language",
+        "pista": "Administra confirmación y reversión de transacciones."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_071",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "En una base de datos universitaria, la tabla `Matriculas` tiene una clave foránea `id_estudiante` referenciando a `Estudiantes(id_estudiante)` definida con la regla `ON DELETE RESTRICT`. Si un usuario intenta ejecutar `DELETE FROM Estudiantes WHERE id_estudiante = 42;` y existen 5 filas en `Matriculas` con `id_estudiante = 42`, ¿qué ocurre?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Se elimina el estudiante y automáticamente se borran sus 5 matrículas en cascada."
+      },
+      {
+        "id": "B",
+        "texto": "Se elimina el estudiante y el campo `id_estudiante` en `Matriculas` se actualiza a `NULL`."
+      },
+      {
+        "id": "C",
+        "texto": "Se elimina el estudiante y las 5 matrículas quedan apuntando a un ID inexistente."
+      },
+      {
+        "id": "D",
+        "texto": "El SGBD rechaza la operación de borrado lanzando un error de violación de integridad referencial para evitar registros huérfanos."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "La regla de integridad referencial `ON DELETE RESTRICT` (o `NO ACTION`) impide eliminar una tupla padre mientras existan tuplas hijas que la referencien. `ON DELETE CASCADE` borraría las filas hijas y `ON DELETE SET NULL` pondría la FK en nulo.",
+    "acronimos": [
+      {
+        "sigla": "FK",
+        "significado": "Foreign Key (Clave Foránea)",
+        "pista": "Restricción que garantiza la integridad referencial entre tablas padre e hija."
+      },
+      {
+        "sigla": "SGBD",
+        "significado": "Sistema Gestor de Bases de Datos",
+        "pista": "Hace cumplir automáticamente las reglas de integridad de entidad y referencial."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_072",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "En álgebra relacional, dada la relación `Productos(id_prod, nombre, categoria, precio)`, ¿qué expresión obtiene únicamente el `nombre` y `precio` de los productos cuya `categoria = 'Electronica'` y `precio < 5000`?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "σ_{nombre, precio}(π_{categoria='Electronica' ∧ precio<5000}(Productos))"
+      },
+      {
+        "id": "B",
+        "texto": "Productos ⋈_{precio<5000} categoria"
+      },
+      {
+        "id": "C",
+        "texto": "π_{nombre, precio}(σ_{categoria='Electronica' ∧ precio<5000}(Productos))"
+      },
+      {
+        "id": "D",
+        "texto": "Productos ÷ σ_{categoria='Electronica'}(Productos)"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "En álgebra relacional, la selección (`σ`, sigma) filtra filas que satisfacen un predicado (equivalente a `WHERE`), y la proyección (`π`, pi) selecciona las columnas deseadas (equivalente a `SELECT`). Primero se filtran las tuplas con `σ` (mientras aún están disponibles las columnas `categoria` y `precio`) y luego se proyectan `nombre, precio` con `π`.",
+    "acronimos": [
+      {
+        "sigla": "RDBMS",
+        "significado": "Relational Database Management System",
+        "pista": "Los optimizadores de consultas traducen SQL a árboles de álgebra relacional."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_073",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Una cadena de supermercados mantiene por un lado su sistema transaccional de puntos de venta (miles de inserciones y actualizaciones cortas por segundo, altamente normalizado en 3FN) y, por otro, un almacén de datos histórico diseñado con esquema en estrella (tabla de hechos central y tablas de dimensiones desnormalizadas) para consultas analíticas agregadas de los directivos. ¿A qué paradigmas corresponden ambos sistemas?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "OLAP para los puntos de venta y OLTP para el almacén de datos."
+      },
+      {
+        "id": "B",
+        "texto": "OLTP (Procesamiento de Transacciones en Línea) para los puntos de venta y OLAP (Procesamiento Analítico en Línea) / Data Warehouse para el almacén histórico."
+      },
+      {
+        "id": "C",
+        "texto": "ETL para los puntos de venta y NoSQL de grafos para el almacén de datos."
+      },
+      {
+        "id": "D",
+        "texto": "Ambos son sistemas OLTP idénticos."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "OLTP (Online Transaction Processing) optimiza operaciones CRUD rápidas, concurrentes y normalizadas (3FN) en tiempo real. OLAP (Online Analytical Processing) y los Data Warehouses optimizan lecturas masivas, agregaciones históricas y análisis multidimensional mediante esquemas en estrella o copo de nieve.",
+    "acronimos": [
+      {
+        "sigla": "OLTP",
+        "significado": "Online Transaction Processing",
+        "pista": "Sistemas transaccionales operativos del día a día, altamente normalizados."
+      },
+      {
+        "sigla": "OLAP",
+        "significado": "Online Analytical Processing",
+        "pista": "Sistemas analíticos orientados a consultas históricas, cubos y toma de decisiones."
+      },
+      {
+        "sigla": "DW",
+        "significado": "Data Warehouse (Almacén de Datos)",
+        "pista": "Repositorio integrado, orientado a temas, no volátil y variante en el tiempo (Inmon)."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_074",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Completamiento",
+    "pregunta": "Para poblar un Data Warehouse a partir de múltiples fuentes heterogéneas (ERP, CRM y archivos CSV), se ejecuta un pipeline ________ que primero ________ los datos de origen, luego los ________ (limpieza, homologación de formatos y cálculo de métricas) y finalmente los ________ en las tablas de hechos y dimensiones destino.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "ETL — extrae — transforma — carga"
+      },
+      {
+        "id": "B",
+        "texto": "CRUD — crea — actualiza — elimina"
+      },
+      {
+        "id": "C",
+        "texto": "DDL — define — altera — elimina"
+      },
+      {
+        "id": "D",
+        "texto": "ACID — aísla — confirma — revierte"
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "ETL (Extract, Transform, Load) es el proceso estándar de integración de datos hacia un Data Warehouse: Extracción desde fuentes heterogéneas, Transformación (limpieza, deduplicación, estandarización y reglas de negocio) y Carga en el repositorio analítico.",
+    "acronimos": [
+      {
+        "sigla": "ETL",
+        "significado": "Extract, Transform, Load (Extracción, Transformación y Carga)",
+        "pista": "Flujo clásico de integración hacia un Data Warehouse."
+      },
+      {
+        "sigla": "CSV",
+        "significado": "Comma-Separated Values",
+        "pista": "Formato tabular de texto plano común como fuente de datos."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_075",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "En un cubo OLAP de ventas con jerarquía temporal `Día -> Mes -> Trimestre -> Año`, un analista está viendo las ventas agregadas por `Trimestre` y ejecuta una operación para desglosar los datos a nivel más detallado por `Mes` y luego por `Día`. ¿Qué operación OLAP está realizando?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Roll-up (consolidación)."
+      },
+      {
+        "id": "B",
+        "texto": "Slice (rebanado en una dimensión)."
+      },
+      {
+        "id": "C",
+        "texto": "Pivot (rotación de ejes)."
+      },
+      {
+        "id": "D",
+        "texto": "Drill-down (desglose/profundización)."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "En análisis multidimensional OLAP, `Drill-down` navega hacia un nivel de mayor detalle en la jerarquía de una dimensión (Trimestre -> Mes -> Día). La operación inversa (subir de detalle a resumen, ej. Mes -> Año) es `Roll-up`; `Slice` fija un valor de una dimensión y `Dice` selecciona un subcubo con rangos en varias dimensiones.",
+    "acronimos": [
+      {
+        "sigla": "OLAP",
+        "significado": "Online Analytical Processing",
+        "pista": "Soporta operaciones de cubo: roll-up, drill-down, slice, dice y pivot."
+      },
+      {
+        "sigla": "BI",
+        "significado": "Business Intelligence (Inteligencia de Negocios)",
+        "pista": "Disciplina que aprovecha cubos OLAP y tableros para decisiones estratégicas."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_076",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Relación de columnas",
+    "pregunta": "Relacione cada familia de bases de datos NoSQL con su modelo de datos y caso de uso idóneo:\n\nFamilia NoSQL:\n1. Documental (ej. MongoDB)\n2. Clave-Valor (ej. Redis)\n3. Orientada a columnas / Familia de columnas (ej. Apache Cassandra)\n4. Orientada a grafos (ej. Neo4j)\n\nCaso de uso:\na) Caché de sesiones en memoria y colas rápidas de baja latencia mediante pares simples `key -> value`.\nb) Redes sociales, motores de recomendación y detección de fraude mediante recorridos de nodos y aristas.\nc) Catálogos de productos con esquemas flexibles almacenados en documentos JSON/BSON anidados.\nd) Series de tiempo y telemetría IoT con escrituras masivas distribuidas por filas y familias de columnas.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "1c, 2d, 3a, 4b"
+      },
+      {
+        "id": "B",
+        "texto": "1a, 2c, 3d, 4b"
+      },
+      {
+        "id": "C",
+        "texto": "1c, 2a, 3d, 4b"
+      },
+      {
+        "id": "D",
+        "texto": "1b, 2a, 3d, 4c"
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "Documental almacena JSON/BSON de esquema flexible (1c); Clave-Valor destaca en caché y sesiones ultrarrápidas (2a); Familia de columnas escala horizontalmente en escrituras masivas de telemetría/logs (3d); Grafos modela relaciones complejas y recorridos entre nodos/aristas (4b).",
+    "acronimos": [
+      {
+        "sigla": "NoSQL",
+        "significado": "Not Only SQL",
+        "pista": "Bases de datos no relacionales diseñadas para escalabilidad horizontal y esquemas flexibles."
+      },
+      {
+        "sigla": "JSON",
+        "significado": "JavaScript Object Notation",
+        "pista": "Formato semiestructurado usado por bases de datos documentales."
+      },
+      {
+        "sigla": "IoT",
+        "significado": "Internet of Things (Internet de las Cosas)",
+        "pista": "Genera grandes volúmenes de series de tiempo adecuadas para bases columnares."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_077",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Un arquitecto diseña un almacén de datos distribuido en múltiples regiones geográficas donde pueden ocurrir particiones de red (P) inevitables. De acuerdo con el Teorema CAP de Eric Brewer, ante una partición de red el sistema distribuido debe elegir entre garantizar:",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Atomicidad (A) o Durabilidad (D)."
+      },
+      {
+        "id": "B",
+        "texto": "Consistencia fuerte (C) —rechazando peticiones si no puede garantizar datos actualizados— o Disponibilidad (A) —respondiendo con los datos locales aunque puedan estar temporalmente desactualizados—."
+      },
+      {
+        "id": "C",
+        "texto": "Tercera Forma Normal (3FN) o índices B+Tree."
+      },
+      {
+        "id": "D",
+        "texto": "Consistencia (C), Disponibilidad (A) y Tolerancia a Particiones (P) al 100% simultáneamente en todos los nodos."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "El Teorema CAP establece que en presencia de una partición de red (P), un sistema distribuido solo puede garantizar Consistencia linealizable (CP, como HBase/ZooKeeper) o Disponibilidad total (AP, como Cassandra/DynamoDB con consistencia eventual BASE), pero no ambas al mismo tiempo.",
+    "acronimos": [
+      {
+        "sigla": "CAP",
+        "significado": "Consistency, Availability, Partition Tolerance",
+        "pista": "Teorema fundamental de sistemas de datos distribuidos."
+      },
+      {
+        "sigla": "BASE",
+        "significado": "Basically Available, Soft state, Eventual consistency",
+        "pista": "Modelo de consistencia eventual frecuente en sistemas NoSQL tipo AP."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_078",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Durante una auditoría de seguridad se encuentra el siguiente código backend en Python:\n`cursor.execute(\"SELECT * FROM usuarios WHERE correo = '\" + email + \"' AND clave = '\" + pwd + \"'\")`\nUn atacante ingresa `' OR '1'='1' --` en el campo `email` y logra autenticarse sin contraseña. ¿Qué vulnerabilidad se explotó y cuál es la remediación definitiva?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Inyección SQL (SQLi); se remedia utilizando consultas parametrizadas (sentencias preparadas / Prepared Statements) que separan la estructura SQL de los datos del usuario."
+      },
+      {
+        "id": "B",
+        "texto": "Desbordamiento de búfer; se remedia agregando un índice único en `correo`."
+      },
+      {
+        "id": "C",
+        "texto": "Cross-Site Scripting (XSS); se remedia usando HTTPS."
+      },
+      {
+        "id": "D",
+        "texto": "Lectura fantasma; se remedia cambiando el nivel de aislamiento a READ UNCOMMITTED."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Concatenar entradas del usuario directamente en cadenas SQL permite alterar la lógica de la consulta (Inyección SQL / SQLi). El uso de consultas parametrizadas (Prepared Statements) garantiza que el motor de base de datos trate los parámetros estrictamente como valores literales y nunca como código ejecutable.",
+    "acronimos": [
+      {
+        "sigla": "SQLi",
+        "significado": "SQL Injection (Inyección SQL)",
+        "pista": "Vulnerabilidad crítica OWASP causada por concatenar entradas no confiables en sentencias SQL."
+      },
+      {
+        "sigla": "OWASP",
+        "significado": "Open Worldwide Application Security Project",
+        "pista": "Organización que publica el Top 10 de riesgos de seguridad en aplicaciones web."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_079",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Un motor de base de datos utiliza el protocolo de Bloqueo Estricto en Dos Fases (Strict 2PL) para el control de concurrencia. ¿En qué consiste la fase de crecimiento y la fase de decrecimiento de este protocolo?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "La transacción libera bloqueos antes de leer datos y los adquiere después de hacer COMMIT."
+      },
+      {
+        "id": "B",
+        "texto": "Solo se bloquea la tabla completa durante el arranque del servidor."
+      },
+      {
+        "id": "C",
+        "texto": "La transacción nunca adquiere bloqueos y resuelve conflictos únicamente al final del día."
+      },
+      {
+        "id": "D",
+        "texto": "En la fase de crecimiento la transacción solo puede adquirir bloqueos (sin liberar ninguno); en Strict 2PL todos los bloqueos exclusivos se retienen hasta que la transacción ejecuta COMMIT o ABORT (evitando reversiones en cascada)."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "El bloqueo en dos fases (2PL) garantiza seriabilidad por conflictos dividiendo cada transacción en fase de crecimiento (solo adquiere locks) y fase de decrecimiento (solo libera locks). La variante estricta (Strict 2PL) retiene todos los bloqueos exclusivos hasta el COMMIT o ROLLBACK, previniendo lecturas sucias y abortos en cascada.",
+    "acronimos": [
+      {
+        "sigla": "2PL",
+        "significado": "Two-Phase Locking (Bloqueo en Dos Fases)",
+        "pista": "Protocolo pesimista de control de concurrencia que asegura seriabilidad."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_080",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "En una base de datos de comercio electrónico se crea un objeto que se ejecuta automáticamente cada vez que se inserta un nuevo registro en `DetallePedido`, descontando la cantidad vendida de la columna `stock` en la tabla `Productos` y registrando el movimiento en `BitacoraInventario`. ¿Qué objeto de base de datos se implementó?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Una vista materializada (Materialized View)."
+      },
+      {
+        "id": "B",
+        "texto": "Un índice compuesto no agrupado."
+      },
+      {
+        "id": "C",
+        "texto": "Un disparador (Trigger `AFTER INSERT`)."
+      },
+      {
+        "id": "D",
+        "texto": "Una restricción `CHECK`."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "Un disparador (Trigger) es un bloque de código almacenado asociado a una tabla que el SGBD invoca automáticamente ante eventos DML (`BEFORE`/`AFTER` `INSERT`, `UPDATE` o `DELETE`), ideal para auditoría y sincronización automática de inventario.",
+    "acronimos": [
+      {
+        "sigla": "DML",
+        "significado": "Data Manipulation Language",
+        "pista": "Eventos INSERT, UPDATE y DELETE que disparan un trigger."
+      },
+      {
+        "sigla": "SGBD",
+        "significado": "Sistema Gestor de Bases de Datos",
+        "pista": "Ejecuta el trigger de manera automática dentro de la misma transacción."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_081",
+    "diagrama": "backup-timeline-diff",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Una empresa ejecuta un respaldo completo (Full Backup) el domingo a medianoche y respaldos DIFERENCIALES de lunes a viernes. Si el servidor falla el jueves por la tarde, ¿qué respaldos son estrictamente necesarios para restaurar la base de datos hasta el estado del miércoles por la noche?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Únicamente el respaldo diferencial del miércoles."
+      },
+      {
+        "id": "B",
+        "texto": "El respaldo completo del domingo más únicamente el último respaldo diferencial del miércoles."
+      },
+      {
+        "id": "C",
+        "texto": "El respaldo completo del domingo más los respaldos diferenciales de lunes, martes y miércoles."
+      },
+      {
+        "id": "D",
+        "texto": "Solo los archivos de índices B+Tree del miércoles."
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "Un respaldo diferencial almacena TODOS los bloques modificados desde el último respaldo completo (Full). Por ello, para restaurar solo se necesita el Full del domingo y el diferencial más reciente (miércoles). En contraste, con respaldos incrementales sí se requeriría el Full más cada incremental intermedio (lunes, martes y miércoles).",
+    "acronimos": [
+      {
+        "sigla": "RPO",
+        "significado": "Recovery Point Objective (Objetivo de Punto de Recuperación)",
+        "pista": "Cantidad máxima tolerable de pérdida de datos medida en tiempo."
+      },
+      {
+        "sigla": "RTO",
+        "significado": "Recovery Time Objective (Objetivo de Tiempo de Recuperación)",
+        "pista": "Tiempo máximo tolerable para restablecer el servicio tras un incidente."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_082",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Una consulta analítica en SQL necesita mostrar cada empleado junto con su departamento, salario y el puesto que ocupa en el ranking salarial DENTRO de su propio departamento (`1` para el mejor pagado de cada departamento), sin colapsar las filas individuales como haría un `GROUP BY`. ¿Qué característica de SQL resuelve esto limpiamente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Funciones de ventana (Window Functions), por ejemplo `RANK() OVER (PARTITION BY id_depto ORDER BY salario DESC)`."
+      },
+      {
+        "id": "B",
+        "texto": "Una cláusula `DISTINCT` aplicada a toda la tabla."
+      },
+      {
+        "id": "C",
+        "texto": "Un `CROSS JOIN` de la tabla consigo misma seguido de `TRUNCATE`."
+      },
+      {
+        "id": "D",
+        "texto": "Una restricción `UNIQUE` sobre la columna `salario`."
+      }
+    ],
+    "respuesta_correcta": "A",
+    "explicacion": "Las funciones de ventana (`RANK()`, `DENSE_RANK()`, `ROW_NUMBER()`, `SUM() OVER (...)`) realizan cálculos sobre conjuntos de filas particionadas (`PARTITION BY`) y ordenadas (`ORDER BY`) conservando el detalle de cada fila original en el resultado.",
+    "acronimos": [
+      {
+        "sigla": "SQL",
+        "significado": "Structured Query Language",
+        "pista": "Incorpora funciones analíticas de ventana con la cláusula OVER (PARTITION BY ... ORDER BY ...)."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_083",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Un diseñador de bases de datos define una vista lógica `CREATE VIEW VistaEmpleadosPublica AS SELECT id_emp, nombre, departamento FROM Empleados;` (omitiendo `salario` y `curp`) y otorga permisos `SELECT` únicamente sobre la vista al rol `Recepcion`. ¿Qué beneficios principales proporciona el uso de esta vista?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Duplica físicamente toda la tabla en disco para eliminar la necesidad de claves primarias."
+      },
+      {
+        "id": "B",
+        "texto": "Impide que los administradores puedan modificar la tabla base `Empleados`."
+      },
+      {
+        "id": "C",
+        "texto": "Reemplaza automáticamente la necesidad de transacciones ACID."
+      },
+      {
+        "id": "D",
+        "texto": "Aplica seguridad a nivel de columnas ocultando datos sensibles, simplifica consultas complejas y ofrece independencia lógica de datos."
+      }
+    ],
+    "respuesta_correcta": "D",
+    "explicacion": "Una vista estándar (no materializada) es una tabla virtual definida por una consulta almacenada; no duplica los datos físicamente, pero permite restringir el acceso a columnas/filas sensibles, simplificar consultas repetitivas y proveer independencia lógica (nivel externo de la arquitectura ANSI-SPARC).",
+    "acronimos": [
+      {
+        "sigla": "RBAC",
+        "significado": "Role-Based Access Control (Control de Acceso Basado en Roles)",
+        "pista": "Modelo de seguridad que asigna privilegios a roles (como `Recepcion`) en lugar de usuarios individuales."
+      },
+      {
+        "sigla": "CURP",
+        "significado": "Clave Única de Registro de Población",
+        "pista": "Dato personal sensible ocultado mediante la vista pública."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_084",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Caso práctico",
+    "pregunta": "Al mapear una relación muchos-a-muchos (N:M) del diagrama ER entre `Estudiante` y `Curso` (con el atributo descriptivo `calificacion` en la relación) hacia el modelo relacional, ¿cómo debe transformarse correctamente?",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "Agregar un arreglo de `id_curso` dentro de la tabla `Estudiante` separado por comas."
+      },
+      {
+        "id": "B",
+        "texto": "Colocar `id_estudiante` como clave foránea únicamente en la tabla `Curso`."
+      },
+      {
+        "id": "C",
+        "texto": "Crear una tabla intermedia/asociativa (ej. `Estudiante_Curso`) cuya clave primaria compuesta sea `(id_estudiante, id_curso)`, cada una como clave foránea hacia su tabla respectiva, e incluir allí el atributo `calificacion`."
+      },
+      {
+        "id": "D",
+        "texto": "Fusionar `Estudiante` y `Curso` en una sola tabla desnormalizada."
+      }
+    ],
+    "respuesta_correcta": "C",
+    "explicacion": "En el modelo relacional, toda relación N:M se traduce obligatoriamente en una nueva tabla puente/asociativa que contiene las claves primarias de ambas entidades como claves foráneas (formando juntas la PK compuesta o respaldadas por una restricción UNIQUE) más los atributos propios de la relación (como `calificacion`).",
+    "acronimos": [
+      {
+        "sigla": "ER",
+        "significado": "Entidad-Relación",
+        "pista": "Modelo conceptual cuyas relaciones N:M requieren tablas asociativas al pasar al modelo relacional."
+      },
+      {
+        "sigla": "PK",
+        "significado": "Primary Key",
+        "pista": "En la tabla puente suele ser la clave compuesta de ambas claves foráneas."
+      },
+      {
+        "sigla": "FK",
+        "significado": "Foreign Key",
+        "pista": "Vincula cada fila de la tabla puente con las tablas `Estudiante` y `Curso`."
+      }
+    ]
+  },
+  {
+    "id": "sim_sw_085",
+    "diagrama": "ansi-sparc-3levels",
+    "area": "Implementación de Software",
+    "subarea": "3.3 Bases de datos y manejo de datos",
+    "tipo": "Completamiento",
+    "pregunta": "En la arquitectura de tres niveles ANSI/SPARC para sistemas de bases de datos, el nivel ________ describe la vista personalizada para cada grupo de usuarios, el nivel ________ describe la estructura lógica global de toda la base de datos independiente del almacenamiento, y el nivel ________ describe cómo se almacenan físicamente los registros, archivos e índices en disco.",
+    "opciones": [
+      {
+        "id": "A",
+        "texto": "interno — externo — conceptual"
+      },
+      {
+        "id": "B",
+        "texto": "externo — conceptual — interno"
+      },
+      {
+        "id": "C",
+        "texto": "físico — lógico — de red"
+      },
+      {
+        "id": "D",
+        "texto": "conceptual — interno — externo"
+      }
+    ],
+    "respuesta_correcta": "B",
+    "explicacion": "La arquitectura ANSI/SPARC de tres esquemas separa: (1) Nivel externo (vistas de usuario), (2) Nivel conceptual (esquema lógico global de entidades, relaciones y restricciones), y (3) Nivel interno (almacenamiento físico, bloques e índices). Esta separación habilita la independencia lógica y la independencia física de datos.",
+    "acronimos": [
+      {
+        "sigla": "ANSI",
+        "significado": "American National Standards Institute",
+        "pista": "Definió junto con SPARC la arquitectura de tres niveles de bases de datos."
+      },
+      {
+        "sigla": "SPARC",
+        "significado": "Standards Planning and Requirements Committee",
+        "pista": "Comité que propuso la separación entre esquemas externo, conceptual e interno."
+      }
+    ]
+  }
+]

@@ -45,6 +45,8 @@ import {
 } from './TheoryComponents';
 import { getEnrichedFormulasForSubarea } from './formulaDefinitions';
 import { FormulaSectionList, MathExpression } from './FormulaComponents';
+import { AcronymsFooter } from './AcronymsFooter';
+import { SimulacroDiagram } from './SimulacroDiagrams';
 import SyncModal from './SyncModal';
 import {
   getActiveSyncKey,
@@ -53,8 +55,11 @@ import {
 } from './syncService';
 import { isFirebaseConfigured } from './firebaseConfig';
 
-// Cargar todos los bancos de preguntas en src/data/ y subdirectorios
+// Cargar todos los bancos de preguntas de ESTUDIO en src/data/ y subdirectorios
 const rawDataModules = import.meta.glob('./data/**/*.json', { eager: true });
+
+// Cargar el banco EXCLUSIVO de Simulacro EGEL (sin repetir preguntas del modo estudio)
+const rawSimulacroModules = import.meta.glob('./simulacroData/*.json', { eager: true });
 
 const SUBAREA_FILE_MAP = {
   'subarea-1-1-circuitos-electricos': {
@@ -304,6 +309,131 @@ function loadAllQuestions() {
   return allQuestions;
 }
 
+function loadSimulacroQuestions() {
+  const simQuestions = [];
+  const seenTexts = new Set();
+
+  Object.entries(rawSimulacroModules).forEach(([filePath, moduleContent]) => {
+    const fileName = filePath.split('/').pop().replace('.json', '');
+    const items = Array.isArray(moduleContent.default)
+      ? moduleContent.default
+      : Array.isArray(moduleContent)
+      ? moduleContent
+      : [];
+
+    if (fileName.includes('lectura')) {
+      items.forEach((lecturaBlock, lIdx) => {
+        const titulo = lecturaBlock.titulo || `Lectura Simulacro ${lIdx + 1}`;
+        const parrafos = Array.isArray(lecturaBlock.parrafos)
+          ? lecturaBlock.parrafos
+          : [];
+        const preguntasLectura = Array.isArray(lecturaBlock.preguntas)
+          ? lecturaBlock.preguntas
+          : [];
+
+        preguntasLectura.forEach((q, qIdx) => {
+          const opcionesNorm = normalizeOptions(q.opciones);
+          if (!q.pregunta || opcionesNorm.length === 0) return;
+
+          simQuestions.push({
+            id: q.id || `sim_cl_${lIdx + 1}_${qIdx + 1}`,
+            area: 'Habilidades Transversales',
+            subarea: '4.1 Comprensión Lectora',
+            tipo: q.tipo || 'Comprensión lectora',
+            pregunta: q.pregunta.trim(),
+            opciones: opcionesNorm,
+            respuesta_correcta: String(q.respuesta_correcta || 'A').toUpperCase(),
+            explicacion:
+              q.explicacion ||
+              'Respuesta fundamentada en el análisis del texto.',
+            acronimos: Array.isArray(q.acronimos) ? q.acronimos : [],
+            lecturaTitulo: titulo,
+            lecturaParrafos: parrafos,
+            isSimulacroBank: true,
+          });
+        });
+      });
+    } else {
+      items.forEach((q, idx) => {
+        if (!q || !q.pregunta) return;
+        const normalizedQuestionText = q.pregunta.trim().toLowerCase();
+        if (seenTexts.has(normalizedQuestionText)) return;
+        seenTexts.add(normalizedQuestionText);
+
+        const opcionesNorm = normalizeOptions(q.opciones);
+        if (opcionesNorm.length === 0) return;
+
+        simQuestions.push({
+          id: q.id || `${fileName}_${String(idx + 1).padStart(3, '0')}`,
+          area: q.area || 'Implementación de Software',
+          subarea: q.subarea || '3.1 Ingeniería de software y calidad',
+          tipo: q.tipo || 'Caso práctico',
+          pregunta: q.pregunta.trim(),
+          opciones: opcionesNorm,
+          respuesta_correcta: String(q.respuesta_correcta || 'A').toUpperCase(),
+          explicacion:
+            q.explicacion ||
+            'Fundamento técnico verificado conforme al temario EGEL-PLUS ICOMPU.',
+          acronimos: Array.isArray(q.acronimos) ? q.acronimos : [],
+          diagrama: q.diagrama || null,
+          isSimulacroBank: true,
+        });
+      });
+    }
+  });
+
+  return simQuestions;
+}
+
+/**
+ * Convierte porcentaje de aciertos a la escala oficial ICNE de CENEVAL (700–1300):
+ *  - 0%  -> 700 pts
+ *  - 65% -> 1000 pts (corte Desempeño Satisfactorio)
+ *  - 85% -> 1150 pts (corte Desempeño Sobresaliente)
+ *  - 100% -> 1300 pts
+ */
+function calculateIcneScore(correct, total) {
+  if (!total || total <= 0) return 700;
+  const pct = (correct / total) * 100;
+  let score = 700;
+  if (pct <= 65) {
+    score = 700 + (pct / 65) * 300;
+  } else if (pct <= 85) {
+    score = 1000 + ((pct - 65) / 20) * 150;
+  } else {
+    score = 1150 + ((pct - 85) / 15) * 150;
+  }
+  return Math.max(700, Math.min(1300, Math.round(score)));
+}
+
+function getIcneLevel(icne) {
+  if (icne >= 1150) {
+    return {
+      label: 'Desempeño Sobresaliente (DSS)',
+      shortLabel: 'Sobresaliente',
+      badge: 'bg-teal-100 text-teal-900 border-teal-300',
+      text: 'text-teal-700',
+      bar: 'bg-teal-600',
+    };
+  }
+  if (icne >= 1000) {
+    return {
+      label: 'Desempeño Satisfactorio (DS)',
+      shortLabel: 'Satisfactorio',
+      badge: 'bg-indigo-100 text-indigo-900 border-indigo-300',
+      text: 'text-indigo-700',
+      bar: 'bg-indigo-600',
+    };
+  }
+  return {
+    label: 'Aún no satisfactorio (ANS)',
+    shortLabel: 'Aún no satisfactorio',
+    badge: 'bg-rose-100 text-rose-900 border-rose-300',
+    text: 'text-rose-700',
+    bar: 'bg-rose-500',
+  };
+}
+
 const PROGRESS_STORAGE_KEY = 'egel_pro_progress_v3';
 const ACTIVE_SESSION_STORAGE_KEY = 'egel_pro_active_session_v3';
 const MIN_QUESTIONS_PER_LESSON = 35;
@@ -327,6 +457,7 @@ export default function App() {
   // 1. TODOS LOS HOOKS AL INICIO DEL COMPONENTE (NUNCA DESPUÉS DE UN RETURN)
   // =========================================================================
   const allQuestions = useMemo(() => loadAllQuestions(), []);
+  const simulacroQuestions = useMemo(() => loadSimulacroQuestions(), []);
 
   const [progress, setProgress] = useState(() => {
     try {
@@ -404,6 +535,7 @@ export default function App() {
   const [examSummary, setExamSummary] = useState(
     () => savedActiveState?.examSummary || null
   );
+  const [simulacroReviewFilter, setSimulacroReviewFilter] = useState('ALL');
 
   const [activeTab, setActiveTab] = useState(() => {
     const initialTab = savedActiveState?.activeTab || 'home';
@@ -640,8 +772,9 @@ export default function App() {
   }, [subareaMetricsMap]);
 
   const mistakeQuestions = useMemo(() => {
-    return allQuestions.filter((q) => progress.mistakeIds.includes(q.id));
-  }, [allQuestions, progress.mistakeIds]);
+    const combined = [...allQuestions, ...simulacroQuestions];
+    return combined.filter((q) => progress.mistakeIds.includes(q.id));
+  }, [allQuestions, simulacroQuestions, progress.mistakeIds]);
 
   const globalStats = useMemo(() => {
     let totalAttempts = 0;
@@ -1051,23 +1184,73 @@ export default function App() {
   }
 
   function startSimulacro(numQuestions = 70) {
-    const shuffled = shuffleArray(allQuestions).slice(
-      0,
-      Math.min(numQuestions, allQuestions.length)
+    const bank =
+      simulacroQuestions.length > 0 ? simulacroQuestions : allQuestions;
+    const targetCount = Math.min(numQuestions, bank.length);
+
+    let selectedPool = [];
+    if (targetCount >= bank.length) {
+      selectedPool = shuffleArray(bank);
+    } else {
+      // Muestreo estratificado proporcional por Área CENEVAL (como el EGEL real)
+      const groupsByArea = {};
+      bank.forEach((q) => {
+        if (!groupsByArea[q.area]) groupsByArea[q.area] = [];
+        groupsByArea[q.area].push(q);
+      });
+
+      const entries = Object.entries(groupsByArea);
+      const quotas = entries.map(([areaKey, list]) => ({
+        areaKey,
+        list: shuffleArray(list),
+        quota: Math.min(
+          list.length,
+          Math.max(1, Math.round((list.length / bank.length) * targetCount))
+        ),
+      }));
+
+      let currentTotal = quotas.reduce((acc, g) => acc + g.quota, 0);
+      while (currentTotal > targetCount) {
+        const largest = quotas
+          .filter((g) => g.quota > 1)
+          .sort((a, b) => b.quota - a.quota)[0];
+        if (!largest) break;
+        largest.quota -= 1;
+        currentTotal -= 1;
+      }
+      while (currentTotal < targetCount) {
+        const available = quotas
+          .filter((g) => g.quota < g.list.length)
+          .sort((a, b) => b.list.length - b.quota - (a.list.length - a.quota))[0];
+        if (!available) break;
+        available.quota += 1;
+        currentTotal += 1;
+      }
+
+      quotas.forEach((g) => {
+        selectedPool.push(...g.list.slice(0, g.quota));
+      });
+      selectedPool = shuffleArray(selectedPool);
+    }
+
+    const prepared = selectedPool.map((q) =>
+      prepareQuestionWithOrderedLabels(q, false)
     );
-    const prepared = shuffled.map((q) => prepareQuestionWithOrderedLabels(q, false));
 
     setExamQuestions(prepared);
     setExamAnswers({});
     setExamCurrentIdx(0);
     setExamSecondsLeft(prepared.length * 90);
+    setSimulacroReviewFilter('ALL');
     setActiveTab('simulacro_active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   const handleFinishSimulacro = useCallback(() => {
     if (examQuestions.length === 0) return;
     let totalCorrect = 0;
     const byArea = {};
+    const reviewedItems = [];
     const newMistakeIds = new Set(progress.mistakeIds);
     const newQuestionStats = { ...progress.questionStats };
     const newSubareaStats = { ...progress.subareaStats };
@@ -1076,6 +1259,12 @@ export default function App() {
       const userAns = examAnswers[q.id] || null;
       const isRight = userAns === q.respuesta_correcta;
       if (isRight) totalCorrect += 1;
+
+      reviewedItems.push({
+        ...q,
+        userAnswer: userAns,
+        isCorrect: isRight,
+      });
 
       if (!byArea[q.area]) {
         byArea[q.area] = { total: 0, correct: 0 };
@@ -1118,18 +1307,37 @@ export default function App() {
     });
 
     const pct = Math.round((totalCorrect / examQuestions.length) * 100);
-    let dictamen = 'Aún no satisfactorio';
-    if (pct >= 85) dictamen = 'Desempeño Sobresaliente (TDS)';
-    else if (pct >= 70) dictamen = 'Desempeño Satisfactorio (DS)';
+    const icne = calculateIcneScore(totalCorrect, examQuestions.length);
+    const icneInfo = getIcneLevel(icne);
 
-    const summaryObj = {
+    // Calcular ICNE y dictamen individual por cada área CENEVAL
+    const enrichedByArea = {};
+    Object.entries(byArea).forEach(([areaName, stats]) => {
+      const areaPct = Math.round((stats.correct / stats.total) * 100);
+      const areaIcne = calculateIcneScore(stats.correct, stats.total);
+      const areaLevel = getIcneLevel(areaIcne);
+      enrichedByArea[areaName] = {
+        ...stats,
+        pct: areaPct,
+        icne: areaIcne,
+        dictamen: areaLevel.shortLabel,
+      };
+    });
+
+    const historyEntry = {
       id: Date.now(),
       date: new Date().toLocaleString('es-MX'),
       total: examQuestions.length,
       correct: totalCorrect,
       pct,
-      dictamen,
-      byArea,
+      icne,
+      dictamen: icneInfo.label,
+      byArea: enrichedByArea,
+    };
+
+    const summaryObj = {
+      ...historyEntry,
+      reviewedItems,
     };
 
     setProgress((prev) => ({
@@ -1137,17 +1345,19 @@ export default function App() {
       questionStats: newQuestionStats,
       subareaStats: newSubareaStats,
       mistakeIds: Array.from(newMistakeIds),
-      examHistory: [summaryObj, ...(prev.examHistory || []).slice(0, 9)],
+      examHistory: [historyEntry, ...(prev.examHistory || []).slice(0, 9)],
     }));
 
     setExamSummary(summaryObj);
+    setSimulacroReviewFilter(totalCorrect < examQuestions.length ? 'WRONG' : 'ALL');
     setExamQuestions([]);
-    if (pct >= 70) {
+    if (icne >= 1000) {
       try {
         confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
       } catch {}
     }
     setActiveTab('simulacro_summary');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [examQuestions, examAnswers, progress]);
 
   useEffect(() => {
@@ -2012,9 +2222,12 @@ export default function App() {
 
             {/* Enunciado */}
             <div className="bg-white border border-[#E5DEC9] rounded-2xl p-4 sm:p-6 mb-4 sm:mb-5 shadow-sm">
-              <h2 className="text-base sm:text-lg font-extrabold text-stone-900 leading-relaxed break-words">
+              <h2 className="text-base sm:text-lg font-extrabold text-stone-900 leading-relaxed break-words whitespace-pre-line">
                 <MathExpression text={formatReadableText(currentQ.pregunta)} />
               </h2>
+              {currentQ.diagrama && (
+                <SimulacroDiagram diagramId={currentQ.diagrama} />
+              )}
             </div>
 
             {/* Opciones en orden A, B, C, (D) */}
@@ -2112,11 +2325,14 @@ export default function App() {
                   </button>
                 </div>
 
-                <div className="bg-[#FAF7F2] rounded-xl p-2.5 sm:p-3.5 text-xs sm:text-sm text-stone-800 leading-relaxed border border-[#E5DEC9] max-h-28 sm:max-h-40 overflow-y-auto">
-                  <span className="font-extrabold text-[#D95D39] mr-1.5">
-                    Justificación Técnica:
-                  </span>
-                  <FormattedRichText text={formatReadableText(currentQ.explicacion)} />
+                <div className="bg-[#FAF7F2] rounded-xl p-2.5 sm:p-3.5 text-xs sm:text-sm text-stone-800 leading-relaxed border border-[#E5DEC9] max-h-40 sm:max-h-56 overflow-y-auto">
+                  <div>
+                    <span className="font-extrabold text-[#D95D39] mr-1.5">
+                      Justificación Técnica:
+                    </span>
+                    <FormattedRichText text={formatReadableText(currentQ.explicacion)} />
+                  </div>
+                  <AcronymsFooter question={currentQ} compact={true} />
                 </div>
 
                 <button
@@ -2275,6 +2491,11 @@ export default function App() {
                 <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-[#FAF7F2] text-stone-700 border border-[#E5DEC9]">
                   {q.area} • {q.subarea}
                 </span>
+                {q.tipo && (
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-md bg-amber-100/80 text-amber-950 border border-amber-300">
+                    {q.tipo}
+                  </span>
+                )}
               </div>
 
               {q.lecturaTitulo &&
@@ -2293,9 +2514,11 @@ export default function App() {
                   </div>
                 )}
 
-              <p className="text-base sm:text-lg font-extrabold text-stone-900 leading-relaxed mb-5 sm:mb-6 break-words">
+              <p className="text-base sm:text-lg font-extrabold text-stone-900 leading-relaxed mb-4 break-words whitespace-pre-line">
                 <MathExpression text={formatReadableText(q.pregunta)} />
               </p>
+
+              {q.diagrama && <SimulacroDiagram diagramId={q.diagrama} />}
 
               <div className="space-y-3">
                 {q.opciones.map((op) => {
@@ -2399,66 +2622,120 @@ export default function App() {
 
   // VISTA 4: Resultados del Simulacro CENEVAL EGEL
   if (activeTab === 'simulacro_summary' && examSummary) {
+    const reviewedItems = Array.isArray(examSummary.reviewedItems)
+      ? examSummary.reviewedItems
+      : [];
+    const wrongCount = reviewedItems.filter((item) => !item.isCorrect).length;
+    const correctCount = reviewedItems.filter((item) => item.isCorrect).length;
+    const filteredReviewItems = reviewedItems.filter((item) => {
+      if (simulacroReviewFilter === 'WRONG') return !item.isCorrect;
+      if (simulacroReviewFilter === 'CORRECT') return item.isCorrect;
+      return true;
+    });
+
+    const globalIcne =
+      typeof examSummary.icne === 'number'
+        ? examSummary.icne
+        : calculateIcneScore(examSummary.correct, examSummary.total);
+    const globalIcneInfo = getIcneLevel(globalIcne);
+
     return (
       <div className="min-h-screen bg-[#F8F5EE] text-stone-900 p-4 sm:p-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white border border-[#E5DEC9] rounded-3xl p-6 sm:p-8 mb-6 shadow-md">
+        <div className="max-w-4xl mx-auto space-y-6">
+          <div className="bg-white border border-[#E5DEC9] rounded-3xl p-6 sm:p-8 shadow-md">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E5DEC9]">
               <div>
                 <span className="text-xs font-extrabold uppercase tracking-wider text-indigo-700">
-                  Resultado del Simulacro EGEL
+                  Resultado del Simulacro EGEL • Escala ICNE (700–1300)
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-black text-stone-900 mt-1">
-                  {examSummary.dictamen}
+                  {globalIcneInfo.label}
                 </h2>
-                <p className="text-sm text-stone-600 mt-1">
-                  Los reactivos fallados se agregaron automáticamente a tu lista de
-                  refuerzo prioritario.
+                <p className="text-xs sm:text-sm text-stone-600 mt-1">
+                  Cortes CENEVAL: <strong>700–999</strong> Aún no satisfactorio •{' '}
+                  <strong>1000–1149</strong> Satisfactorio •{' '}
+                  <strong>1150–1300</strong> Sobresaliente.
                 </p>
               </div>
-              <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-2xl px-6 py-4 text-center">
-                <div className="text-3xl font-black text-teal-700">
-                  {examSummary.pct}%
+              <div className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-2xl px-6 py-4 text-center shrink-0">
+                <div className="text-[11px] font-extrabold uppercase tracking-wider text-stone-500">
+                  ICNE Estimado
                 </div>
-                <div className="text-xs text-stone-600 font-semibold">
-                  {examSummary.correct} / {examSummary.total} aciertos
+                <div className={`text-3xl sm:text-4xl font-black font-mono ${globalIcneInfo.text}`}>
+                  {globalIcne}
+                </div>
+                <div className="text-xs text-stone-600 font-semibold mt-0.5">
+                  {examSummary.pct}% ({examSummary.correct}/{examSummary.total} aciertos)
                 </div>
               </div>
             </div>
 
             <h3 className="text-xs font-extrabold text-stone-500 uppercase tracking-wider mt-6 mb-3">
-              Desglose por Área CENEVAL
+              Desglose ICNE por Área CENEVAL
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
               {Object.entries(examSummary.byArea).map(([areaName, stats]) => {
-                const areaPct = Math.round((stats.correct / stats.total) * 100);
+                const areaPct =
+                  typeof stats.pct === 'number'
+                    ? stats.pct
+                    : Math.round((stats.correct / stats.total) * 100);
+                const areaIcne =
+                  typeof stats.icne === 'number'
+                    ? stats.icne
+                    : calculateIcneScore(stats.correct, stats.total);
+                const areaLevel = getIcneLevel(areaIcne);
+                const barWidth = Math.max(
+                  4,
+                  Math.min(100, Math.round(((areaIcne - 700) / 600) * 100))
+                );
                 return (
                   <div
                     key={areaName}
-                    className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-2xl p-4"
+                    className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-2xl p-4 flex flex-col justify-between"
                   >
-                    <div className="text-xs font-bold text-stone-700 mb-1">
-                      {areaName}
-                    </div>
-                    <div className="flex items-baseline justify-between mb-2">
-                      <span className="text-2xl font-extrabold text-stone-900">
-                        {areaPct}%
+                    <div>
+                      <div className="text-xs font-bold text-stone-800 mb-1.5 leading-snug">
+                        {areaName}
+                      </div>
+                      <span
+                        className={`inline-block text-[10px] font-extrabold px-2 py-0.5 rounded-md border mb-2.5 ${areaLevel.badge}`}
+                      >
+                        {areaLevel.shortLabel}
                       </span>
-                      <span className="text-xs text-stone-500 font-semibold">
-                        {stats.correct}/{stats.total}
-                      </span>
                     </div>
-                    <div className="w-full bg-[#E5DEC9] h-2 rounded-full overflow-hidden">
-                      <div
-                        className={`h-full rounded-full ${
-                          areaPct >= 80
-                            ? 'bg-teal-600'
-                            : areaPct >= 60
-                            ? 'bg-amber-500'
-                            : 'bg-rose-500'
-                        }`}
-                        style={{ width: `${areaPct}%` }}
-                      />
+                    <div>
+                      <div className="flex items-baseline justify-between mb-1">
+                        <span className={`text-2xl font-black font-mono ${areaLevel.text}`}>
+                          {areaIcne}
+                        </span>
+                        <span className="text-xs text-stone-600 font-semibold">
+                          {areaPct}% ({stats.correct}/{stats.total})
+                        </span>
+                      </div>
+                      <div className="relative w-full bg-[#E5DEC9] h-2 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full ${areaLevel.bar}`}
+                          style={{ width: `${barWidth}%` }}
+                        />
+                        {/* Marca visual en 1000 pts (50% de la escala 700-1300) */}
+                        <div
+                          className="absolute top-0 bottom-0 w-0.5 bg-stone-900/40"
+                          style={{ left: '50%' }}
+                          title="Corte Satisfactorio: 1000 pts"
+                        />
+                        {/* Marca visual en 1150 pts (75% de la escala 700-1300) */}
+                        <div
+                          className="absolute top-0 bottom-0 w-0.5 bg-stone-900/40"
+                          style={{ left: '75%' }}
+                          title="Corte Sobresaliente: 1150 pts"
+                        />
+                      </div>
+                      <div className="flex justify-between text-[9px] font-mono text-stone-400 mt-1">
+                        <span>700</span>
+                        <span>1000</span>
+                        <span>1150</span>
+                        <span>1300</span>
+                      </div>
                     </div>
                   </div>
                 );
@@ -2471,6 +2748,12 @@ export default function App() {
                 className="px-5 py-3 rounded-xl bg-[#F3EFE6] hover:bg-[#E5DEC9] font-bold text-sm text-stone-800"
               >
                 Volver al Panel Principal
+              </button>
+              <button
+                onClick={() => setActiveTab('simulacro_setup')}
+                className="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm"
+              >
+                Nuevo Simulacro
               </button>
               {mistakeQuestions.length > 0 && (
                 <button
@@ -2491,6 +2774,196 @@ export default function App() {
               )}
             </div>
           </div>
+
+          {/* Revisión Detallada de Reactivos con Justificación y Acrónimos al Pie */}
+          {reviewedItems.length > 0 && (
+            <div className="bg-white border border-[#E5DEC9] rounded-3xl p-5 sm:p-7 shadow-md space-y-5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#E5DEC9]">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-extrabold text-stone-900">
+                    Revisión con Justificación y Acrónimos al Pie
+                  </h3>
+                  <p className="text-xs sm:text-sm text-stone-600 mt-0.5">
+                    Analiza cada caso práctico, su fundamento técnico y el significado de las siglas clave.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setSimulacroReviewFilter('ALL')}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                      simulacroReviewFilter === 'ALL'
+                        ? 'bg-stone-900 text-white shadow-sm'
+                        : 'bg-[#FAF7F2] text-stone-700 border border-[#E5DEC9] hover:bg-[#EFEAE0]'
+                    }`}
+                  >
+                    Todos ({reviewedItems.length})
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSimulacroReviewFilter('WRONG')}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                      simulacroReviewFilter === 'WRONG'
+                        ? 'bg-rose-600 text-white shadow-sm'
+                        : 'bg-rose-50 text-rose-800 border border-rose-200 hover:bg-rose-100'
+                    }`}
+                  >
+                    Incorrectos ({wrongCount})
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSimulacroReviewFilter('CORRECT')}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                      simulacroReviewFilter === 'CORRECT'
+                        ? 'bg-teal-700 text-white shadow-sm'
+                        : 'bg-teal-50 text-teal-800 border border-teal-200 hover:bg-teal-100'
+                    }`}
+                  >
+                    Correctos ({correctCount})
+                  </button>
+                </div>
+              </div>
+
+              {filteredReviewItems.length === 0 ? (
+                <div className="text-center py-8 text-sm text-stone-500 font-semibold">
+                  No hay reactivos en esta categoría de filtro.
+                </div>
+              ) : (
+                <div className="space-y-5">
+                  {filteredReviewItems.map((item) => {
+                    const originalNumber =
+                      reviewedItems.findIndex((x) => x.id === item.id) + 1;
+                    return (
+                      <div
+                        key={item.id}
+                        className={`rounded-2xl border-2 p-4 sm:p-5 space-y-3.5 ${
+                          item.isCorrect
+                            ? 'bg-white border-teal-200'
+                            : 'bg-rose-50/25 border-rose-300'
+                        }`}
+                      >
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <div className="flex flex-wrap items-center gap-1.5">
+                            <span className="text-xs font-mono font-extrabold px-2.5 py-0.5 rounded-md bg-stone-900 text-white">
+                              #{originalNumber}
+                            </span>
+                            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-md bg-[#FAF7F2] text-stone-700 border border-[#E5DEC9]">
+                              {item.subarea}
+                            </span>
+                            {item.tipo && (
+                              <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-amber-100/80 text-amber-950 border border-amber-300">
+                                {item.tipo}
+                              </span>
+                            )}
+                          </div>
+
+                          <span
+                            className={`text-xs font-extrabold px-2.5 py-1 rounded-lg flex items-center gap-1 ${
+                              item.isCorrect
+                                ? 'bg-teal-100 text-teal-900 border border-teal-300'
+                                : 'bg-rose-100 text-rose-900 border border-rose-300'
+                            }`}
+                          >
+                            {item.isCorrect ? (
+                              <>
+                                <CheckCircle2 className="w-3.5 h-3.5" />
+                                Correcto
+                              </>
+                            ) : (
+                              <>
+                                <XCircle className="w-3.5 h-3.5" />
+                                {item.userAnswer
+                                  ? `Tu respuesta: ${item.userAnswer} • Correcta: ${item.respuesta_correcta}`
+                                  : `Sin responder • Correcta: ${item.respuesta_correcta}`}
+                              </>
+                            )}
+                          </span>
+                        </div>
+
+                        {item.lecturaTitulo &&
+                          Array.isArray(item.lecturaParrafos) &&
+                          item.lecturaParrafos.length > 0 && (
+                            <details className="bg-rose-50/60 border border-rose-200 rounded-xl p-3 text-xs text-stone-700">
+                              <summary className="font-extrabold text-rose-900 cursor-pointer">
+                                Ver lectura: {item.lecturaTitulo}
+                              </summary>
+                              <div className="mt-2 space-y-1.5 max-h-48 overflow-y-auto">
+                                {item.lecturaParrafos.map((p, pIdx) => (
+                                  <p key={pIdx}>
+                                    <strong className="text-rose-700">
+                                      [{pIdx + 1}]{' '}
+                                    </strong>
+                                    {p}
+                                  </p>
+                                ))}
+                              </div>
+                            </details>
+                          )}
+
+                        <p className="text-sm sm:text-base font-extrabold text-stone-900 leading-relaxed whitespace-pre-line">
+                          <MathExpression
+                            text={formatReadableText(item.pregunta)}
+                          />
+                        </p>
+
+                        {item.diagrama && (
+                          <SimulacroDiagram diagramId={item.diagrama} />
+                        )}
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                          {item.opciones.map((op) => {
+                            const isCorrectOpt =
+                              op.id === item.respuesta_correcta;
+                            const isUserWrong =
+                              item.userAnswer === op.id && !isCorrectOpt;
+                            let optClass =
+                              'bg-[#FAF7F2] border-[#E5DEC9] text-stone-700';
+                            if (isCorrectOpt) {
+                              optClass =
+                                'bg-teal-50 border-teal-500 text-teal-950 font-semibold';
+                            } else if (isUserWrong) {
+                              optClass =
+                                'bg-rose-50 border-rose-400 text-rose-950 font-semibold';
+                            }
+
+                            return (
+                              <div
+                                key={op.id}
+                                className={`text-xs sm:text-sm p-2.5 rounded-xl border flex items-start gap-2 ${optClass}`}
+                              >
+                                <span className="font-mono font-extrabold shrink-0">
+                                  {op.id})
+                                </span>
+                                <span className="break-words">
+                                  <MathExpression
+                                    text={formatReadableText(op.texto)}
+                                  />
+                                </span>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        {/* Nota de Justificación Técnica */}
+                        <div className="bg-[#FAF7F2] rounded-xl p-3.5 text-xs sm:text-sm text-stone-800 leading-relaxed border border-[#E5DEC9]">
+                          <span className="font-extrabold text-[#D95D39] mr-1.5">
+                            Justificación Técnica:
+                          </span>
+                          <FormattedRichText
+                            text={formatReadableText(item.explicacion)}
+                          />
+                        </div>
+
+                        {/* Glosario de Acrónimos al pie de la pregunta */}
+                        <AcronymsFooter question={item} />
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     );
@@ -3562,8 +4035,11 @@ export default function App() {
 
                         {isQuestionRevealed && (
                           <div className="mt-3 text-xs text-stone-700 leading-relaxed bg-white border border-amber-200 rounded-lg p-3">
-                            <strong className="text-amber-800">Fundamento Técnico: </strong>
-                            <FormattedRichText text={formatReadableText(q.explicacion)} />
+                            <div>
+                              <strong className="text-amber-800">Fundamento Técnico: </strong>
+                              <FormattedRichText text={formatReadableText(q.explicacion)} />
+                            </div>
+                            <AcronymsFooter question={q} compact={true} />
                           </div>
                         )}
                       </div>
@@ -3705,14 +4181,13 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 bg-white border border-[#E5DEC9] rounded-2xl p-6 shadow-sm">
               <span className="text-xs font-extrabold uppercase tracking-wider text-indigo-700">
-                Evaluación Cronometrada
+                Evaluación Cronometrada • Banco Exclusivo ({simulacroQuestions.length} Reactivos Inéditos)
               </span>
               <h2 className="text-xl sm:text-2xl font-extrabold text-stone-900 mt-1 mb-2">
-                Simulador de Examen EGEL
+                Simulador de Examen EGEL-PLUS ICOMPU
               </h2>
               <p className="text-xs sm:text-sm text-stone-600 mb-6">
-                Sin pistas durante la prueba. Tu progreso se guarda automáticamente por si
-                recargas la página.
+                Reactivos 100% independientes del modo estudio: casos prácticos de ingeniería, ordenamientos, relación de columnas, análisis de algoritmos y comprensión lectora. Sin pistas durante la prueba; al entregar obtendrás la revisión completa con justificación técnica y glosario de acrónimos al pie.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -3770,22 +4245,29 @@ export default function App() {
                 </p>
               ) : (
                 <div className="space-y-3">
-                  {progress.examHistory.map((item) => (
-                    <div
-                      key={item.id}
-                      className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl p-3.5"
-                    >
-                      <div className="flex items-center justify-between text-xs mb-1">
-                        <span className="font-extrabold text-teal-800">
-                          {item.pct}% ({item.correct}/{item.total})
-                        </span>
-                        <span className="text-stone-500">{item.date}</span>
+                  {progress.examHistory.map((item) => {
+                    const itemIcne =
+                      typeof item.icne === 'number'
+                        ? item.icne
+                        : calculateIcneScore(item.correct, item.total);
+                    const itemLevel = getIcneLevel(itemIcne);
+                    return (
+                      <div
+                        key={item.id}
+                        className="bg-[#FAF7F2] border border-[#E5DEC9] rounded-xl p-3.5"
+                      >
+                        <div className="flex items-center justify-between text-xs mb-1">
+                          <span className={`font-black font-mono ${itemLevel.text}`}>
+                            {itemIcne} ICNE ({item.pct}% • {item.correct}/{item.total})
+                          </span>
+                          <span className="text-stone-500">{item.date}</span>
+                        </div>
+                        <div className="text-xs font-bold text-stone-800">
+                          {item.dictamen}
+                        </div>
                       </div>
-                      <div className="text-xs font-bold text-stone-800">
-                        {item.dictamen}
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>
